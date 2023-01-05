@@ -36,7 +36,7 @@ import butterknife.OnClick;
  * Created by hasee on 2017/6/5.
  * 登录界面 activity
  */
-public class LoginActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
+public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.get_number_text)
     TextView tvPhoneCode;
     @BindView(R.id.login_phone)

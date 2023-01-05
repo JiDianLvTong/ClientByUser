@@ -49,7 +49,7 @@ import cn.bingoogolapple.qrcode.zxing.ZXingView;
  * company: 兴达智联
  * description: 二维码扫描
  */
-public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter> implements ScanCodeContract.View, QRCodeView.Delegate {
+public class ScanCodeNewActivity extends U6BaseActivityByMvp<ScanCodePresenter> implements ScanCodeContract.View, QRCodeView.Delegate {
     @BindView(R.id.page_return)
     LinearLayout page_return;
     @BindView(R.id.tv_scan_qr_hint)
@@ -133,7 +133,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
                 break;
             case R.id.btn_scan_qr_album:
                 //点击相册
-                PermissionX.init(ScanCodeNewActivityU6.this)
+                PermissionX.init(ScanCodeNewActivity.this)
                         .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
                         .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
@@ -274,7 +274,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
 //                                super.run();
 //                                try {
 //                                    sleep(3000);
-                                    Intent intent1 = new Intent(activity, MainActivityU6.class);
+                                    Intent intent1 = new Intent(activity, MainActivity.class);
                                     activity.startActivity(intent1);
 //                                } catch (InterruptedException e) {
 //                                    System.out.println(e.getLocalizedMessage());
@@ -286,7 +286,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
                     case "3":
                         //优惠券二维码
                         if (data.getData() != null) {
-                            Intent intent2 = new Intent(this, CouponCashv2ActivityU6.class);
+                            Intent intent2 = new Intent(this, CouponCashv2Activity.class);
                             intent2.putExtra("name", data.getData().getName());
                             intent2.putExtra("type", data.getData().getType());
                             intent2.putExtra("fval", data.getData().getFval());
@@ -300,7 +300,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
                         break;
                     case "4":
                         //车辆二维码
-                        Intent intent3 = new Intent(activity, MainActivityU6.class);
+                        Intent intent3 = new Intent(activity, MainActivity.class);
                         startActivity(intent3);
                         break;
                 }
@@ -326,7 +326,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
     @Override
     public void requestEndBindBikeSuccess(QrCodeScanBean qrCodeScanBean) {
         if ("2".equals(mIsInputBox)) {
-            Intent intent3 = new Intent(activity, MainActivityU6.class);
+            Intent intent3 = new Intent(activity, MainActivity.class);
             startActivity(intent3);
         }
         finish();
@@ -403,7 +403,7 @@ public class ScanCodeNewActivityU6 extends U6BaseActivityByMvp<ScanCodePresenter
     @Override
     protected void onStart() {
         super.onStart();
-        PermissionX.init(ScanCodeNewActivityU6.this)
+        PermissionX.init(ScanCodeNewActivity.this)
                 .permissions(Manifest.permission.CAMERA)
                 .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
                 .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))

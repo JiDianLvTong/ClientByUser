@@ -603,7 +603,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/main_bottom_bg"
+                        android:src="@drawable/u6_main_bottom_bg"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/main_f1" />
 

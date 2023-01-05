@@ -44,7 +44,7 @@ import io.reactivex.disposables.Disposable;
  * company: 兴达智联
  * description: 我的钱包
  */
-public class NewWalletActivityU6 extends U6BaseActivityByMvp implements ExpenseFragment.ReloadListener, MyEbikeBtyFragment.ReloadListener {
+public class NewWalletActivity extends U6BaseActivityByMvp implements ExpenseFragment.ReloadListener, MyEbikeBtyFragment.ReloadListener {
     @BindView(R.id.tv_wallet_renew)
     TextView tvWalletRenew;
     @BindView(R.id.tv_wallet_hello_recharge)

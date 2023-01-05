@@ -27,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EvaluateAddsActivityU6 extends U6BaseActivityByMvp<EvaluateAddsPresenter> implements EvaluateAddsContract.View {
+public class EvaluateAddsActivity extends U6BaseActivityByMvp<EvaluateAddsPresenter> implements EvaluateAddsContract.View {
     @BindView(R.id.page_return)
     LinearLayout pageReturn;
     @BindView(R.id.activity_evaluation_adds_textView1)

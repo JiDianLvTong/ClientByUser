@@ -30,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EvaluationListsActivityU6 extends U6BaseActivityByMvp<EvaluationListsPresenter> implements EvaluationListsContract.View {
+public class EvaluationListsActivity extends U6BaseActivityByMvp<EvaluationListsPresenter> implements EvaluationListsContract.View {
     @BindView(R.id.activity_evaluation_textView1)
     TextView activityEvaluationTextView1;
     @BindView(R.id.recyclerView)
@@ -204,7 +204,7 @@ public class EvaluationListsActivityU6 extends U6BaseActivityByMvp<EvaluationLis
     public void onViewClicked2() {
         //点击评价按钮
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SITE_REVIEWS_EVALUATE);
-        Intent intent = new Intent(EvaluationListsActivityU6.this, EvaluateAddsActivityU6.class);
+        Intent intent = new Intent(EvaluationListsActivity.this, EvaluateAddsActivity.class);
         intent.putExtra("repair", repair);
         intent.putExtra("cabid", cabid);
         intent.putExtra("name", name);

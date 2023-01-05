@@ -27,8 +27,8 @@ import com.android.jidian.client.MainDiscount_;
 import com.android.jidian.client.MainInfo_;
 import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.MainSet_;
-import com.android.jidian.client.mvp.ui.activity.InviteWallteActivityU6;
-import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
+import com.android.jidian.client.mvp.ui.activity.InviteWallteActivity;
+import com.android.jidian.client.mvp.ui.activity.MainActivity;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.PersonalInfoBean;
 import com.android.jidian.client.http.ParamTypeData;
@@ -132,10 +132,10 @@ public class PersonalInfoDrawerMenu extends PopupWindow {
                     dataList1.add(new ParamTypeData("sourceId", uid));
                     dataList1.add(new ParamTypeData("type", "110"));
                     dataList1.add(new ParamTypeData("client", "Android"));
-                    mContext.startActivity(new Intent(mContext, MainActivityU6.class));
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
                 } else if (position == 1) {
                     //点击邀请钱包
-                    mContext.startActivity(new Intent(mContext, InviteWallteActivityU6.class));
+                    mContext.startActivity(new Intent(mContext, InviteWallteActivity.class));
                 } else if (position == 2) {
                     //点击我的订单
                     BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_PERSONAL_CENTER_MY_ORDER);

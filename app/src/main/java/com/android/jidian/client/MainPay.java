@@ -16,7 +16,7 @@ import com.alipay.sdk.app.PayTask;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
+import com.android.jidian.client.mvp.ui.activity.MainActivity;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.widgets.ProgressDialog;
@@ -190,7 +190,7 @@ public class MainPay {
                                                 pay(zhimaStep1);
                                                 zhimaAuthStep++;
                                             } else {
-                                                activity.startActivity(new Intent(activity, MainActivityU6.class));
+                                                activity.startActivity(new Intent(activity, MainActivity.class));
                                                 activity.finish();
                                             }
                                         } else {
@@ -198,16 +198,16 @@ public class MainPay {
                                                 pay(zhimaStep1);
                                                 zhimaAuthStep++;
                                             } else {
-                                                activity.startActivity(new Intent(activity, MainActivityU6.class));
+                                                activity.startActivity(new Intent(activity, MainActivity.class));
                                                 activity.finish();
                                             }
                                         }
                                     } else {
-                                        activity.startActivity(new Intent(activity, MainActivityU6.class));
+                                        activity.startActivity(new Intent(activity, MainActivity.class));
                                         activity.finish();
                                     }
                                 } else {
-                                    activity.startActivity(new Intent(activity, MainActivityU6.class));
+                                    activity.startActivity(new Intent(activity, MainActivity.class));
 
                                     if (!uid.isEmpty()) {
                                         List<ParamTypeData> dataList1 = new ArrayList<>();

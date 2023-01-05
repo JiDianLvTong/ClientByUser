@@ -21,7 +21,7 @@ import com.android.jidian.client.widgets.ViewPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InviteDetailActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
+public class InviteDetailActivity extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
 
     private List<Fragment> mFragments = new ArrayList<>();
     private NoScrollViewPager vpContent;

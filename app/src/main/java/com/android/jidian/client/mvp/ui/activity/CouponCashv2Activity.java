@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CouponCashv2ActivityU6 extends U6BaseActivityByMvp<CouponCashv2Presenter> implements CouponCashv2Contract.View {
+public class CouponCashv2Activity extends U6BaseActivityByMvp<CouponCashv2Presenter> implements CouponCashv2Contract.View {
     @BindView(R.id.title_layout_imageView1)
     ImageView titleLayoutImageView1;
     @BindView(R.id.title_layout_textView1)

@@ -63,7 +63,7 @@ import model.UiConfig;
 import model.UpdateConfig;
 import update.UpdateAppUtils;
 
-public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> implements MainActivityContract.View {
+public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> implements MainActivityContract.View {
 
     @BindViews({R.id.t_1, R.id.t_2, R.id.t_3, R.id.t_4})
     public List<TextView> footTextViewList;
@@ -144,7 +144,7 @@ public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> i
 //        NaviSetting.updatePrivacyShow(getActivity(), true, true);
 //        NaviSetting.updatePrivacyAgree(getActivity(), true);
         try {
-            mLocationClient = new AMapLocationClient(MainActivityU6.this);
+            mLocationClient = new AMapLocationClient(MainActivity.this);
             //初始化定位参数
             mLocationOption = new AMapLocationClientOption();
             //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
@@ -218,7 +218,7 @@ public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> i
         }
 
         if ((page == 2 || page == 3) && UserInfoHelper.getInstance().getUid().isEmpty()) {
-            activity.startActivity(new Intent(activity, LoginActivityU6.class));
+            activity.startActivity(new Intent(activity, LoginActivity.class));
             return;
         }
 
@@ -394,7 +394,7 @@ public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> i
         }else {
             changeMain(0);
         }
-        PermissionX.init(MainActivityU6.this)
+        PermissionX.init(MainActivity.this)
                 .permissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
                 .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
                 .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
@@ -421,7 +421,7 @@ public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> i
         editor.putString("user_avatar", "");
         editor.clear();
         editor.apply();
-        startActivity(new Intent(activity, LoginActivityU6.class));
+        startActivity(new Intent(activity, LoginActivity.class));
     }
 
     @Override

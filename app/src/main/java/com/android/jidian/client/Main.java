@@ -78,10 +78,11 @@ import com.android.jidian.client.bluetooth.BluetoothDeviceList;
 import com.android.jidian.client.bluetooth.BluetoothSpp;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.mvp.ui.activity.CustomH5Page;
-import com.android.jidian.client.mvp.ui.activity.EvaluationListsActivityU6;
-import com.android.jidian.client.mvp.ui.activity.InviteActivityU6;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivityU6;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
+import com.android.jidian.client.mvp.ui.activity.EvaluationListsActivity;
+import com.android.jidian.client.mvp.ui.activity.InviteActivity;
+import com.android.jidian.client.mvp.ui.activity.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.mvp.ui.adapter.MainSceneDialogSecondAdapter;
 import com.android.jidian.client.adapter.SimpleAdapters;
 import com.android.jidian.client.bean.AdvicesNumsV2Bean;
@@ -92,7 +93,6 @@ import com.android.jidian.client.bean.ContactV2Bean;
 import com.android.jidian.client.bean.MapJwduV5Bean;
 import com.android.jidian.client.bean.MapTopTabBean;
 import com.android.jidian.client.mvp.contract.MainContract;
-import com.android.jidian.client.mvp.ui.activity.LoginActivityU6;
 import com.android.jidian.client.mvp.ui.dialog.BluetoothDialogFragment;
 import com.android.jidian.client.service.BluetoothChatService;
 import com.android.jidian.client.util.CalcUtils;
@@ -1154,7 +1154,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_PERSONAL_CENTER);
                 if (PubFunction.isConnect(activity, true)) {
                     if (TextUtils.isEmpty(uid)) {
-                        startActivity(new Intent(activity, LoginActivityU6.class));
+                        startActivity(new Intent(activity, LoginActivity.class));
                     } else {
                         drawerMenu = new PersonalInfoDrawerMenu(this, new PersonalInfoDrawerMenu.OnClickItemListener() {
                             @Override
@@ -1184,7 +1184,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_MESSAGE);
                 if (PubFunction.isConnect(activity, true)) {
                     if (TextUtils.isEmpty(uid)) {
-                        activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                        activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
                         activity.startActivity(new Intent(activity, AdvicesListsActivity.class));
                     }
@@ -1211,7 +1211,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_CUSTOMER_SERVICE);
                 if (PubFunction.isConnect(activity, true)) {
                     if (TextUtils.isEmpty(uid)) {
-                        activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                        activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
                         activity.startActivity(new Intent(activity, MainCustomer_.class));
                     }
@@ -1223,7 +1223,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 if (PubFunction.isConnect(activity, true)) {
                     if (TextUtils.isEmpty(uid)) {
                         MyToast.showTheToast(activity, "请先进行登录！");
-                        activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                        activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
                         Intent intent = new Intent(activity, MainShop_.class);
                         activity.startActivity(intent);
@@ -1436,10 +1436,10 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_SCAN);
                 if (PubFunction.isConnect(activity, true)) {
                     if (TextUtils.isEmpty(uid)) {
-                        activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                        activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
-                        Intent mIntent = new Intent(activity, ScanCodeNewActivityU6.class);
-                        mIntent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "2");
+                        Intent mIntent = new Intent(activity, ScanCodeNewActivity.class);
+                        mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
                         startActivity(mIntent);
                     }
                 }
@@ -1898,13 +1898,13 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                         @Override
                                         public void onClick(View view) {
                                             if (TextUtils.isEmpty(uid)) {
-                                                Intent intent = new Intent(Main.this, InviteActivityU6.class);
+                                                Intent intent = new Intent(Main.this, InviteActivity.class);
                                                 intent.putExtra("url", bean.getBig_jump());
                                                 intent.putExtra("inviteId", bean.getAid());
                                                 startActivity(intent);
                                             } else {
                                                 isInviteDialogShowed = false;
-                                                startActivity(new Intent(Main.this, LoginActivityU6.class));
+                                                startActivity(new Intent(Main.this, LoginActivity.class));
                                             }
                                         }
                                     });
@@ -1974,7 +1974,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.clear();
                                 editor.apply();
-                                activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                                activity.startActivity(new Intent(activity, LoginActivity.class));
                             }
                         }
                         MyToast.showTheToast(activity, mAdvicesNumsV2Bean.getMsg());
@@ -2094,7 +2094,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                             if (!TextUtils.isEmpty(uid)) {
                                 if (bean != null) {
                                     if ("1".equals(bean.getBig_click())) {
-                                        Intent intent = new Intent(this, InviteActivityU6.class);
+                                        Intent intent = new Intent(this, InviteActivity.class);
                                         intent.putExtra("url", bean.getBig_jump());
                                         intent.putExtra("inviteId", bean.getAid());
                                         startActivity(intent);
@@ -2102,7 +2102,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                 }
                             } else {
                                 isInviteDialogShowed = false;
-                                startActivity(new Intent(Main.this, LoginActivityU6.class));
+                                startActivity(new Intent(Main.this, LoginActivity.class));
                             }
                             tDialog.dismiss();
                             break;
@@ -2123,13 +2123,13 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                 @Override
                                 public void onClick(View view) {
                                     if (!TextUtils.isEmpty(uid)) {
-                                        Intent intent = new Intent(Main.this, InviteActivityU6.class);
+                                        Intent intent = new Intent(Main.this, InviteActivity.class);
                                         intent.putExtra("url", bean.getBig_jump());
                                         intent.putExtra("inviteId", bean.getAid());
                                         startActivity(intent);
                                     } else {
                                         isInviteDialogShowed = false;
-                                        startActivity(new Intent(Main.this, LoginActivityU6.class));
+                                        startActivity(new Intent(Main.this, LoginActivity.class));
                                     }
                                 }
                             });
@@ -2343,7 +2343,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         if (rightBtnBean != null) {
             if ("1".equals(rightBtnBean.getIs_jump())) {
                 if ("Wallet/v".equals(rightBtnBean.getJump_to())) {
-                    startActivity(new Intent(activity, NewWalletActivityU6.class));
+                    startActivity(new Intent(activity, NewWalletActivity.class));
                 } else if ("Goods/buy".equals(rightBtnBean.getJump_to())) {
                     Intent intent = new Intent(activity, MainShop_.class);
                     AdvicesNumsV2Bean.ParamBean paramBean = rightBtnBean.getParam();
@@ -2515,14 +2515,14 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SITE_DETAILS_COMMENT);
                 if (!uid.isEmpty()) {
                     requestHttpVisitLogs("站点详情-评价", "114");
-                    Intent intent = new Intent(Main.this, EvaluationListsActivityU6.class);
+                    Intent intent = new Intent(Main.this, EvaluationListsActivity.class);
                     intent.putExtra("cabid", dataBean.getCabid());
                     intent.putExtra("name", dataBean.getName());
                     intent.putExtra("repair", repair);
                     startActivity(intent);
                 } else {
                     showMessage("请先进行登录！");
-                    activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                    activity.startActivity(new Intent(activity, LoginActivity.class));
                 }
             });
 
@@ -2544,7 +2544,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                     }
                 } else {
                     showMessage("请先进行登录！");
-                    activity.startActivity(new Intent(activity, LoginActivityU6.class));
+                    activity.startActivity(new Intent(activity, LoginActivity.class));
                 }
             });
 
@@ -2588,7 +2588,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         //通知主页刷新数据
         Main.handleRefreshMarker.sendEmptyMessage(1);
 //        MyToast.showTheToast(this, "正在刷新站点数据，请稍候");
-        startActivity(new Intent(activity, LoginActivityU6.class));
+        startActivity(new Intent(activity, LoginActivity.class));
     }
 
     @Override

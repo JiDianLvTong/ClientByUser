@@ -18,8 +18,8 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
+import com.android.jidian.client.mvp.ui.activity.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -162,7 +162,7 @@ public class MainShop extends BaseFragmentActivity {
         if (event != null) {
             if (event.getEvent() == PAYSUCCESSCLOSESHOP) {
                 if (Util.isTopActivity("MainShop", this)) {
-                    startActivity(new Intent(this, MainActivityU6.class));
+                    startActivity(new Intent(this, MainActivity.class));
                     finish();
                 }
             }
@@ -208,7 +208,7 @@ public class MainShop extends BaseFragmentActivity {
     void scan_panel_text() {
         //点击扫一扫按钮
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HELLO_MALL_SCAN);
-        Intent intent = new Intent(activity, ScanCodeNewActivityU6.class);
+        Intent intent = new Intent(activity, ScanCodeNewActivity.class);
         activity.startActivityForResult(intent, 0x0005);
     }
 

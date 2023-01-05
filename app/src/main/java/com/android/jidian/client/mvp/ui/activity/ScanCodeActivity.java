@@ -20,7 +20,7 @@ import com.android.jidian.client.base.U6BaseActivityByMvp;
  * company: 兴达智联
  * description: 二维码扫描
  */
-public class ScanCodeActivityU6 extends U6BaseActivityByMvp {
+public class ScanCodeActivity extends U6BaseActivityByMvp {
 //    @BindView(R.id.tv_title)
 //    TextView tvTitle;
 //    @BindView(R.id.tv_scan_qr_hint)
@@ -69,7 +69,7 @@ public class ScanCodeActivityU6 extends U6BaseActivityByMvp {
 //
 //            @Override
 //            public void onAnalyzeFailed() {
-//                Log.d("ScanCodeActivityU6", "onAnalyzeFailed: ");
+//                Log.d("ScanCodeActivity", "onAnalyzeFailed: ");
 //                if (!"MainDiscount".equals(mFromActivityStr)) {
 //                    sendJumpResult("");
 //                }

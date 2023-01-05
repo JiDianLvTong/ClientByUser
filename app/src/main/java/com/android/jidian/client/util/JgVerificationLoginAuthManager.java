@@ -3,7 +3,7 @@ package com.android.jidian.client.util;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.jidian.client.mvp.ui.activity.LoginActivityU6;
+import com.android.jidian.client.mvp.ui.activity.LoginActivity;
 import com.android.jidian.client.widgets.MyToast;
 
 import cn.jiguang.verifysdk.api.AuthPageEventListener;
@@ -60,7 +60,7 @@ public class JgVerificationLoginAuthManager {
             MyToast.showTheToast(mContext, "当前网络环境不支持认证");
             return;
         }
-        ((LoginActivityU6) mContext).runOnUiThread(new Runnable() {
+        ((LoginActivity) mContext).runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 mListener.loginAuthShowLoading();

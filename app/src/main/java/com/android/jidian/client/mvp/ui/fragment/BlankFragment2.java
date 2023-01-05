@@ -35,7 +35,7 @@ import com.android.jidian.client.bean.MapListsBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.LoginActivityU6;
+import com.android.jidian.client.mvp.ui.activity.LoginActivity;
 import com.android.jidian.client.net.RetrofitClient;
 import com.android.jidian.client.net.RxScheduler;
 import com.android.jidian.client.util.MapUtil;
@@ -388,7 +388,7 @@ public class BlankFragment2 extends BaseFragment {
                     }
                 } else {
                     Toast.makeText(requireContext(), "请先进行登录！", Toast.LENGTH_SHORT).show();
-                    requireActivity().startActivity(new Intent(requireActivity(), LoginActivityU6.class));
+                    requireActivity().startActivity(new Intent(requireActivity(), LoginActivity.class));
                 }
             });
         }

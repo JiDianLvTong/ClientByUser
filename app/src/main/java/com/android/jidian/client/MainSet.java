@@ -75,7 +75,7 @@ public class MainSet extends BaseActivity {
                     editor.clear();
                     editor.apply();
                     activity.finish();
-//                    startActivity(new Intent(MainSet.this, MainActivityU6.class));
+//                    startActivity(new Intent(MainSet.this, MainActivity.class));
                     //通知主页刷新数据
 //                    Main.handleRefreshMarker.sendEmptyMessage(1);
 //                    MyToast.showTheToast(MainSet.this, "正在刷新站点数据，请稍候");

@@ -15,7 +15,7 @@ import com.android.jidian.client.mvp.contract.CashWithdrawalRecordContract;
 import com.android.jidian.client.mvp.presenter.CashWithdrawalRecordPresenter;
 import com.android.jidian.client.mvp.ui.adapter.CashWithdrawalRecordAdapter;
 
-public class CashWithdrawalRecordActivityU6 extends U6BaseActivityByMvp<CashWithdrawalRecordPresenter> implements CashWithdrawalRecordContract.View {
+public class CashWithdrawalRecordActivity extends U6BaseActivityByMvp<CashWithdrawalRecordPresenter> implements CashWithdrawalRecordContract.View {
 
     private RecyclerView rvCashWithdrawalRecord;
     private LinearLayout nonePanel;

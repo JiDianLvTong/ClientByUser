@@ -66,7 +66,7 @@ public class IndexActivity extends U6BaseActivity {
                     }
                 }
 
-                activity.startActivity(new Intent(activity, MainActivityU6.class));
+                activity.startActivity(new Intent(activity, MainActivity.class));
                 activity.finish();
 
             }

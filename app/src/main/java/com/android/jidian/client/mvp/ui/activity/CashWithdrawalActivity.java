@@ -26,7 +26,7 @@ import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class CashWithdrawalActivityU6 extends U6BaseActivityByMvp<PullCashAddCashPresenter> implements PullCashAddCashContract.View {
+public class CashWithdrawalActivity extends U6BaseActivityByMvp<PullCashAddCashPresenter> implements PullCashAddCashContract.View {
 
     private EditText etCashWithdrawalCashNum;
     private TextView tvInviteDetailAccountTip, tvCashWithdrawalAlipay;
@@ -195,7 +195,7 @@ public class CashWithdrawalActivityU6 extends U6BaseActivityByMvp<PullCashAddCas
         showMessage(msg);
         mIsCashFinish = true;
         finish();
-        startActivity(new Intent(CashWithdrawalActivityU6.this, CashWithdrawalRecordActivityU6.class));
+        startActivity(new Intent(CashWithdrawalActivity.this, CashWithdrawalRecordActivity.class));
     }
 
     @Override
@@ -222,7 +222,7 @@ public class CashWithdrawalActivityU6 extends U6BaseActivityByMvp<PullCashAddCas
     @Override
     public void requestPullCashSetUserAccountInfoSuccess(String msg) {
 //        showMessage(msg);
-//        Toast.makeText(CashWithdrawalActivityU6.this, msg, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(CashWithdrawalActivity.this, msg, Toast.LENGTH_SHORT).show();
         Log.d("xiaoming1208", "requestPullCashSetUserAccountInfoSuccess: ");
 //        mIsAliPay = true;
 //        tvCashWithdrawalAlipay.setText("已绑定");

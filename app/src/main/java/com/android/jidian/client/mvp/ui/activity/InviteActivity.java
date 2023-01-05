@@ -30,7 +30,7 @@ import org.json.JSONObject;
 import wendu.dsbridge.CompletionHandler;
 import wendu.dsbridge.DWebView;
 
-public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
+public class InviteActivity extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
 
     private String inviteId = "";
 
@@ -83,7 +83,7 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(InviteActivityU6.this, "分享成功", Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivity.this, "分享成功", Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -93,7 +93,7 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(InviteActivityU6.this, "分享失败" + t.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivity.this, "分享失败" + t.getMessage(), Toast.LENGTH_LONG).show();
             if (mHandler != null) {
                 mHandler.complete("分享失败");
             }
@@ -105,7 +105,7 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(InviteActivityU6.this, "分享取消", Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivity.this, "分享取消", Toast.LENGTH_LONG).show();
 
         }
     };
@@ -178,10 +178,10 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
                 PullActivityPoliteBean bean = new Gson().fromJson(msg.toString(), PullActivityPoliteBean.class);
                 UMWeb web = new UMWeb(bean.getLink());
                 web.setTitle(bean.getTitle());//标题
-                web.setThumb(new UMImage(InviteActivityU6.this, bean.getImgUrl()));//缩略图
+                web.setThumb(new UMImage(InviteActivity.this, bean.getImgUrl()));//缩略图
                 web.setDescription(bean.getDesc());//描述
 
-                new ShareAction(InviteActivityU6.this)
+                new ShareAction(InviteActivity.this)
                         .setPlatform(SHARE_MEDIA.WEIXIN)//传入平台
                         .withMedia(web)
                         .setCallback(umShareListener)//回调监听器
@@ -199,10 +199,10 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
                 PullActivityPoliteBean bean = new Gson().fromJson(msg.toString(), PullActivityPoliteBean.class);
                 UMWeb web = new UMWeb(bean.getLink());
                 web.setTitle(bean.getTitle());//标题
-                web.setThumb(new UMImage(InviteActivityU6.this, bean.getImgUrl()));//缩略图
+                web.setThumb(new UMImage(InviteActivity.this, bean.getImgUrl()));//缩略图
                 web.setDescription(bean.getDesc());//描述
 
-                new ShareAction(InviteActivityU6.this)
+                new ShareAction(InviteActivity.this)
                         .setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)//传入平台
                         .withMedia(web)
                         .setCallback(umShareListener)//回调监听器
@@ -216,7 +216,7 @@ public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implem
         @JavascriptInterface
         public void OnClickInviteRecode(Object msg, CompletionHandler<String> handler) {
             Log.d("xiaoming923", "testObjecCallback: ");
-            Intent intent = new Intent(InviteActivityU6.this, InviteDetailActivityU6.class);
+            Intent intent = new Intent(InviteActivity.this, InviteDetailActivity.class);
             intent.putExtra("aid", inviteId);
             startActivity(intent);
         }
