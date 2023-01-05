@@ -20,7 +20,6 @@ public interface MainEquipmentContract {
 
     interface View extends BaseView{
         void requestWalletInfoSuccess(MainActiyivyExpenseBean bean);
-
         void requestWalletInfoFail(String msg);
     }
 

@@ -29,14 +29,10 @@ public class MainEquipmentPresenter extends BasePresenter<MainEquipmentContract.
         if (!isViewAttached()) {
             return;
         }
-        if (mView != null) {
-            mView.showProgress();
-        }
-        Disposable disposable = model.requestMainInfo(uid)
+        model.requestMainInfo(uid)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if (bean != null) {
                             if ("1".equals(bean.getStatus())) {
                                 mView.requestWalletInfoSuccess(bean);
@@ -47,7 +43,6 @@ public class MainEquipmentPresenter extends BasePresenter<MainEquipmentContract.
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });

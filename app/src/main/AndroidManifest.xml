@@ -69,6 +69,10 @@
             </intent-filter>
         </activity>
 
+        <!-- 测试页 -->
+        <activity android:name=".mvp.ui.activity.TextActivity">
+        </activity>
+
         <!-- 主页 -->
         <activity android:name=".mvp.ui.activity.MainActivity">
         </activity>

@@ -24,7 +24,7 @@ public class U6BaseActivity extends AppCompatActivity {
     protected String uid;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
         sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);

@@ -14,6 +14,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.android.jidian.client.BuildConfig;
 
+import org.w3c.dom.Text;
+
 public class IndexActivity extends U6BaseActivity {
 
     @BindView(R.id.t_2)
@@ -67,6 +69,7 @@ public class IndexActivity extends U6BaseActivity {
                 }
 
                 activity.startActivity(new Intent(activity, MainActivity.class));
+//                activity.startActivity(new Intent(activity, TextActivity.class));
                 activity.finish();
 
             }

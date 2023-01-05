@@ -96,5 +96,10 @@
       <option name="name" value="D:\work\AndroidSDK\extras\google\m2repository" />
       <option name="url" value="file:/$PROJECT_DIR$/../../AndroidSDK/extras/google/m2repository" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven5" />
+      <option name="name" value="maven5" />
+      <option name="url" value="https://raw.githubusercontent.com/miomin/mvn-repo-ione/master" />
+    </remote-repository>
   </component>
 </project>
