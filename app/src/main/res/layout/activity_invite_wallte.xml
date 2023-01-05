@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6"
+    tools:context=".mvp.ui.activity.InviteWallteActivity">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/title_layout" />
+
+    <TextView
+        android:id="@+id/tv_bg_invite_wallte_top"
+        android:layout_width="353dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/shape_2d2d2d_corner15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_layout" />
+
+    <TextView
+        android:id="@+id/tv_invite_wallte_cash_record"
+        android:layout_width="71dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/shape_line_ffffff_12point5_left"
+        android:gravity="center"
+        android:text="提现记录"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_top" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="可提现金额"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_top" />
+
+    <TextView
+        android:id="@+id/tv_invite_wallte_cash_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="53dp"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_top"
+        tools:text="1234121423" />
+
+    <TextView
+        android:id="@+id/tv_invite_wallte_withdrawal"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="92dp"
+        android:background="@drawable/shape_2ba245_r10"
+        android:gravity="center"
+        android:text="立即提现"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_top" />
+
+    <TextView
+        android:id="@+id/tv_invite_wallte_cash_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:textColor="#999999"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_top"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_top"
+        tools:text="总收益：234234234" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_bg_invite_wallte_level_one"-->
+<!--        android:layout_width="172dp"-->
+<!--        android:layout_height="83dp"-->
+<!--        android:layout_marginStart="11dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:background="@drawable/shape_ffffff_corner_10"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tv_bg_invite_wallte_top" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:text="一级邀请奖励"-->
+<!--        android:textColor="#777777"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_level_one" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_invite_wallte_level_one"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="38dp"-->
+<!--        android:textColor="#555555"-->
+<!--        android:textSize="21sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        tools:text="123123123" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_invite_wallte_level_one_bottom_line"-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="3.5dp"-->
+<!--        android:layout_marginBottom="6.5dp"-->
+<!--        android:background="@drawable/shape_ebeaea_radius_1point75"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_one" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="62dp"-->
+<!--        android:layout_height="3.5dp"-->
+<!--        android:background="@drawable/shape_fd4931_radius_1point75"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_invite_wallte_level_one_bottom_line"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_invite_wallte_level_one_bottom_line" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_bg_invite_wallte_level_two"-->
+<!--        android:layout_width="172dp"-->
+<!--        android:layout_height="83dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:background="@drawable/shape_ffffff_corner_10"-->
+<!--        app:layout_constraintStart_toEndOf="@id/tv_bg_invite_wallte_level_one"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_level_one" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:text="二级邀请奖励"-->
+<!--        android:textColor="#777777"-->
+<!--        android:textSize="12sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_level_two" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_invite_wallte_level_two"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="38dp"-->
+<!--        android:textColor="#555555"-->
+<!--        android:textSize="21sp"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        tools:text="123123123" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_invite_wallte_level_two_bottom_line"-->
+<!--        android:layout_width="110dp"-->
+<!--        android:layout_height="3.5dp"-->
+<!--        android:layout_marginBottom="6.5dp"-->
+<!--        android:background="@drawable/shape_ebeaea_radius_1point75"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_wallte_level_two"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_wallte_level_two" />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="77dp"-->
+<!--        android:layout_height="3.5dp"-->
+<!--        android:background="@drawable/shape_fd9034_radius_1point75"-->
+<!--        app:layout_constraintStart_toStartOf="@id/tv_invite_wallte_level_two_bottom_line"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_invite_wallte_level_two_bottom_line" />-->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:text="提现规则"
+        android:textColor="#2D2D2D"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bg_invite_wallte_top" />
+
+    <TextView
+        android:id="@+id/tv_invite_wallte_cash_rule"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="86dp"
+        android:textColor="#666666"
+        android:textSize="14sp"
+        android:lineSpacingExtra="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bg_invite_wallte_top"
+        tools:text="1、收益满100元可提现。\n2、提现必须在吉电平台进行实名认证。\n3、提现后48小时以内到账。" />
+
+</android.support.constraint.ConstraintLayout>

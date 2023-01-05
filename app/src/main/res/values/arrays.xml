@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="app_msg_tab">
+        <item>系统消息</item>
+        <item>活动消息</item>
+    </string-array>
+</resources>

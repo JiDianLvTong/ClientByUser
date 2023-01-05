@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!--titleLayout-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:id="@+id/page_return"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/cd3"
+                android:scaleType="centerCrop"
+                android:src="@drawable/page_return_black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/activity_evaluation_adds_textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            tools:text="北京吉电出行" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="#EEEEEE" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/data_panelnew"
+                android:visibility="gone"
+                android:orientation="vertical"
+                tools:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="58dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/satisfaction"
+                        android:textColor="#555555"
+                        android:textSize="17sp" />
+
+                    <ImageView
+                        android:id="@+id/activity_evaluation_adds_imageView1"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:src="@mipmap/yellow_stars"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/activity_evaluation_adds_imageView2"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="9dp"
+                        android:src="@mipmap/yellow_stars"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/activity_evaluation_adds_imageView3"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="9dp"
+                        android:src="@mipmap/yellow_stars"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/activity_evaluation_adds_imageView4"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="9dp"
+                        android:src="@mipmap/yellow_stars"
+                        tools:ignore="ContentDescription" />
+
+                    <ImageView
+                        android:id="@+id/activity_evaluation_adds_imageView5"
+                        android:layout_width="21dp"
+                        android:layout_height="21dp"
+                        android:layout_marginStart="9dp"
+                        android:src="@mipmap/yellow_stars"
+                        tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <com.android.jidian.client.widgets.FlowLayoutCenter
+                    android:id="@+id/activity_evaluation_adds_flowLayoutCenter1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="10dp"
+                    app:height_space="13dp"
+                    app:width_space="11dp" />
+
+                <com.android.jidian.client.widgets.MyLinesEditView
+                    android:id="@+id/activity_evaluation_adds_myLinesEditView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="34dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/selector_lines_edit_view_bg"
+                    app:classic_hintText="可以说说您的换电体验嘛～（限50字）"
+                    app:classic_showPositive="false" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/activity_evaluation_adds_textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="40dp"
+                    android:background="@drawable/corner_ea5729_bg"
+                    android:gravity="center"
+                    android:text="@string/submit_comments"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!--空数据提示-->
+            <LinearLayout
+                android:id="@+id/none_panelnew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:layout_marginTop="96dp"
+                android:visibility="invisible"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableTop="@mipmap/empty_image"
+                    android:drawablePadding="0dp"
+                    android:gravity="center"
+                    android:text="@string/goingtorefresh"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/refresh_bg"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="@string/refresh"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>

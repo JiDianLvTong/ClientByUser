@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scan_panel"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FCFCFC"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:text="请联系线下经销商，扫描商家二维码，\n按照提示进行操作"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/scan_panel_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="43dp"
+        android:background="@drawable/shape_2ba245_corner_11"
+        android:gravity="center"
+        android:text="扫一扫"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+</LinearLayout>

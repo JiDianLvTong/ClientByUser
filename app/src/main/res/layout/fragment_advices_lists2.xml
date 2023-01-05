@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_advices_lists2_smartRefreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlFinishDuration="0">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_F9F9F9">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/fragment_advices_lists2_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!--暂无消息-->
+        <LinearLayout
+            android:id="@+id/fragment_advices_lists2_linearLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFF"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="114dp"
+                android:layout_height="114dp"
+                android:src="@mipmap/advices_listsfragments_image1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="暂无消息"
+                android:textColor="#ff999999"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </FrameLayout>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>

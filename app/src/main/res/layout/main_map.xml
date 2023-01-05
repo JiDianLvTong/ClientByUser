@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <RelativeLayout
+        android:id="@+id/teb_root"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home_tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_toStartOf="@id/outline"
+            android:background="@drawable/shadow_right"
+            app:tabIndicatorColor="@color/color_2ba245"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/color_2ba245"
+            app:tabTextColor="@color/color_333333" />
+
+        <FrameLayout
+            android:id="@+id/outline"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/squares" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <com.amap.api.maps.MapView
+        android:id="@+id/mMapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/teb_root" />
+
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/teb_root"
+        android:visibility="gone">
+
+        <FrameLayout
+            android:id="@+id/blue_electric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/main_battery_img"
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:src="@drawable/main_batteryele2" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/blue_electricNum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="暂无数据"
+                    android:textColor="#1D9143"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/site0_linearLayout"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_above="@id/layout_sites"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/site0_checked"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/site0_imageView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@mipmap/site0_checked" />
+
+        <TextView
+            android:id="@+id/site0_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/site0"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_sites"
+        android:layout_width="38dp"
+        android:layout_height="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_corners_white_gray_radius_5_width_1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="1px"
+        android:visibility="gone">
+        <!--换电站-->
+        <LinearLayout
+            android:id="@+id/site1_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/site1_normal"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/site1_imageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@mipmap/site1" />
+
+            <TextView
+                android:id="@+id/site1_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/site1"
+                android:textColor="@color/color_2ba245"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="1px"
+            android:background="#eee" />
+
+        <!--综合站-->
+        <LinearLayout
+            android:id="@+id/site2_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/site2_imageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@mipmap/site2" />
+
+            <TextView
+                android:id="@+id/site2_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/site2"
+                android:textColor="#FFA800"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="1px"
+            android:background="#eee" />
+
+        <!--便利屋-->
+        <LinearLayout
+            android:id="@+id/site4_linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/site4_normal"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/site4_imageView"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:background="@mipmap/site4" />
+
+            <TextView
+                android:id="@+id/site4_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/site4"
+                android:textColor="#4E5791"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/scan_code"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_2ba245_corner_11"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:contentDescription="@string/t12"
+            android:src="@drawable/home_mall" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:text="@string/hello_market"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/lists"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_below="@id/teb_root"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="5dp"
+        android:src="@mipmap/lists"
+        android:visibility="gone" />
+
+    <!--客服电话按钮-->
+    <LinearLayout
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/refresh_icon"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="7dp"
+            android:background="@drawable/caller"
+            android:contentDescription="@string/t11" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/refresh_icon"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_above="@id/bind_bettery"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="7dp"
+        android:background="@drawable/refresh_icon" />
+
+    <LinearLayout
+        android:id="@+id/bind_bettery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/set_location"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="7dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/bingBettery_imageView"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:src="@drawable/main_scan" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/set_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="15dp"
+        android:gravity="end">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="7dp"
+            android:contentDescription="@string/t13"
+            android:src="@drawable/sy2" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tv_main_invite_small"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/lists"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="50dp"
+        android:visibility="gone" />
+
+    <!--可滑动的scrollview-->
+    <com.android.jidian.client.widgets.MyScrollView
+        android:id="@+id/myScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/panel_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent" />
+
+            <include
+                layout="@layout/siteinfo_layout"
+                tools:visibility="gone" />
+        </LinearLayout>
+    </com.android.jidian.client.widgets.MyScrollView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/home_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/teb_root"
+        android:background="@android:color/white"
+        android:visibility="gone" />
+</RelativeLayout>

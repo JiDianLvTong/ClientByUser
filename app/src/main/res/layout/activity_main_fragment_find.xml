@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
+        android:id="@+id/statusBarView"
+        android:layout_width="match_parent"
+        android:background="@color/grey_66000000"
+        android:layout_height="wrap_content"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/shSwipeRefreshLayout"
+        app:srlEnableLoadMore="false"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp">
+
+                <LinearLayout
+                    android:id="@+id/mapPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circular_grey_f6f6f6_5"
+                    android:padding="15dp"
+                    android:orientation="vertical">
+
+                    <com.minminaya.widget.GeneralRoundFrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:corner_radius="5dp">
+
+                        <ImageView
+                            android:id="@+id/i_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:src="@drawable/main_find_yop_bg"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:text="地图点位置"
+                                android:background="@drawable/button_corners_gray_alph_radius_20"
+                                android:layout_width="140dp"
+                                android:textColor="#FFFFFF"
+                                android:textSize="16sp"
+                                android:gravity="center"
+                                android:layout_height="40dp" />
+
+                        </LinearLayout>
+
+                    </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:text="附件的换电站"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_weight="1"/>
+
+                        <TextView
+                            android:text="点击查看详情"
+                            android:textSize="9dp"
+                            android:textColor="#999999"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <ImageView
+                            android:layout_width="11dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/page_arrow_right_double_aaaaaa"
+                            android:adjustViewBounds="true"
+                            android:layout_marginLeft="5dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:orientation="horizontal">
+
+                        <com.minminaya.widget.GeneralRoundFrameLayout
+                            android:id="@+id/imagePanel_1"
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            app:corner_radius="5dp"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:id="@+id/i_2"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"/>
+
+                        </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                        <com.minminaya.widget.GeneralRoundFrameLayout
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            app:corner_radius="5dp"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="15dp">
+
+                            <ImageView
+                                android:id="@+id/i_3"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitXY"/>
+
+                        </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.minminaya.widget.GeneralRoundFrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:corner_radius="5dp">
+
+                        <ImageView
+                            android:id="@+id/i_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
+
+                    </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.minminaya.widget.GeneralRoundFrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:corner_radius="5dp">
+
+                        <ImageView
+                            android:id="@+id/i_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
+
+                    </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.minminaya.widget.GeneralRoundFrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        app:corner_radius="5dp">
+
+                        <ImageView
+                            android:id="@+id/i_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"/>
+
+                    </com.minminaya.widget.GeneralRoundFrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

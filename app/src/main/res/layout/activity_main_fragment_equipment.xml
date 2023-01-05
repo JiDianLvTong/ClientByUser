@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_main_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/main_bg_blcak"
+        android:scaleType="fitXY"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
+            android:id="@+id/statusBarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_66000000"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/shSwipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/root_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_message"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@drawable/user_message"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp" />
+
+                    <LinearLayout
+                        android:id="@+id/main_f1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toTopOf="@id/main_l1"
+                        app:layout_goneMarginBottom="300dp"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_level"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="请登录"
+                                android:textColor="#FFFFFF"
+                                android:textSize="25sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_main_tip"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="登录后解锁骑行乐趣"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="12sp" />
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="12dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/page_arrow_right_double_ffffff" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text="客服电话"
+                                android:textColor="#FFFFFF"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/tv_custom_phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="400-4004-4354"
+                                android:textColor="#FFFFFF"
+                                android:textSize="25sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/main_l2"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="@drawable/shape_ffffff_corner_top_30"
+                        android:gravity="center_vertical"
+                        android:visibility="gone"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toTopOf="@id/main_l1">
+
+                        <TextView
+                            android:id="@+id/tv_coin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="23456"
+                            android:textStyle="bold"
+                            android:textColor="#000000"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:text="换电币"
+                            android:textColor="#000000"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/main_t_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="#FFFFFF"
+                        app:layout_constraintTop_toBottomOf="@id/main_l2" />
+
+                    <LinearLayout
+                        android:id="@+id/main_l1"
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp"
+                        android:background="@drawable/shape_d79a37_corner_top_30"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/main_f1">
+
+                        <LinearLayout
+                            android:id="@+id/ll_bicycle"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@drawable/shape_ffffff_corner_15"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:id="@+id/iv_bicycle"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="20dp"
+                                android:src="@drawable/main_bicycle_gray" />
+
+                            <LinearLayout
+                                android:id="@+id/li_bicycle_add"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <ImageView
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:adjustViewBounds="true"
+                                    android:background="@drawable/main_equipment_battery_add" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:id="@+id/tv_bicycle_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginEnd="10dp"
+                                    android:gravity="end"
+                                    android:text="添加车辆"
+                                    android:textColor="#999999"
+                                    android:textSize="14sp" />
+
+                            </LinearLayout>
+
+                            <android.support.constraint.ConstraintLayout
+                                android:id="@+id/cl_bicycle_detail"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="20dp"
+                                android:layout_weight="1">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginBottom="30dp"
+                                    android:text="车辆编号"
+                                    android:textColor="#000000"
+                                    android:textSize="10sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_bike_num"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:text="2389423196234789652349"
+                                    android:textColor="#000000"
+                                    android:textSize="10sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="30dp"
+                                    android:text="200"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="25sp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_prioce_unit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="3dp"
+                                    android:text="元"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="16sp"
+                                    app:layout_constraintBaseline_toBaselineOf="@id/tv_price"
+                                    app:layout_constraintBottom_toBottomOf="@id/tv_price"
+                                    app:layout_constraintStart_toEndOf="@id/tv_price" />
+
+                                <TextView
+                                    android:id="@+id/tv_prioce_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="5dp"
+                                    android:text="租车费用"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="13sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_prioce_unit" />
+
+                            </android.support.constraint.ConstraintLayout>
+
+                        </LinearLayout>
+
+                        <android.support.constraint.ConstraintLayout
+                            android:background="@drawable/shape_ffffff_corner_15"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginHorizontal="20dp"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content" >
+
+                            <LinearLayout
+                                android:orientation="vertical"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:id="@+id/ll_battery_1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:gravity="center_vertical">
+
+                                    <ImageView
+                                        android:id="@+id/iv_main_battery_1"
+                                        android:layout_width="40dp"
+                                        android:layout_height="50dp"
+                                        android:layout_marginStart="25dp"
+                                        android:src="@drawable/main_battery_gray" />
+
+                                    <LinearLayout
+                                        android:id="@+id/li_battery_add_1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:orientation="horizontal"
+                                        android:visibility="gone">
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:id="@+id/iv_battery_add_1"
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:adjustViewBounds="true"
+                                            android:background="@drawable/main_equipment_battery_add" />
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_status_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginEnd="10dp"
+                                            android:gravity="end"
+                                            android:text="扫码绑定"
+                                            android:textColor="#999999"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+
+                                    <android.support.constraint.ConstraintLayout
+                                        android:id="@+id/cl_battery_detail_1"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="20dp"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_num_title_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:text="电池编号"
+                                            app:layout_constraintVertical_chainStyle="packed"
+                                            android:textColor="#000000"
+                                            android:textSize="10sp"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintBottom_toTopOf="@id/tv_battery_num_1"
+                                            app:layout_constraintStart_toStartOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_num_1"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:text="2389423196234789652349"
+                                            android:textColor="#000000"
+                                            android:textSize="10sp"
+                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_1"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent" />
+
+                                    </android.support.constraint.ConstraintLayout>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/ll_battery_2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="60dp"
+                                    android:visibility="gone"
+                                    android:background="@drawable/shape_ffffff_corner_15"
+                                    android:gravity="center_vertical">
+
+                                    <ImageView
+                                        android:id="@+id/iv_main_battery_2"
+                                        android:layout_width="40dp"
+                                        android:layout_height="50dp"
+                                        android:layout_marginStart="25dp"
+                                        android:src="@drawable/main_battery_gray" />
+
+                                    <LinearLayout
+                                        android:id="@+id/li_battery_add_2"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:layout_marginEnd="100dp"
+                                        android:orientation="horizontal"
+                                        android:visibility="visible">
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1" />
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:adjustViewBounds="true"
+                                            android:background="@drawable/main_equipment_battery_add" />
+
+                                        <View
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_status_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginEnd="10dp"
+                                            android:gravity="end"
+                                            android:visibility="gone"
+                                            android:text="扫码绑定"
+                                            android:textColor="#999999"
+                                            android:textSize="14sp" />
+
+                                    </LinearLayout>
+
+                                    <android.support.constraint.ConstraintLayout
+                                        android:id="@+id/cl_battery_detail_2"
+                                        android:layout_width="0dp"
+                                        android:visibility="gone"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginStart="20dp"
+                                        android:layout_weight="1">
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_num_title_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:text="电池编号"
+                                            app:layout_constraintVertical_chainStyle="packed"
+                                            android:textColor="#000000"
+                                            android:textSize="10sp"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintBottom_toTopOf="@id/tv_battery_num_2"
+                                            app:layout_constraintStart_toStartOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_num_2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:text="2389423196234789652349"
+                                            android:textColor="#000000"
+                                            android:textSize="10sp"
+                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_2"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent" />
+
+                                    </android.support.constraint.ConstraintLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <android.support.constraint.ConstraintLayout
+                                android:id="@+id/cl_battery_package_price"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                android:layout_marginEnd="5dp"
+                                android:visibility="gone"
+                                tools:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/tv_battery_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="30dp"
+                                    android:text="200"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="25sp"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/tv_battery_prioce_unit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="3dp"
+                                    android:text="元"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="16sp"
+                                    app:layout_constraintBaseline_toBaselineOf="@id/tv_battery_price"
+                                    app:layout_constraintBottom_toBottomOf="@id/tv_battery_price"
+                                    app:layout_constraintStart_toEndOf="@id/tv_battery_price" />
+
+                                <TextView
+                                    android:id="@+id/tv_package_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="电池月租"
+                                    android:textColor="@color/red_ee4000"
+                                    android:textSize="13sp"
+                                    app:layout_constraintTop_toBottomOf="@id/tv_battery_price"
+                                    app:layout_constraintEnd_toEndOf="@id/tv_battery_prioce_unit" />
+
+                            </android.support.constraint.ConstraintLayout>
+
+                        </android.support.constraint.ConstraintLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_main_re_pay"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_gravity="bottom"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_expire_text"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="您的设备还有天到期"
+                                android:textColor="#FFFFFF"
+                                android:textSize="15sp" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_repay"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:layout_marginHorizontal="20dp"
+                                android:layout_marginTop="5dp"
+                                android:background="@drawable/shape_e23e14_corner_15">
+
+                                <TextView
+                                    android:id="@+id/tv_package_price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:text="999"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="35sp" />
+
+                                <TextView
+                                    android:id="@+id/tv_package_price_unit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="5dp"
+                                    android:text="元"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginEnd="20dp"
+                                    android:gravity="center"
+                                    android:text="一键续费"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/main_i1"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/main_bottom_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/main_f1" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

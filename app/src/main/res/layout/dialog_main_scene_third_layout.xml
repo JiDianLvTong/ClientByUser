@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/bg_main_scene_third"
+        android:layout_width="267dp"
+        android:layout_height="265dp"
+        android:background="@drawable/button_corners_white_radius_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_icon_main_scene_third_top"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/icon_main_scene_third"
+        app:layout_constraintEnd_toEndOf="@id/bg_main_scene_third"
+        app:layout_constraintStart_toStartOf="@id/bg_main_scene_third"
+        app:layout_constraintTop_toTopOf="@id/bg_main_scene_third" />
+
+    <TextView
+        android:id="@+id/tv_main_scene_third_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text=""
+        android:textColor="@color/color_333333"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@id/bg_main_scene_third"
+        app:layout_constraintStart_toStartOf="@id/bg_main_scene_third"
+        app:layout_constraintTop_toTopOf="@id/bg_main_scene_third" />
+
+    <TextView
+        android:id="@+id/tv_main_scene_third_content"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="145dp"
+        android:lineSpacingExtra="1dp"
+        android:paddingStart="29dp"
+        android:paddingEnd="28dp"
+        android:text=""
+        android:textColor="@color/color_666666"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/bg_main_scene_third"
+        app:layout_constraintStart_toStartOf="@id/bg_main_scene_third"
+        app:layout_constraintTop_toTopOf="@id/bg_main_scene_third" />
+
+    <TextView
+        android:id="@+id/btn_str_see_others"
+        android:layout_width="103.5dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="22.5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape_cccccc_radius_15"
+        android:gravity="center"
+        android:text="@string/str_see_others"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/bg_main_scene_third"
+        app:layout_constraintStart_toStartOf="@id/bg_main_scene_third" />
+
+    <TextView
+        android:id="@+id/btn_right_press"
+        android:layout_width="103.5dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="22.5dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/shape_ffae22_radius_15"
+        android:gravity="center"
+        android:text="@string/str_to_renew"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/bg_main_scene_third"
+        app:layout_constraintEnd_toEndOf="@id/bg_main_scene_third" />
+</android.support.constraint.ConstraintLayout>

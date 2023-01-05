@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FCFCFC"
+    android:orientation="vertical">
+
+    <com.mxy.fpshadowlayout.FpShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:fp_shadowColor="#11000000"
+        app:fp_shadowRadius="5dp"
+        app:fp_shadowShape="fp_rectangle"
+        app:fp_shadowSide="fp_all">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="7dp"
+                android:paddingBottom="8dp">
+
+                <View
+                    android:id="@+id/start_view"
+                    android:layout_width="2.5dp"
+                    android:layout_height="11dp"
+                    android:background="#FF8B00" />
+
+                <TextView
+                    android:id="@+id/t_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="订单名称：买车套餐"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/t_2"
+                    android:layout_width="46dp"
+                    android:layout_height="20dp"
+                    android:background="@drawable/line_ff8b00_corner_10"
+                    android:gravity="center"
+                    android:text="待审核"
+                    android:textColor="#FF8B00"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/l_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_F7F7F7"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp" />
+
+                <TextView
+                    android:id="@+id/tv_order_item_cycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="12.5dp"
+                    android:textColor="@color/color_666666"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12.5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/t_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="8dp"
+                    android:text="订单号：NHL20200212092911679\n订单时间：2020-02-12 09:29:11\n支付方式：线下支付"
+                    android:textColor="@color/color_999999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_order_item_refund_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="19dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/t_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/t_3"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14sp"
+                    tools:text="合计：100元" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.mxy.fpshadowlayout.FpShadowLayout>
+</LinearLayout>

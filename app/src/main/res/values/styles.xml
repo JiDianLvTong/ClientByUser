@@ -1,0 +1,132 @@
+<resources>
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+
+    <style name="BottomViewTheme_Defalut">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="progress_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="Translucent_NoTitle" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="ThemeSplash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@drawable/index_logo</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <declare-styleable name="FlowLayout">
+        <attr name="width_space" format="dimension" />
+        <attr name="height_space" format="dimension" />
+    </declare-styleable>
+
+    <style name="animate_dialog">
+        <item name="android:windowEnterAnimation">@anim/enter_translate_dialog</item>
+        <item name="android:windowExitAnimation">@anim/exit_translate_dialog</item>
+    </style>
+
+    <declare-styleable name="MyLinesEditView">
+        <attr name="classic_maxCount" format="integer" />
+        <attr name="classic_ignoreCnOrEn" format="boolean" />
+        <attr name="classic_showPositive" format="boolean" />
+        <attr name="classic_hintText" format="string|reference" />
+        <attr name="classic_hintTextColor" format="color|reference" />
+        <attr name="classic_contentText" format="string|reference" />
+        <attr name="classic_contentTextSize" format="dimension|reference" />
+        <attr name="classic_contentTextColor" format="color|reference" />
+        <attr name="classic_contentViewHeight" format="dimension|reference" />
+    </declare-styleable>
+
+    <style name="animate_dialog_scale">
+        <item name="android:windowEnterAnimation">@anim/enter_scale_dialog</item>
+        <item name="android:windowExitAnimation">@anim/exit_scale_dialog</item>
+    </style>
+
+    <style name="AnimDown" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/push_scale_out</item>
+    </style>
+
+    <!--侧滑菜单样式-->
+    <style name="drawer_animation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/drawer_push_left_in</item>
+        <item name="android:windowExitAnimation">@anim/drawer_push_left_out</item>
+    </style>
+
+    <style name="dialogPopStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="DefaultAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/commons_enter_anim</item>
+        <item name="android:windowExitAnimation">@anim/commons_exit_anim</item>
+    </style>
+
+    <style name="AppTheme.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowBackground">@color/color_F9F9F9</item>
+    </style>
+
+    <style name="Theme.User" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--注意：Android 21（android 5.0 Lollipop）这个系统开始这个属性设置为true，状态栏会呈现半透明加暗效果，并不能全透明-->
+        <item name="android:windowTranslucentStatus">true</item>
+        <!--注意：Android 21（5.0）这个系统开始状态栏透明的话需要把颜色设置为透明，并且上面那个属性需要设置为false-->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--注意：导航栏设置透明是为了让activity内容延伸至状态栏，导航栏实际为半透明加暗效果-->
+    </style>
+</resources>

@@ -1,0 +1,234 @@
+<!--包月次卡布局-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/qianbaoyinying"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp">
+
+        <ImageView
+            android:id="@+id/i_2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="5dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_disclaimer_agreement_uncheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/per"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/t_1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14sp"
+                    tools:text="包季次卡" />
+
+                <TextView
+                    android:id="@+id/t_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="16sp"
+                    tools:text="99元/月" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="3dp"
+                android:baselineAligned="false"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/l_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <TextView
+                        android:id="@+id/t_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="使用说明:每天可以免费换电"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp" />
+
+                    <ImageView
+                        android:id="@+id/imageview2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/rule1" />
+
+                    <TextView
+                        android:id="@+id/t_11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" 次，"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/t_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="          剩余"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/usable_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/red"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/t_15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="天"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/t_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/color_666666"
+                    android:textSize="12sp"
+                    tools:text="使用说明：巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉" />
+                <!--设置了span字体big所以不需要设置marginTop-->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/t_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp"
+                        tools:text="开始时间开始时间开始时间开始时间开始时间开时间开始时间开始时" />
+
+                    <TextView
+                        android:id="@+id/t_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/red"
+                        android:textSize="15sp"
+                        tools:text="5" />
+
+                    <TextView
+                        android:id="@+id/t_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:textColor="@color/color_666666"
+                        android:textSize="12sp"
+                        tools:text="次" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/t_41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="20dp"
+                    android:textColor="@color/color_666666"
+                    android:textSize="12sp"
+                    tools:text="结束时间结束时间结束时间结束时间结束时间结束时间结束时间结束时间" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/t_5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/color_999999"
+                        android:textSize="12sp"
+                        tools:text="注意：次卡可在所有商家换电次卡可在所有商家换电次卡可在所有商家换电次卡可在所有商家换电次卡可在所有商家换电次卡可在所有商家换电" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="7dp"
+                        android:gravity="center|end"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/t_10"
+                            android:layout_width="70dp"
+                            android:layout_height="30dp"
+                            android:adjustViewBounds="true"
+                            android:background="@drawable/main_shop_item_2_buttom"
+                            android:gravity="center"
+                            android:paddingStart="5dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="0dp"
+                            android:text="@string/buy"
+                            android:textColor="@color/white"
+                            android:textSize="11sp"
+                            tools:ignore="SmallSp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

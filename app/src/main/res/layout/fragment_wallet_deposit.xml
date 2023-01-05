@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_wallet_deposit_tips"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/color_F5F5F5"
+        android:gravity="center"
+        android:text="注意：申请押金退款通过后，设备自动解绑"
+        android:textColor="@color/color_FC481E"
+        android:textSize="12sp" />
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_wallet_deposit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlFinishDuration="0">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_wallet_deposit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="10dp" />
+
+            <!--暂无消息-->
+            <LinearLayout
+                android:id="@+id/empty_wallet_deposit"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@mipmap/icon_empty_deposit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7.5dp"
+                    android:gravity="center"
+                    android:text="您当前尚无可退押金，请联系线下\n运营商租赁或购买设备~"
+                    android:textColor="@color/color_999999"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/btn_wallet_deposit_item"
+                    android:layout_width="150dp"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shape_2ba245_r10"
+                    android:gravity="center"
+                    android:text="去商家"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </FrameLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

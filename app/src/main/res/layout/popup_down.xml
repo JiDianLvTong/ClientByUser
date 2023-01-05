@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_EEEEEE" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:paddingTop="2.5dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="2.5dp">
+
+        <ImageView
+            android:id="@+id/exitpop"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="6dp"
+            android:src="@mipmap/icon_btn_close" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/pop_recy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
+        android:gravity="center_horizontal"
+        android:listSelector="@android:color/transparent"
+        android:numColumns="3"
+        android:paddingBottom="11dp"
+        android:scrollbars="none"
+        android:verticalSpacing="20dp" />
+</LinearLayout>

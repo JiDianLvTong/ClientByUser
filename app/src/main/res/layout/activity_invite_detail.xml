@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.ui.activity.InviteDetailActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:id="@+id/tv_bg_invite_detail_account"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textColor="#FD4931"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/tv_invite_detail_account_unit"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_account" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_account_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="人"
+        android:textColor="#FD4931"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_invite_detail_account"
+        app:layout_constraintBottom_toBottomOf="@id/tv_invite_detail_account"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintStart_toEndOf="@id/tv_invite_detail_account" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_account_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="总邀请人数"
+        android:textColor="#FD4931"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintTop_toBottomOf="@id/tv_invite_detail_account" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_account_bottom_line"
+        android:layout_width="72dp"
+        android:layout_height="3.5dp"
+        android:background="@drawable/shape_fd4931_radius_1point75"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_account" />
+
+    <TextView
+        android:id="@+id/tv_bg_invite_detail_amount"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_invite_detail_account"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="0"
+        android:textColor="@color/color_555555"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/tv_invite_detail_amount_unit"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_amount" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_amount_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="元"
+        android:textColor="@color/color_555555"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_invite_detail_amount"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintStart_toEndOf="@id/tv_invite_detail_amount"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_amount" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_amount_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:text="总收益"
+        android:textColor="@color/color_555555"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintTop_toBottomOf="@id/tv_invite_detail_amount" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_amount_bottom_line"
+        android:layout_width="72dp"
+        android:layout_height="3.5dp"
+        android:background="@drawable/shape_fd4931_radius_1point75"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_amount"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_amount" />
+
+    <com.android.jidian.client.widgets.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="0.5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bg_invite_detail_account" />
+
+</android.support.constraint.ConstraintLayout>

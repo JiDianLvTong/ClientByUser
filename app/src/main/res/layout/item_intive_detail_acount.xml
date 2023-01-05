@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content"
+    android:background="#F6F6F6">
+
+    <TextView
+        android:id="@+id/tv_bg_item_invite_detail_account"
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="123123123" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_item_invite_detail_account_level"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:paddingHorizontal="5dp"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="10sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/tv_item_invite_detail_account_phone"-->
+<!--        app:layout_constraintStart_toEndOf="@id/tv_item_invite_detail_account_phone"-->
+<!--        app:layout_constraintTop_toTopOf="@id/tv_item_invite_detail_account_phone"-->
+<!--        tools:background="@drawable/gradient_fd4931_corner_21"-->
+<!--        tools:text="一级" />-->
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/color_333333"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2020:20;20 20:20:20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="44dp"
+        android:background="@color/color_EEEEEE"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_bg_item_invite_detail_account_order_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_item_invite_detail_account_order_account"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_order_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_item_invite_detail_account_order_type"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_item_invite_detail_account_order_type"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_item_invite_detail_account_order_type"
+        tools:text="组点多观鸟和" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="订单类型"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_item_invite_detail_account_order_type"
+        app:layout_constraintStart_toStartOf="@id/tv_item_invite_detail_account_order_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_invite_detail_account_order_type" />
+
+    <TextView
+        android:id="@+id/tv_bg_item_invite_detail_account_order_account"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_item_invite_detail_account_order_per"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_item_invite_detail_account_order_type"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_order_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_item_invite_detail_account_order_account"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_item_invite_detail_account_order_account"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_item_invite_detail_account_order_account"
+        tools:text="组点多观鸟和" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="金额"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_item_invite_detail_account_order_account"
+        app:layout_constraintStart_toStartOf="@id/tv_item_invite_detail_account_order_account"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_invite_detail_account_order_account" />
+
+    <TextView
+        android:id="@+id/tv_bg_item_invite_detail_account_order_per"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_item_invite_detail_account_order_cash"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_item_invite_detail_account_order_account"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_order_per"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@id/tv_bg_item_invite_detail_account_order_per"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_item_invite_detail_account_order_per"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_item_invite_detail_account_order_per"
+        tools:text="组点多观鸟和" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="收益比例"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_item_invite_detail_account_order_per"
+        app:layout_constraintStart_toStartOf="@id/tv_item_invite_detail_account_order_per"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_invite_detail_account_order_per" />
+
+    <TextView
+        android:id="@+id/tv_bg_item_invite_detail_account_order_cash"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_bg_item_invite_detail_account_order_per"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_invite_detail_account_order_cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_333333"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_item_invite_detail_account_order_cash"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_item_invite_detail_account_order_cash"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_item_invite_detail_account_order_cash"
+        tools:text="组点多观鸟和" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="奖励金额"
+        android:textColor="@color/color_999999"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/tv_item_invite_detail_account_order_cash"
+        app:layout_constraintStart_toStartOf="@id/tv_item_invite_detail_account_order_cash"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_invite_detail_account_order_cash" />
+
+</android.support.constraint.ConstraintLayout>

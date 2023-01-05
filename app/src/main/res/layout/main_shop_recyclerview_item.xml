@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="#aaaaaa">
+
+    <ImageView
+        android:id="@+id/bottom_image"
+        android:layout_width="match_parent"
+        android:layout_height="144.5dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="7.5dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        tools:src="@drawable/shop_item" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="24.5dp"
+        android:layout_marginRight="24.5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/t_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5.5dp"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="购车套餐A1" />
+
+            <ImageView
+                android:id="@+id/i_1"
+                android:layout_width="12.5dp"
+                android:layout_height="12.5dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="3.5dp"
+                android:src="@drawable/shop_item_bike" />
+
+            <ImageView
+                android:id="@+id/i_2"
+                android:layout_width="12.5dp"
+                android:layout_height="12.5dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="3.5dp"
+                android:src="@drawable/shop_item_battery" />
+
+            <ImageView
+                android:id="@+id/i_3"
+                android:layout_width="12.5dp"
+                android:layout_height="12.5dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="4.5dp"
+                android:src="@drawable/shop_item_card" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/l_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/t_2_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/t_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="8888.88元" />
+
+            <TextView
+                android:id="@+id/t_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                tools:text="8888.88元" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/t_4"
+                android:layout_width="68.5dp"
+                android:layout_height="27dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/text_corners_jianibian_radius"
+                android:gravity="center"
+                android:text="购 买"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

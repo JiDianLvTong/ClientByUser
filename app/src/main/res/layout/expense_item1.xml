@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/qianbaoyinying"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp">
+
+        <ImageView
+            android:id="@+id/i_2"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginEnd="5dp"
+            android:padding="2dp"
+            android:src="@drawable/ic_disclaimer_agreement_uncheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingStart="8dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/t_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="22dp"
+                    android:textColor="@color/color_333333"
+                    android:textSize="14sp"
+                    tools:text="换电卡名称" />
+
+                <FrameLayout
+                    android:layout_width="70dp"
+                    android:layout_height="19dp"
+                    android:layout_marginBottom="5dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/qipao" />
+
+                    <TextView
+                        android:id="@+id/t_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="19dp"
+                        android:gravity="center"
+                        android:paddingBottom="2dp"
+                        android:textColor="@color/white"
+                        android:textSize="9sp"
+                        tools:text="剩余26天" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/t_2"
+                    android:layout_width="0dp"
+                    android:layout_height="22dp"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:textColor="@color/color_333333"
+                    android:textSize="15sp"
+                    tools:text="199.00元" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/t_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_666666"
+                    android:textSize="12sp"
+                    tools:text="有效期内无限次换电，欢迎使用" />
+
+                <TextView
+                    android:id="@+id/t_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/color_666666"
+                    android:textSize="12sp"
+                    tools:text="有效期：2020-02-03 13:15：36" />
+
+                <TextView
+                    android:id="@+id/t_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/color_999999"
+                    android:textSize="12sp"
+                    tools:text="注意：此卡可在所有电柜上换电" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

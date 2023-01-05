@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
+        android:id="@+id/statusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_66000000"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/page_return"
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="left|center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_marginLeft="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/page_return_black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:letterSpacing="0.2"
+                android:text="站点"
+                android:textColor="#333333"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="right|center" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/touch"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/user_info"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_user_headPortrait"
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:src="@drawable/icon_main_user" />
+        </LinearLayout>
+
+<!--        <ImageView-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="15dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:scaleType="fitXY"-->
+<!--            android:src="@drawable/icon_main_title" />-->
+
+        <TextView
+            android:id="@+id/mustRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/shop"
+            android:background="@drawable/b060101"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="4dp"
+            android:text="新用户必读"
+            android:textColor="@color/color_2ba245"
+            android:textSize="13sp" />
+
+        <FrameLayout
+            android:id="@+id/shop"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/a060102" />
+
+            <FrameLayout
+                android:id="@+id/nor_read_red_point_panel"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="9dp"
+                android:layout_marginBottom="9dp">
+
+                <ImageView
+                    android:id="@+id/message_red_icon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/button_corners_fc481e_radius_20" />
+
+                <TextView
+                    android:id="@+id/nor_read_red_point"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="6sp"
+                    tools:ignore="SmallSp"
+                    tools:text="5" />
+            </FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
+    <!--导入mapview页面及弹窗-->
+    <include layout="@layout/main_map" />
+</LinearLayout>

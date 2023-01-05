@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="-50dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="108dp"
+            android:layout_height="108dp"
+            android:src="@mipmap/mmmm" />
+
+        <TextView
+            android:id="@+id/info_none"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="附近暂无换电站"
+            android:textColor="#999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="如需帮助，请联系吉电出行客服~"
+            android:textColor="#999999"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/none_data_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/orange_corner_50d"
+            android:drawableStart="@mipmap/phone"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="12dp"
+            android:text="400-6060-137"
+            android:textColor="#FFFFFF"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/none_data_phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/orange_corner_50d"
+            android:drawableStart="@mipmap/phone"
+            android:paddingHorizontal="35dp"
+            android:paddingVertical="12dp"
+            android:text="400-6060-138"
+            android:textColor="#FFFFFF"
+            android:visibility="gone" />
+    </LinearLayout>
+</FrameLayout>

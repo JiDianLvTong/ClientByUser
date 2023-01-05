@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F6F6"
+    tools:context=".mvp.ui.activity.CashWithdrawalActivity">
+
+    <include layout="@layout/title_layout" />
+
+    <TextView
+        android:id="@+id/tv_bg_invite_detail_info"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="11dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        android:layout_width="match_parent"
+        android:layout_height="54dp" />
+
+    <TextView
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_detail_info"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/icon_alipay"
+        android:layout_height="18dp"
+        android:layout_width="18dp" />
+
+    <TextView
+        android:text="提现到支付宝"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_detail_info"
+        android:layout_marginStart="38dp"
+        android:textColor="@color/color_666666"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_cash_withdrawal_alipay"
+        tools:text="绑定账号"
+        android:background="@drawable/shape_ff7251_radius_11_line"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_info"
+        app:layout_constraintBottom_toBottomOf="@id/tv_bg_invite_detail_info"
+        android:textColor="@color/color_FF7251"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:layout_marginEnd="11dp"
+        android:layout_width="65dp"
+        android:layout_height="22dp" />
+
+    <TextView
+        android:id="@+id/tv_bg_invite_detail_cash"
+        app:layout_constraintTop_toBottomOf="@id/tv_bg_invite_detail_info"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="提现金额"
+        android:textColor="@color/color_333333"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_cash"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_cash" />
+
+    <TextView
+        android:text="¥"
+        android:textColor="@color/color_333333"
+        android:textSize="18sp"
+        android:layout_marginStart="15dp"
+        app:layout_constraintTop_toTopOf="@id/et_cash_withdrawal_cash_num"
+        app:layout_constraintBottom_toBottomOf="@id/et_cash_withdrawal_cash_num"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/et_cash_withdrawal_cash_num"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="11dp"
+        android:layout_marginTop="56dp"
+        android:background="@null"
+        android:paddingVertical="10dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="50dp"
+        android:textColor="@color/color_333333"
+        android:textColorHint="@color/color_666666"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_cash"
+        app:layout_constraintEnd_toStartOf="@id/tv_cash_withdrawal_cash_all"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_cash" />
+
+    <TextView
+        android:id="@+id/tv_cash_withdrawal_cash_all"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_marginEnd="12dp"
+        android:text="全部提现"
+        android:textColor="#FD4931"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@id/et_cash_withdrawal_cash_num"
+        app:layout_constraintEnd_toEndOf="@id/tv_bg_invite_detail_cash"
+        app:layout_constraintTop_toTopOf="@id/et_cash_withdrawal_cash_num"
+        app:layout_constraintBottom_toBottomOf="@id/et_cash_withdrawal_cash_num"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/color_CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/et_cash_withdrawal_cash_num" />
+
+    <TextView
+        android:id="@+id/tv_invite_detail_account_tip"
+        app:layout_constraintStart_toStartOf="@id/tv_bg_invite_detail_cash"
+        app:layout_constraintTop_toBottomOf="@id/et_cash_withdrawal_cash_num"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        tools:text="可提现金额234234"
+        android:textSize="12sp"
+        android:textColor="@color/color_999999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_cash_withdrawal_cash_withdrawal"
+        android:layout_width="323dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="138dp"
+        android:background="@drawable/shape_ff7251_corner_21"
+        android:gravity="center"
+        android:text="立即提现"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_bg_invite_detail_cash" />
+
+
+
+</android.support.constraint.ConstraintLayout>

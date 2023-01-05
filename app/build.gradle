@@ -1,0 +1,218 @@
+apply plugin: 'com.android.application'
+def AAVersion = "4.6.0"
+/**
+ * LEVEL = 1;线上
+ * LEVEL = 2;仿真
+ * LEVEL = 3;测试
+ */
+def LEVEL = "1"
+
+android {
+    //签名使用
+    signingConfigs {
+        release {
+            storeFile file("${keyStoreDir}/${keyStoreName}")
+            storePassword "${keyStorePassword}"
+            keyAlias "${keyStoreAlias}"
+            keyPassword "${keyStoreAliasPassword}"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.android.jidian.client"
+//        compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+//        buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        //腾讯Bugly：使用NDK的“abiFilter”配置，设置支持的SO库架构。
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "7c9b2ea5f8c2e68cf7f940f6",//值来自开发者平台取得的AppKey
+                JPUSH_CHANNEL: "default_developer",
+        ]
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //打包命名规则
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "userJiDian_v${variant.versionName}_vc${variant.versionCode}_${releaseTime()}_${LEVEL}.apk"
+                }
+            }
+
+            buildConfigField 'int','CUSTOMIZED_VERSION',LEVEL
+
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.release
+
+            buildConfigField 'int','CUSTOMIZED_VERSION',LEVEL
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name: 'alipaySdk-15.6.0-20190226104053', ext: 'aar')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    //注解
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation project(path: ':waveview')
+    implementation project(path: ':webviewjavascriptbridge')
+    implementation project(path: ':dsbridge')
+//    implementation project(path: ':baselibrary')
+    annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
+    implementation "org.androidannotations:androidannotations-api:$AAVersion"
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    //    compile files('libs/alipaySdk-20160111.jar')
+    implementation files('libs/libammsdk.jar')
+    implementation files('libs/jmimemagic-0.1.2.jar')
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation files('libs/alibaba-cloudapi-sdk-core-1.2.0.jar')
+    //下拉刷新
+    implementation 'com.jwenfeng.pulltorefresh:library:1.0.3'
+    //底部弹窗
+    implementation files('libs/bottomView.jar')
+    //时间选择器
+    implementation 'cn.carbswang.android:NumberPickerView:1.1.1'
+    implementation 'com.brucetoo.pickview:library:1.2.3'
+    implementation 'com.wx.wheelview:wheelview:1.3.3'
+    //阴影
+    implementation 'com.github.wangjiegulu:ShadowViewHelper:1.0.2'
+    //圆形进度条
+    implementation 'com.mikhaellopez:circularprogressbar:2.0.0'
+//    //扫码
+//    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    //okhttp
+//    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+//    implementation 'com.squareup.okio:okio:1.15.0'
+    //loading框
+    implementation 'com.github.ybq:Android-SpinKit:1.2.0'
+    //阴影
+    implementation 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
+    //腾讯Bugly：同时集成SDK和NDK
+    implementation 'com.tencent.bugly:crashreport:2.6.6.1'
+    implementation 'com.tencent.bugly:nativecrashreport:3.3.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    //Android-PickerView多级联动
+    implementation 'com.contrarywind:Android-PickerView:4.1.7'
+    //下拉刷新
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-21'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0'
+
+    /*//骑呗 由于骑呗后台不稳定暂时下架，暂删
+    implementation 'com.qibeigo.qibeisdk:hl:1.0.5'*/
+//    implementation 'net.sf.json-lib:json-lib:2.4:jdk15'
+    //butterknife 切勿升级
+    implementation 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //rxjava
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.jakewharton.rxbinding3:rxbinding:3.0.0'
+    //tdialog
+    implementation 'com.timmy.tdialog:tdialog:2.1.1'
+//    implementation 'com.android.support:design:28.0.0'
+
+    // 阴影控件
+    implementation 'com.mxy.fpshadowlayout:fpshadowlayout:0.0.1'
+    implementation 'com.android.support:design:27.1.1'
+    //权限申请，所有的权限申请请使用这个
+    implementation 'com.permissionx.guolindev:permission-support:1.4.0'
+    //与H5交互使用的webview，jsbridge交互
+//    implementation 'com.github.wendux:WebViewJavascriptBridge:master-SNAPSHOT'
+    //状态栏
+    implementation 'com.gyf.immersionbar:immersionbar:2.3.3'
+    //指示器
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //极光
+    implementation 'cn.jiguang.sdk:jpush:3.8.5'
+    implementation 'cn.jiguang.sdk:jverification:2.6.7'
+    implementation 'cn.jiguang.sdk:jcore:2.5.5'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //扫一扫
+    implementation 'cn.bingoogolapple:bga-qrcode-zxing:1.3.7'
+//    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.9'
+    //autoSize屏幕适配
+    implementation 'me.jessyan:autosize:1.1.2'
+
+    //友盟
+    implementation 'com.umeng.umsdk:common:9.4.2'//必选
+    implementation 'com.umeng.umsdk:asms:1.4.1'//必选
+    // 分享相关库
+    implementation 'com.umeng.umsdk:share-core:7.1.6'//分享核心库，必选
+
+    // 第三方平台相关库，可根据需要自行选择
+    implementation 'com.umeng.umsdk:share-wx:7.1.6' //微信完整版
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android:+'//微信官方依赖库，必选
+    implementation files('libs/wechat-sdk-android-6.8.18.aar')
+
+//    implementation 'com.github.wendux:DSBridge-Android:3.0.0'
+
+    //二维码扫码
+//    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    //圆角布局
+    implementation 'com.github.minminaya:GenaralRoundLayout:1.0.0'
+    //swipeRefreshLayout - 下拉刷新
+//    implementation 'com.miomin:shswiperefreshlayout:1.3.0'
+    //阴影
+    implementation 'com.github.Liberuman:ShadowDrawable:0.1'
+    //圆角图片
+    implementation 'com.github.open-android:RoundedImageView:v1.0.0'
+    //版本更新
+    implementation 'com.teprinciple:updateapputils:2.3.0'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //basePopup - 底部弹窗
+    implementation 'io.github.razerdp:BasePopup:3.2.1'
+
+    //loading框
+    implementation 'com.wang.avi:library:2.1.3'
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.1.1'
+            }
+        }
+    }
+}
+/*时间*/
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"));
+}
