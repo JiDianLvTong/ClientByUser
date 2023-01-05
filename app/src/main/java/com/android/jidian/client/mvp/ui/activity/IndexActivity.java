@@ -34,11 +34,6 @@ public class IndexActivity extends U6BaseActivity {
         init();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void init(){
 
         t_2.setText(threadCode+"");

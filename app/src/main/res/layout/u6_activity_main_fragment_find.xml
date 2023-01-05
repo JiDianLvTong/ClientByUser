@@ -4,17 +4,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#ffffff">
+    android:background="@color/grey_303030">
 
     <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
         android:id="@+id/statusBarView"
         android:layout_width="match_parent"
-        android:background="@color/grey_66000000"
+        android:background="@color/grey_33000000"
         android:layout_height="wrap_content"/>
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/shSwipeRefreshLayout"
-        app:srlEnableLoadMore="false"
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/smartRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -28,13 +27,14 @@
                 android:orientation="vertical"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="15dp">
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:id="@+id/mapPanel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circular_grey_f6f6f6_5"
+                    android:background="@drawable/u6_shape_ffffff_corner_10"
                     android:padding="15dp"
                     android:orientation="vertical">
 
@@ -80,7 +80,7 @@
                         <TextView
                             android:text="附件的换电站"
                             android:textSize="13dp"
-                            android:textColor="#333333"
+                            android:textColor="@color/yellow_D7A64A"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -89,14 +89,14 @@
                         <TextView
                             android:text="点击查看详情"
                             android:textSize="9dp"
-                            android:textColor="#999999"
+                            android:textColor="#aaaaaa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
                         <ImageView
                             android:layout_width="11dp"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/page_arrow_right_double_aaaaaa"
+                            android:src="@drawable/u6_pub_page_arrow_right_double_aaaaaa"
                             android:adjustViewBounds="true"
                             android:layout_marginLeft="5dp"/>
 
@@ -105,7 +105,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -138,7 +138,7 @@
                             android:layout_gravity="center"
                             app:corner_radius="5dp"
                             android:layout_weight="1"
-                            android:layout_marginLeft="15dp">
+                            android:layout_marginLeft="10dp">
 
                             <ImageView
                                 android:id="@+id/i_3"
@@ -154,7 +154,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -177,7 +177,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="10dp"
                     android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -228,7 +228,6 @@
 
         </android.support.v4.widget.NestedScrollView>
 
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

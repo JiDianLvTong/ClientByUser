@@ -26,12 +26,10 @@ public class MainFindPresenter extends BasePresenter<MainFindContract.View> impl
         if (!isViewAttached()) {
             return;
         }
-        mView.showProgress();
         Disposable disposable = model.requestFindIndex(lng, lat)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if ("1".equals(bean.getStatus())) {
                             mView.requestFindIndexSuccess(bean);
                         }else {
@@ -40,7 +38,6 @@ public class MainFindPresenter extends BasePresenter<MainFindContract.View> impl
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });

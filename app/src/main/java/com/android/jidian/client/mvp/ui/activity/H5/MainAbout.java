@@ -1,4 +1,4 @@
-package com.android.jidian.client.mvp.ui.fragment.mainFindFragment;
+package com.android.jidian.client.mvp.ui.activity.H5;
 
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -8,34 +8,34 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import com.android.jidian.client.BaseActivity;
 import com.android.jidian.client.R;
+import com.android.jidian.client.base.U6BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainFindActActivity extends BaseActivity {
+/**
+ * Created by hasee on 2017/6/6.
+ */
 
+public class MainAbout extends U6BaseActivity {
     @BindView(R.id.pageReturn)
     public LinearLayout pageReturn;
     @BindView(R.id.webView)
     public WebView webView;
 
-    private String tarUrl = "";
+    private String url = "https://appx.mixiangx.com/web/pinpai/about3.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_find_act);
+        setContentView(R.layout.u6_acticity_h5_about);
         ButterKnife.bind(this);
         init();
     }
 
     private void init(){
-
-        tarUrl = getIntent().getStringExtra("url");
-
         webView.setInitialScale(300);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -46,7 +46,7 @@ public class MainFindActActivity extends BaseActivity {
                 return true;
             }
         });
-        webView.loadUrl(tarUrl);
+        webView.loadUrl(url);
     }
 
     @OnClick(R.id.pageReturn)

@@ -89,7 +89,7 @@
                     <ImageView
                         android:layout_width="15dp"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/page_arrow_right"
+                        android:src="@drawable/u6_pub_page_arrow_right_grey"
                         android:adjustViewBounds="true"/>
 
 
@@ -385,7 +385,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/page_arrow_right"
+                                    android:src="@drawable/u6_pub_page_arrow_right_grey"
                                     android:adjustViewBounds="true"/>
 
                             </LinearLayout>
@@ -438,7 +438,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/page_arrow_right"
+                                    android:src="@drawable/u6_pub_page_arrow_right_grey"
                                     android:adjustViewBounds="true"/>
 
                             </LinearLayout>
@@ -493,7 +493,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/page_arrow_right"
+                                    android:src="@drawable/u6_pub_page_arrow_right_grey"
                                     android:adjustViewBounds="true"/>
 
                             </LinearLayout>
@@ -546,7 +546,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/page_arrow_right"
+                                    android:src="@drawable/u6_pub_page_arrow_right_grey"
                                     android:adjustViewBounds="true"/>
 
                             </LinearLayout>
@@ -599,7 +599,7 @@
                                 <ImageView
                                     android:layout_width="15dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/page_arrow_right"
+                                    android:src="@drawable/u6_pub_page_arrow_right_grey"
                                     android:adjustViewBounds="true"/>
 
                             </LinearLayout>

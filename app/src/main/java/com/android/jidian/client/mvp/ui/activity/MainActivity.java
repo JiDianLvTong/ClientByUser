@@ -70,11 +70,11 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
 
     @BindViews({R.id.i_1, R.id.i_2, R.id.i_3, R.id.i_4})
     public List<ImageView> footImageViewList;
-    private int[] isSelectIcons = new int[]{R.drawable.foot_electric_bicycle_b69873, R.drawable.foot_find_b69873, R.drawable.foot_shop_b69873, R.drawable.foot_user_b69873};
-    private int[] notSelectIcons = new int[]{R.drawable.foot_electric_bicycle_ffffff, R.drawable.foot_find_ffffff, R.drawable.foot_shop_ffffff, R.drawable.foot_user_ffffff};
+    private int[] isSelectIcons = new int[]{R.drawable.u6_main_foot_electric_bicycle_d7a64a, R.drawable.u6_main_foot_find_d7a64a, R.drawable.u6_main_foot_shop_d7a64a, R.drawable.u6_main_foot_user_d7a64a};
+    private int[] notSelectIcons = new int[]{R.drawable.u6_main_foot_electric_bicycle_ffffff, R.drawable.u6_main_foot_find_ffffff, R.drawable.u6_main_foot_shop_ffffff, R.drawable.u6_main_foot_user_ffffff};
 
-    @BindView(R.id.mainPanell)
-    public LinearLayout mainPanell;
+    @BindView(R.id.mainPanel)
+    public LinearLayout mainPanel;
 
     private int localPage = -1;
 
@@ -95,7 +95,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.u6_activity_main);
         super.onCreate(savedInstanceState);
 //        ButterKnife.bind(this);
         statusBars();
@@ -239,37 +239,37 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         }
 
         for (int i = 0; i < footTextViewList.size(); i++) {
-            footTextViewList.get(i).setTextColor(0xff999999);
+            footTextViewList.get(i).setTextColor(0xffffffff);
             footImageViewList.get(i).setImageResource(notSelectIcons[i]);
         }
-        footTextViewList.get(page).setTextColor(activity.getResources().getColor(R.color.green_33cc66));
+        footTextViewList.get(page).setTextColor(activity.getResources().getColor(R.color.yellow_B69873));
         footImageViewList.get(page).setImageResource(isSelectIcons[page]);
 
         if (page == 0) {
             if (mainEquipmentFragment == null) {
                 mainEquipmentFragment = new MainEquipmentFragment();
-                ft.add(R.id.mainPanell, mainEquipmentFragment);
+                ft.add(R.id.mainPanel, mainEquipmentFragment);
             } else {
                 ft.show(mainEquipmentFragment);
             }
         } else if (page == 1) {
             if (mainFindFragment == null) {
                 mainFindFragment = new MainFindFragment();
-                ft.add(R.id.mainPanell, mainFindFragment);
+                ft.add(R.id.mainPanel, mainFindFragment);
             } else {
                 ft.show(mainFindFragment);
             }
         } else if (page == 2) {
             if (mainShopFragment == null) {
                 mainShopFragment = new MainShopFragment();
-                ft.add(R.id.mainPanell, mainShopFragment);
+                ft.add(R.id.mainPanel, mainShopFragment);
             } else {
                 ft.show(mainShopFragment);
             }
         } else if (page == 3) {
             if (mainUserFragment == null) {
                 mainUserFragment = new MainUserFragment();
-                ft.add(R.id.mainPanell, mainUserFragment);
+                ft.add(R.id.mainPanel, mainUserFragment);
             } else {
                 ft.show(mainUserFragment);
             }

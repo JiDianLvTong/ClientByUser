@@ -146,7 +146,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         mPresenter = new MainEquipmentPresenter();
         mPresenter.attachView(this);
         //下拉刷新
-        smartRefreshLayout.setRefreshHeader(new MaterialHeader(getActivity()).setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A")));
+        MaterialHeader materialHeader = new MaterialHeader(getActivity());
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        smartRefreshLayout.setRefreshHeader(materialHeader);
+        smartRefreshLayout.setEnableHeaderTranslationContent(true);
         smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull com.scwang.smart.refresh.layout.api.RefreshLayout refreshLayout) {

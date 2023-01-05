@@ -22,7 +22,7 @@
             android:layout_height="22dp"
             android:layout_marginEnd="5dp"
             android:padding="2dp"
-            android:src="@drawable/ic_disclaimer_agreement_uncheck" />
+            android:src="@drawable/u6_pub_agreement_uncheck" />
 
         <ImageView
             android:id="@+id/i_3"

@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.jidian.client.mvp.ui.activity.H5.MainAbout;
+import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
 import com.android.jidian.client.mvp.ui.dialog.LogoutDialogFragment;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
@@ -89,11 +92,11 @@ public class MainSet extends BaseActivity {
         } else if (v.getId() == R.id.about) {
             //点击关于我们
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_ABOUT_US);
-            startActivity(new Intent(activity, MainAbout_.class));
+            startActivity(new Intent(activity, MainAbout.class));
         } else if (v.getId() == R.id.agreement) {
             //点击用户协议
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_USER_AGREEMENT);
-            Intent intent = new Intent(activity, MainAgreement_.class);
+            Intent intent = new Intent(activity, MainAgreement.class);
             activity.startActivity(intent);
         } else if (v.getId() == R.id.cancellation) {
             //点击注销用户
@@ -149,7 +152,7 @@ public class MainSet extends BaseActivity {
         } else if (v.getId() == R.id.privacy_clause) {
             //点击法律声明
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_LEGAL_STATEMENT);
-            startActivity(new Intent(activity, MainPrivacyClause_.class));
+            startActivity(new Intent(activity, MainPrivacyClause.class));
         }
     }
 

@@ -194,7 +194,7 @@ public class Expense_recyclerView_Adapter extends RecyclerView.Adapter<RecyclerV
             }
             if (bean.getChecked() == 0) {//0=不选
                 bean.setIschecked(0);
-                i_2.setImageResource(R.drawable.ic_disclaimer_agreement_uncheck);
+                i_2.setImageResource(R.drawable.u6_pub_agreement_uncheck);
             } else if (bean.getChecked() == 1) {//1=选中，可以点击
                 bean.setIschecked(1);
                 i_2.setImageResource(R.drawable.qianbao_select_2);
@@ -267,7 +267,7 @@ public class Expense_recyclerView_Adapter extends RecyclerView.Adapter<RecyclerV
             }
             if (bean.getChecked() == 0) {//0=不选
                 bean.setIschecked(0);
-                i_2.setImageResource(R.drawable.ic_disclaimer_agreement_uncheck);
+                i_2.setImageResource(R.drawable.u6_pub_agreement_uncheck);
             } else if (bean.getChecked() == 1) {//1=选中，可以点击
                 bean.setIschecked(1);
                 i_2.setImageResource(R.drawable.qianbao_select_2);
@@ -430,7 +430,7 @@ public class Expense_recyclerView_Adapter extends RecyclerView.Adapter<RecyclerV
 
             if (bean.getChecked() == 0) {//0=不选
                 bean.setIschecked(0);
-                i_2.setImageResource(R.drawable.ic_disclaimer_agreement_uncheck);
+                i_2.setImageResource(R.drawable.u6_pub_agreement_uncheck);
             } else if (bean.getChecked() == 1) {//1=选中，可以点击
                 bean.setIschecked(1);
                 i_2.setImageResource(R.drawable.qianbao_select_2);

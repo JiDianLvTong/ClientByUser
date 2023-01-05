@@ -15,12 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.jidian.client.base.U6BaseActivityByMvp;
-import com.android.jidian.client.MainAgreement_;
-import com.android.jidian.client.MainPrivacyClause_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.LoginBean;
 import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.presenter.LoginPresenter;
+import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
 import com.android.jidian.client.mvp.ui.dialog.CommonTipDialog;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.JgVerificationLoginAuthManager;
@@ -36,6 +36,9 @@ import butterknife.OnClick;
  * Created by hasee on 2017/6/5.
  * 登录界面 activity
  */
+
+//todo:点击inputview没有光标
+
 public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.get_number_text)
     TextView tvPhoneCode;
@@ -53,7 +56,7 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.login);
+        setContentView(R.layout.u6_activity_login);
         super.onCreate(savedInstanceState);
     }
 
@@ -133,18 +136,18 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
                 break;
             case R.id.login_read:
                 if (isExplainUnRead) {
-                    btnExplain.setImageResource(R.drawable.ic_disclaimer_agreement_uncheck);
+                    btnExplain.setImageResource(R.drawable.u6_pub_agreement_uncheck);
                     isExplainUnRead = false;
                 } else {
-                    btnExplain.setImageResource(R.drawable.ic_disclaimer_agreement_check);
+                    btnExplain.setImageResource(R.drawable.u6_pub_agreement_check);
                     isExplainUnRead = true;
                 }
                 break;
             case R.id.rule1:
-                startActivity(new Intent(activity, MainAgreement_.class));
+                startActivity(new Intent(activity, MainAgreement.class));
                 break;
             case R.id.rule2:
-                startActivity(new Intent(activity, MainPrivacyClause_.class));
+                startActivity(new Intent(activity, MainPrivacyClause.class));
                 break;
             default:
                 break;
