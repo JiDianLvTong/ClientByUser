@@ -24,7 +24,7 @@ import android.widget.TextView;
 import com.android.jidian.client.MainShop_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.ScanCodeEventBean;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
 import com.android.jidian.client.mvp.ui.adapter.MyEbikeBty_recyclerView_Adapter;
 import com.android.jidian.client.bean.MyEbikeBtyBean;
 import com.android.jidian.client.bean.UserConfirmBean;
@@ -162,9 +162,9 @@ public class MyEbikeBtyFragment extends BaseFragment<MyEbikeBtyPresenter> implem
                                 //点击待绑定
                                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_BINDING_TO_BE_BOUND);
                                 if (PubFunction.isConnect(getActivity(), true)) {
-                                    Intent intent = new Intent(getActivity(), ScanCodeNewActivity.class);
-                                    intent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "1");
-                                    intent.putExtra(ScanCodeNewActivity.TYPE, "4");
+                                    Intent intent = new Intent(getActivity(), ScanCodeNewActivityU6.class);
+                                    intent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "1");
+                                    intent.putExtra(ScanCodeNewActivityU6.TYPE, "4");
                                     startActivity(intent);
                                 }
                             }
@@ -183,9 +183,9 @@ public class MyEbikeBtyFragment extends BaseFragment<MyEbikeBtyPresenter> implem
                             if ("2".equals(bean.getIs_bind())) {//待绑定
                                 //点击待绑定
                                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_BINDING_TO_BE_BOUND);
-                                Intent intent = new Intent(getActivity(), ScanCodeNewActivity.class);
-                                intent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "1");
-                                intent.putExtra(ScanCodeNewActivity.TYPE, "2");
+                                Intent intent = new Intent(getActivity(), ScanCodeNewActivityU6.class);
+                                intent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "1");
+                                intent.putExtra(ScanCodeNewActivityU6.TYPE, "2");
                                 startActivity(intent);
                             }
                         }

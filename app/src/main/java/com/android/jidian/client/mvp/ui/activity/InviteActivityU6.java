@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.LoginBean;
 import com.android.jidian.client.bean.PullActivityPoliteBean;
 import com.android.jidian.client.mvp.contract.LoginContract;
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 import wendu.dsbridge.CompletionHandler;
 import wendu.dsbridge.DWebView;
 
-public class InviteActivity extends BaseActivity2<LoginPresenter> implements LoginContract.View {
+public class InviteActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
 
     private String inviteId = "";
 
@@ -83,7 +83,7 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
          */
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            Toast.makeText(InviteActivity.this, "分享成功", Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivityU6.this, "分享成功", Toast.LENGTH_LONG).show();
         }
 
         /**
@@ -93,7 +93,7 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
          */
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
-            Toast.makeText(InviteActivity.this, "分享失败" + t.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivityU6.this, "分享失败" + t.getMessage(), Toast.LENGTH_LONG).show();
             if (mHandler != null) {
                 mHandler.complete("分享失败");
             }
@@ -105,7 +105,7 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
          */
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(InviteActivity.this, "分享取消", Toast.LENGTH_LONG).show();
+            Toast.makeText(InviteActivityU6.this, "分享取消", Toast.LENGTH_LONG).show();
 
         }
     };
@@ -178,10 +178,10 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
                 PullActivityPoliteBean bean = new Gson().fromJson(msg.toString(), PullActivityPoliteBean.class);
                 UMWeb web = new UMWeb(bean.getLink());
                 web.setTitle(bean.getTitle());//标题
-                web.setThumb(new UMImage(InviteActivity.this, bean.getImgUrl()));//缩略图
+                web.setThumb(new UMImage(InviteActivityU6.this, bean.getImgUrl()));//缩略图
                 web.setDescription(bean.getDesc());//描述
 
-                new ShareAction(InviteActivity.this)
+                new ShareAction(InviteActivityU6.this)
                         .setPlatform(SHARE_MEDIA.WEIXIN)//传入平台
                         .withMedia(web)
                         .setCallback(umShareListener)//回调监听器
@@ -199,10 +199,10 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
                 PullActivityPoliteBean bean = new Gson().fromJson(msg.toString(), PullActivityPoliteBean.class);
                 UMWeb web = new UMWeb(bean.getLink());
                 web.setTitle(bean.getTitle());//标题
-                web.setThumb(new UMImage(InviteActivity.this, bean.getImgUrl()));//缩略图
+                web.setThumb(new UMImage(InviteActivityU6.this, bean.getImgUrl()));//缩略图
                 web.setDescription(bean.getDesc());//描述
 
-                new ShareAction(InviteActivity.this)
+                new ShareAction(InviteActivityU6.this)
                         .setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)//传入平台
                         .withMedia(web)
                         .setCallback(umShareListener)//回调监听器
@@ -216,7 +216,7 @@ public class InviteActivity extends BaseActivity2<LoginPresenter> implements Log
         @JavascriptInterface
         public void OnClickInviteRecode(Object msg, CompletionHandler<String> handler) {
             Log.d("xiaoming923", "testObjecCallback: ");
-            Intent intent = new Intent(InviteActivity.this, InviteDetailActivity.class);
+            Intent intent = new Intent(InviteActivityU6.this, InviteDetailActivityU6.class);
             intent.putExtra("aid", inviteId);
             startActivity(intent);
         }

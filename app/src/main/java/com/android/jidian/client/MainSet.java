@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
 import com.android.jidian.client.mvp.ui.dialog.LogoutDialogFragment;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
@@ -76,7 +75,7 @@ public class MainSet extends BaseActivity {
                     editor.clear();
                     editor.apply();
                     activity.finish();
-//                    startActivity(new Intent(MainSet.this, MainActivity.class));
+//                    startActivity(new Intent(MainSet.this, MainActivityU6.class));
                     //通知主页刷新数据
 //                    Main.handleRefreshMarker.sendEmptyMessage(1);
 //                    MyToast.showTheToast(MainSet.this, "正在刷新站点数据，请稍候");

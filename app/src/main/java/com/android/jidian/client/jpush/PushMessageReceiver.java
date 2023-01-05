@@ -237,7 +237,7 @@ public class PushMessageReceiver extends JPushMessageReceiver {
         super.onMobileNumberOperatorResult(context, jPushMessage);
     }
 
-    //send msg to MainActivity
+    //send msg to MainActivityU6
     private void processCustomMessage(Context context, CustomMessage customMessage) {
         if (Main.isForeground) {
             String message = customMessage.message;

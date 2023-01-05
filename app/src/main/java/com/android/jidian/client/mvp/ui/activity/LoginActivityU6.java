@@ -14,8 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.jidian.client.base.BaseActivity2;
-import com.android.jidian.client.Main;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.MainAgreement_;
 import com.android.jidian.client.MainPrivacyClause_;
 import com.android.jidian.client.R;
@@ -37,7 +36,7 @@ import butterknife.OnClick;
  * Created by hasee on 2017/6/5.
  * 登录界面 activity
  */
-public class LoginActivity extends BaseActivity2<LoginPresenter> implements LoginContract.View {
+public class LoginActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.get_number_text)
     TextView tvPhoneCode;
     @BindView(R.id.login_phone)

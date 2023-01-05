@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import com.android.jidian.client.MainAuthentication_;
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.PullCashGetUserProfitBean;
 import com.android.jidian.client.mvp.contract.PullCashGetUserProfitContract;
 import com.android.jidian.client.mvp.presenter.PullCashGetUserProfitPresenter;
 import com.android.jidian.client.mvp.ui.dialog.CommonTipDialog;
 
-public class InviteWallteActivity extends BaseActivity2<PullCashGetUserProfitPresenter> implements PullCashGetUserProfitContract.View {
+public class InviteWallteActivityU6 extends U6BaseActivityByMvp<PullCashGetUserProfitPresenter> implements PullCashGetUserProfitContract.View {
 
     private TextView tvInviteWallteCashNum, tvInviteWallteCashTotal, tvInviteWallteCashRule;//tvInviteWallteLevelOnetvInviteWallteLevelTwo
     private String mCashAmount;
@@ -46,7 +46,7 @@ public class InviteWallteActivity extends BaseActivity2<PullCashGetUserProfitPre
 //        tvInviteWallteLevelOne = findViewById(R.id.tv_invite_wallte_level_one);
 //        tvInviteWallteLevelTwo = findViewById(R.id.tv_invite_wallte_level_two);
         tvInviteWallteCashNum = findViewById(R.id.tv_invite_wallte_cash_num);
-        AssetManager assetManager = InviteWallteActivity.this.getAssets();
+        AssetManager assetManager = InviteWallteActivityU6.this.getAssets();
         Typeface typeface = Typeface.createFromAsset(assetManager, "fonts/DIN-Bold.otf");
         tvInviteWallteCashNum.setTypeface(typeface);
 //        tvInviteWallteLevelOne.setTypeface(typeface);
@@ -65,11 +65,11 @@ public class InviteWallteActivity extends BaseActivity2<PullCashGetUserProfitPre
                 String auth = sharedPreferences.getString("auth", "");//3=审核中，2=已驳回，1=是，0=否
                 if (!"1".equals(auth)) {
                     new CommonTipDialog().init("您的账号没有实名认证，是否跳转到实名认证页", "确认", () -> {
-                        startActivity(new Intent(InviteWallteActivity.this, MainAuthentication_.class));
+                        startActivity(new Intent(InviteWallteActivityU6.this, MainAuthentication_.class));
                     }).setPosition(Gravity.CENTER).setWidth(1).setOutCancel(false).show(getSupportFragmentManager());
                     return;
                 }
-                Intent intent = new Intent(InviteWallteActivity.this, CashWithdrawalActivity.class);
+                Intent intent = new Intent(InviteWallteActivityU6.this, CashWithdrawalActivityU6.class);
                 intent.putExtra("cash_amount", TextUtils.isEmpty(mCashAmount) ? "0" : mCashAmount);
                 startActivity(intent);
             }
@@ -79,7 +79,7 @@ public class InviteWallteActivity extends BaseActivity2<PullCashGetUserProfitPre
             @Override
             public void onClick(View view) {
                 //点击提现记录
-                startActivity(new Intent(InviteWallteActivity.this, CashWithdrawalRecordActivity.class));
+                startActivity(new Intent(InviteWallteActivityU6.this, CashWithdrawalRecordActivityU6.class));
             }
         });
 

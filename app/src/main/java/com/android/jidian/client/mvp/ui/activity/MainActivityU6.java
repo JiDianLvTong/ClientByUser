@@ -17,7 +17,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -29,34 +28,25 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.android.jidian.client.BuildConfig;
-import com.android.jidian.client.DownLoadAndInstallApp;
-import com.android.jidian.client.Main;
-import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
-import com.android.jidian.client.mvp.presenter.LoginPresenter;
 import com.android.jidian.client.mvp.presenter.MainActivityPresenter;
 import com.android.jidian.client.mvp.ui.fragment.mainEquipmentFragment.MainEquipmentFragment;
 import com.android.jidian.client.mvp.ui.fragment.mainFindFragment.MainFindFragment;
 import com.android.jidian.client.mvp.ui.fragment.mainShopFragment.MainShopFragment;
 import com.android.jidian.client.mvp.ui.fragment.mainUserFragment.MainUserFragment;
-import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.util.file.FileManager;
 import com.android.jidian.client.widgets.MyToast;
-import com.android.jidian.client.widgets.immersionStatusBar.StatusBarView;
-import com.google.gson.Gson;
 import com.permissionx.guolindev.PermissionX;
 
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -65,7 +55,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.BindViews;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import constant.UiType;
 import listener.Md5CheckResultListener;
@@ -74,7 +63,7 @@ import model.UiConfig;
 import model.UpdateConfig;
 import update.UpdateAppUtils;
 
-public class MainActivity extends BaseActivity2<MainActivityPresenter> implements MainActivityContract.View {
+public class MainActivityU6 extends U6BaseActivityByMvp<MainActivityPresenter> implements MainActivityContract.View {
 
     @BindViews({R.id.t_1, R.id.t_2, R.id.t_3, R.id.t_4})
     public List<TextView> footTextViewList;
@@ -155,7 +144,7 @@ public class MainActivity extends BaseActivity2<MainActivityPresenter> implement
 //        NaviSetting.updatePrivacyShow(getActivity(), true, true);
 //        NaviSetting.updatePrivacyAgree(getActivity(), true);
         try {
-            mLocationClient = new AMapLocationClient(MainActivity.this);
+            mLocationClient = new AMapLocationClient(MainActivityU6.this);
             //初始化定位参数
             mLocationOption = new AMapLocationClientOption();
             //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
@@ -229,7 +218,7 @@ public class MainActivity extends BaseActivity2<MainActivityPresenter> implement
         }
 
         if ((page == 2 || page == 3) && UserInfoHelper.getInstance().getUid().isEmpty()) {
-            activity.startActivity(new Intent(activity, LoginActivity.class));
+            activity.startActivity(new Intent(activity, LoginActivityU6.class));
             return;
         }
 
@@ -405,7 +394,7 @@ public class MainActivity extends BaseActivity2<MainActivityPresenter> implement
         }else {
             changeMain(0);
         }
-        PermissionX.init(MainActivity.this)
+        PermissionX.init(MainActivityU6.this)
                 .permissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
                 .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
                 .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
@@ -432,7 +421,7 @@ public class MainActivity extends BaseActivity2<MainActivityPresenter> implement
         editor.putString("user_avatar", "");
         editor.clear();
         editor.apply();
-        startActivity(new Intent(activity, LoginActivity.class));
+        startActivity(new Intent(activity, LoginActivityU6.class));
     }
 
     @Override

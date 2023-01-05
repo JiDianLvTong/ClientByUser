@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.alipay.sdk.app.AuthTask;
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.PullCashGetUserAccountInfoBean;
 import com.android.jidian.client.mvp.contract.PullCashAddCashContract;
 import com.android.jidian.client.mvp.presenter.PullCashAddCashPresenter;
@@ -26,7 +26,7 @@ import java.math.BigDecimal;
 import java.net.URLEncoder;
 import java.util.Map;
 
-public class CashWithdrawalActivity extends BaseActivity2<PullCashAddCashPresenter> implements PullCashAddCashContract.View {
+public class CashWithdrawalActivityU6 extends U6BaseActivityByMvp<PullCashAddCashPresenter> implements PullCashAddCashContract.View {
 
     private EditText etCashWithdrawalCashNum;
     private TextView tvInviteDetailAccountTip, tvCashWithdrawalAlipay;
@@ -195,7 +195,7 @@ public class CashWithdrawalActivity extends BaseActivity2<PullCashAddCashPresent
         showMessage(msg);
         mIsCashFinish = true;
         finish();
-        startActivity(new Intent(CashWithdrawalActivity.this, CashWithdrawalRecordActivity.class));
+        startActivity(new Intent(CashWithdrawalActivityU6.this, CashWithdrawalRecordActivityU6.class));
     }
 
     @Override
@@ -222,7 +222,7 @@ public class CashWithdrawalActivity extends BaseActivity2<PullCashAddCashPresent
     @Override
     public void requestPullCashSetUserAccountInfoSuccess(String msg) {
 //        showMessage(msg);
-//        Toast.makeText(CashWithdrawalActivity.this, msg, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(CashWithdrawalActivityU6.this, msg, Toast.LENGTH_SHORT).show();
         Log.d("xiaoming1208", "requestPullCashSetUserAccountInfoSuccess: ");
 //        mIsAliPay = true;
 //        tvCashWithdrawalAlipay.setText("已绑定");

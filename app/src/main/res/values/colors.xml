@@ -360,5 +360,10 @@
     <color name="green_33cc66">#2ba245</color>
     <color name="red_ee4000">#EE4000</color>
     <color name="text_blue">#0076FF</color>
+
     <color name="grey_66000000">#66000000</color>
+    <color name="grey_33000000">#33000000</color>
+    <color name="grey_303030">#303030</color>
+    <color name="white_ffffff">#ffffff</color>
+
 </resources>

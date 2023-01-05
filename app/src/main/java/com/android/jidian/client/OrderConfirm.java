@@ -19,8 +19,7 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
+import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.widgets.MyToast;
@@ -172,7 +171,7 @@ public class OrderConfirm extends BaseActivity {
 
     @Click
     void to_wallte() {
-        startActivity(new Intent(activity, MainActivity.class));
+        startActivity(new Intent(activity, MainActivityU6.class));
         this.finish();
     }
 

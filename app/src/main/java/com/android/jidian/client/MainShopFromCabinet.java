@@ -21,9 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.client.bean.MainAppEventBean;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
 import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.widgets.MyFragmentPagerAdapter;
 import com.android.jidian.client.http.HeaderTypeData;
@@ -107,7 +106,7 @@ public class MainShopFromCabinet extends BaseFragmentActivity {
         if (event != null) {
             if (event.getEvent() == PAYSUCCESSCLOSESHOP) {
                 if (Util.isTopActivity("MainShopFromCabinet", this)) {
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, MainActivityU6.class));
                     finish();
                 }
             }
@@ -129,7 +128,7 @@ public class MainShopFromCabinet extends BaseFragmentActivity {
 
     @Click
     void scan_panel_text() {
-        Intent intent = new Intent(activity, ScanCodeNewActivity.class);
+        Intent intent = new Intent(activity, ScanCodeNewActivityU6.class);
         startActivityForResult(intent, 0x000110);
     }
 

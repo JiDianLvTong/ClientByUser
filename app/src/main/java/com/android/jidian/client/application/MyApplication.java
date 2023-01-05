@@ -121,8 +121,8 @@ public class MyApplication extends Application {
         /*由于骑呗后台不稳定暂时下架，暂删 QiBei.init(new QiBeiCallback() {
             @Override
             public void scan(Activity activity) {//调用扫码
-                Intent mIntent = new Intent(activity, ScanCodeActivity.class);
-                mIntent.putExtra(ScanCodeActivity.IS_FROM, "MyApplication");
+                Intent mIntent = new Intent(activity, ScanCodeActivityU6.class);
+                mIntent.putExtra(ScanCodeActivityU6.IS_FROM, "MyApplication");
                 activity.startActivityForResult(mIntent, QiBeiConstant.REQUEST_CODE_MERCHANTS_SCAN);
             }
 

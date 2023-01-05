@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.EvaluateAddsBean;
 import com.android.jidian.client.bean.EvaluateLabsBean;
@@ -27,7 +27,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class EvaluateAddsActivity extends BaseActivity2<EvaluateAddsPresenter> implements EvaluateAddsContract.View {
+public class EvaluateAddsActivityU6 extends U6BaseActivityByMvp<EvaluateAddsPresenter> implements EvaluateAddsContract.View {
     @BindView(R.id.page_return)
     LinearLayout pageReturn;
     @BindView(R.id.activity_evaluation_adds_textView1)

@@ -102,7 +102,7 @@ public class MyReceiver extends BroadcastReceiver {
         return sb.toString();
     }
 
-    //send msg to MainActivity
+    //send msg to MainActivityU6
     private void processCustomMessage(Context context, Bundle bundle) {
         if (Main.isForeground) {
             String message = bundle.getString(JPushInterface.EXTRA_MESSAGE);

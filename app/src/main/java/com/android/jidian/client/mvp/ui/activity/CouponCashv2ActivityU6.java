@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.MainDiscount_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.CouponCashv2Bean;
@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CouponCashv2Activity extends BaseActivity2<CouponCashv2Presenter> implements CouponCashv2Contract.View {
+public class CouponCashv2ActivityU6 extends U6BaseActivityByMvp<CouponCashv2Presenter> implements CouponCashv2Contract.View {
     @BindView(R.id.title_layout_imageView1)
     ImageView titleLayoutImageView1;
     @BindView(R.id.title_layout_textView1)

@@ -285,7 +285,7 @@ public class BluetoothDeviceList {
 //			if (device == null) return;
 //			String Type = mLeDeviceListAdapter.getDeviceType(position);
 //			// store the information for result
-//			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//			Intent intent = new Intent(getApplicationContext(), MainActivityU6.class);
 //			intent.putExtra(EXTRAS_DEVICE, device);
 //			intent.putExtra(EXTRAS_TYPE, Type);
 //			Log.d("Type", Type);

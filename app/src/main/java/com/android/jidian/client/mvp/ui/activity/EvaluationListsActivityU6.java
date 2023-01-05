@@ -13,7 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.R;
 import com.android.jidian.client.mvp.ui.adapter.EvaluationListsActivity_RecyclerView_Adapter;
 import com.android.jidian.client.bean.EvaluateListsBean;
@@ -30,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class EvaluationListsActivity extends BaseActivity2<EvaluationListsPresenter> implements EvaluationListsContract.View {
+public class EvaluationListsActivityU6 extends U6BaseActivityByMvp<EvaluationListsPresenter> implements EvaluationListsContract.View {
     @BindView(R.id.activity_evaluation_textView1)
     TextView activityEvaluationTextView1;
     @BindView(R.id.recyclerView)
@@ -204,7 +204,7 @@ public class EvaluationListsActivity extends BaseActivity2<EvaluationListsPresen
     public void onViewClicked2() {
         //点击评价按钮
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SITE_REVIEWS_EVALUATE);
-        Intent intent = new Intent(EvaluationListsActivity.this, EvaluateAddsActivity.class);
+        Intent intent = new Intent(EvaluationListsActivityU6.this, EvaluateAddsActivityU6.class);
         intent.putExtra("repair", repair);
         intent.putExtra("cabid", cabid);
         intent.putExtra("name", name);

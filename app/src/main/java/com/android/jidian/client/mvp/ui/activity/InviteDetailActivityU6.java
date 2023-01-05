@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.LoginBean;
 import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.presenter.LoginPresenter;
@@ -21,7 +21,7 @@ import com.android.jidian.client.widgets.ViewPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InviteDetailActivity extends BaseActivity2<LoginPresenter> implements LoginContract.View {
+public class InviteDetailActivityU6 extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
 
     private List<Fragment> mFragments = new ArrayList<>();
     private NoScrollViewPager vpContent;

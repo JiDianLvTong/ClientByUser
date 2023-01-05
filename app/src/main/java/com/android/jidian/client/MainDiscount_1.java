@@ -19,8 +19,7 @@ import android.widget.Toast;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
+import com.android.jidian.client.mvp.ui.activity.MainActivityU6;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -349,7 +348,7 @@ public class MainDiscount_1 extends BaseFragment implements AbsListView.OnScroll
                     if (jsonObject_response.has("jump")) {
                         String data = jsonObject_response.getString("jump");
                         if ("1".equals(data)) {
-                            getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                            getActivity().startActivity(new Intent(getActivity(), MainActivityU6.class));
                         } else {
                             MyToast.showTheToast(getActivity(), msg);
                         }

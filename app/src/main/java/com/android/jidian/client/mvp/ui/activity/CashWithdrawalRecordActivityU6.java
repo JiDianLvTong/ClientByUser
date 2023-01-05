@@ -9,13 +9,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.PullCashGetCashRecordBean;
 import com.android.jidian.client.mvp.contract.CashWithdrawalRecordContract;
 import com.android.jidian.client.mvp.presenter.CashWithdrawalRecordPresenter;
 import com.android.jidian.client.mvp.ui.adapter.CashWithdrawalRecordAdapter;
 
-public class CashWithdrawalRecordActivity extends BaseActivity2<CashWithdrawalRecordPresenter> implements CashWithdrawalRecordContract.View {
+public class CashWithdrawalRecordActivityU6 extends U6BaseActivityByMvp<CashWithdrawalRecordPresenter> implements CashWithdrawalRecordContract.View {
 
     private RecyclerView rvCashWithdrawalRecord;
     private LinearLayout nonePanel;

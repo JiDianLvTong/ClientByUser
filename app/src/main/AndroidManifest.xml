@@ -59,16 +59,20 @@
         android:theme="@style/Theme.User"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
-        <activity
-            android:name=".ZiboTest"
-            android:exported="false" />
-        <activity android:name=".mvp.ui.activity.MainActivity">
+
+        <!-- 进入导航页 -->
+        <activity android:name=".mvp.ui.activity.IndexActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 主页 -->
+        <activity android:name=".mvp.ui.activity.MainActivityU6">
+        </activity>
+
         <activity android:name=".mvp.ui.activity.CustomH5Page" /> <!-- For test only 测试状态通知栏，需要打开的Activity -->
         <activity
             android:name=".jpush.TestActivity"
@@ -231,17 +235,17 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.CouponCashv2Activity"
+            android:name=".mvp.ui.activity.CouponCashv2ActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.EvaluateAddsActivity"
+            android:name=".mvp.ui.activity.EvaluateAddsActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.EvaluationListsActivity"
+            android:name=".mvp.ui.activity.EvaluationListsActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -249,21 +253,8 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="aa57e1e2e5ccdc2e8bece1896668f2c8" /> <!-- <activity -->
-        <!-- android:name=".mvp.ui.activity.Index" -->
-        <!-- android:launchMode="singleTop" -->
-        <!-- android:screenOrientation="portrait" -->
-        <!-- android:theme="@style/ThemeSplash" -->
-        <!-- android:windowSoftInputMode="stateHidden|adjustPan"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
-        <activity
-            android:name=".mvp.ui.activity.Index"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash"></activity>
+            android:value="aa57e1e2e5ccdc2e8bece1896668f2c8" />
+
         <activity
             android:name=".Main_"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -309,7 +300,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.NewWalletActivity"
+            android:name=".mvp.ui.activity.NewWalletActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -425,7 +416,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.ScanCodeNewActivity"
+            android:name=".mvp.ui.activity.ScanCodeNewActivityU6"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -454,7 +445,7 @@
             android:exported="true"
             android:launchMode="singleTop" />
         <activity
-            android:name=".mvp.ui.activity.LoginActivity"
+            android:name=".mvp.ui.activity.LoginActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -463,27 +454,27 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
         <activity
-            android:name=".mvp.ui.activity.InviteActivity"
+            android:name=".mvp.ui.activity.InviteActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.InviteDetailActivity"
+            android:name=".mvp.ui.activity.InviteDetailActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.CashWithdrawalRecordActivity"
+            android:name=".mvp.ui.activity.CashWithdrawalRecordActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.CashWithdrawalActivity"
+            android:name=".mvp.ui.activity.CashWithdrawalActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.InviteWallteActivity"
+            android:name=".mvp.ui.activity.InviteWallteActivityU6"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />

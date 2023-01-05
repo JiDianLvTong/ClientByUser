@@ -24,7 +24,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.jidian.client.bean.ScanCodeEventBean;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.CouponCashv2ActivityU6;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
 import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.widgets.MyFragmentPagerAdapter;
 import com.android.jidian.client.http.HeaderTypeData;
@@ -33,7 +34,6 @@ import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
-import com.android.jidian.client.mvp.ui.activity.CouponCashv2Activity;
 import com.timmy.tdialog.TDialog;
 
 import org.androidannotations.annotations.AfterViews;
@@ -128,7 +128,7 @@ public class MainDiscount extends BaseFragmentActivity {
         if (bean != null) {
             if (ScanCodeEventBean.REFRESH_DISCOUNT == bean.getEventMode()) {
                 if (!TextUtils.isEmpty(bean.getMsg())) {
-                    Intent intent = new Intent(this, CouponCashv2Activity.class);
+                    Intent intent = new Intent(this, CouponCashv2ActivityU6.class);
                     intent.putExtra("code", bean.getMsg());
                     startActivity(intent);
                 }
@@ -159,8 +159,8 @@ public class MainDiscount extends BaseFragmentActivity {
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_UNUSED_MY_COUPONS_SCAN);
         Toast.makeText(activity, "打开扫描", Toast.LENGTH_SHORT).show();
 
-        Intent mIntent = new Intent(activity, ScanCodeNewActivity.class);
-        mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "3");
+        Intent mIntent = new Intent(activity, ScanCodeNewActivityU6.class);
+        mIntent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "3");
         startActivity(mIntent);
     }
 

@@ -3,7 +3,7 @@ package com.android.jidian.client.mvp.ui.activity;
 import android.os.Bundle;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseActivity2;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
 //import com.android.mixiang.client.net.RetrofitClient;
 //import com.android.mixiang.client.net.RxScheduler;
 //import com.android.mixiang.client.widgets.MyToast;
@@ -20,7 +20,7 @@ import com.android.jidian.client.base.BaseActivity2;
  * company: 兴达智联
  * description: 二维码扫描
  */
-public class ScanCodeActivity extends BaseActivity2 {
+public class ScanCodeActivityU6 extends U6BaseActivityByMvp {
 //    @BindView(R.id.tv_title)
 //    TextView tvTitle;
 //    @BindView(R.id.tv_scan_qr_hint)
@@ -69,7 +69,7 @@ public class ScanCodeActivity extends BaseActivity2 {
 //
 //            @Override
 //            public void onAnalyzeFailed() {
-//                Log.d("ScanCodeActivity", "onAnalyzeFailed: ");
+//                Log.d("ScanCodeActivityU6", "onAnalyzeFailed: ");
 //                if (!"MainDiscount".equals(mFromActivityStr)) {
 //                    sendJumpResult("");
 //                }

@@ -17,8 +17,8 @@ import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
 import com.android.jidian.client.mvp.ui.activity.AdvicesListsActivity;
-import com.android.jidian.client.mvp.ui.activity.LoginActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.LoginActivityU6;
+import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivityU6;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.ViewUtil;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -169,7 +169,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @OnClick(R.id.main_i1)
     public void onClickMainI1() {
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         } else {
 //            getActivity().startActivity(new Intent(getActivity(), BusinessShopActivity.class));
         }
@@ -178,7 +178,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @OnClick(R.id.tv_message)
     public void onClickMessage() {
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         } else {
             getActivity().startActivity(new Intent(getActivity(), AdvicesListsActivity.class));
         }
@@ -187,14 +187,14 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @OnClick(R.id.tv_level)
     public void onClicktvLevel() {
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         }
     }
 
     @OnClick(R.id.tv_main_tip)
     public void onClickMainTip() {
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         }
     }
 
@@ -311,10 +311,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     public void onClickliBicycleAdd() {
         String uid = UserInfoHelper.getInstance().getUid();
         if (TextUtils.isEmpty(uid)) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "4");
+            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivityU6.class);
+            mIntent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "4");
             startActivity(mIntent);
         }
     }
@@ -324,10 +324,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     public void onClickBattery1AddPanel() {
         String uid = UserInfoHelper.getInstance().getUid();
         if (TextUtils.isEmpty(uid)) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivityU6.class);
+            mIntent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "2");
             startActivity(mIntent);
         }
     }
@@ -342,10 +342,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     public void onClickBattery2AddPanel() {
         String uid = UserInfoHelper.getInstance().getUid();
         if (TextUtils.isEmpty(uid)) {
-            getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+            getActivity().startActivity(new Intent(getActivity(), LoginActivityU6.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivityU6.class);
+            mIntent.putExtra(ScanCodeNewActivityU6.SCAN_CODE_IS_INPUT_BOX, "2");
             startActivity(mIntent);
         }
     }
