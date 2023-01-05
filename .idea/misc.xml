@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../UserJiDian/app/src/main/res/layout/activity_splash.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable-hdpi/circular_grey_eeeeee_5.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable-xhdpi/circular_grey_f6f6f6_bottom_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/alertdialog_style.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/b060101.xml" value="0.2195" />
+        <entry key="app/src/main/res/drawable/bottom_blue_corners_redius_200.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/button_corner_left_black_200.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/button_corner_right_orange_200.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/button_corners_fc481e_radius_20.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/button_corners_gray_alph_radius_20.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable/button_corners_gray_radius_200.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/button_corners_left_white_radius_2.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/button_corners_red_radius_2.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/button_corners_red_radius_5.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/button_corners_white_radius_20.xml" value="0.1825" />
+        <entry key="app/src/main/res/drawable/button_left_bottom_corners_radius_10.xml" value="0.12" />
+        <entry key="app/src/main/res/drawable/circular_blue_169bd5_100.xml" value="0.1595" />
+        <entry key="app/src/main/res/drawable/circular_green_33cc66_100.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/circular_green_33cc66_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_green_33cc66_bottom_left_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_grey_33ffffff_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_grey_cccccc_bottom_right_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_grey_f6f6f6_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_orange_b69873_100.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_white_ffffff_100.xml" value="0.1595" />
+        <entry key="app/src/main/res/drawable/circular_white_ffffff_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/circular_white_ffffff_top_5.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/corner_orange.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/line_03cbfc_corner_7.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/line_fb481e_corner_7.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/orange_corner_50d.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/red_corner_15dp.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_03cbfc_corner_11.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_03cbfc_r21.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_03cbfc_radius_15.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_25cb90_12point5.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_25cb90_corner_11.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_25cb90_r21.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_25cb90_radius_15.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_2ba245_r21.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/shape_3399d7_corner_50.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable/shape_484848_corner21.xml" value="0.192" />
+        <entry key="app/src/main/res/drawable/shape_66cc99_12point5.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_66cc99_corner_11.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_btn_press_radius21.xml" value="0.116" />
+        <entry key="app/src/main/res/drawable/shape_d79a37_corner_top_30.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/shape_e3481a_corner_50.xml" value="0.191" />
+        <entry key="app/src/main/res/drawable/shape_e59c2c_12point5.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_e59c2c_corner_11.xml" value="0.1305" />
+        <entry key="app/src/main/res/drawable/shape_e59c2c_r21.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_e59c2c_radius_15.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/shape_e77f2b_r21.xml" value="0.116" />
+        <entry key="app/src/main/res/drawable/shape_fc481e_radius_15.xml" value="0.2195" />
+        <entry key="app/src/main/res/drawable/shape_ff7251_corner_21.xml" value="0.1715" />
+        <entry key="app/src/main/res/drawable/shape_ffffff_corner_top_30.xml" value="0.1275" />
+        <entry key="app/src/main/res/drawable/shape_white_radius21.xml" value="0.1755" />
+        <entry key="app/src/main/res/drawable/site0_checked.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/textview_redius_orange.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/textview_stroke_redius_orange.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/wallte_bottom_text.xml" value="0.1305" />
+        <entry key="app/src/main/res/layout/activity_advices_lists.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/activity_charge_site_map_loacal_view.xml" value="0.11778115501519756" />
+        <entry key="app/src/main/res/layout/activity_charge_site_map_marker_view.xml" value="0.1539855072463768" />
+        <entry key="app/src/main/res/layout/activity_charge_site_map_show_info.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_charge_site_map_show_info_item.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_charge_site_map_show_info_item_item.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/activity_coupon_cashv2.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/activity_coupons_list.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_evaluate_adds.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/activity_invite_wallte.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.55" />
+        <entry key="app/src/main/res/layout/activity_main_find_act.xml" value="0.14893617021276595" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_equipment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_equipment_viewpager_item.xml" value="0.12411347517730496" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_find.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_find_recycler_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_shop.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main_fragment_user.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_more_question.xml" value="0.12056737588652482" />
+        <entry key="app/src/main/res/layout/activity_new_wallet.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_newshoppay.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_order_confirm.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_pay_local_shop_item.xml" value="0.1403242147922999" />
+        <entry key="app/src/main/res/layout/activity_scan_qr_code.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/activity_zibo_test.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/adapter_wallet_deposit.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/alertdialog_bind.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/alertdialog_is_auth.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/alertdialog_logout.xml" value="0.12462006079027356" />
+        <entry key="app/src/main/res/layout/dialog_common_tip.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/dialog_splash_agree.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/dialog_update.xml" value="0.12436676798378926" />
+        <entry key="app/src/main/res/layout/expense_item.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/expense_item2.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/expensefragment.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/fragment_advices_lists1.xml" value="0.1539855072463768" />
+        <entry key="app/src/main/res/layout/fragment_main_shop_item.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/fragment_wallet_deposit.xml" value="0.1342451874366768" />
+        <entry key="app/src/main/res/layout/item_message_activity_layout.xml" value="0.1539855072463768" />
+        <entry key="app/src/main/res/layout/layout_main_shop_go_scan.xml" value="0.11423505572441743" />
+        <entry key="app/src/main/res/layout/layout_title.xml" value="0.13903985507246377" />
+        <entry key="app/src/main/res/layout/login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/main_about.xml" value="0.1983695652173913" />
+        <entry key="app/src/main/res/layout/main_adv.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/main_authentication.xml" value="0.1400709219858156" />
+        <entry key="app/src/main/res/layout/main_bar_health_list.xml" value="0.1539855072463768" />
+        <entry key="app/src/main/res/layout/main_car.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/main_customer.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/main_discount.xml" value="0.1400709219858156" />
+        <entry key="app/src/main/res/layout/main_discount_item_1.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/main_hello.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/main_info.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/main_map.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/main_message_1.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/main_message_1_item.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/main_record_evaluate.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/main_set.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/main_shop.xml" value="0.15307971014492755" />
+        <entry key="app/src/main/res/layout/main_shop_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/main_shop_order.xml" value="0.13496376811594202" />
+        <entry key="app/src/main/res/layout/main_shop_order_item.xml" value="0.1828774062816616" />
+        <entry key="app/src/main/res/layout/main_shop_recyclerview_item.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/main_shop_recyclerview_item_item.xml" value="0.13804457953394123" />
+        <entry key="app/src/main/res/layout/main_wallte_top_item.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/marker_view.xml" value="0.11684782608695653" />
+        <entry key="app/src/main/res/layout/myebike_item.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/myebikebtyfragment.xml" value="0.1342451874366768" />
+        <entry key="app/src/main/res/layout/none_data_view.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/pw_personal_info_drawer_layout.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/siteinfo_layout.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/title_layout.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/wallte_hello_fragment.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="NullableNotNullManager">
+    <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
+    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+    <option name="myNullables">
+      <value>
+        <list size="15">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+          <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
+          <item index="3" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
+          <item index="4" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.Nullable" />
+          <item index="6" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNullable" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.Nullable" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
+          <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
+          <item index="10" class="java.lang.String" itemvalue="android.annotation.Nullable" />
+          <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.annotations.Nullable" />
+          <item index="14" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.Nullable" />
+        </list>
+      </value>
+    </option>
+    <option name="myNotNulls">
+      <value>
+        <list size="14">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+          <item index="4" class="java.lang.String" itemvalue="androidx.annotation.NonNull" />
+          <item index="5" class="java.lang.String" itemvalue="androidx.annotation.RecentlyNonNull" />
+          <item index="6" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.qual.NonNull" />
+          <item index="7" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
+          <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
+          <item index="9" class="java.lang.String" itemvalue="android.annotation.NonNull" />
+          <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
+          <item index="12" class="java.lang.String" itemvalue="io.reactivex.annotations.NonNull" />
+          <item index="13" class="java.lang.String" itemvalue="io.reactivex.rxjava3.annotations.NonNull" />
+        </list>
+      </value>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

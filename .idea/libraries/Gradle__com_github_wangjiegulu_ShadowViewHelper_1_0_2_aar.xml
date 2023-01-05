@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.wangjiegulu:ShadowViewHelper:1.0.2@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ShadowViewHelper-1.0.2.aar/a0f456fd007cf886d3109c696ac7e31c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ShadowViewHelper-1.0.2.aar/a0f456fd007cf886d3109c696ac7e31c/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ShadowViewHelper-1.0.2.aar/a0f456fd007cf886d3109c696ac7e31c/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ShadowViewHelper-1.0.2.aar/6e9963e8bf194fc48b297dbc3a0e0ebc/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/ShadowViewHelper-1.0.2.aar/6e9963e8bf194fc48b297dbc3a0e0ebc/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

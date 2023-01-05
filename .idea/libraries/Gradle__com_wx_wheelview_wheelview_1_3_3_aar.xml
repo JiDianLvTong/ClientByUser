@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.wx.wheelview:wheelview:1.3.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wheelview-1.3.3.aar/7d4635ed5f32e421b2717d914b15e27d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wheelview-1.3.3.aar/7d4635ed5f32e421b2717d914b15e27d/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wheelview-1.3.3.aar/7d4635ed5f32e421b2717d914b15e27d/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wheelview-1.3.3.aar/774cd3ba57bc641e9ed6b037a35624fc/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/wheelview-1.3.3.aar/774cd3ba57bc641e9ed6b037a35624fc/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

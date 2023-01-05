@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.umeng.umsdk:asms:1.4.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/9901e8145646251701714462f8a1d538/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/9901e8145646251701714462f8a1d538/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/9901e8145646251701714462f8a1d538/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/1973e002a0a3e8ca810ef7d9a69e503b/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/1973e002a0a3e8ca810ef7d9a69e503b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/asms-1.4.1.aar/1973e002a0a3e8ca810ef7d9a69e503b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

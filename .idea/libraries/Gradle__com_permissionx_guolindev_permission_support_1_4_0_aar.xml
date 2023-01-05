@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.permissionx.guolindev:permission-support:1.4.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

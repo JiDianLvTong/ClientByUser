@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: cn.jiguang.sdk:jverification:2.6.7@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/4acbc693e3e53219269b0d1f2650d891/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/4acbc693e3e53219269b0d1f2650d891/jars/libs/jverification-android-release-2.6.7.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/4acbc693e3e53219269b0d1f2650d891/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/4acbc693e3e53219269b0d1f2650d891/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/f9143449fb90a66b8ca48171f9bd50b0/jars/libs/jverification-android-release-2.6.7.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/f9143449fb90a66b8ca48171f9bd50b0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/f9143449fb90a66b8ca48171f9bd50b0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jverification-2.6.7.aar/f9143449fb90a66b8ca48171f9bd50b0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

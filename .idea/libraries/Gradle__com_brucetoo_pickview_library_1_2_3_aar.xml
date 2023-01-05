@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.brucetoo.pickview:library:1.2.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/592309884a0a7d0a99e6982fabebc31d/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/592309884a0a7d0a99e6982fabebc31d/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/592309884a0a7d0a99e6982fabebc31d/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/42e0721b7da030dba8b244e3e1d7ddad/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/42e0721b7da030dba8b244e3e1d7ddad/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.2.3.aar/42e0721b7da030dba8b244e3e1d7ddad/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
