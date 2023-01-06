@@ -15,6 +15,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
+
+
 public class MainAgreement extends U6BaseActivity {
 
     @BindView(R.id.pageReturn)
