@@ -368,7 +368,7 @@ public interface APIService {
     Flowable<ShopRentBean> requestShopRent(@Field("lng") String lng, @Field("lat") String lat);
 
     /**
-     * 商城接口
+     * 获取个人信息
      */
     @FormUrlEncoded
     @POST("User/personal.html")

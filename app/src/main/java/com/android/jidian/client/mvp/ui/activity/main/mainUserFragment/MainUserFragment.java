@@ -20,6 +20,7 @@ import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
 import com.android.jidian.client.mvp.ui.activity.OrderListActivity;
+import com.android.jidian.client.mvp.ui.activity.PersonalInfoActivity;
 import com.android.jidian.client.mvp.ui.activity.set.MainSetActivity;
 import com.android.jidian.client.mvp.ui.activity.MoreQuestion;
 import com.android.jidian.client.util.UserInfoHelper;
@@ -187,7 +188,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @OnClick(R.id.myInfo)
     public void onClickMyInfo() {
-        getActivity().startActivity(new Intent(getActivity(), MainInfo_.class));
+        getActivity().startActivity(new Intent(getActivity(), PersonalInfoActivity.class));
     }
 
     @OnClick(R.id.myMiDou)
