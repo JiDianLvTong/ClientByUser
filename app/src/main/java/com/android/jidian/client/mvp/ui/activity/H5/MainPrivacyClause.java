@@ -8,15 +8,15 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
-import com.android.jidian.client.BaseActivity;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivity;
-
-import org.androidannotations.annotations.EActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+
+
 
 public class MainPrivacyClause extends U6BaseActivity {
 

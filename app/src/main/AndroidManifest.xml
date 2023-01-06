@@ -100,21 +100,21 @@
 
         <!-- H5页面 - 用户协议 -->
         <activity
-            android:name=".mvp.ui.activity.h5.MainAgreement"
+            android:name=".mvp.ui.activity.H5.MainAgreement"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <!-- H5页面 - 关于我们 -->
         <activity
-            android:name=".mvp.ui.activity.h5.MainAbout"
+            android:name=".mvp.ui.activity.H5.MainAbout"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <!-- H5页面 - 隐私政策 -->
         <activity
-            android:name=".mvp.ui.activity.h5.MainPrivacyClause"
+            android:name=".mvp.ui.activity.H5.MainPrivacyClause"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>

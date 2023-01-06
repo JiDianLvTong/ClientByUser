@@ -13,9 +13,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.mvp.ui.activity.h5.MainAbout;
-import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
-import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.activity.H5.MainAbout;
+import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
 import com.android.jidian.client.mvp.ui.dialog.LogoutDialogFragment;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
