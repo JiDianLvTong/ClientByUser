@@ -65,7 +65,8 @@
             android:layout_height="50dp"
             android:layout_marginTop="25.5dp"
             android:gravity="center"
-            android:text="取消"
+            android:textStyle="bold"
+            android:text="确定"
             android:textColor="@color/yellow_D7A64A"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,10 +78,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="25.5dp"
             android:gravity="center"
-            android:text="确定"
+            android:text="取消"
             android:textColor="@color/yellow_D7A64A"
             android:textSize="15sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_splash_agree_content" />
     </android.support.constraint.ConstraintLayout>
