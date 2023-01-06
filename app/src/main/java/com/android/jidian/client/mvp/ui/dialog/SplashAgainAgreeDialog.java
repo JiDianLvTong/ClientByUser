@@ -58,12 +58,12 @@ public class SplashAgainAgreeDialog extends AbstractXdzlDialog {
         if (id == R.id.btn_splash_again_agree_left) {
             dismiss();
             if (onDismissListener != null) {
-                onDismissListener.onCancelDismiss();
+                onDismissListener.onSureDismiss();
             }
         } else if (id == R.id.btn_splash_again_agree_right) {
             dismiss();
             if (onDismissListener != null) {
-                onDismissListener.onSureDismiss();
+                onDismissListener.onCancelDismiss();
             }
         }
     }

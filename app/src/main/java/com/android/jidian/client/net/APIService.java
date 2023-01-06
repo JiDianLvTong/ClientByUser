@@ -366,4 +366,17 @@ public interface APIService {
     @FormUrlEncoded
     @POST("Find/index.html")
     Flowable<FindIndexBean> requestFindIndex(@Field("lng") String lng, @Field("lat") String lat);
+
+    /**
+     * 注销用户
+     */
+    @FormUrlEncoded
+    @POST("User/cancel.html")
+    Flowable<BaseBean> requestUserCancel(@Field("uid") String uid, @Field("code") String code, @Field("confirm") String confirm);
+
+    /**
+     * 注销用户获取验证码
+     */
+    @POST("User/smsCancel.html")
+    Flowable<BaseBean> requestUserSmsCancel();
 }

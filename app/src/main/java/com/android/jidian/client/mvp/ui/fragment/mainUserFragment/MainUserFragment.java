@@ -19,6 +19,7 @@ import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
+import com.android.jidian.client.mvp.ui.activity.MainSetActivity;
 import com.android.jidian.client.mvp.ui.activity.MoreQuestion;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.itheima.roundedimageview.RoundedImageView;
@@ -172,7 +173,7 @@ public class MainUserFragment extends BaseFragment<MainUserPresenter> implements
 
     @OnClick(R.id.mySet)
     public void onClickMySet() {
-        getActivity().startActivity(new Intent(getActivity(), MainSet_.class));
+        getActivity().startActivity(new Intent(getActivity(), MainSetActivity.class));
     }
 
     @Override
