@@ -37,7 +37,7 @@
             android:gravity="center">
 
             <ImageView
-                android:src="@drawable/pub_null_data"
+                android:src="@drawable/u6_pub_null_data"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"/>

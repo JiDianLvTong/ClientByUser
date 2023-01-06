@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;

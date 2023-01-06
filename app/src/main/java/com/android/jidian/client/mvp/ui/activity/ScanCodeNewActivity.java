@@ -26,6 +26,7 @@ import com.android.jidian.client.bean.QrCodeScanBean;
 import com.android.jidian.client.bean.ScanCodeEventBean;
 import com.android.jidian.client.mvp.contract.ScanCodeContract;
 import com.android.jidian.client.mvp.presenter.ScanCodePresenter;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.mvp.ui.dialog.ScanCodeBindingDialog;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.pub.PubFunction;

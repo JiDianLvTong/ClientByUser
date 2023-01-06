@@ -72,7 +72,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/u6_shape_33ffffff_corner_10"
+            android:layout_margin="10dp">
 
             <LinearLayout
                 android:id="@+id/about"
@@ -113,7 +115,7 @@
                         android:layout_marginRight="15dp"
                         android:adjustViewBounds="true"
                         android:gravity="right"
-                        android:src="@drawable/u6_pub_page_arrow_right_grey" />
+                        android:src="@drawable/u6_pub_page_arrow_right_white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -153,7 +155,7 @@
                         android:layout_height="15dp"
                         android:layout_marginRight="15dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/u6_pub_page_arrow_right_grey" />
+                        android:src="@drawable/u6_pub_page_arrow_right_white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -193,7 +195,7 @@
                         android:layout_height="15dp"
                         android:layout_marginRight="15dp"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/u6_pub_page_arrow_right_grey" />
+                        android:src="@drawable/u6_pub_page_arrow_right_white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -234,31 +236,24 @@
                         android:layout_marginRight="15dp"
                         android:adjustViewBounds="true"
                         android:gravity="right"
-                        android:src="@drawable/u6_pub_page_arrow_right_grey" />
+                        android:src="@drawable/u6_pub_page_arrow_right_white" />
                 </LinearLayout>
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:background="#cccccc" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/circular_orange_d7a64a_100"
             android:gravity="center"
-            android:padding="10dp"
             android:text="退出登录"
             android:textColor="@color/white_ffffff"
-            android:textSize="14sp" />
+            android:textSize="15sp" />
     </LinearLayout>
 
 </LinearLayout>

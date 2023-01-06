@@ -35,7 +35,7 @@ import com.android.jidian.client.bean.MapListsBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.net.RetrofitClient;
 import com.android.jidian.client.net.RxScheduler;
 import com.android.jidian.client.util.MapUtil;

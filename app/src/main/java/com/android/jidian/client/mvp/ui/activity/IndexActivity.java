@@ -13,8 +13,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.android.jidian.client.BuildConfig;
-
-import org.w3c.dom.Text;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 
 public class IndexActivity extends U6BaseActivity {
 

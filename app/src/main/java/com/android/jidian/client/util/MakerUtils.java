@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 public class MakerUtils {
 
-    private int localMarkerIcon = R.drawable.map_point;
-
     public BitmapDescriptor localMarker(Context context){
 
         View localView = LayoutInflater.from(context).inflate(R.layout.activity_charge_site_map_loacal_view, null);
