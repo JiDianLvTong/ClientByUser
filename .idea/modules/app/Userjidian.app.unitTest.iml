@@ -27,15 +27,11 @@
     <content url="file://$MODULE_DIR$/../../../app/src/testDebug" />
     <orderEntry type="jdk" jdkName="Android API 27 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="Userjidian.webviewjavascriptbridge.main" scope="TEST" />
-    <orderEntry type="module" module-name="Userjidian.dsbridge.main" scope="TEST" />
-    <orderEntry type="module" module-name="Userjidian.waveview.main" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/app/libs/alibaba-cloudapi-sdk-core-1.2.0.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/app/libs/AMap3DMap_6.8.0_AMapNavi_6.7.0_AMapSearch_6.5.0_AMapLocation_4.6.0_20190423.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/app/libs/bottomView.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/app/libs/jmimemagic-0.1.2.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/app/libs/libammsdk.jar" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: D./work/AndroidStudioProject/Userjidian/dsbridge/src/libs/tbs_sdk_thirdapp_v3.5.0.1004_43500_sharewithdownload_withoutGame_obfs_20170801_113025.jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.androidannotations:androidannotations-api:4.6.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup.retrofit2:converter-gson:2.6.2" level="project" />
@@ -86,6 +82,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: io.github.scwang90:refresh-header-material:2.0.5@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.github.scwang90:refresh-footer-ball:2.0.5@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: io.github.scwang90:refresh-footer-classics:2.0.5@aar" level="project" />
+    <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:multidex:1.0.3@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support:support-v4:27.1.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: de.hdodenhof:circleimageview:3.0.1@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.wx.wheelview:wheelview:1.3.3@aar" level="project" />

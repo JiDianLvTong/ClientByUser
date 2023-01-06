@@ -32,7 +32,6 @@ import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.PersonalInfoBean;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.MoreQuestion;
 import com.android.jidian.client.net.RetrofitClient;
 import com.android.jidian.client.net.RxScheduler;
 import com.android.jidian.client.pub.PubFunction;
@@ -156,9 +155,6 @@ public class PersonalInfoDrawerMenu extends PopupWindow {
                     BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_PERSONAL_CENTER_MY_COUPON);
                     mContext.startActivity(new Intent(mContext, MainDiscount_.class));
                 } else if (position == 6) {
-                    //点击常见问题
-                    BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_PERSONAL_CENTER_COMMON_PROBLEM);
-                    mContext.startActivity(new Intent(mContext, MoreQuestion.class));
                 } else if (position == 7) {
                     //点击HELLO客服
                     BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_PERSONAL_CENTER_CUSTOMER);

@@ -30,7 +30,6 @@ import com.android.jidian.client.BaseFragment;
 import com.android.jidian.client.Main;
 import com.android.jidian.client.MainShopFromCabinet_;
 import com.android.jidian.client.R;
-import com.android.jidian.client.mvp.ui.activity.CustomH5Page;
 import com.android.jidian.client.bean.MapListsBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
@@ -282,9 +281,9 @@ public class BlankFragment2 extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.blank1_textview1:
-                Intent intent00 = new Intent(requireContext(), CustomH5Page.class);
-                intent00.putExtra("url", "https://h5x.mixiangx.com/Help/guide2.html");
-                startActivity(intent00);
+//                Intent intent00 = new Intent(requireContext(), CustomH5Page.class);
+//                intent00.putExtra("url", "https://h5x.mixiangx.com/Help/guide2.html");
+//                startActivity(intent00);
                 break;
             case R.id.blank1_imageview1:
                 handleViewpagerVisiable.sendEmptyMessage(1);

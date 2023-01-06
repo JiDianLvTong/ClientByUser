@@ -18,20 +18,22 @@ import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.U6BaseActivity;
+import com.android.jidian.client.base.U6BaseActivityByMvp;
+import com.android.jidian.client.bean.MapJwduV5Bean;
 import com.android.jidian.client.util.MakerUtils;
+import com.android.jidian.client.util.UserInfoHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ChargeSiteMap extends U6BaseActivity {
+public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> implements ChargeSiteMapContract.View {
 
     @BindView(R.id.pageReturn)
     public LinearLayout pageReturn;
@@ -58,11 +60,9 @@ public class ChargeSiteMap extends U6BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.u6_activity_map);
         super.onCreate(savedInstanceState);
         this.savedInstanceState = savedInstanceState;
-        setContentView(R.layout.u6_activity_map);
-        ButterKnife.bind(this);
-        init();
     }
 
     @Override
@@ -86,7 +86,10 @@ public class ChargeSiteMap extends U6BaseActivity {
     }
 
     //初始化
-    public void init(){
+    @Override
+    public void initView() {
+        mPresenter = new ChargeSiteMapPresenter();
+        mPresenter.attachView(this);
         mapInit();
         mapLocation();
     }
@@ -166,36 +169,8 @@ public class ChargeSiteMap extends U6BaseActivity {
 
     //获取网络数据
     private void getInternetData(){
-
-
-
-//        List<BaseHttpParameterFormat> baseHttpParameterFormats = new ArrayList<>();
-//        baseHttpParameterFormats.add(new BaseHttpParameterFormat("uid", SpUser.getInstance().getUserLoginBean().getId()));
-//        baseHttpParameterFormats.add(new BaseHttpParameterFormat("jingdu", coordinates[0]+""));
-//        baseHttpParameterFormats.add(new BaseHttpParameterFormat("weidu", coordinates[1]+""));
-//        baseHttpParameterFormats.add(new BaseHttpParameterFormat("type", 0+""));
-//        chargeSiteBaseHttp = new BaseHttp(activity, HttpUrlMap.getMapSite, baseHttpParameterFormats, new BaseHttp.BaseHttpListener() {
-//            @Override
-//            public void dataReturn(int code, String errorMessage , String message , String data) {
-//                activity.runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if(code == 1){
-//                            String rawDataStr = chargeSiteBaseHttp.getReturnRawData();
-//                            setData(rawDataStr);
-//                        }else{
-//                            new DialogEnter(activity, message, new DialogEnter.DialogChoiceListener() {
-//                                @Override
-//                                public void enterReturn() {
-//                                    activity.finish();
-//                                }
-//                            }).showPopupWindow();
-//                        }
-//                    }
-//                });
-//            }
-//        });
-//        chargeSiteBaseHttp.onStart();
+        progressDialog.show();
+        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(),coordinates[0]+"",coordinates[1]+"" , "0");
     }
 
     @OnClick(R.id.pageReturn)
@@ -205,13 +180,12 @@ public class ChargeSiteMap extends U6BaseActivity {
 
     @OnClick(R.id.l_1)
     public void onClickL_1(){
-
         hasRequestInternet = false;
         for(int i = 0 ; i < markers.size();i++){
             markers.get(i).remove();
         }
         markers.clear();
-        init();
+        initView();
     }
 
     @OnClick(R.id.l_2)
@@ -225,6 +199,69 @@ public class ChargeSiteMap extends U6BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mapView.onDestroy();
+        if(mapView!=null){
+            mapView.onDestroy();
+        }
+    }
+
+    @Override
+    public void requestChargeSiteSuccess(ChargeSiteMapBean bean) {
+        progressDialog.dismiss();
+        List<ChargeSiteMapBean.DataBean> dataArrayList = bean.getData();
+        for(int i = 0 ; i < dataArrayList.size() ; i++){
+            String jingdu = dataArrayList.get(i).getJingdu() + "";
+            String weidu = dataArrayList.get(i).getWeidu() + "";
+
+            List<ChargeSiteMapBean.DataBean.ListBean> mapSiteItemArrayList = dataArrayList.get(i).getList();
+
+            MarkerOptions markerOption = new MarkerOptions();
+            markerOption.position(new LatLng(Double.parseDouble(weidu),Double.parseDouble(jingdu)));
+            markerOption.draggable(false);//设置Marker可拖动
+
+            markerOption.icon(new MakerUtils().chargeSiteMarker(activity,mapSiteItemArrayList));
+            markerOption.setFlat(true);//设置marker平贴地图效果
+            Marker marker = aMap.addMarker(markerOption);
+            markers.add(marker);
+        }
+
+        aMap.setOnMarkerClickListener(new AMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                LatLng latLng = marker.getPosition();
+                for(int i = 0 ; i < dataArrayList.size() ; i++){
+                    String jingdu = dataArrayList.get(i).getJingdu() + "";
+                    String weidu = dataArrayList.get(i).getWeidu() + "";
+                    if(jingdu.equals(latLng.longitude + "") && weidu.equals(latLng.latitude + "")){
+//                        ChargeSiteMapBean.DataBean dataBean = dataArrayList.get(i);
+//                        ChargeSiteShowInfo chargeSiteShowInfo = new ChargeSiteShowInfo(activity, dataBean , coordinates[1] , coordinates[0]);
+//                        chargeSiteShowInfo.showPopupWindow();
+                    }
+                }
+                return false;
+            }
+        });
+    }
+
+    @Override
+    public void requestChargeSiteError(String msg) {
+        progressDialog.dismiss();
+    }
+
+
+
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void onError(Throwable throwable) {
+
     }
 }

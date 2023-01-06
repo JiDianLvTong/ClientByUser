@@ -59,9 +59,9 @@
         android:theme="@style/Theme.User"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:theme">
+
         <!-- 进入导航页 -->
-        <activity
-            android:name=".mvp.ui.activity.IndexActivity"
+        <activity android:name=".mvp.ui.activity.IndexActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan">
@@ -70,67 +70,110 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- 测试页 -->
-        <activity
-            android:name=".mvp.ui.activity.text.TextActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+        </activity>
+
         <!-- 主页 -->
-        <activity
-            android:name=".mvp.ui.activity.main.MainActivity"
+        <activity android:name=".mvp.ui.activity.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
         <!-- 登录页面 -->
         <activity
             android:name=".mvp.ui.activity.login.LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- 站点页面 -->
-        <activity
-            android:name=".mvp.ui.activity.map.ChargeSiteMap"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- H5页面 - 用户协议 -->
-        <activity
-            android:name=".mvp.ui.activity.H5.MainAgreement"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- H5页面 - 关于我们 -->
-        <activity
-            android:name=".mvp.ui.activity.H5.MainAbout"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- H5页面 - 隐私政策 -->
-        <activity
-            android:name=".mvp.ui.activity.H5.MainPrivacyClause"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
         <!-- 设置 -->
         <activity
             android:name=".mvp.ui.activity.set.MainSetActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 站点页面 -->
+        <activity
+            android:name=".mvp.ui.activity.map.ChargeSiteMap"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
         <!-- 我的订单 -->
         <activity
-            android:name=".mvp.ui.activity.OrderListActivity"
+            android:name=".mvp.ui.activity.order.OrderListActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <!-- 我的订单 -->
+
+        <!-- 我的个人资料 -->
         <activity
-            android:name=".mvp.ui.activity.PersonalInfoActivity"
+            android:name=".mvp.ui.activity.userInfo.PersonalInfoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.CustomH5Page" />
+
+        <!-- 我的个人资料 - 修改手机 -->
+        <activity
+            android:name=".mvp.ui.activity.userInfo.MainInfoPhoneActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的消息-->
+        <activity
+            android:name=".mvp.ui.activity.message.AdvicesListsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的消息 - 显示-->
+        <activity
+            android:name=".mvp.ui.activity.message.AdvicesShowActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- H5页面 - 用户协议 -->
+        <activity
+            android:name=".mvp.ui.activity.H5.MainAgreement"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <!-- H5页面 - 关于我们 -->
+        <activity
+            android:name=".mvp.ui.activity.H5.MainAbout"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+
+        <!-- H5页面 - 隐私政策 -->
+        <activity
+            android:name=".mvp.ui.activity.H5.MainPrivacyClause"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- H5页面 - 更多问题 -->
+        <activity
+            android:name=".mvp.ui.activity.H5.MainMoreQuestion"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- For test only 测试状态通知栏，需要打开的Activity -->
         <activity
             android:name=".jpush.TestActivity"
@@ -282,16 +325,8 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="${JPUSH_APPKEY}" /> <!-- </>值来自开发者平台取得的AppKey -->
-        <activity
-            android:name=".mvp.ui.activity.AdvicesType2Activity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.ui.activity.AdvicesListsActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+
         <activity
             android:name=".mvp.ui.activity.CouponCashv2Activity"
             android:launchMode="singleTask"
@@ -307,7 +342,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".mvp.ui.activity.MoreQuestion" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -420,6 +454,8 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
+
         <activity
             android:name=".MainAdv"
             android:label="@string/app_name"
@@ -492,6 +528,7 @@
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop" />
+
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"

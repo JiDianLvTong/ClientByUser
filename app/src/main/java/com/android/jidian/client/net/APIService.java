@@ -44,14 +44,11 @@ public interface APIService {
 
 
     /**
-     * 获得全部站点
+     * 获得地图全部站点
      */
     @FormUrlEncoded
     @POST("Map/mapJwduV5")
-    Flowable<ChargeSiteMapBean> getAllMarker(@Field("uid") String type,
-                                             @Field("jingdu") String jingdu,
-                                             @Field("weidu") String weidu,
-                                             @Field("tab") String tab);
+    Flowable<ChargeSiteMapBean> getAllMarker(@Field("uid") String uid, @Field("jingdu") String lng, @Field("weidu") String lat, @Field("type") String tab);
 
     /**
      * 电柜详情

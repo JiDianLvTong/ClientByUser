@@ -70,7 +70,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/my_info_bg"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/u6_shape_d7a64a_corner_10"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -97,7 +100,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/change_phoen"
+                android:id="@+id/change_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

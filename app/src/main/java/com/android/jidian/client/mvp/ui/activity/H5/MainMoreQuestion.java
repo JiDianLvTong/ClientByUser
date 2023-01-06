@@ -12,7 +12,6 @@ import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -20,19 +19,18 @@ import butterknife.OnClick;
  */
 
 
-public class MainAbout extends U6BaseActivity {
+public class MainMoreQuestion extends U6BaseActivity {
     @BindView(R.id.pageReturn)
     public LinearLayout pageReturn;
     @BindView(R.id.webView)
     public WebView webView;
 
-    private String url = "https://appx.mixiangx.com/web/pinpai/about3.html";
+    private String url = "https://appx.mixiangx.com/web/problem3.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setContentView(R.layout.u6_activity_h5_more_question);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.u6_activity_h5_about);
-        ButterKnife.bind(this);
         init();
     }
 

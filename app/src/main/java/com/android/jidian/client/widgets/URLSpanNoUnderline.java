@@ -7,8 +7,6 @@ import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
 
-import com.android.jidian.client.mvp.ui.activity.CustomH5Page;
-
 /**
  * @author : PTT
  * date: 8/6/21 4:57 PM
@@ -27,9 +25,9 @@ public class URLSpanNoUnderline extends URLSpan {
     public void onClick(View widget) {
         super.onClick(widget);
         if(mContext!=null){
-            Intent mIntent = new Intent(mContext, CustomH5Page.class);
-            mIntent.putExtra("url", "https://appx.mixiangx.com/web/pinpai/privacy3.html");
-            mContext.startActivity(mIntent);
+//            Intent mIntent = new Intent(mContext, CustomH5Page.class);
+//            mIntent.putExtra("url", "https://appx.mixiangx.com/web/pinpai/privacy3.html");
+//            mContext.startActivity(mIntent);
         }
     }
 

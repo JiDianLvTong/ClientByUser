@@ -1,11 +1,7 @@
 package com.android.jidian.client.mvp.ui.activity.map;
 
 import com.android.jidian.client.base.BasePresenter;
-import com.android.jidian.client.mvp.contract.MainFindContract;
-import com.android.jidian.client.mvp.model.MainFindModel;
 import com.android.jidian.client.net.RxScheduler;
-
-import io.reactivex.disposables.Disposable;
 
 /**
  * @author : xiaoming
@@ -30,7 +26,7 @@ public class ChargeSiteMapPresenter extends BasePresenter<ChargeSiteMapContract.
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        if ("1".equals(bean.getStatus())) {
+                        if (bean.getStatus() == 1) {
                             mView.requestChargeSiteSuccess(bean);
                         }else {
                             mView.requestChargeSiteError(bean.getMsg());
@@ -38,7 +34,7 @@ public class ChargeSiteMapPresenter extends BasePresenter<ChargeSiteMapContract.
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.onError(throwable);
+                        mView.requestChargeSiteError("error");
                     }
                 });
     }

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: io.github.scwang90:refresh-header-radar:2.0.5@aar">
     <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-radar-2.0.5.aar/9364dc3c750aa046029c4e24fdc93478/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-radar-2.0.5.aar/9364dc3c750aa046029c4e24fdc93478/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-radar-2.0.5.aar/9364dc3c750aa046029c4e24fdc93478/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/refresh-header-radar-2.0.5.aar/9364dc3c750aa046029c4e24fdc93478/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -580,7 +580,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginTop="10dp"
-                                android:background="@drawable/u9_shape_e23e14_corner_15"
+                                android:background="@drawable/u6_shape_e23e14_corner_15"
                                 android:paddingLeft="20dp"
                                 android:paddingRight="20dp"
                                 android:gravity="center">

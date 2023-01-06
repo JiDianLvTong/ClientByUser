@@ -1,23 +1,47 @@
 package com.android.jidian.client.mvp.ui.activity.map;
 
 import android.app.Activity;
+import android.content.Context;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Poi;
+import com.amap.api.navi.AmapNaviPage;
+import com.amap.api.navi.AmapNaviParams;
+import com.amap.api.navi.AmapNaviType;
+import com.amap.api.navi.AmapPageType;
+import com.android.jidian.client.R;
+import com.android.jidian.client.bean.ChargeSiteMapInfoBean;
+import com.android.jidian.client.http.BaseHttp;
+import com.android.jidian.client.http.BaseHttpParameterFormat;
+import com.android.jidian.client.util.UserInfoHelper;
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import razerdp.basepopup.BasePopupWindow;
 
-//public class ChargeSiteShowInfo extends BasePopupWindow {
-    public class ChargeSiteShowInfo {
+public class ChargeSiteShowInfo{
 
+}
+//public class ChargeSiteShowInfo extends BasePopupWindow {
+//
+//    public ChargeSiteShowInfo(Context context) {
+//        super(context);
+//    }
+//}
+
+//public class ChargeSiteShowInfo extends LinearLayout {
+//
 //    private Activity activity;
-//    private ChargeSiteMapBean.Data data;
+//    private ChargeSiteMapBean.DataBean data;
 //
 //    private double weidu = 0;
 //    private double jingdu = 0;
@@ -25,30 +49,31 @@ import razerdp.basepopup.BasePopupWindow;
 //    public ViewPager viewPager;
 //    public ArrayList<View> views = new ArrayList<View>();
 //
-//    public ChargeSiteShowInfo(Activity activity ,  ChargeSiteMapBean.Data data , double weidu , double jingdu) {
+//    public ChargeSiteShowInfo(Activity activity , ChargeSiteMapBean.DataBean data , double weidu , double jingdu) {
 //        super(activity.getApplicationContext());
 //        this.activity = activity;
 //        this.data = data;
 //        this.weidu = weidu;
 //        this.jingdu = jingdu;
-//        setContentView(R.layout.activity_charge_site_map_show_info);
+//        setContentView(R.layout.u6_activity_map_show_info);
 //        init();
-//
 //    }
 //
 //    private void init(){
 //        viewPager = this.findViewById(R.id.viewPager);
-//        ArrayList<ChargeSiteMapBean.Data.MapSiteItem> mapSiteItemArrayList = data.getList();
+//        List<ChargeSiteMapBean.DataBean.ListBean> mapSiteItemArrayList = data.getList();
 //        for(int i = 0 ; i < mapSiteItemArrayList.size();i++){
-//            View view = LayoutInflater.from(activity).inflate(R.layout.activity_charge_site_map_show_info_item,null);
+//
+//            View view = LayoutInflater.from(activity).inflate(R.layout.u6_activity_map_show_info_item,null);
 //            views.add(view);
+//
 //            List<BaseHttpParameterFormat> baseHttpParameterFormats = new ArrayList<>();
-//            baseHttpParameterFormats.add(new BaseHttpParameterFormat("uid", SpUser.getInstance().getUserLoginBean().getId()));
+//            baseHttpParameterFormats.add(new BaseHttpParameterFormat("uid", UserInfoHelper.getInstance().getUid()));
 //            baseHttpParameterFormats.add(new BaseHttpParameterFormat("jingdu", mapSiteItemArrayList.get(i).getJingdu()));
 //            baseHttpParameterFormats.add(new BaseHttpParameterFormat("weidu",  mapSiteItemArrayList.get(i).getWeidu()));
 //            baseHttpParameterFormats.add(new BaseHttpParameterFormat("cabid",  mapSiteItemArrayList.get(i).getId()));
 //            baseHttpParameterFormats.add(new BaseHttpParameterFormat("repair",  mapSiteItemArrayList.get(i).getRepair()));
-//            BaseHttp baseHttp = new BaseHttp(activity, HttpUrlMap.mapChargeSiteInfo, baseHttpParameterFormats, new BaseHttp.BaseHttpListener() {
+//            BaseHttp baseHttp = new BaseHttp(activity, "https://appx.mixiangx.com/Cabinet/detailv3", baseHttpParameterFormats, new BaseHttp.BaseHttpListener() {
 //                @Override
 //                public void dataReturn(int code, String errorMessage , String message , String data) {
 //                    activity.runOnUiThread(new Runnable() {
@@ -60,7 +85,7 @@ import razerdp.basepopup.BasePopupWindow;
 //
 //                                ImageView i_1 = view.findViewById(R.id.i_1);
 //                                if(chargeSiteMapInfoBean.getImages().size()>0){
-//                                    Picasso.get().load(chargeSiteMapInfoBean.getImages().get(0)).into(i_1);
+//                                    Glide.with(activity).load(chargeSiteMapInfoBean.getImages().get(0)).into(i_1);
 //                                }
 //
 //                                TextView t_1 = view.findViewById(R.id.t_1);
@@ -112,10 +137,12 @@ import razerdp.basepopup.BasePopupWindow;
 //            });
 //            baseHttp.onStart();
 //        }
+//
+//
 //        ChargeSiteMapViewPagerAdapter adapter = new ChargeSiteMapViewPagerAdapter(activity,views);
 //        viewPager.setAdapter(adapter);
 //        viewPager.setOffscreenPageLimit(mapSiteItemArrayList.size());
 //        viewPager.setPageTransformer(true, new ScalePageTransformer(true));
 //    }
-
-}
+//
+//}

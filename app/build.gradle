@@ -95,15 +95,15 @@ dependencies {
     implementation  'io.github.scwang90:refresh-footer-ball:2.0.5'        //球脉冲加载
     implementation  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
 
-
+    implementation 'com.android.support:multidex:1.0.3'
 
 
 
     //注解
     implementation 'com.android.support:support-v4:27.1.1'
-    implementation project(path: ':waveview')
-    implementation project(path: ':webviewjavascriptbridge')
-    implementation project(path: ':dsbridge')
+
+
+    
 //    implementation project(path: ':baselibrary')
     annotationProcessor "org.androidannotations:androidannotations:$AAVersion"
     implementation "org.androidannotations:androidannotations-api:$AAVersion"

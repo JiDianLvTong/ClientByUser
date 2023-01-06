@@ -115,10 +115,6 @@ public class MainInfo extends BaseActivity {
                         @Override
                         public void onClick(View v) {
                             //点击手机号
-                            BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_PERSONAL_INFO_MOBILE);
-                            Intent intent = new Intent(activity, MainInfoPhone_.class);
-                            intent.putExtra("phone", phone);
-                            activity.startActivity(intent);
                         }
                     });
                     phoneView.setText(str1 + " **** " + str2);

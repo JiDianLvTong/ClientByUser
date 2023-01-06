@@ -17,7 +17,7 @@ public class ChargeSiteMapBean {
     private int status;
     private String msg;
     private String horn;
-    private List<MapJwduV5Bean.DataBean> data;
+    private List<ChargeSiteMapBean.DataBean> data;
     private List<String> img_list;
     /**
      * 未登录用户头像
@@ -40,11 +40,10 @@ public class ChargeSiteMapBean {
         this.msg = msg;
     }
 
-    public List<MapJwduV5Bean.DataBean> getData() {
+    public List<ChargeSiteMapBean.DataBean> getData() {
         return data;
     }
-
-    public void setData(List<MapJwduV5Bean.DataBean> data) {
+    public void setData(List<ChargeSiteMapBean.DataBean> data) {
         this.data = data;
     }
 
@@ -83,7 +82,7 @@ public class ChargeSiteMapBean {
         private double jingdu;
         private double weidu;
         private int lint_type;
-        private List<MapJwduV5Bean.DataBean.ListBean> list;
+        private List<ChargeSiteMapBean.DataBean.ListBean> list;
 
         public double getJingdu() {
             return jingdu;
@@ -109,11 +108,11 @@ public class ChargeSiteMapBean {
             this.lint_type = lint_type;
         }
 
-        public List<MapJwduV5Bean.DataBean.ListBean> getList() {
+        public List<ChargeSiteMapBean.DataBean.ListBean> getList() {
             return list;
         }
 
-        public void setList(List<MapJwduV5Bean.DataBean.ListBean> list) {
+        public void setList(List<ChargeSiteMapBean.DataBean.ListBean> list) {
             this.list = list;
         }
 

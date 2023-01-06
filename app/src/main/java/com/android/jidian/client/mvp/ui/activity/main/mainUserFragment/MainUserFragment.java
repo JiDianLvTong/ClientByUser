@@ -11,18 +11,16 @@ import android.widget.TextView;
 
 import com.android.jidian.client.MainDiscount_;
 import com.android.jidian.client.MainHello_;
-import com.android.jidian.client.MainInfo_;
-import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.Newpay_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseFragmentByMvp;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
-import com.android.jidian.client.mvp.ui.activity.OrderListActivity;
-import com.android.jidian.client.mvp.ui.activity.PersonalInfoActivity;
+import com.android.jidian.client.mvp.ui.activity.H5.MainMoreQuestion;
+import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoActivity;
 import com.android.jidian.client.mvp.ui.activity.set.MainSetActivity;
-import com.android.jidian.client.mvp.ui.activity.MoreQuestion;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.itheima.roundedimageview.RoundedImageView;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -177,7 +175,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @OnClick(R.id.myCommonProblem)
     public void onClickMyCommonProblem() {
-        getActivity().startActivity(new Intent(getActivity(), MoreQuestion.class));
+        getActivity().startActivity(new Intent(getActivity(), MainMoreQuestion.class));
     }
 
 

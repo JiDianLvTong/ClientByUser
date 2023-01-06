@@ -17,7 +17,7 @@ import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
-import com.android.jidian.client.mvp.ui.activity.AdvicesListsActivity;
+import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.util.UserInfoHelper;

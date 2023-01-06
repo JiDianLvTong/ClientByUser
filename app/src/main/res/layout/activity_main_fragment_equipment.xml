@@ -582,7 +582,7 @@
                                 android:layout_height="50dp"
                                 android:layout_marginHorizontal="20dp"
                                 android:layout_marginTop="5dp"
-                                android:background="@drawable/u9_shape_e23e14_corner_15">
+                                android:background="@drawable/u6_shape_e23e14_corner_15">
 
                                 <TextView
                                     android:id="@+id/tv_package_price"
