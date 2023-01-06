@@ -201,9 +201,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             changeMain(2);
             if (mainShopFragment != null) {
                 if (mPositioned) {
-                    mainShopFragment.setFragmentPosition(1, coordinates[0] + "", coordinates[1] + "");
+                    mainShopFragment.setFragmentPosition( coordinates[0] + "", coordinates[1] + "");
                 } else {
-                    mainShopFragment.setFragmentPosition(1, "", "");
+                    mainShopFragment.setFragmentPosition("", "");
                 }
             }
         } else if (layout.getId() == R.id.p_4) {
