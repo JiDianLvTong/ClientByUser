@@ -1,22 +1,33 @@
 package com.android.jidian.client.mvp.ui.activity;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.android.jidian.client.MainShopOrder_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.UserUOrderBean;
 import com.android.jidian.client.mvp.contract.OrderListContract;
 import com.android.jidian.client.mvp.presenter.OrderListPresenter;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+import com.android.jidian.client.mvp.ui.adapter.OrderListAdapter;
+import com.android.jidian.client.util.BuryingPointManager;
+import com.scwang.smart.refresh.footer.ClassicsFooter;
+import com.scwang.smart.refresh.header.MaterialHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+import com.scwang.smart.refresh.layout.api.RefreshLayout;
+import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
+
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> implements OrderListContract.View {
 
@@ -26,39 +37,74 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
     RecyclerView rv_order_list;
     @BindView(R.id.nullDataPanel)
     LinearLayout nullDataPanel;
+    @BindView(R.id.pageReturn)
+    LinearLayout pageReturn;
 
     private String mLastid;
+    private OrderListAdapter mAdapter;
+    private boolean mIsRefresh = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.u6_activity_order_list);
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public void initView() {
         mPresenter = new OrderListPresenter();
         mPresenter.attachView(this);
+        //下拉刷新
+        MaterialHeader materialHeader = new MaterialHeader(OrderListActivity.this);
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
+        srl_order_list.setRefreshHeader(materialHeader);
+        srl_order_list.setEnableHeaderTranslationContent(true);
+        ClassicsFooter classicsFooter = new ClassicsFooter(OrderListActivity.this);
+        srl_order_list.setRefreshFooter(classicsFooter);
         rv_order_list.setLayoutManager(new LinearLayoutManager(OrderListActivity.this, LinearLayoutManager.VERTICAL, false));
-
-        srl_order_list.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+        mAdapter = new OrderListAdapter();
+        mAdapter.setListener(new OrderListAdapter.OnClickItemViewListener() {
             @Override
-            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                requestData();
-            }
-
-            @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                mLastid = "";
-                requestData();
+            public void OnClickItem(UserUOrderBean.DataBean.ListsBean bean) {
+                if ("待支付".equals(bean.getStatus_desc())) {
+                    //点击待支付订单
+                    Intent intent = new Intent(activity, MainShopOrder_.class);
+                    intent.putExtra("order_num", bean.getOrder_num());
+                    intent.putExtra("type", bean.getType());
+                    intent.putExtra("from", "order");
+                    intent.putExtra("select_pack_month", bean.getSelect_pack_month());
+                    startActivity(intent);
+                }
             }
         });
-        requestData();
+        rv_order_list.setAdapter(mAdapter);
+        srl_order_list.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                requestData(true);
+            }
+        });
+        srl_order_list.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                requestData(false);
+            }
+        });
+        requestData(true);
     }
 
-    private void requestData() {
+    @OnClick(R.id.pageReturn)
+    public void onClickPagferReturn() {
+        finish();
+    }
+
+    private void requestData(boolean isRefresh) {
+        mIsRefresh = isRefresh;
+        if (isRefresh) {
+            mLastid = "";
+        }
         if (mPresenter != null) {
-            mPresenter.requestUserUOrder(uid, mLastid.isEmpty() ? null : mLastid);
+            mPresenter.requestUserUOrder(uid, TextUtils.isEmpty(mLastid) ? null : mLastid);
         }
     }
 
@@ -68,13 +114,24 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
             srl_order_list.setVisibility(View.VISIBLE);
             nullDataPanel.setVisibility(View.GONE);
             mLastid = bean.getData().getLastid();
+            if (bean.getData().getLists() != null) {
+                if (mIsRefresh) {
+                    mAdapter.setNewData(bean.getData().getLists());
+                } else {
+                    mAdapter.addData(bean.getData().getLists());
+                }
+            }
         } else {
             dataNull();
         }
+        srl_order_list.finishRefresh();
+        srl_order_list.finishLoadMore();
     }
 
     @Override
     public void requestUserUOrderFail(String msg) {
+        srl_order_list.finishRefresh();
+        srl_order_list.finishLoadMore();
         showMessage(msg);
         dataNull();
     }
@@ -96,7 +153,11 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
     }
 
     private void dataNull() {
-        srl_order_list.setVisibility(View.GONE);
-        nullDataPanel.setVisibility(View.VISIBLE);
+        srl_order_list.finishRefresh();
+        srl_order_list.finishLoadMore();
+        if (mIsRefresh) {
+            srl_order_list.setVisibility(View.GONE);
+            nullDataPanel.setVisibility(View.VISIBLE);
+        }
     }
 }
