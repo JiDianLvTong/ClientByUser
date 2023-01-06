@@ -28,7 +28,7 @@ import com.android.jidian.client.MainInfo_;
 import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.MainSet_;
 import com.android.jidian.client.mvp.ui.activity.InviteWallteActivity;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.R;
 import com.android.jidian.client.bean.PersonalInfoBean;
 import com.android.jidian.client.http.ParamTypeData;

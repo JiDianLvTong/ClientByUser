@@ -32,6 +32,7 @@ import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserConfirmBean;
 import com.android.jidian.client.bean.UserPersonalBean;
 import com.android.jidian.client.bean.UserUOrderBean;
+import com.android.jidian.client.mvp.ui.activity.map.ChargeSiteMapBean;
 
 import io.reactivex.Flowable;
 import okhttp3.ResponseBody;
@@ -40,6 +41,18 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface APIService {
+
+
+    /**
+     * 获得全部站点
+     */
+    @FormUrlEncoded
+    @POST("Map/mapJwduV5")
+    Flowable<ChargeSiteMapBean> getAllMarker(@Field("uid") String type,
+                                             @Field("jingdu") String jingdu,
+                                             @Field("weidu") String weidu,
+                                             @Field("tab") String tab);
+
     /**
      * 电柜详情
      *

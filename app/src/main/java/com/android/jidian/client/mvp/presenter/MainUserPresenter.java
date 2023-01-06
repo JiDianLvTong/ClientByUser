@@ -26,12 +26,10 @@ public class MainUserPresenter extends BasePresenter<MainUserContract.View> impl
         if (!isViewAttached()) {
             return;
         }
-        mView.showProgress();
         Disposable disposable = model.requestMainInfo(uid)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(expenseBean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if ("1".equals(expenseBean.getStatus())) {
                             mView.requestMainInfoSuccess(expenseBean);
                         }else {
@@ -40,7 +38,6 @@ public class MainUserPresenter extends BasePresenter<MainUserContract.View> impl
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });

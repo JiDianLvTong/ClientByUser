@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.client.bean.MainAppEventBean;
-import com.android.jidian.client.mvp.ui.activity.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.widgets.MyFragmentPagerAdapter;

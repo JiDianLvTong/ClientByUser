@@ -19,6 +19,7 @@ import butterknife.OnClick;
  * Created by hasee on 2017/6/6.
  */
 
+
 public class MainAbout extends U6BaseActivity {
     @BindView(R.id.pageReturn)
     public LinearLayout pageReturn;

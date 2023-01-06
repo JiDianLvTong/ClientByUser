@@ -15,7 +15,6 @@
             android:id="@+id/iv_main_shop_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"/>
 

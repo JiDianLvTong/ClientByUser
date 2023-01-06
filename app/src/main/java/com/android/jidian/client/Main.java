@@ -80,7 +80,7 @@ import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.mvp.ui.activity.CustomH5Page;
 import com.android.jidian.client.mvp.ui.activity.EvaluationListsActivity;
 import com.android.jidian.client.mvp.ui.activity.InviteActivity;
-import com.android.jidian.client.mvp.ui.activity.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
 import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.mvp.ui.adapter.MainSceneDialogSecondAdapter;

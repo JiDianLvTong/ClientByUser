@@ -3,7 +3,7 @@ package com.android.jidian.client.util;
 import android.content.Context;
 import android.util.Log;
 
-import com.android.jidian.client.mvp.ui.activity.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.widgets.MyToast;
 
 import cn.jiguang.verifysdk.api.AuthPageEventListener;

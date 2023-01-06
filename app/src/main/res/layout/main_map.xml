@@ -274,7 +274,7 @@
         android:layout_above="@id/bind_bettery"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="7dp"
-        android:background="@drawable/refresh_icon" />
+        android:background="@drawable/u6_map_refresh" />
 
     <LinearLayout
         android:id="@+id/bind_bettery"
