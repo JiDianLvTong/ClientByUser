@@ -26,14 +26,10 @@ public class MainShopPresenter extends BasePresenter<MainShopContract.View> impl
         if (!isViewAttached()) {
             return;
         }
-        if (mView != null) {
-            mView.showProgress();
-        }
-        Disposable disposable = model.requestShopBuy(lng, lat)
+        model.requestShopBuy(lng, lat)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if (bean != null) {
                             if (1 == bean.getStatus()) {
                                 mView.requestShopBuySuccess(bean);
@@ -44,7 +40,6 @@ public class MainShopPresenter extends BasePresenter<MainShopContract.View> impl
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });
@@ -55,14 +50,10 @@ public class MainShopPresenter extends BasePresenter<MainShopContract.View> impl
         if (!isViewAttached()) {
             return;
         }
-        if (mView != null) {
-            mView.showProgress();
-        }
-        Disposable disposable = model.requestShopRent(lng, lat)
+        model.requestShopRent(lng, lat)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if (bean != null) {
                             if (1 == bean.getStatus()) {
                                 mView.requestShopRentSuccess(bean);
@@ -73,7 +64,6 @@ public class MainShopPresenter extends BasePresenter<MainShopContract.View> impl
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });
