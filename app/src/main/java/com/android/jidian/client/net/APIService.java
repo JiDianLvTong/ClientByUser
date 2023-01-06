@@ -31,6 +31,7 @@ import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserConfirmBean;
 import com.android.jidian.client.bean.UserPersonalBean;
+import com.android.jidian.client.bean.UserUOrderBean;
 
 import io.reactivex.Flowable;
 import okhttp3.ResponseBody;
@@ -379,4 +380,10 @@ public interface APIService {
      */
     @POST("User/smsCancel.html")
     Flowable<BaseBean> requestUserSmsCancel();
+    /**
+     * 订单列表
+     */
+    @FormUrlEncoded
+    @POST("User/uOrder.html")
+    Flowable<UserUOrderBean> requestUserUOrder(@Field("uid") String uid,@Field("lastid") String lastid);
 }

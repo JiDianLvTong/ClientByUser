@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -172,6 +173,7 @@ public class MainMessage_1 extends BaseActivity implements AbsListView.OnScrollL
         if ("0".equals(type)) {
             MyToast.showTheToast(activity, response);
         } else {
+            Log.d("xiaoming0106", "onDataHttpMessage_1_RE: " + response);
             try {
                 JSONObject jsonObject_response = new JSONObject(response);
                 String status = jsonObject_response.getString("status");
