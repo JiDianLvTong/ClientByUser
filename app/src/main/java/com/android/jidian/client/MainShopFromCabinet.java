@@ -5,9 +5,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.widgets.MyFragmentPagerAdapter;
 import com.android.jidian.client.http.HeaderTypeData;
@@ -128,7 +128,7 @@ public class MainShopFromCabinet extends BaseFragmentActivity {
 
     @Click
     void scan_panel_text() {
-        Intent intent = new Intent(activity, ScanCodeNewActivity.class);
+        Intent intent = new Intent(activity, ScanCodeActivity.class);
         startActivityForResult(intent, 0x000110);
     }
 

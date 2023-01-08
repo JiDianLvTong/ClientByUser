@@ -66,7 +66,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/circular_grey_33ffffff_5"
+        android:background="@drawable/u6_shape_33ffffff_corner_10"
         android:orientation="vertical">
 
         <WebView

@@ -10,15 +10,14 @@
     <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
         android:id="@+id/statusBarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_33000000"/>
+        android:layout_height="wrap_content"/>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/smartRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -342,7 +341,7 @@
                     android:id="@+id/otherPanel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/circular_grey_33ffffff_5"
+                    android:background="@drawable/u6_shape_33ffffff_corner_10"
                     android:orientation="vertical"
                     android:padding="15dp"
                     android:layout_marginTop="10dp"
@@ -619,7 +618,7 @@
 
             </LinearLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 

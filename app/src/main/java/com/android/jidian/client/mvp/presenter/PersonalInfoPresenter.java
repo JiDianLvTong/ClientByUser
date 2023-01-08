@@ -26,12 +26,10 @@ public class PersonalInfoPresenter extends BasePresenter<PersonalInfoContract.Vi
         if (!isViewAttached()) {
             return;
         }
-        mView.showProgress();
-        Disposable disposable = model.requestUserPersonal(uid)
+        model.requestUserPersonal(uid)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         if ("1".equals(bean.getStatus())) {
                             mView.requestUserPersonalSuccess(bean);
                         }else {
@@ -40,7 +38,6 @@ public class PersonalInfoPresenter extends BasePresenter<PersonalInfoContract.Vi
                     }
                 }, throwable -> {
                     if (mView != null) {
-                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });

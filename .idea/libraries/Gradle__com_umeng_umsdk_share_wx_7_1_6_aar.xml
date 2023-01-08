@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/8ab712e6d128e598847cc5f4aac61919/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/8ab712e6d128e598847cc5f4aac61919/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/8ab712e6d128e598847cc5f4aac61919/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/34e3f92c9a4ce89d7fef193aba6201a8/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/34e3f92c9a4ce89d7fef193aba6201a8/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/share-wx-7.1.6.aar/34e3f92c9a4ce89d7fef193aba6201a8/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-share-wx-7.1.6.aar/405b70c3ce0e73966f701aff29731aa9/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-share-wx-7.1.6.aar/405b70c3ce0e73966f701aff29731aa9/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-share-wx-7.1.6.aar/405b70c3ce0e73966f701aff29731aa9/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

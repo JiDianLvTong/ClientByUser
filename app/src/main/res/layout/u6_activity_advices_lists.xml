@@ -8,8 +8,7 @@
 
     <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_33000000"/>
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,7 +94,7 @@
         app:tl_textUnselectColor="@color/white_ffffff"
         app:tl_textsize="13sp" />
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/advices_lists_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

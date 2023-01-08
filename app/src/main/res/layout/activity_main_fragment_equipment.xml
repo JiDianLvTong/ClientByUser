@@ -70,7 +70,7 @@
 
                 </LinearLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/root_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -244,7 +244,7 @@
 
                             </LinearLayout>
 
-                            <android.support.constraint.ConstraintLayout
+                            <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/cl_bicycle_detail"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -308,11 +308,11 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@id/tv_prioce_unit" />
 
-                            </android.support.constraint.ConstraintLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </LinearLayout>
 
-                        <android.support.constraint.ConstraintLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:background="@drawable/shape_ffffff_corner_15"
                             android:layout_width="match_parent"
                             android:layout_marginTop="10dp"
@@ -379,7 +379,7 @@
 
                                     </LinearLayout>
 
-                                    <android.support.constraint.ConstraintLayout
+                                    <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_1"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
@@ -412,7 +412,7 @@
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent" />
 
-                                    </android.support.constraint.ConstraintLayout>
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 </LinearLayout>
 
@@ -471,7 +471,7 @@
 
                                     </LinearLayout>
 
-                                    <android.support.constraint.ConstraintLayout
+                                    <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_2"
                                         android:layout_width="0dp"
                                         android:visibility="gone"
@@ -505,13 +505,13 @@
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent" />
 
-                                    </android.support.constraint.ConstraintLayout>
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 </LinearLayout>
 
                             </LinearLayout>
 
-                            <android.support.constraint.ConstraintLayout
+                            <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/cl_battery_package_price"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -555,9 +555,9 @@
                                     app:layout_constraintTop_toBottomOf="@id/tv_battery_price"
                                     app:layout_constraintEnd_toEndOf="@id/tv_battery_prioce_unit" />
 
-                            </android.support.constraint.ConstraintLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        </android.support.constraint.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_main_re_pay"
@@ -632,7 +632,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/main_f1" />
 
-                </android.support.constraint.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
 

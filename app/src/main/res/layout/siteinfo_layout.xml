@@ -20,7 +20,7 @@
             android:layout_marginTop="10dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/t1"
-            android:src="@drawable/xiangshang" />
+            android:src="@drawable/u6_pub_page_arrow_up_white" />
 
         <LinearLayout
             android:id="@+id/page_close"
@@ -310,7 +310,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.v4.view.ViewPager
+            <androidx.viewpager.widget.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

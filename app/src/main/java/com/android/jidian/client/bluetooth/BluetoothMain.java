@@ -111,7 +111,7 @@ public class BluetoothMain {
                 public void run() {
                     Log.d(TAG, "stop.....................");
                     mBluetoothAdapter.stopLeScan(mLeScanCallback);
-//					progressDialog.dismiss();
+//					dialogByLoading.dismiss();
 //					if (target_chara == null) {
 //						MyToast.showTheToast(activity, "未发现充电器设备");
 //					}

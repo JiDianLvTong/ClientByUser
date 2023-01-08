@@ -1,12 +1,11 @@
 package com.android.jidian.client.mvp.ui.activity.message;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
-import com.android.jidian.client.BaseActivity;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivity;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -17,9 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class AdvicesListsActivity extends U6BaseActivity {
     @BindView(R.id.tv_title)

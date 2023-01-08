@@ -147,7 +147,7 @@ public class MainHello extends BaseActivity {
                         gridListData.add(map);
                     }
                     if (myGridAdapter == null) {
-                        myGridAdapter = new MyGridAdapter(activity, gridListData, R.layout.main_shop_item_1_grid_item);
+                        myGridAdapter = new MyGridAdapter(activity, gridListData, R.layout.u6_activity_pay_coin_item);
                         gridview.setAdapter(myGridAdapter);
                     } else {
                         myGridAdapter.notifyDataSetChanged();

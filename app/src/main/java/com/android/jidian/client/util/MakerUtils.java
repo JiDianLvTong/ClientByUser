@@ -10,8 +10,7 @@ import android.widget.TextView;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.android.jidian.client.R;
-import com.android.jidian.client.bean.MapJwduV5Bean;
-import com.android.jidian.client.mvp.ui.activity.map.ChargeSiteMapBean;
+import com.android.jidian.client.mvp.bean.ChargeSiteMapBean;
 
 import java.util.List;
 

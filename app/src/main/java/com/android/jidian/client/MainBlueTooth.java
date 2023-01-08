@@ -34,13 +34,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.widgets.MyAlertDialog;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.widgets.MyToast;
-import com.android.jidian.client.widgets.ProgressDialog;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.service.BluetoothLeService;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -115,7 +115,7 @@ public class MainBlueTooth extends BaseActivity {
     // 蓝牙适配器
     BluetoothAdapter mBluetoothAdapter;
 
-    ProgressDialog update_dialog;
+    DialogByLoading update_dialog;
 
     private int useable_time = -1;
     /**
@@ -186,8 +186,8 @@ public class MainBlueTooth extends BaseActivity {
     private boolean mConnected = false;
     private String status = "disconnected";
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-    private ProgressDialog progressDialog;
-    //    private ProgressDialog reprogressDialog;
+    private DialogByLoading progressDialog;
+    //    private DialogByLoading reprogressDialog;
     private Handler mhandler = new Handler();
     @SuppressLint("HandlerLeak")
     private Handler myHandler = new Handler() {
@@ -201,7 +201,7 @@ public class MainBlueTooth extends BaseActivity {
                     wait_text.setVisibility(View.GONE);
 //                    reprogressDialog.dismiss();
                     String state = msg.getData().getString("connect_state");
-                    progressDialog = new ProgressDialog(activity);
+                    progressDialog = new DialogByLoading(activity);
                     progressDialog.setText(state);
                     progressDialog.show();
                     Thread thread = new Thread(new Runnable() {
@@ -432,7 +432,7 @@ public class MainBlueTooth extends BaseActivity {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
             }
         }
-        progressDialog = new ProgressDialog(activity);
+        progressDialog = new DialogByLoading(activity);
         progressDialog.setText("正在检测设备,请稍候...");
         progressDialog.show();
         mHandler = new Handler();
@@ -641,9 +641,9 @@ public class MainBlueTooth extends BaseActivity {
                             if (target_chara == null) {
                                 MyToast.showTheToast(activity, "未链接到设备！");
                             } else {
-                                progressDialog = new ProgressDialog(activity);
+                                progressDialog = new DialogByLoading(activity);
                                 progressDialog.setText("正在设置充电次数，请稍候......");
-                                progressDialog.setcanCancele(false);
+                                progressDialog.setCanCancel(false);
                                 progressDialog.show();
                                 is_charge = 1;
                                 Thread thread = new Thread() {
@@ -742,9 +742,9 @@ public class MainBlueTooth extends BaseActivity {
                                     MyToast.showTheToast(activity, "未链接到设备！");
                                 } else {
                                     //                                updata.setVisibility(View.GONE);
-                                    progressDialog = new ProgressDialog(activity);
+                                    progressDialog = new DialogByLoading(activity);
                                     progressDialog.setText("正在升级充电器，请稍候......");
-                                    progressDialog.setcanCancele(false);
+                                    progressDialog.setCanCancel(false);
                                     progressDialog.show();
                                     try {
                                         Thread.sleep(1000);
@@ -945,9 +945,9 @@ public class MainBlueTooth extends BaseActivity {
                             if (target_chara == null) {
                                 MyToast.showTheToast(activity, "未链接到设备！");
                             } else {
-                                progressDialog = new ProgressDialog(activity);
+                                progressDialog = new DialogByLoading(activity);
                                 progressDialog.setText("正在升级充电器，请稍候......");
-                                progressDialog.setcanCancele(false);
+                                progressDialog.setCanCancel(false);
                                 progressDialog.show();
                                 try {
                                     Thread.sleep(1000);
@@ -1126,9 +1126,9 @@ public class MainBlueTooth extends BaseActivity {
                                         MyToast.showTheToast(activity, "未链接到设备！");
                                     } else {
                                         //                                updata.setVisibility(View.GONE);
-                                        progressDialog = new ProgressDialog(activity);
+                                        progressDialog = new DialogByLoading(activity);
                                         progressDialog.setText("正在升级充电器，请稍候......");
-                                        progressDialog.setcanCancele(false);
+                                        progressDialog.setCanCancel(false);
                                         progressDialog.show();
                                         try {
                                             Thread.sleep(1000);

@@ -5,14 +5,12 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.JavascriptInterface;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -390,7 +388,7 @@ public class Newshoppay extends BaseActivity {
                             }
                         }
                     }
-                    Newshoppay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.new_main_shop_order_item_top_v2, R.layout.main_shop_order_item_top2_v2, R.layout.main_shop_order_item_top_v23});
+                    Newshoppay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.u6_activity_pay_create_order_item, R.layout.u6_activity_pay_create_order_item_v2, R.layout.u6_activity_pay_create_order_item_v3});
                     order_list.setAdapter(simpleAdapter);
                     order_list.setDividerHeight(0);
                     simpleAdapter.notifyDataSetChanged();

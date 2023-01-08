@@ -23,7 +23,9 @@ import com.amap.api.maps.model.MyLocationStyle;
 
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
-import com.android.jidian.client.bean.MapJwduV5Bean;
+import com.android.jidian.client.mvp.bean.ChargeSiteMapBean;
+import com.android.jidian.client.mvp.contract.ChargeSiteMapContract;
+import com.android.jidian.client.mvp.presenter.ChargeSiteMapPresenter;
 import com.android.jidian.client.util.MakerUtils;
 import com.android.jidian.client.util.UserInfoHelper;
 
@@ -232,9 +234,9 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
                     String jingdu = dataArrayList.get(i).getJingdu() + "";
                     String weidu = dataArrayList.get(i).getWeidu() + "";
                     if(jingdu.equals(latLng.longitude + "") && weidu.equals(latLng.latitude + "")){
-//                        ChargeSiteMapBean.DataBean dataBean = dataArrayList.get(i);
-//                        ChargeSiteShowInfo chargeSiteShowInfo = new ChargeSiteShowInfo(activity, dataBean , coordinates[1] , coordinates[0]);
-//                        chargeSiteShowInfo.showPopupWindow();
+                        ChargeSiteMapBean.DataBean dataBean = dataArrayList.get(i);
+                        ChargeSiteShowInfo chargeSiteShowInfo = new ChargeSiteShowInfo(activity, dataBean , coordinates[1] , coordinates[0]);
+                        chargeSiteShowInfo.showPopupWindow();
                     }
                 }
                 return false;

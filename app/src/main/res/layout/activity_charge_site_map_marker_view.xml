@@ -14,7 +14,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/map_triangle"
+                android:src="@drawable/u6_pub_triangle_down"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
@@ -23,7 +23,7 @@
                 android:layout_marginRight="2.5dp"/>
 
             <ImageView
-                android:background="@drawable/circular_green_33cc66_100"
+                android:background="@drawable/u6_shape_d7a64a_corner_100"
                 android:layout_width="30dp"
                 android:layout_height="30dp"/>
 
@@ -51,7 +51,7 @@
                 android:text="9"
                 android:gravity="center"
                 android:textColor="#ffffff"
-                android:background="@drawable/circular_green_33cc66_100"/>
+                android:background="@drawable/u6_shape_d7a64a_corner_100"/>
 
         </RelativeLayout>
 
@@ -71,7 +71,7 @@
             android:textSize="15dp"
             android:text="11"
             android:layout_marginTop="2dp"
-            android:textColor="@color/green_33cc66"/>
+            android:textColor="@color/yellow_D7A64A"/>
 
     </LinearLayout>
 

@@ -2,28 +2,25 @@ package com.android.jidian.client.base;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
+
 import android.view.MotionEvent;
 
-import com.android.jidian.client.R;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.base.inputManager.InputManager;
-import com.android.jidian.client.widgets.ProgressDialog;
-import com.gyf.barlibrary.ImmersionBar;
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
-import me.jessyan.autosize.AutoSizeConfig;
 
 public class U6BaseActivity extends AppCompatActivity {
 
     protected static final String TAG = "BaseActivity";
     //上下文
-    protected Activity activity;
+    protected FragmentActivity activity;
     //软键盘
     protected InputManager inputManager;
     //butterKnife
@@ -33,7 +30,7 @@ public class U6BaseActivity extends AppCompatActivity {
     //广播
     protected BroadcastManager broadcastManager;
     //提示框
-    protected ProgressDialog progressDialog;
+    protected DialogByLoading progressDialog;
     //用户数据
     protected SharedPreferences sharedPreferences;
     protected String uid;
@@ -47,7 +44,7 @@ public class U6BaseActivity extends AppCompatActivity {
         uid = sharedPreferences.getString("id", "");
         apptoken = sharedPreferences.getString("apptoken", "");
 
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new DialogByLoading(this);
 
         unbinder = ButterKnife.bind(this);
 

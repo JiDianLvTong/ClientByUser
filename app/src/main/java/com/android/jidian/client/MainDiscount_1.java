@@ -296,7 +296,7 @@ public class MainDiscount_1 extends BaseFragment implements AbsListView.OnScroll
                                 }else {
                                     HttpDiscount(id_sre);
                                 }
-//                                progressDialog.show();
+//                                dialogByLoading.show();
                             }
                         }
                     });
@@ -455,7 +455,7 @@ public class MainDiscount_1 extends BaseFragment implements AbsListView.OnScroll
                             tDialog.dismiss();
                             break;
                         case R.id.textView3:
-//                            progressDialog.show();
+//                            dialogByLoading.show();
                             HttpDiscount(id_sre);
 //                            number.setText("");
                             tDialog.dismiss();

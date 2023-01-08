@@ -7,11 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -26,9 +26,6 @@ import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.base.BaseFragment;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -227,12 +224,12 @@ public class AdvicesListsFragment2 extends BaseFragment<AdvicesLists2Presenter> 
 
     @Override
     public void showProgress() {
-        progressDialog.show();
+        dialogByLoading.show();
     }
 
     @Override
     public void hideProgress() {
-        progressDialog.dismiss();
+        dialogByLoading.dismiss();
     }
 
     @Override

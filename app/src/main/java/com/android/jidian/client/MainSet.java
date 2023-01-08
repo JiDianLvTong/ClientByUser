@@ -6,17 +6,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.mvp.ui.activity.H5.MainAbout;
-import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
-import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
-import com.android.jidian.client.mvp.ui.dialog.LogoutDialogFragment;
+import com.android.jidian.client.mvp.ui.activity.h5.MainAbout;
+import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
@@ -67,28 +66,28 @@ public class MainSet extends BaseActivity {
             this.finish();
         } else if (v.getId() == R.id.logout) {
             //点击退出登录
-            BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_LOG_OUT);
-            LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            logoutDialogFragment.setOnDialogItemClickListener(new LogoutDialogFragment.OnDialogItemClickListener() {
-                @Override
-                public void onSuccessClick() {
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("user_avatar", "");
-                    editor.clear();
-                    editor.apply();
-                    activity.finish();
-//                    startActivity(new Intent(MainSet.this, MainActivity.class));
-                    //通知主页刷新数据
-//                    Main.handleRefreshMarker.sendEmptyMessage(1);
-//                    MyToast.showTheToast(MainSet.this, "正在刷新站点数据，请稍候");
-                }
-
-                @Override
-                public void onErrorClick() {
-                }
-            });
-            logoutDialogFragment.show(fragmentTransaction, "LOGOUT");
+//            BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_LOG_OUT);
+//            LogoutDialogFragment logoutDialogFragment = new LogoutDialogFragment();
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            logoutDialogFragment.setOnDialogItemClickListener(new LogoutDialogFragment.OnDialogItemClickListener() {
+//                @Override
+//                public void onSuccessClick() {
+//                    SharedPreferences.Editor editor = sharedPreferences.edit();
+//                    editor.putString("user_avatar", "");
+//                    editor.clear();
+//                    editor.apply();
+//                    activity.finish();
+////                    startActivity(new Intent(MainSet.this, MainActivity.class));
+//                    //通知主页刷新数据
+////                    Main.handleRefreshMarker.sendEmptyMessage(1);
+////                    MyToast.showTheToast(MainSet.this, "正在刷新站点数据，请稍候");
+//                }
+//
+//                @Override
+//                public void onErrorClick() {
+//                }
+//            });
+//            logoutDialogFragment.show(fragmentTransaction, "LOGOUT");
         } else if (v.getId() == R.id.about) {
             //点击关于我们
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SYSTEM_SETTINGS_ABOUT_US);

@@ -8,7 +8,7 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,7 @@ import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -164,7 +164,7 @@ public class MainShopItem_2 extends BaseFragment {
         if (getActivity() != null) {
             //点击扫一扫按钮
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HELLO_MALL_SCAN);
-            Intent intent = new Intent(getActivity(), ScanCodeNewActivity.class);
+            Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
             getActivity().startActivityForResult(intent, 0x0005);
         }
     }

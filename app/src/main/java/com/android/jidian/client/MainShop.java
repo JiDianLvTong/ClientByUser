@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
@@ -19,7 +19,7 @@ import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -208,7 +208,7 @@ public class MainShop extends BaseFragmentActivity {
     void scan_panel_text() {
         //点击扫一扫按钮
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HELLO_MALL_SCAN);
-        Intent intent = new Intent(activity, ScanCodeNewActivity.class);
+        Intent intent = new Intent(activity, ScanCodeActivity.class);
         activity.startActivityForResult(intent, 0x0005);
     }
 

@@ -167,12 +167,12 @@ public class MainInfo extends BaseActivity {
                                                 } catch (JSONException e) {
                                                     System.out.println(e.getLocalizedMessage());
                                                 }
-                                                Intent intent = new Intent(activity, MainAuthenticationIS_.class);
-                                                intent.putExtra("id_card", id_card);
-                                                intent.putExtra("real_name", real_name);
-                                                intent.putExtra("front_img", front_img);
-                                                intent.putExtra("reverse_img", reverse_img);
-                                                activity.startActivity(intent);
+//                                                Intent intent = new Intent(activity, MainAuthenticationIS_.class);
+//                                                intent.putExtra("id_card", id_card);
+//                                                intent.putExtra("real_name", real_name);
+//                                                intent.putExtra("front_img", front_img);
+//                                                intent.putExtra("reverse_img", reverse_img);
+//                                                activity.startActivity(intent);
                                             } else {
                                                 MyToast.showTheToast(MainInfo.this, "当前应用缺少必要权限 ");
                                             }

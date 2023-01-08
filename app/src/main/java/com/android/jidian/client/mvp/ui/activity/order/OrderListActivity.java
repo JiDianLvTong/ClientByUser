@@ -3,9 +3,9 @@ package com.android.jidian.client.mvp.ui.activity.order;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +16,7 @@ import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.UserUOrderBean;
 import com.android.jidian.client.mvp.contract.OrderListContract;
 import com.android.jidian.client.mvp.presenter.OrderListPresenter;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByConfirmOrder;
 import com.android.jidian.client.mvp.ui.adapter.OrderListAdapter;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -67,11 +68,9 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
             public void OnClickItem(UserUOrderBean.DataBean.ListsBean bean) {
                 if ("待支付".equals(bean.getStatus_desc())) {
                     //点击待支付订单
-                    Intent intent = new Intent(activity, MainShopOrder_.class);
-                    intent.putExtra("order_num", bean.getOrder_num());
-                    intent.putExtra("type", bean.getType());
-                    intent.putExtra("from", "order");
-                    intent.putExtra("select_pack_month", bean.getSelect_pack_month());
+                    Intent intent = new Intent(activity, PayByConfirmOrder.class);
+                    intent.putExtra("orderno", bean.getOrder_num());
+                    intent.putExtra("fee", bean.getOrder_fee());
                     startActivity(intent);
                 }
             }
@@ -93,8 +92,8 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
     }
 
     @OnClick(R.id.pageReturn)
-    public void onClickPagferReturn() {
-        finish();
+    public void onClickPageReturn() {
+        activity.finish();
     }
 
     private void requestData(boolean isRefresh) {

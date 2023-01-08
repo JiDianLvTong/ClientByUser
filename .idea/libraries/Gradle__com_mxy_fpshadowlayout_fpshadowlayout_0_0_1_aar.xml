@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/d7302a56e7cc2d58fad6841fc7591ca4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/d7302a56e7cc2d58fad6841fc7591ca4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/d7302a56e7cc2d58fad6841fc7591ca4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/fe3fecda0b3f0c2c401f79a1ed2a135e/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/fe3fecda0b3f0c2c401f79a1ed2a135e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/fpshadowlayout-0.0.1.aar/fe3fecda0b3f0c2c401f79a1ed2a135e/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-fpshadowlayout-0.0.1.aar/fbe22a7c471a10f26677e4b2bf88719f/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-fpshadowlayout-0.0.1.aar/fbe22a7c471a10f26677e4b2bf88719f/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-fpshadowlayout-0.0.1.aar/fbe22a7c471a10f26677e4b2bf88719f/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

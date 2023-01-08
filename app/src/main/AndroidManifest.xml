@@ -106,6 +106,27 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- 购买换电币 -->
+        <activity
+            android:name=".mvp.ui.activity.pay.PayByCoinActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的优惠卷 -->
+        <activity
+            android:name=".mvp.ui.activity.coupon.CouponActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的优惠卷 - 选择使用-->
+        <activity
+            android:name=".mvp.ui.activity.coupon.CouponPickActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <!-- 我的个人资料 -->
         <activity
             android:name=".mvp.ui.activity.userInfo.PersonalInfoActivity"
@@ -115,7 +136,21 @@
 
         <!-- 我的个人资料 - 修改手机 -->
         <activity
-            android:name=".mvp.ui.activity.userInfo.MainInfoPhoneActivity"
+            android:name=".mvp.ui.activity.userInfo.PersonalInfoPhoneActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的个人资料 - 实名认证 - 已认证 -->
+        <activity
+            android:name=".mvp.ui.activity.userInfo.PersonalInfoAuthenticationIS"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 我的个人资料 - 实名认证 - 未认证 -->
+        <activity
+            android:name=".mvp.ui.activity.userInfo.PersonalInfoAuthentication"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -134,30 +169,58 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
+        <!-- 创建订单 -->
+        <activity
+            android:name=".mvp.ui.activity.pay.PayByCreateOrderActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 创建订单 - 芝麻 -->
+        <activity
+            android:name=".mvp.ui.activity.pay.PayByCreateOrderZhiMaActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 支付订单 -->
+        <activity
+            android:name=".mvp.ui.activity.pay.PayByConfirmOrder"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <!-- 创建订单 - 续费 -->
+        <activity
+            android:name=".mvp.ui.activity.pay.PayByReNew"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <!-- H5页面 - 用户协议 -->
         <activity
-            android:name=".mvp.ui.activity.H5.MainAgreement"
+            android:name=".mvp.ui.activity.h5.MainAgreement"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <!-- H5页面 - 关于我们 -->
         <activity
-            android:name=".mvp.ui.activity.H5.MainAbout"
+            android:name=".mvp.ui.activity.h5.MainAbout"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
 
         <!-- H5页面 - 隐私政策 -->
         <activity
-            android:name=".mvp.ui.activity.H5.MainPrivacyClause"
+            android:name=".mvp.ui.activity.h5.MainPrivacyClause"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <!-- H5页面 - 更多问题 -->
         <activity
-            android:name=".mvp.ui.activity.H5.MainMoreQuestion"
+            android:name=".mvp.ui.activity.h5.MainMoreQuestion"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -332,16 +395,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.ui.activity.EvaluateAddsActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.ui.activity.EvaluationListsActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -364,16 +417,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".MainAgreement_"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".MainQibei_H5_"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
             android:name=".MainRecordEvaluate_"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
@@ -389,11 +432,6 @@
         <activity
             android:name=".MainDiscount_"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.ui.activity.NewWalletActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
@@ -423,11 +461,6 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".MainAuthenticationIS_"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".MainInfoPhone_"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -500,7 +533,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name=".mvp.ui.activity.ScanCodeNewActivity"
+            android:name=".mvp.ui.activity.pub.ScanCodeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
@@ -533,16 +566,6 @@
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
-        <activity
-            android:name=".mvp.ui.activity.InviteActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.ui.activity.InviteDetailActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".mvp.ui.activity.CashWithdrawalRecordActivity"
             android:launchMode="singleTask"
@@ -579,7 +602,7 @@
         </receiver>
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.android.jidian.client.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">

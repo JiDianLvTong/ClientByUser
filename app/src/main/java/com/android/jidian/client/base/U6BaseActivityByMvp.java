@@ -1,7 +1,7 @@
 package com.android.jidian.client.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.android.jidian.client.widgets.MyToast;
 

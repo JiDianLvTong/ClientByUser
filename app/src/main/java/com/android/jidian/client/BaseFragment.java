@@ -3,19 +3,19 @@ package com.android.jidian.client;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.jidian.client.widgets.ProgressDialog;
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 
 public class BaseFragment extends Fragment {
 
-    protected ProgressDialog progressDialog;
+    protected DialogByLoading progressDialog;
     protected SharedPreferences sharedPreferences;
     protected String uid;
 
@@ -29,6 +29,6 @@ public class BaseFragment extends Fragment {
     protected void initParam() {
         sharedPreferences = requireActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
         uid = sharedPreferences.getString("id", "");
-        progressDialog = new ProgressDialog(requireActivity());
+        progressDialog = new DialogByLoading(requireActivity());
     }
 }

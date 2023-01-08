@@ -32,7 +32,7 @@ import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserConfirmBean;
 import com.android.jidian.client.bean.UserPersonalBean;
 import com.android.jidian.client.bean.UserUOrderBean;
-import com.android.jidian.client.mvp.ui.activity.map.ChargeSiteMapBean;
+import com.android.jidian.client.mvp.bean.ChargeSiteMapBean;
 
 import io.reactivex.Flowable;
 import okhttp3.ResponseBody;

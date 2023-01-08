@@ -107,7 +107,7 @@
                                     android:layout_width="15dp"
                                     android:layout_height="15dp"
                                     android:layout_marginStart="15dp"
-                                    android:src="@drawable/youhuiquan" />
+                                    android:src="@drawable/u6_pay_order_create_coupon" />
 
                                 <TextView
                                     android:layout_width="0dp"
@@ -235,13 +235,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
-        <wendu.dsbridge.DWebView
-            android:id="@+id/web_view"
-            android:visibility="gone"
-            android:background="@color/transparent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </FrameLayout>
 

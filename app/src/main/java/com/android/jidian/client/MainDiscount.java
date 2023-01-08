@@ -5,10 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -25,7 +25,7 @@ import android.widget.Toast;
 
 import com.android.jidian.client.bean.ScanCodeEventBean;
 import com.android.jidian.client.mvp.ui.activity.CouponCashv2Activity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.widgets.MyFragmentPagerAdapter;
 import com.android.jidian.client.http.HeaderTypeData;
@@ -159,8 +159,8 @@ public class MainDiscount extends BaseFragmentActivity {
         BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_UNUSED_MY_COUPONS_SCAN);
         Toast.makeText(activity, "打开扫描", Toast.LENGTH_SHORT).show();
 
-        Intent mIntent = new Intent(activity, ScanCodeNewActivity.class);
-        mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "3");
+        Intent mIntent = new Intent(activity, ScanCodeActivity.class);
+        mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "3");
         startActivity(mIntent);
     }
 

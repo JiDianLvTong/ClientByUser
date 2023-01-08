@@ -1,9 +1,9 @@
 package com.android.jidian.client.mvp.ui.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.android.jidian.client.R;
 
 /**
- * 描述：拨打电话的弹窗碎片，被多个页面使用
  * modified by 田彦宇 20190418
  */
 public class AutenticationFragment extends DialogFragment implements View.OnClickListener {

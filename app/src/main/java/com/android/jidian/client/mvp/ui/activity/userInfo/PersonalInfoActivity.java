@@ -2,21 +2,28 @@ package com.android.jidian.client.mvp.ui.activity.userInfo;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.MainAuthenticationIS_;
-import com.android.jidian.client.MainAuthentication_;
+import androidx.annotation.NonNull;
+
 import com.android.jidian.client.R;
+import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.UserPersonalBean;
 import com.android.jidian.client.mvp.contract.PersonalInfoContract;
 import com.android.jidian.client.mvp.presenter.PersonalInfoPresenter;
+import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.widgets.MyToast;
 import com.bumptech.glide.Glide;
 import com.permissionx.guolindev.PermissionX;
+import com.scwang.smart.refresh.header.MaterialHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,10 +45,12 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
     LinearLayout authentication_panel;
     @BindView(R.id.authenticationView)
     TextView authenticationView;
+    @BindView(R.id.smartRefreshLayout)
+    public SmartRefreshLayout smartRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.u6_activity_persional_info);
+        setContentView(R.layout.u6_activity_personal_info);
         super.onCreate(savedInstanceState);
     }
 
@@ -49,6 +58,27 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
     public void initView() {
         mPresenter = new PersonalInfoPresenter();
         mPresenter.attachView(this);
+        MaterialHeader materialHeader = new MaterialHeader(activity);
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        smartRefreshLayout.setRefreshHeader(materialHeader);
+        smartRefreshLayout.setEnableHeaderTranslationContent(true);
+        smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull com.scwang.smart.refresh.layout.api.RefreshLayout refreshLayout) {
+                if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
+                    mPresenter.requestUserPersonal(uid);
+                } else {
+                    smartRefreshLayout.finishRefresh();
+                }
+
+            }
+        });
+        smartRefreshLayout.setEnableLoadMore(false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         mPresenter.requestUserPersonal(uid);
     }
 
@@ -59,7 +89,7 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
 
     @Override
     public void requestUserPersonalSuccess(UserPersonalBean bean) {
-
+        smartRefreshLayout.finishRefresh();
         String img = bean.getData().getAvater();
         String phone = bean.getData().getPhone();
         String str1 = phone.substring(0, 3);
@@ -70,7 +100,7 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
             @Override
             public void onClick(View v) {
                 //点击手机号
-                Intent intent = new Intent(activity, MainInfoPhoneActivity.class);
+                Intent intent = new Intent(activity, PersonalInfoPhoneActivity.class);
                 intent.putExtra("phone", phone);
                 activity.startActivity(intent);
             }
@@ -83,44 +113,22 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
             authentication_panel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //点击实名认证
-                    PermissionX.init(PersonalInfoActivity.this)
-                            .permissions(Manifest.permission.CAMERA)
-                            .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                            .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                            .request((allGranted, grantedList, deniedList) -> {
-                                if (allGranted) {
-                                    Intent intent = new Intent(activity, MainAuthentication_.class);
-                                    intent.putExtra("ali_face_url", ali_face_url);
-                                    intent.putExtra("ali_face_appcode", ali_face_appcode);
-                                    activity.startActivity(intent);
-                                } else {
-                                    MyToast.showTheToast(PersonalInfoActivity.this, "当前应用缺少必要权限 ");
-                                }
-                            });
+                    Intent intent = new Intent(activity, PersonalInfoAuthentication.class);
+                    intent.putExtra("ali_face_url", ali_face_url);
+                    intent.putExtra("ali_face_appcode", ali_face_appcode);
+                    activity.startActivity(intent);
                 }
             });
         } else {
             authentication_panel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //点击实名认证
-                    PermissionX.init(PersonalInfoActivity.this)
-                            .permissions(Manifest.permission.CAMERA)
-                            .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                            .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                            .request((allGranted, grantedList, deniedList) -> {
-                                if (allGranted) {
-                                    Intent intent = new Intent(activity, MainAuthenticationIS_.class);
-                                    intent.putExtra("id_card", bean.getData().getId_card());
-                                    intent.putExtra("real_name", bean.getData().getReal_name());
-                                    intent.putExtra("front_img", bean.getData().getFront_img());
-                                    intent.putExtra("reverse_img", bean.getData().getReverse_img());
-                                    activity.startActivity(intent);
-                                } else {
-                                    MyToast.showTheToast(PersonalInfoActivity.this, "当前应用缺少必要权限 ");
-                                }
-                            });
+                    Intent intent = new Intent(activity, PersonalInfoAuthenticationIS.class);
+                    intent.putExtra("id_card", bean.getData().getId_card());
+                    intent.putExtra("real_name", bean.getData().getReal_name());
+                    intent.putExtra("front_img", bean.getData().getFront_img());
+                    intent.putExtra("reverse_img", bean.getData().getReverse_img());
+                    activity.startActivity(intent);
                 }
             });
         }
@@ -128,6 +136,7 @@ public class PersonalInfoActivity extends U6BaseActivityByMvp<PersonalInfoPresen
 
     @Override
     public void requestUserPersonalFail(String msg) {
+        smartRefreshLayout.finishRefresh();
         showMessage(msg);
     }
 

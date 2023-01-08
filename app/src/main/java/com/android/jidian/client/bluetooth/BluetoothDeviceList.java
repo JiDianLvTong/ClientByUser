@@ -352,7 +352,7 @@ public class BluetoothDeviceList {
                 public void run() {
                     Log.i(TAG, "stop.....................");
                     mBluetoothAdapter.stopLeScan(mLeScanCallback);
-//					progressDialog.dismiss();
+//					dialogByLoading.dismiss();
 //					if (target_chara == null) {
 //						MyToast.showTheToast(activity, "未发现充电器设备");
 //					}

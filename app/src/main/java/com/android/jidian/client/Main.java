@@ -32,14 +32,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -76,10 +80,7 @@ import com.android.jidian.client.bean.PullActivityIndexBean;
 import com.android.jidian.client.bluetooth.BluetoothDeviceList;
 import com.android.jidian.client.bluetooth.BluetoothSpp;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
-import com.android.jidian.client.mvp.ui.activity.EvaluationListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.mvp.ui.adapter.MainSceneDialogSecondAdapter;
 import com.android.jidian.client.adapter.SimpleAdapters;
 import com.android.jidian.client.bean.AdvicesNumsV2Bean;
@@ -116,10 +117,6 @@ import com.android.jidian.client.util.ViewUtil;
 import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.dialog.CommonPopupWindow;
 import com.android.jidian.client.widgets.MyScrollView;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment1;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment2;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment3;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment4;
 import com.android.jidian.client.widgets.PersonalInfoDrawerMenu;
 import com.android.jidian.client.widgets.ViewPagerAdapter;
 import com.bumptech.glide.Glide;
@@ -698,24 +695,24 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         initViewpager();
     }
 
-    private BlankFragment1 blankFragment1;
-    private BlankFragment2 blankFragment2;
-    private BlankFragment3 blankFragment3;
-    private BlankFragment4 blankFragment4;
+//    private BlankFragment1 blankFragment1;
+//    private BlankFragment2 blankFragment2;
+//    private BlankFragment3 blankFragment3;
+//    private BlankFragment4 blankFragment4;
 
     private void initViewpager() {
         String jingdu = longitude == 0 ? "" : longitude.toString();
         String weidu = latitude == 0 ? "" : latitude.toString();
         List<Fragment> fragments = new ArrayList<>();
-        blankFragment1 = BlankFragment1.newInstance(jingdu, weidu, type + "");
-        blankFragment2 = BlankFragment2.newInstance(jingdu, weidu);
-        blankFragment3 = BlankFragment3.newInstance(jingdu, weidu);
-        blankFragment4 = BlankFragment4.newInstance(jingdu, weidu);
-        fragments.add(blankFragment1);
-        fragments.add(blankFragment2);
-        fragments.add(blankFragment3);
-        fragments.add(blankFragment4);
-        fragments.add(new android.support.v4.app.DialogFragment());
+//        blankFragment1 = BlankFragment1.newInstance(jingdu, weidu, type + "");
+//        blankFragment2 = BlankFragment2.newInstance(jingdu, weidu);
+//        blankFragment3 = BlankFragment3.newInstance(jingdu, weidu);
+//        blankFragment4 = BlankFragment4.newInstance(jingdu, weidu);
+//        fragments.add(blankFragment1);
+//        fragments.add(blankFragment2);
+//        fragments.add(blankFragment3);
+//        fragments.add(blankFragment4);
+        fragments.add(new DialogFragment());
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments, titleStrings);
         home_viewPager.setAdapter(adapter);
         home_tabLayout.setupWithViewPager(home_viewPager);
@@ -1124,18 +1121,18 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                         home_viewPager.setVisibility(View.GONE);
                     } else {
                         home_viewPager.setVisibility(View.VISIBLE);
-                        if (blankFragment1 != null) {
-                            blankFragment1.refreshData(type + "");
-                        }
-                        if (blankFragment2 != null) {
-                            blankFragment2.refreshData();
-                        }
-                        if (blankFragment3 != null) {
-                            blankFragment3.refreshData();
-                        }
-                        if (blankFragment4 != null) {
-                            blankFragment4.refreshData();
-                        }
+//                        if (blankFragment1 != null) {
+//                            blankFragment1.refreshData(type + "");
+//                        }
+//                        if (blankFragment2 != null) {
+//                            blankFragment2.refreshData();
+//                        }
+//                        if (blankFragment3 != null) {
+//                            blankFragment3.refreshData();
+//                        }
+//                        if (blankFragment4 != null) {
+//                            blankFragment4.refreshData();
+//                        }
                     }
                 }
                 break;
@@ -1435,8 +1432,8 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                     if (TextUtils.isEmpty(uid)) {
                         activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
-                        Intent mIntent = new Intent(activity, ScanCodeNewActivity.class);
-                        mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+                        Intent mIntent = new Intent(activity, ScanCodeActivity.class);
+                        mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
                         startActivity(mIntent);
                     }
                 }
@@ -2340,7 +2337,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         if (rightBtnBean != null) {
             if ("1".equals(rightBtnBean.getIs_jump())) {
                 if ("Wallet/v".equals(rightBtnBean.getJump_to())) {
-                    startActivity(new Intent(activity, NewWalletActivity.class));
+//                    startActivity(new Intent(activity, NewWalletActivity.class));
                 } else if ("Goods/buy".equals(rightBtnBean.getJump_to())) {
 //                    Intent intent = new Intent(activity, MainShop_.class);
 //                    AdvicesNumsV2Bean.ParamBean paramBean = rightBtnBean.getParam();
@@ -2512,11 +2509,11 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SITE_DETAILS_COMMENT);
                 if (!uid.isEmpty()) {
                     requestHttpVisitLogs("站点详情-评价", "114");
-                    Intent intent = new Intent(Main.this, EvaluationListsActivity.class);
-                    intent.putExtra("cabid", dataBean.getCabid());
-                    intent.putExtra("name", dataBean.getName());
-                    intent.putExtra("repair", repair);
-                    startActivity(intent);
+//                    Intent intent = new Intent(Main.this, EvaluationListsActivity.class);
+//                    intent.putExtra("cabid", dataBean.getCabid());
+//                    intent.putExtra("name", dataBean.getName());
+//                    intent.putExtra("repair", repair);
+//                    startActivity(intent);
                 } else {
                     showMessage("请先进行登录！");
                     activity.startActivity(new Intent(activity, LoginActivity.class));
@@ -2895,7 +2892,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
 //                public void run() {
 //                    Log.e(TAG, "stop.....................");
 //                    mBluetoothAdapter.stopLeScan(mLeScanCallback);
-//                    progressDialog.dismiss();
+//                    dialogByLoading.dismiss();
 //                    if (target_chara == null) {
 ////                        MyToast.showTheToast(activity, "未发现充电器设备");
 //                    }
@@ -2929,7 +2926,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
 //                    if (device_name.equals("XD-01")) {
 ////                    if (device_name.equals("HC-08")) {
 ////                        scanLeDevice(false);
-////                        progressDialog.dismiss();
+////                        dialogByLoading.dismiss();
 ////                        MyToast.showTheToast(activity, "已经发现设备！");
 //                        mDeviceAddress = device.getAddress();
 ////                        mDeviceName = device_name;

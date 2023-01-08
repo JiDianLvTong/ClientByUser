@@ -8,14 +8,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.JavascriptInterface;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -27,6 +26,7 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
+import com.android.jidian.client.mvp.ui.activity.pay.MainPay;
 import com.android.jidian.client.mvp.ui.dialog.SelectTypeDialog;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.Util;
@@ -507,7 +507,7 @@ public class Newpay extends BaseActivity {
                             }
                         }
                     }
-                    Newpay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.main_shop_order_item_top_v21, R.layout.main_shop_order_item_top2_v2, R.layout.main_shop_order_item_top_v22});
+                    Newpay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.u6_activity_pay_create_order_item_v4, R.layout.u6_activity_pay_create_order_item_v2, R.layout.u6_activity_pay_create_order_item_v5});
                     order_list.setAdapter(simpleAdapter);
                     order_list.setDividerHeight(0);
                     simpleAdapter.notifyDataSetChanged();

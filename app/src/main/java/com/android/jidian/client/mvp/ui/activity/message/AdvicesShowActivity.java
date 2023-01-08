@@ -3,7 +3,7 @@ package com.android.jidian.client.mvp.ui.activity.message;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -63,9 +63,9 @@ public class AdvicesShowActivity extends BaseActivity {
                 int expire = dataBean.getExpire();
                 Drawable d;
                 if (expire == 0) {
-                    d = ContextCompat.getDrawable(this, R.drawable.image032501);
+                    d = ContextCompat.getDrawable(this, R.drawable.u6_message_item_type_1);
                 } else {
-                    d = ContextCompat.getDrawable(this, R.drawable.image032502);
+                    d = ContextCompat.getDrawable(this, R.drawable.u6_message_item_type_2);
                 }
                 if (d != null) {
                     d.setBounds(0, 0, ViewUtil.dp2px(this, 32), ViewUtil.dp2px(this, 18));

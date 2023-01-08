@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:background="@drawable/shape_ffffff_radius_5">
+    android:layout_margin="5dp"
+    android:background="@drawable/u6_shape_33ffffff_corner_10"
+    android:orientation="vertical"
+    android:padding="15dp">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,94 +22,105 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView1"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:src="@drawable/image032503" />
+                android:background="@drawable/u6_shape_d7a64a_corner_100"
+                android:padding="5dp"/>
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="center"
+                android:src="@drawable/u6_message_item_alert" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="6.5dp"
                 android:layout_height="6.5dp"
                 android:layout_gravity="end|top"
-                android:src="@drawable/red_circle_8dp" />
+                android:src="@drawable/u6_shape_ff0000_corner_100" />
         </FrameLayout>
 
-        <TextView
-            android:id="@+id/tv_item_msg_system_title"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7.5dp"
-            android:ellipsize="end"
-            android:maxWidth="145dp"
-            android:maxLines="1"
-            android:paddingEnd="5dp"
-            android:textColor="@color/color_333333"
-            android:textSize="16sp"
-            tools:text="关于今晚预警的通知 " />
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/iv_item_msg_system_ing"
-            android:layout_width="32dp"
-            android:layout_height="18dp"
-            android:src="@drawable/image032502" />
+            <TextView
+                android:id="@+id/tv_item_msg_system_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxWidth="145dp"
+                android:maxLines="1"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white_ffffff"
+                android:textSize="15sp"
+                tools:text="关于今晚预警的通知 " />
+
+            <ImageView
+                android:id="@+id/iv_item_msg_system_ing"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/u6_message_item_type_2" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_item_msg_system_time"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:layout_weight="1"
             android:gravity="right"
-            android:textColor="@color/color_999999"
-            android:textSize="14sp"
+            android:textColor="@color/color_CCCCCC"
+            android:textSize="13sp"
             tools:text="2020-12-25" />
+
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_item_msg_system_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="15dp"
         android:ellipsize="end"
         android:lineSpacingExtra="1dp"
         android:maxLines="2"
-        android:textColor="@color/color_666666"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-        tools:text="您的换电次数即将消耗完" />
+        android:textColor="@color/color_CCCCCC"
+        android:textSize="13sp"
+        android:text="您的换电次数即将消耗完"
+        android:layout_marginTop="15dp"/>
 
     <TextView
         android:id="@+id/divider"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="14.5dp"
-        android:layout_marginEnd="15dp"
-        android:background="@color/color_EEEEEE"
-        app:layout_constraintTop_toBottomOf="@+id/tv_item_msg_system_content" />
+        android:layout_height="1px"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_CCCCCC"/>
 
-    <TextView
-        android:id="@+id/tv_item_msg_system_lookdetail"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:paddingTop="13dp"
-        android:paddingBottom="16.5dp"
-        android:text="@string/str_viewdetails"
-        android:textColor="@color/color_333333"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
+        android:orientation="horizontal"
+        android:gravity="center">
 
-    <ImageView
-        android:layout_width="13dp"
-        android:layout_height="13dp"
-        android:layout_marginEnd="12.5dp"
-        android:src="@drawable/icon_right_arrow_normal"
-        app:layout_constraintBottom_toBottomOf="@id/tv_item_msg_system_lookdetail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_item_msg_system_lookdetail" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_item_msg_system_lookdetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="查看详情"
+            android:textColor="@color/white_ffffff"
+            android:textSize="13sp"/>
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/u6_pub_page_arrow_right_white"/>
+
+    </LinearLayout>
+
+</LinearLayout>

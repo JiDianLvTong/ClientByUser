@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/265cb870704f68238145de6016726f25/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/265cb870704f68238145de6016726f25/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/265cb870704f68238145de6016726f25/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/10637ee5d4af2bf63b61bf812873acb1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/10637ee5d4af2bf63b61bf812873acb1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/NumberPickerView-1.1.1.aar/10637ee5d4af2bf63b61bf812873acb1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-NumberPickerView-1.1.1.aar/d20979058fbec92a5caa5563d0a1be61/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-NumberPickerView-1.1.1.aar/d20979058fbec92a5caa5563d0a1be61/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-NumberPickerView-1.1.1.aar/d20979058fbec92a5caa5563d0a1be61/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

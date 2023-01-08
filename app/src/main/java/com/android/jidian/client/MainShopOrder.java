@@ -19,6 +19,7 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
+import com.android.jidian.client.mvp.ui.activity.pay.MainPay;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
@@ -291,7 +292,7 @@ public class MainShopOrder extends BaseActivity {
                             pay_type = Integer.parseInt(datalist.get(0).get("type"));
                         }
                     }
-                    myBaseAdapter = new MyBaseAdapter(activity, datalist, R.layout.main_shop_order_item);
+                    myBaseAdapter = new MyBaseAdapter(activity, datalist, R.layout.u6_activity_pay_order_confirm_item);
                     listview.setAdapter(myBaseAdapter);
                     listview.setDividerHeight(0);
                     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -384,9 +385,9 @@ public class MainShopOrder extends BaseActivity {
                 Glide.with(activity).load(data.get(position).get("img_url")).into(viewHolder.i_1);
             }
             if (position == is_select) {
-                Glide.with(activity).load(R.drawable.zf3).into(viewHolder.i_2);
+                Glide.with(activity).load(R.drawable.u6_pub_select_check).into(viewHolder.i_2);
             } else {
-                Glide.with(activity).load(R.drawable.zf4).into(viewHolder.i_2);
+                Glide.with(activity).load(R.drawable.u6_pub_select_uncheck).into(viewHolder.i_2);
             }
             viewHolder.t_1.setText(data.get(position).get("payer"));
             viewHolder.tv_order_confirm_type_one.setVisibility((!showWxChatPay && position == data.size() - 1) ? View.GONE : View.VISIBLE);

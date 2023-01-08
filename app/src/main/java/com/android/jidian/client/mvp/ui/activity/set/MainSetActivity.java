@@ -3,7 +3,7 @@ package com.android.jidian.client.mvp.ui.activity.set;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,11 +13,12 @@ import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.bean.BaseBean;
 import com.android.jidian.client.mvp.contract.MainSetContract;
 import com.android.jidian.client.mvp.presenter.MainSetPresenter;
-import com.android.jidian.client.mvp.ui.activity.H5.MainAbout;
-import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
-import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.activity.h5.MainAbout;
+import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
 import com.android.jidian.client.mvp.ui.dialog.SplashAgainAgreeDialog;
-import com.android.jidian.client.mvp.ui.dialog.UserLogOffDialog;
+import com.android.jidian.client.mvp.ui.dialog.DialogByLogoff;
 import com.android.jidian.client.pub.PubFunction;
 
 import butterknife.BindView;
@@ -84,9 +85,9 @@ public class MainSetActivity extends U6BaseActivityByMvp<MainSetPresenter> imple
 
     @OnClick(R.id.cancellation)
     public void OnClickCancellation() {
-        new UserLogOffDialog().init(MainSetActivity.this, new UserLogOffDialog.OnClickListener() {
+        new DialogByLogoff(activity, new DialogByLogoff.DialogChoiceListener() {
             @Override
-            public void OnSuccessClick(String code) {
+            public void enterReturn(String code) {
                 if (mPresenter != null) {
                     mMsgCode = code;
                     mPresenter.requestUserCancel(uid,code,null);
@@ -94,24 +95,24 @@ public class MainSetActivity extends U6BaseActivityByMvp<MainSetPresenter> imple
             }
 
             @Override
-            public void OnFailClick() {
+            public void cancelReturn() {
 
             }
 
             @Override
-            public void OnVerifiCodeClick() {
+            public void verificationCodeClick() {
                 if (mPresenter != null) {
                     mPresenter.requestUserSmsCancel();
                 }
             }
-        }).setPosition(Gravity.CENTER).setWidth(1).setOutCancel(false).show(getSupportFragmentManager());
+        }).showPopupWindow();
     }
 
     @OnClick(R.id.logout)
     public void OnClickLogout() {
-        new SplashAgainAgreeDialog().init("确定要退出登录吗？", "确定", "取消", new SplashAgainAgreeDialog.OnDismissListener() {
+        new DialogByChoice(activity, "确定要退出登录吗？", new DialogByChoice.DialogChoiceListener() {
             @Override
-            public void onSureDismiss() {
+            public void enterReturn() {
                 if (mPresenter != null) {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("user_avatar", "");
@@ -120,21 +121,20 @@ public class MainSetActivity extends U6BaseActivityByMvp<MainSetPresenter> imple
                     activity.finish();
                 }
             }
-
             @Override
-            public void onCancelDismiss() {
+            public void cancelReturn() {
 
             }
-        }).setPosition(Gravity.CENTER).setWidth(1).setOutCancel(false).show(getSupportFragmentManager());
+        }).showPopupWindow();
     }
 
     @Override
     public void requestUserCancelSuccess(BaseBean bean) {
         if (2 == bean.status) {
             if (bean.msg.indexOf("如果确定注销将丢失") != -1 || bean.msg.indexOf("您确定注销") != -1) {
-                new SplashAgainAgreeDialog().init(bean.msg, "确定", "取消", new SplashAgainAgreeDialog.OnDismissListener() {
+                new DialogByChoice(activity, bean.msg, new DialogByChoice.DialogChoiceListener() {
                     @Override
-                    public void onSureDismiss() {
+                    public void enterReturn() {
                         if (mPresenter != null) {
                             mPresenter.requestUserCancel(uid,mMsgCode,"1");
                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -146,10 +146,10 @@ public class MainSetActivity extends U6BaseActivityByMvp<MainSetPresenter> imple
                     }
 
                     @Override
-                    public void onCancelDismiss() {
+                    public void cancelReturn() {
 
                     }
-                }).setPosition(Gravity.CENTER).setWidth(1).setOutCancel(false).show(getSupportFragmentManager());
+                }).showPopupWindow();
             }
         }
     }

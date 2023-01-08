@@ -241,7 +241,7 @@
                                     <ImageView
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:src="@drawable/take_photo" />
+                                        android:src="@drawable/u6_persional_info_auth_take_photo" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -297,7 +297,7 @@
                                     <ImageView
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:src="@drawable/take_photo" />
+                                        android:src="@drawable/u6_persional_info_auth_take_photo" />
 
                                     <TextView
                                         android:layout_width="wrap_content"

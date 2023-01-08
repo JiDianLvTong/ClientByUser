@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/a6c0a8aef089a458c8fecad49a36ede6/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permission-support-1.4.0.aar/dcf64b790d5135429c70f36813c9f252/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-permission-support-1.4.0.aar/6f2ce8fc99b5414620a6392a50f9b35c/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-permission-support-1.4.0.aar/6f2ce8fc99b5414620a6392a50f9b35c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-permission-support-1.4.0.aar/6f2ce8fc99b5414620a6392a50f9b35c/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
