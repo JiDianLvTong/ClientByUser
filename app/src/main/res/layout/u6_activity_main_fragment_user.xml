@@ -103,7 +103,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/u6_shape_d7a64a_corner_10"
-                    android:padding="15dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp">
@@ -111,36 +110,52 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
-
-                        <TextView
-                            android:text="我的钱包"
-                            android:textSize="15dp"
-                            android:textColor="#ffffff"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:textStyle="bold"/>
+                        android:layout_weight="1"
+                        android:padding="15dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="5dp">
+                            android:orientation="vertical"
+                            android:layout_weight="1">
 
                             <TextView
-                                android:id="@+id/myMiDouCount"
-                                android:textSize="30dp"
+                                android:text="我的钱包"
+                                android:textSize="15dp"
                                 android:textColor="#ffffff"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:layout_marginRight="2dp"/>
+                                android:textStyle="bold"/>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="5dp">
+
+                                <TextView
+                                    android:id="@+id/myMiDouCount"
+                                    android:textSize="30dp"
+                                    android:textColor="#ffffff"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="2dp"/>
+
+                                <TextView
+                                    android:text="个"
+                                    android:textSize="13dp"
+                                    android:textColor="#ffffff"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"/>
+
+                            </LinearLayout>
 
                             <TextView
-                                android:text="个"
-                                android:textSize="13dp"
+                                android:text="换电币（剩余）"
+                                android:textSize="7dp"
                                 android:textColor="#ffffff"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -148,50 +163,40 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:text="换电币（剩余）"
-                            android:textSize="7dp"
-                            android:textColor="#ffffff"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"/>
-
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:gravity="bottom">
+                        android:background="@drawable/shape_ffffff_corner_right_10">
 
                         <TextView
-                            android:text="退 押 金"
+                            android:text="退押金"
                             android:id="@+id/tv_deposit_back"
-                            android:textSize="9dp"
+                            android:textSize="11sp"
                             android:textColor="@color/yellow_D7A64A"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:textStyle="bold"
-                            android:layout_marginBottom="20dp"
-                            android:background="@drawable/circular_white_ffffff_5"
-                            android:paddingRight="15dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"/>
+                            android:gravity="center"/>
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="@color/yellow_D7A64A"/>
 
                         <TextView
-                            android:text="点击充值"
-                            android:textSize="9dp"
+                            android:text="充值"
+                            android:textSize="11sp"
                             android:id="@+id/tv_coin_charge"
                             android:textColor="@color/yellow_D7A64A"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:textStyle="bold"
-                            android:background="@drawable/circular_white_ffffff_5"
-                            android:paddingRight="15dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"/>
+                            android:gravity="center"/>
 
                     </LinearLayout>
 
@@ -204,7 +209,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:background="@drawable/u6_shape_d7a64a_corner_10"
-                    android:padding="15dp"
                     android:visibility="visible"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
@@ -216,7 +220,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_weight="1"
-                        android:visibility="visible">
+                        android:visibility="visible"
+                        android:padding="15dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -286,7 +291,8 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_weight="1"
-                        android:visibility="gone">
+                        android:visibility="gone"
+                        android:padding="15dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -332,23 +338,19 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:gravity="bottom">
+                        android:background="@drawable/shape_ffffff_corner_right_10">
 
                         <TextView
                             android:id="@+id/myMonthOutTimePanelRePay"
-                            android:text="点击续费"
-                            android:textSize="9dp"
+                            android:text="续费"
+                            android:textSize="11sp"
                             android:textColor="@color/yellow_D7A64A"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:textStyle="bold"
-                            android:background="@drawable/circular_white_ffffff_5"
-                            android:paddingRight="15dp"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="5dp"
-                            android:paddingBottom="5dp"/>
+                            android:gravity="center"/>
 
                     </LinearLayout>
 

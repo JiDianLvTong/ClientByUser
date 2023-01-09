@@ -110,9 +110,8 @@ dependencies {
     //获取身份证照片
     implementation 'com.github.wildma:IDCardCamera:1.1.1'
 
-
-
-
+    //多页卡滑动界面
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
 
 
