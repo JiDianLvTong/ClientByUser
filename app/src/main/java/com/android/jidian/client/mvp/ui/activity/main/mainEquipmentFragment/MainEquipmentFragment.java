@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
+import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
@@ -38,7 +39,6 @@ import butterknife.OnClick;
 
 //todo:: 获取客服电话
 //todo:: 点击客服电话 - 拨打电话
-//todo:: 点击购买图片转跳页面
 
 public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> implements MainEquipmentContract.View {
 
@@ -344,7 +344,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
-//            getActivity().startActivity(new Intent(getActivity(), BusinessShopActivity.class));
+            Intent intent = new Intent();
+            intent.putExtra("page",2);
+            intent.setAction(BroadcastManager.RECEIVER_ACTION_MAIN_CHANGE_PAGE);
+            getActivity().sendBroadcast(intent);
         }
     }
 
