@@ -2,8 +2,10 @@ package com.android.jidian.client.mvp.ui.activity.main.mainFindFragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,7 +61,7 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
         mPresenter.attachView(this);
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
-        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
         smartRefreshLayout.setRefreshHeader(materialHeader);
         smartRefreshLayout.setEnableHeaderTranslationContent(true);
         smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
@@ -114,8 +116,13 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {//不可见
+            if (mPresenter != null) {
+                mPresenter.requestFindIndex(lng, lat);
+            }
+        }
     }
 
     private void requestData() {

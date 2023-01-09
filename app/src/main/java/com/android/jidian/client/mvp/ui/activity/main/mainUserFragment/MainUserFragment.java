@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import androidx.annotation.NonNull;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import com.android.jidian.client.base.U6BaseFragmentByMvp;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
+import com.android.jidian.client.mvp.ui.activity.Deposit.DepositActivity;
 import com.android.jidian.client.mvp.ui.activity.coupon.CouponActivity;
 import com.android.jidian.client.mvp.ui.activity.h5.MainMoreQuestion;
 import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
@@ -49,6 +52,10 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
     public RoundedImageView myInfoImage;
     @BindView(R.id.myMiDouCount)
     public TextView myMiDouCount;
+    @BindView(R.id.tv_coin_charge)
+    public TextView tv_coin_charge;
+    @BindView(R.id.tv_deposit_back)
+    public TextView tv_deposit_back;
 
     @BindView(R.id.myMonth)
     public LinearLayout myMonth;
@@ -104,6 +111,16 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         //请求数据
         showProgress();
         requestData();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {//不可见
+            if (mPresenter != null) {
+                requestData();
+            }
+        }
     }
 
     //请求数据
@@ -194,9 +211,14 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         getActivity().startActivity(new Intent(getActivity(), PersonalInfoActivity.class));
     }
 
-    @OnClick(R.id.myMiDou)
-    public void onClickMyMiDou() {
+    @OnClick(R.id.tv_coin_charge)
+    public void onClickCoinCharge() {
         getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
+    }
+
+    @OnClick(R.id.tv_deposit_back)
+    public void onClickDepositBack() {
+        getActivity().startActivity(new Intent(getActivity(), DepositActivity.class));
     }
 
     @Override

@@ -11,19 +11,19 @@
         android:id="@+id/iv_main_top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/u6_main_equipment_bg"
+        android:background="#000000"
         android:scaleType="fitXY"
-        android:background="#000000" />
+        android:src="@drawable/u6_main_equipment_bg" />
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <!-- 沉浸状态栏 -->
         <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
             android:id="@+id/statusBarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
         <!-- 下拉刷新 -->
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"
@@ -47,28 +47,28 @@
 
                         <ImageView
                             android:id="@+id/equipmentMessage"
-                            android:layout_alignParentRight="true"
-                            android:src="@drawable/u6_main_equipment_message"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_width="25dp"
-                            android:layout_height="25dp" />
+                            android:layout_height="25dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:src="@drawable/u6_main_equipment_message" />
 
                     </RelativeLayout>
                     <!-- 页面上部分 - 个人信息 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:id="@+id/main_f1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toTopOf="@id/main_l1"
-                            app:layout_goneMarginBottom="300dp"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_goneMarginBottom="300dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -142,15 +142,14 @@
                         android:id="@+id/main_l2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="-30dp"
                         android:background="@drawable/u6_shape_ffffff_corner_top_15"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="40dp"
                         android:paddingLeft="20dp"
+                        android:paddingTop="10dp"
                         android:paddingRight="20dp"
-                        android:layout_marginBottom="-30dp"
-                        >
+                        android:paddingBottom="40dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -162,9 +161,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="0"
-                                android:textStyle="bold"
                                 android:textColor="#000000"
-                                android:textSize="25sp" />
+                                android:textSize="25sp"
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -180,14 +179,14 @@
                             android:id="@+id/main_l2_charge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="充值"
-                            android:textColor="#ffffff"
-                            android:textSize="11sp"
                             android:background="@drawable/u6_shape_d7a64a_corner_5"
                             android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
                             android:paddingTop="7dp"
-                            android:paddingBottom="7dp"/>
+                            android:paddingRight="20dp"
+                            android:paddingBottom="7dp"
+                            android:text="充值"
+                            android:textColor="#ffffff"
+                            android:textSize="11sp" />
 
                     </LinearLayout>
                     <!-- 页面下部分 - 购买广告图 -->
@@ -196,7 +195,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:adjustViewBounds="true"
-                        android:src="@drawable/u6_main_equipment_bottom_bg"/>
+                        android:src="@drawable/u6_main_equipment_bottom_bg" />
                     <!-- 页面下部分 - 设备信息 -->
                     <LinearLayout
                         android:id="@+id/main_l1"
@@ -205,10 +204,10 @@
                         android:background="@drawable/u6_shape_d7a64a_corner_top_15"
                         android:orientation="vertical"
                         android:paddingLeft="20dp"
-                        android:paddingRight="20dp"
                         android:paddingTop="10dp"
+                        android:paddingRight="20dp"
                         android:paddingBottom="10dp"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <LinearLayout
                             android:id="@+id/ll_bicycle"
@@ -300,8 +299,8 @@
                                     android:text="200"
                                     android:textColor="@color/red_ee4000"
                                     android:textSize="25sp"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
                                     android:id="@+id/tv_prioce_unit"
@@ -331,18 +330,18 @@
                         </LinearLayout>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:background="@drawable/shape_ffffff_corner_15"
                             android:layout_width="match_parent"
-                            android:orientation="horizontal"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp">
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/shape_ffffff_corner_15"
+                            android:orientation="horizontal">
 
                             <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
                                 android:orientation="vertical"
-                                app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
+                                app:layout_constraintTop_toTopOf="parent">
 
                                 <LinearLayout
                                     android:id="@+id/ll_battery_1"
@@ -362,8 +361,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
-                                        android:orientation="horizontal"
-                                        android:visibility="gone">
+                                        android:orientation="horizontal">
 
                                         <View
                                             android:layout_width="0dp"
@@ -388,9 +386,9 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
-                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginEnd="20dp"
                                             android:gravity="end"
-                                            android:text="扫码绑定"
+                                            android:text="添加电池"
                                             android:textColor="#999999"
                                             android:textSize="14sp" />
 
@@ -399,8 +397,10 @@
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_1"
                                         android:layout_width="0dp"
+                                        android:visibility="gone"
+                                        tools:visibility="visible"
                                         android:layout_height="match_parent"
-                                        android:layout_marginStart="20dp"
+                                        android:layout_marginStart="25dp"
                                         android:layout_weight="1">
 
                                         <TextView
@@ -409,12 +409,12 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="10dp"
                                             android:text="电池编号"
-                                            app:layout_constraintVertical_chainStyle="packed"
                                             android:textColor="#000000"
                                             android:textSize="9sp"
-                                            app:layout_constraintTop_toTopOf="parent"
                                             app:layout_constraintBottom_toTopOf="@id/tv_battery_num_1"
-                                            app:layout_constraintStart_toStartOf="parent" />
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintVertical_chainStyle="packed" />
 
                                         <TextView
                                             android:id="@+id/tv_battery_num_1"
@@ -425,9 +425,43 @@
                                             android:text="2389423196234789652349"
                                             android:textColor="#000000"
                                             android:textSize="9sp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_1"
                                             app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_1" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_1_price"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="30dp"
+                                            android:text="200"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="25sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_1_unit"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="3dp"
+                                            android:text="元"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="16sp"
+                                            app:layout_constraintBaseline_toBaselineOf="@id/tv_battery_1_price"
+                                            app:layout_constraintBottom_toBottomOf="@id/tv_battery_1_price"
+                                            app:layout_constraintStart_toEndOf="@id/tv_battery_1_price" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_1_text"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5dp"
+                                            android:text="电池租金"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="13sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="@id/tv_battery_1_unit" />
 
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -437,9 +471,9 @@
                                     android:id="@+id/ll_battery_2"
                                     android:layout_width="match_parent"
                                     android:layout_height="60dp"
-                                    android:visibility="gone"
                                     android:background="@drawable/shape_ffffff_corner_15"
-                                    android:gravity="center_vertical">
+                                    android:gravity="center_vertical"
+                                    android:visibility="gone">
 
                                     <ImageView
                                         android:id="@+id/iv_main_battery_2"
@@ -453,7 +487,7 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="1"
-                                        android:layout_marginEnd="100dp"
+                                        tools:visibility="gone"
                                         android:orientation="horizontal"
                                         android:visibility="visible">
 
@@ -479,21 +513,19 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
-                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginEnd="20dp"
                                             android:gravity="end"
-                                            android:visibility="gone"
-                                            android:text="扫码绑定"
+                                            android:text="添加电池"
                                             android:textColor="#999999"
-                                            android:textSize="14sp" />
+                                            android:textSize="14sp"/>
 
                                     </LinearLayout>
 
                                     <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_2"
                                         android:layout_width="0dp"
-                                        android:visibility="gone"
                                         android:layout_height="match_parent"
-                                        android:layout_marginStart="20dp"
+                                        android:layout_marginStart="25dp"
                                         android:layout_weight="1">
 
                                         <TextView
@@ -502,12 +534,12 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginStart="10dp"
                                             android:text="电池编号"
-                                            app:layout_constraintVertical_chainStyle="packed"
                                             android:textColor="#000000"
                                             android:textSize="9sp"
-                                            app:layout_constraintTop_toTopOf="parent"
                                             app:layout_constraintBottom_toTopOf="@id/tv_battery_num_2"
-                                            app:layout_constraintStart_toStartOf="parent" />
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintVertical_chainStyle="packed" />
 
                                         <TextView
                                             android:id="@+id/tv_battery_num_2"
@@ -518,61 +550,49 @@
                                             android:text="2389423196234789652349"
                                             android:textColor="#000000"
                                             android:textSize="9sp"
-                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_2"
                                             app:layout_constraintBottom_toBottomOf="parent"
-                                            app:layout_constraintStart_toStartOf="parent" />
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@id/tv_battery_num_title_2" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_2_price"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginEnd="30dp"
+                                            android:text="200"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="25sp"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_2_unit"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="3dp"
+                                            android:text="元"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="16sp"
+                                            app:layout_constraintBaseline_toBaselineOf="@id/tv_battery_2_price"
+                                            app:layout_constraintBottom_toBottomOf="@id/tv_battery_2_price"
+                                            app:layout_constraintStart_toEndOf="@id/tv_battery_2_price" />
+
+                                        <TextView
+                                            android:id="@+id/tv_battery_2_text"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5dp"
+                                            android:text="电池租金"
+                                            android:textColor="@color/red_ee4000"
+                                            android:textSize="13sp"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="@id/tv_battery_2_unit" />
 
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 </LinearLayout>
 
                             </LinearLayout>
-
-                            <androidx.constraintlayout.widget.ConstraintLayout
-                                android:id="@+id/cl_battery_package_price"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginEnd="5dp"
-                                android:visibility="gone"
-                                tools:visibility="visible"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:id="@+id/tv_battery_price"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginEnd="30dp"
-                                    android:text="200"
-                                    android:textColor="@color/red_ee4000"
-                                    android:textSize="25sp"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent" />
-
-                                <TextView
-                                    android:id="@+id/tv_battery_prioce_unit"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="3dp"
-                                    android:text="元"
-                                    android:textColor="@color/red_ee4000"
-                                    android:textSize="16sp"
-                                    app:layout_constraintBaseline_toBaselineOf="@id/tv_battery_price"
-                                    app:layout_constraintBottom_toBottomOf="@id/tv_battery_price"
-                                    app:layout_constraintStart_toEndOf="@id/tv_battery_price" />
-
-                                <TextView
-                                    android:id="@+id/tv_package_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="电池月租"
-                                    android:textColor="@color/red_ee4000"
-                                    android:textSize="13sp"
-                                    app:layout_constraintTop_toBottomOf="@id/tv_battery_price"
-                                    app:layout_constraintEnd_toEndOf="@id/tv_battery_prioce_unit" />
-
-                            </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -581,8 +601,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
-                            android:orientation="vertical"
-                            android:layout_marginTop="10dp">
+                            android:layout_marginTop="10dp"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/tv_expire_text"
@@ -599,9 +619,9 @@
                                 android:layout_height="50dp"
                                 android:layout_marginTop="10dp"
                                 android:background="@drawable/u6_shape_e23e14_corner_15"
+                                android:gravity="center"
                                 android:paddingLeft="20dp"
-                                android:paddingRight="20dp"
-                                android:gravity="center">
+                                android:paddingRight="20dp">
 
                                 <TextView
                                     android:id="@+id/tv_package_price"
@@ -648,7 +668,6 @@
         </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
     </LinearLayout>
-
 
 
 </FrameLayout>

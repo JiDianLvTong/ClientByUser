@@ -1,19 +1,18 @@
 package com.android.jidian.client.mvp.ui.activity.main.mainShopFragment;
 
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.LayoutInflater;
+
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.ShopRentZhima_;
 import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.bean.ShopRentBean;
@@ -23,7 +22,6 @@ import com.android.jidian.client.mvp.presenter.MainShopPresenter;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderZhiMaActivity;
 import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoAuthentication;
-import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
 import com.android.jidian.client.mvp.ui.dialog.DialogByChoiceType2;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.widgets.MyToast;
@@ -35,7 +33,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class MainShopFragment extends BaseFragment<MainShopPresenter> implements MainShopContract.View{
+public class MainShopFragment extends BaseFragment<MainShopPresenter> implements MainShopContract.View {
 
     @BindView(R.id.smartRefreshLayout)
     public SmartRefreshLayout smartRefreshLayout;
@@ -66,7 +64,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
         mPresenter.attachView(this);
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
-        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
         smartRefreshLayout.setRefreshHeader(materialHeader);
         smartRefreshLayout.setEnableHeaderTranslationContent(true);
         smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
@@ -88,10 +86,10 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
             @Override
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
 
-                MainShopBean mainShopBean =  (MainShopBean) baseQuickAdapter.getData().get(i);
+                MainShopBean mainShopBean = (MainShopBean) baseQuickAdapter.getData().get(i);
                 String type = mainShopBean.getMainShopDataType();
-                if(type.equals("buy")){
-                    ShopBuyBean.DataBean.PacksBean bean = (ShopBuyBean.DataBean.PacksBean)mainShopBean.getObjectBean();
+                if (type.equals("buy")) {
+                    ShopBuyBean.DataBean.PacksBean bean = (ShopBuyBean.DataBean.PacksBean) mainShopBean.getObjectBean();
                     String otype = bean.getOprice();
                     String item_id = bean.getId();
                     int is_buy = bean.getIs_buy();
@@ -117,8 +115,8 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
                     } else {
                         showMessage("is_sell错误，必须是1和-1");
                     }
-                }else if(type.equals("rent")){
-                    ShopRentBean.DataBean.PacksBean bean =  (ShopRentBean.DataBean.PacksBean)mainShopBean.getObjectBean();
+                } else if (type.equals("rent")) {
+                    ShopRentBean.DataBean.PacksBean bean = (ShopRentBean.DataBean.PacksBean) mainShopBean.getObjectBean();
                     int is_sell = bean.getIs_sell();
                     String id_ = bean.getId();
                     if (is_sell == -1) {
@@ -131,7 +129,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
                                 intent.putExtra("from", "product");
                                 getActivity().startActivity(intent);
                             } else {
-                                new DialogByChoiceType2(getActivity(), "为了保障您的权益","请先进行实名认证", new DialogByChoiceType2.DialogChoiceListener() {
+                                new DialogByChoiceType2(getActivity(), "为了保障您的权益", "请先进行实名认证", new DialogByChoiceType2.DialogChoiceListener() {
                                     @Override
                                     public void enterReturn() {
                                         getActivity().startActivity(new Intent(getActivity(), PersonalInfoAuthentication.class));
@@ -158,9 +156,19 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     private void requestData() {
         arrayList.clear();
-        mPresenter.requestShopBuy(mLng,mLat);
-        mPresenter.requestShopRent(mLng,mLat);
+        mPresenter.requestShopBuy(mLng, mLat);
+        mPresenter.requestShopRent(mLng, mLat);
         mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {//不可见
+            if (mPresenter != null) {
+                requestData();
+            }
+        }
     }
 
     //设置坐标
@@ -175,17 +183,17 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
             if (bean.getData().getPacks() != null) {
-                for(int i = 0 ; i < bean.getData().getPacks().size() ; i++){
-                    arrayList.add(new MainShopBean("buy",bean.getData().getPacks().get(i)));
+                for (int i = 0; i < bean.getData().getPacks().size(); i++) {
+                    arrayList.add(new MainShopBean("buy", bean.getData().getPacks().get(i)));
                 }
                 ArrayList<MainShopBean> tempArrayList = new ArrayList<>();
-                for(int i = 0 ; i < arrayList.size() ; i++){
-                    if(arrayList.get(i).getMainShopDataType().equals("rent")){
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getMainShopDataType().equals("rent")) {
                         tempArrayList.add(arrayList.get(i));
                     }
                 }
-                for(int i = 0 ; i < arrayList.size() ; i++){
-                    if(arrayList.get(i).getMainShopDataType().equals("buy")){
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getMainShopDataType().equals("buy")) {
                         tempArrayList.add(arrayList.get(i));
                     }
                 }
@@ -205,17 +213,17 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
             if (bean.getData().getPacks() != null) {
-                for(int i = 0 ; i < bean.getData().getPacks().size() ; i++){
-                    arrayList.add(new MainShopBean("rent",bean.getData().getPacks().get(i)));
+                for (int i = 0; i < bean.getData().getPacks().size(); i++) {
+                    arrayList.add(new MainShopBean("rent", bean.getData().getPacks().get(i)));
                 }
                 ArrayList<MainShopBean> tempArrayList = new ArrayList<>();
-                for(int i = 0 ; i < arrayList.size() ; i++){
-                    if(arrayList.get(i).getMainShopDataType().equals("rent")){
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getMainShopDataType().equals("rent")) {
                         tempArrayList.add(arrayList.get(i));
                     }
                 }
-                for(int i = 0 ; i < arrayList.size() ; i++){
-                    if(arrayList.get(i).getMainShopDataType().equals("buy")){
+                for (int i = 0; i < arrayList.size(); i++) {
+                    if (arrayList.get(i).getMainShopDataType().equals("buy")) {
                         tempArrayList.add(arrayList.get(i));
                     }
                 }
@@ -246,10 +254,10 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
     }
 
     private void dataNull() {
-        if(arrayList.size() == 0){
+        if (arrayList.size() == 0) {
             recyclerView.setVisibility(View.GONE);
             mullDataPanel.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mullDataPanel.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }

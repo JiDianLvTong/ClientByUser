@@ -50,6 +50,7 @@ public class MainActiyivyExpenseBean {
         private UmonthBean umonth;
         private List<EbikeBean> ebike;
         private List<BatteryBean> battery;
+        private String servtel;
 
         public TopBean getTop() {
             return top;
@@ -81,6 +82,14 @@ public class MainActiyivyExpenseBean {
 
         public void setBattery(List<BatteryBean> battery) {
             this.battery = battery;
+        }
+
+        public String getServtel() {
+            return servtel;
+        }
+
+        public void setServtel(String servtel) {
+            this.servtel = servtel;
         }
 
         public static class TopBean {

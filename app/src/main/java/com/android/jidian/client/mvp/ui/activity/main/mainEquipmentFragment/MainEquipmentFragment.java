@@ -2,10 +2,14 @@ package com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+
+import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +21,7 @@ import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
@@ -106,16 +111,25 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     public LinearLayout li_battery_add_2;
     @BindView(R.id.ll_battery_2)
     public LinearLayout ll_battery_2;
-    @BindView(R.id.tv_package_name)
-    public TextView tv_package_name;
-    @BindView(R.id.tv_battery_price)
-    public TextView tv_battery_price;
+    @BindView(R.id.tv_battery_1_price)
+    public TextView tv_battery_1_price;
+    @BindView(R.id.tv_battery_2_price)
+    public TextView tv_battery_2_price;
     @BindView(R.id.tv_battery_status_1)
     public TextView tv_battery_status_1;
     @BindView(R.id.tv_battery_status_2)
     public TextView tv_battery_status_2;
-    @BindView(R.id.cl_battery_package_price)
-    public ConstraintLayout cl_battery_package_price;
+    @BindView(R.id.tv_battery_1_unit)
+    public TextView tv_battery_1_unit;
+    @BindView(R.id.tv_battery_1_text)
+    public TextView tv_battery_1_text;
+    @BindView(R.id.tv_battery_2_unit)
+    public TextView tv_battery_2_unit;
+    @BindView(R.id.tv_battery_2_text)
+    public TextView tv_battery_2_text;
+
+    //    @BindView(R.id.cl_battery_package_price)
+//    public ConstraintLayout cl_battery_package_price;
     //续费
     @BindView(R.id.tv_expire_text)
     public TextView tv_expire_text;
@@ -148,7 +162,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         mPresenter.attachView(this);
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
-        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
         smartRefreshLayout.setRefreshHeader(materialHeader);
         smartRefreshLayout.setEnableHeaderTranslationContent(true);
         smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
@@ -183,6 +197,16 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         }
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {//不可见
+            if (mPresenter != null && !UserInfoHelper.getInstance().getUid().isEmpty()) {
+                mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
+            }
+        }
+    }
+
     //请求设备信息
     private void getEquipmentInfo() {
         mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
@@ -201,7 +225,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             main_l2.setVisibility(View.VISIBLE);
             tv_level.setText("青铜会员");
             tv_main_tip.setText("享有7项会员权益，点击查看详情");
-            tv_custom_phone.setText("400-4004-4354");
+            tv_custom_phone.setText(dataBean.getServtel());
             if (dataBean.getTop().getCList().size() > 0) {
                 tv_coin.setText(dataBean.getTop().getCList().get(0).getNums() + "");
             }
@@ -237,95 +261,84 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     iv_bicycle.setImageResource(R.drawable.main_bicycle);
                     li_bicycle_add.setVisibility(View.GONE);
                     cl_bicycle_detail.setVisibility(View.VISIBLE);
+                    if ("10".equals(dataBean.getEbike().get(0).getUse_type())) {//买
+                        tv_price.setVisibility(View.GONE);
+                        tv_prioce_unit.setVisibility(View.GONE);
+                        tv_prioce_text.setVisibility(View.GONE);
+                    } else {//租
+                        tv_price.setVisibility(View.VISIBLE);
+                        tv_prioce_unit.setVisibility(View.VISIBLE);
+                        tv_prioce_text.setVisibility(View.VISIBLE);
+                        tv_price.setText(dataBean.getEbike().get(0).getUse_type() + "");
+                    }
 //            loginHasBicyclePanelID.setText(userEquipmentBean.getEbike().getImei());
                 }
-                if ("10".equals(dataBean.getEbike().get(0).getUse_type())) {//买
-                    tv_price.setVisibility(View.GONE);
-                    tv_prioce_unit.setVisibility(View.GONE);
-                    tv_prioce_text.setVisibility(View.GONE);
-                } else {//租
-                    tv_price.setVisibility(View.VISIBLE);
-                    tv_prioce_unit.setVisibility(View.VISIBLE);
-                    tv_prioce_text.setVisibility(View.VISIBLE);
-                    tv_price.setText(dataBean.getEbike().get(0).getUse_type() + "");
-                }
             }
-//
-////        loginUserPanelPhone.setText(SpSystem.getInstance().getCustomerServiceBean().get_contact());
-////        loginUserPanelName.setText(SpUser.getInstance().getUserInfoBean().getUname());
 
             //电池信息更新
             int batteryCount = dataBean.getBattery().size();
             batteryStatus = new ArrayList<>();
             if (batteryCount > 0) {
+                ll_battery_2.setVisibility(View.GONE);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.connect(R.id.main_l1, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
                 constraintSet.connect(R.id.main_l1, ConstraintSet.TOP, R.id.main_f1, ConstraintSet.BOTTOM, 0);
                 constraintSet.constrainHeight(R.id.main_l1, ViewUtil.dp2px(getActivity(), 240));
-                cl_battery_package_price.setVisibility(View.VISIBLE);
-                String battery1IsBind = dataBean.getBattery().get(0).getIs_bind();
-                if ("10".equals(dataBean.getEbike().get(0).getUse_type())) {//买
-                    cl_battery_package_price.setVisibility(View.GONE);
-                } else {//租
-                    cl_battery_package_price.setVisibility(View.VISIBLE);
-                    tv_battery_price.setText(dataBean.getBattery().get(0).getMrent() + "");
-                }
+                MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(0);
+                String battery1IsBind = battery.getIs_bind();
                 if (battery1IsBind.equals("1")) {
                     batteryStatus.add(1);
                     cl_battery_detail_1.setVisibility(View.VISIBLE);
                     li_battery_add_1.setVisibility(View.GONE);
-                    MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(0);
                     iv_main_battery_1.setImageResource(R.drawable.main_battery);
                     tv_battery_num_1.setText(battery.getNumber());
+                    if ("20".equals(battery.getUse_type())) {//买
+                        tv_battery_1_price.setText(battery.getMrent() + "");
+                        tv_battery_1_price.setVisibility(View.VISIBLE);
+                        tv_battery_1_unit.setVisibility(View.VISIBLE);
+                        tv_battery_1_text.setVisibility(View.VISIBLE);
+                    }else {
+                        tv_battery_1_price.setVisibility(View.GONE);
+                        tv_battery_1_unit.setVisibility(View.GONE);
+                        tv_battery_1_text.setVisibility(View.GONE);
+                    }
                 } else if (battery1IsBind.equals("2")) {
                     batteryStatus.add(0);
                     tv_battery_status_1.setText("扫码绑定");
                     li_battery_add_1.setVisibility(View.VISIBLE);
                     cl_battery_detail_1.setVisibility(View.GONE);
                 }
-            } else {
-                li_battery_add_1.setVisibility(View.VISIBLE);
-                cl_battery_detail_1.setVisibility(View.GONE);
             }
             if (batteryCount > 1) {
+                ll_battery_2.setVisibility(View.VISIBLE);
                 ConstraintSet constraintSet = new ConstraintSet();
                 constraintSet.connect(R.id.main_l1, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
                 constraintSet.connect(R.id.main_l1, ConstraintSet.TOP, R.id.main_f1, ConstraintSet.BOTTOM, 0);
                 constraintSet.constrainHeight(R.id.main_l1, ViewUtil.dp2px(getActivity(), 300));
-                ll_battery_2.setVisibility(View.VISIBLE);
-                String battery2IsBind = dataBean.getBattery().get(1).getIs_bind();
-                if ("10".equals(dataBean.getBattery().get(1).getUse_type())) {//买
-//                    cl_battery_package_price.setVisibility(View.GONE);
-                } else {//租
-                    cl_battery_package_price.setVisibility(View.VISIBLE);
-                    if ("20".equals(dataBean.getBattery().get(0).getUse_type())) {
-//                        if ("20".equals(dataBean.getBattery().get(1).getUse_type())) {//租
-                        double i1 = Double.parseDouble(dataBean.getBattery().get(0).getMrent());
-                        double i2 = Double.parseDouble(dataBean.getBattery().get(1).getMrent());
-                        tv_battery_price.setText((i1 + i2) + "");
-//                        }
-                    } else {
-//                        if ("20".equals(dataBean.getBattery().get(1).getUse_type())) {//租
-                        tv_battery_price.setText(dataBean.getBattery().get(1).getMrent() + "");
-//                        }
-                    }
+                MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(1);
+                String battery2IsBind = battery.getIs_bind();
+                if ("20".equals(battery.getUse_type())) {//买
+                    tv_battery_2_price.setText(battery.getMrent() + "");
+                    tv_battery_2_price.setVisibility(View.VISIBLE);
+                    tv_battery_2_unit.setVisibility(View.VISIBLE);
+                    tv_battery_2_text.setVisibility(View.VISIBLE);
+                }else {
+                    tv_battery_2_price.setVisibility(View.GONE);
+                    tv_battery_2_unit.setVisibility(View.GONE);
+                    tv_battery_2_text.setVisibility(View.GONE);
                 }
                 if (battery2IsBind.equals("1")) {
                     batteryStatus.add(1);
                     cl_battery_detail_2.setVisibility(View.VISIBLE);
                     li_battery_add_2.setVisibility(View.GONE);
-                    MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(1);
                     iv_main_battery_2.setImageResource(R.drawable.main_battery);
                     tv_battery_num_2.setText(battery.getNumber());
                 } else if (battery2IsBind.equals("2")) {
                     batteryStatus.add(0);
-                    tv_battery_status_1.setText("扫码绑定");
+                    tv_battery_status_2.setText("扫码绑定");
                     li_battery_add_2.setVisibility(View.VISIBLE);
                     cl_battery_detail_2.setVisibility(View.GONE);
                 }
-            } else {
-                li_battery_add_2.setVisibility(View.VISIBLE);
-                cl_battery_detail_2.setVisibility(View.GONE);
             }
         }
     }
@@ -345,7 +358,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
             Intent intent = new Intent();
-            intent.putExtra("page",2);
+            intent.putExtra("page", 2);
             intent.setAction(BroadcastManager.RECEIVER_ACTION_MAIN_CHANGE_PAGE);
             getActivity().sendBroadcast(intent);
         }
@@ -471,8 +484,11 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     @OnClick(R.id.tv_custom_phone)
     public void onClickLoginUserPanelPhonePanel() {
-//        Intent Intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse("tel:" + SpSystem.getInstance().getCustomerServiceBean().get_contact()));
-//        startActivity(Intent);
+        String s = tv_custom_phone.getText().toString().trim();
+        if (!TextUtils.isEmpty(s)) {
+            Intent Intent = new Intent(android.content.Intent.ACTION_DIAL, Uri.parse("tel:" + s));
+            startActivity(Intent);
+        }
     }
 
     //电动车
@@ -515,7 +531,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     }
 
     @OnClick(R.id.main_l2_charge)
-    public void onClickMain_l2_charge(){
+    public void onClickMain_l2_charge() {
         getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
     }
 

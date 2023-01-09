@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/grey_303030">
 
@@ -160,11 +161,28 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:gravity="bottom">
+
+                        <TextView
+                            android:text="退 押 金"
+                            android:id="@+id/tv_deposit_back"
+                            android:textSize="9dp"
+                            android:textColor="@color/yellow_D7A64A"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/circular_white_ffffff_5"
+                            android:paddingRight="15dp"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"/>
 
                         <TextView
                             android:text="点击充值"
                             android:textSize="9dp"
+                            android:id="@+id/tv_coin_charge"
                             android:textColor="@color/yellow_D7A64A"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
