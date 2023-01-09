@@ -1,4 +1,4 @@
-package com.android.jidian.client.bean;
+package com.android.jidian.client.mvp.bean;
 
 public class MainAppVersionBean {
 

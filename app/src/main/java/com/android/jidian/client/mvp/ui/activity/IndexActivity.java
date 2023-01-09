@@ -63,12 +63,10 @@ public class IndexActivity extends U6BaseActivity {
                 }
 
                 activity.startActivity(new Intent(activity, MainActivity.class));
-//                activity.startActivity(new Intent(activity, TextActivity.class));
                 activity.finish();
 
             }
         }.start();
-
     }
 
     @OnClick(R.id.t_2)

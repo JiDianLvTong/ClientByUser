@@ -15,7 +15,7 @@
         android:background="@drawable/circular_white_ffffff_top_5">
 
         <ImageView
-            android:src="@drawable/dialog_update"
+            android:src="@drawable/u6_pub_dialog_update"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"/>

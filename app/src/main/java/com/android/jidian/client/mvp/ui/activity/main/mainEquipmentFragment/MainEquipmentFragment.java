@@ -18,6 +18,7 @@ import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
 import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
 import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByReNew;
 import com.android.jidian.client.util.UserInfoHelper;
@@ -124,6 +125,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     public LinearLayout ll_main_re_pay;
     @BindView(R.id.tv_package_price)
     public TextView tv_package_price;
+    @BindView(R.id.main_l2_charge)
+    public TextView main_l2_charge;
 
     private String gid = "";
     private String opt = "";
@@ -507,6 +510,12 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             startActivity(mIntent);
         }
     }
+
+    @OnClick(R.id.main_l2_charge)
+    public void onClickMain_l2_charge(){
+        getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
+    }
+
 
     @Override
     public void showProgress() {

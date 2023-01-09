@@ -1,9 +1,7 @@
 package com.android.jidian.client.mvp.model;
 
-import com.android.jidian.client.bean.ExpenseBean;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
-import com.android.jidian.client.bean.MainActiyivyExpenseBean;
-import com.android.jidian.client.bean.MainAppVersionBean;
+import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
 import com.android.jidian.client.net.RetrofitClient;
 
@@ -16,10 +14,6 @@ import io.reactivex.Flowable;
  * description:
  */
 public class MainActivityModel implements MainActivityContract.Model {
-    @Override
-    public Flowable<MainActiyivyExpenseBean> requestMainInfo(String uid) {
-        return RetrofitClient.getInstance().getApiService().requestMainInfo(uid);
-    }
 
     @Override
     public Flowable<MainAppVersionBean> appVerUpgrade(String uid) {

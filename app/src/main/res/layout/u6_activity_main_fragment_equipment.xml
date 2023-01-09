@@ -150,25 +150,44 @@
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:layout_marginBottom="-30dp"
-                        android:visibility="gone">
+                        >
 
-                        <TextView
-                            android:id="@+id/tv_coin"
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0"
-                            android:textStyle="bold"
-                            android:textColor="#000000"
-                            android:textSize="25sp" />
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_coin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textStyle="bold"
+                                android:textColor="#000000"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:text="换电币"
+                                android:textColor="#999999"
+                                android:textSize="13sp" />
+
+                        </LinearLayout>
 
                         <TextView
+                            android:id="@+id/main_l2_charge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="5dp"
-                            android:text="换电币"
-                            android:textColor="#999999"
-                            android:textSize="13sp" />
+                            android:text="充值"
+                            android:textColor="#ffffff"
+                            android:textSize="11sp"
+                            android:background="@drawable/u6_shape_d7a64a_corner_5"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:paddingTop="7dp"
+                            android:paddingBottom="7dp"/>
 
                     </LinearLayout>
                     <!-- 页面下部分 - 购买广告图 -->

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 
 import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.pub.PubFunction;
+import com.android.jidian.client.sp.SpUser;
 import com.android.jidian.client.util.UserInfoHelper;
 
 import com.tencent.bugly.crashreport.CrashReport;
@@ -65,11 +66,14 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        System.out.println(SHA1(getApplicationContext()));
         mContext = getApplicationContext();
+        System.out.println(SHA1(getApplicationContext()));
+
 
         //权限管理初始化
-        PermissionManager.getInstance().init(getContext());
+        PermissionManager.getInstance().init(getApplicationContext());
+        //本地储存初始化 - 用户sp
+        SpUser.getInstance().init(getApplicationContext());
 
 
 

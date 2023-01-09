@@ -16,7 +16,7 @@ import com.android.jidian.client.bean.FindIndexBean;
 import com.android.jidian.client.bean.LoginBean;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
-import com.android.jidian.client.bean.MainAppVersionBean;
+import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.bean.MapJwduV5Bean;
 import com.android.jidian.client.bean.MapListsBean;
 import com.android.jidian.client.bean.MapTopTabBean;
@@ -41,6 +41,18 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface APIService {
+
+    //更新接口
+    @FormUrlEncoded
+    @POST("AppVer/upgrade.html")
+    Flowable<MainAppVersionBean> appVerUpgrade(@Field("uid") String uid);
+
+    //首页用户信息
+    @FormUrlEncoded
+    @POST("Wallet/v8.html")
+    Flowable<MainActiyivyExpenseBean> requestMainInfo(@Field("uid") String uid);
+
+
 
 
     /**
@@ -284,13 +296,6 @@ public interface APIService {
     Flowable<ExpenseBean> requestWalletInfo(@Field("uid") String uid);
 
     /**
-     * 我的钱包
-     */
-    @FormUrlEncoded
-    @POST("Wallet/v8.html")
-    Flowable<MainActiyivyExpenseBean> requestMainInfo(@Field("uid") String uid);
-
-    /**
      * 我的钱包-可退押金订单列表
      */
     @FormUrlEncoded
@@ -343,12 +348,6 @@ public interface APIService {
     @POST("PullCash/setUserAccountInfo.html")
     Flowable<BaseBean> requestPullCashSetUserAccountInfo(@Field("access_code") String access_code);
 
-    /**
-     * 更新接口
-     */
-    @FormUrlEncoded
-    @POST("AppVer/upgrade.html")
-    Flowable<MainAppVersionBean> appVerUpgrade(@Field("uid") String uid);
 
     /**
      * 商城接口

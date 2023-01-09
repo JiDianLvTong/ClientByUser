@@ -23,53 +23,23 @@ public class MainActivityPresenter extends BasePresenter<MainActivityContract.Vi
     }
 
     @Override
-    public void requestMainInfo(String uid) {
-        if (!isViewAttached()) {
-            return;
-        }
-        mView.showProgress();
-        Disposable disposable = model.requestMainInfo(uid)
-                .compose(RxScheduler.Flo_io_main())
-                .subscribe(expenseBean -> {
-                    if (mView != null) {
-                        mView.hideProgress();
-                        if ("1".equals(expenseBean.getStatus())) {
-                            mView.requestMainInfoSuccess(expenseBean);
-                        }else {
-                            mView.requestMainInfoFail(expenseBean.getMsg());
-                        }
-                    }
-                }, throwable -> {
-                    if (mView != null) {
-                        mView.hideProgress();
-                        mView.onError(throwable);
-                    }
-                });
-    }
-
-    @Override
     public void appVerUpgrade(String uid) {
         if (!isViewAttached()) {
             return;
         }
-//        mView.showProgress();
-        Disposable disposable = model.appVerUpgrade(uid)
-                .compose(RxScheduler.Flo_io_main())
-                .subscribe(bean -> {
-                    if (mView != null) {
-//                        mView.hideProgress();
-                        if ("1".equals(bean.getStatus())) {
-                            mView.appVerUpgradeSuccess(bean);
-                        }else {
-                            mView.requestMainInfoFail(bean.getMsg());
-                        }
+        model.appVerUpgrade(uid)
+            .compose(RxScheduler.Flo_io_main())
+            .subscribe(bean -> {
+                if (mView != null) {
+                    if ("1".equals(bean.getStatus())) {
+                        mView.appVerUpgradeSuccess(bean);
                     }
-                }, throwable -> {
-                    if (mView != null) {
-//                        mView.hideProgress();
-                        mView.onError(throwable);
-                    }
-                });
+                }
+            }, throwable -> {
+                if (mView != null) {
+                    mView.onError(throwable);
+                }
+            });
     }
 
     @Override
@@ -77,27 +47,20 @@ public class MainActivityPresenter extends BasePresenter<MainActivityContract.Vi
         if (!isViewAttached()) {
             return;
         }
-        if (mView != null) {
-//            mView.showProgress();
-        }
-        Disposable disposable = model.requestCheckAccv2(apptoken, appsn)
+        model.requestCheckAccv2(apptoken, appsn)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
-//                        mView.hideProgress();
                         if (bean != null) {
                             if (!"1".equals(bean.getStatus())) {
                                 mView.requestCheckAccv2Success(bean);
                             }else {
                                 Constants.APP_ID = bean.getData().getWxappid();
                             }
-                        } else {
-                            mView.requestCheckAccv2Error("网络异常");
                         }
                     }
                 }, throwable -> {
                     if (mView != null) {
-//                        mView.hideProgress();
                         mView.onError(throwable);
                     }
                 });

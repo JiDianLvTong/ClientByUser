@@ -22,7 +22,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
         if (mView != null) {
             mView.showProgress();
         }
-        Disposable disposable = model.sendVerificationCode(phone)
+        model.sendVerificationCode(phone)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {

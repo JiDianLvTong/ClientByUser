@@ -1,15 +1,9 @@
 package com.android.jidian.client.mvp.ui.activity.login;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,38 +15,43 @@ import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.presenter.LoginPresenter;
 import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
 import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
-import com.android.jidian.client.mvp.ui.dialog.CommonTipDialog;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
+import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.JgVerificationLoginAuthManager;
 import com.android.jidian.client.util.Util;
-import com.android.jidian.client.widgets.MyToast;
 
 import java.io.File;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by hasee on 2017/6/5.
- * 登录界面 activity
- */
-
-//todo:点击inputview没有光标
-
 public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implements LoginContract.View {
-    @BindView(R.id.get_number_text)
-    TextView tvPhoneCode;
-    @BindView(R.id.login_phone)
-    EditText edtLoginPhone;
-    @BindView(R.id.login_number)
-    EditText edtVerificationCode;
-    @BindView(R.id.login_read)
-    ImageView btnExplain;
 
-    Handler setTimeHandler;
-    private boolean isExplainUnRead = false;
+    @BindView(R.id.getNumber)
+    public TextView getNumber;
+    @BindView(R.id.ruleByUser)
+    public TextView ruleByUser;
+    @BindView(R.id.ruleByPrivacy)
+    public TextView ruleByPrivacy;
+    @BindView(R.id.jPushVerificationLogin)
+    public TextView jPushVerificationLogin;
+
+    @BindView(R.id.login_phone)
+    public EditText edtLoginPhone;
+    @BindView(R.id.login_number)
+    public EditText edtVerificationCode;
+    @BindView(R.id.isRead)
+    public ImageView isRead;
+
+    private boolean isReadSelect = false;
+
     private String confirmStr = "";
     private boolean isOwnLogin = false;
+
+    private Thread timeThread = null;
+    private boolean timeState = true;
+    private int timeCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,96 +61,53 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
 
     @Override
     public void initView() {
+
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
-        handler();
-
-        new Handler().postDelayed(() -> {
-            //登录页面访问
-            BuryingPointManager.sendBuryingPoint(BuryingPointManager.ACTIVITY_LOGIN);
-        }, 500);
+        //时间线程
+        if(timeThread == null){
+            timeThread = new Thread(){
+                @Override
+                public void run() {
+                    super.run();
+                    while(timeState){
+                        activity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(timeCount > 0){
+                                    getNumber.setText(timeCount + " S");
+                                    getNumber.setClickable(false);
+                                    timeCount = timeCount - 1;
+                                }else{
+                                    getNumber.setText("获取验证码");
+                                    getNumber.setClickable(true);
+                                }
+                            }
+                        });
+                        try {
+                            sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
+            timeThread.start();
+        }
+        //极光登录
         JgVerificationLoginAuthManager.requestJgVerificationpreLogin(this);
     }
 
-    private void handler() {
-        setTimeHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                int time_str = msg.getData().getInt("time");
-                if (tvPhoneCode != null) {
-                    if (time_str == 0) {
-                        tvPhoneCode.setText("获取验证码");
-                        tvPhoneCode.setClickable(true);
-                    } else {
-                        tvPhoneCode.setText(time_str + " S");
-                        tvPhoneCode.setClickable(false);
-                    }
-                }
-            }
-        };
-    }
-
+    //获取短信接口返回
     @Override
-    public void showProgress() {
-        progressDialog.show();
+    public void sendVerificationCodeResult(String msg) {
+        timeCount = 60;
     }
 
+    //网络错误返回
     @Override
-    public void hideProgress() {
-        progressDialog.dismiss();
-    }
-
-    @OnClick({R.id.submit, R.id.page_return, R.id.get_number_text, R.id.login_read, R.id.rule1, R.id.rule2, R.id.btn_JVerificationLogin})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.page_return:
-                this.finish();
-                break;
-            case R.id.btn_JVerificationLogin:
-                //点击一键登录
-                requestJg();
-                break;
-            case R.id.submit:
-                //点击登录
-                if (isExplainUnRead) {
-                    isOwnLogin = false;
-                    clickSureReqyestLogin("1");
-                } else {
-                    MyToast.showTheToast(activity, "请先阅读用户协议和隐私政策");
-                }
-                break;
-            case R.id.get_number_text:
-                //点击获取验证码
-                String mobileStr2 = edtLoginPhone.getText().toString().trim();
-                if (TextUtils.isEmpty(mobileStr2)) {
-                    MyToast.showTheToast(this, "手机号不能为空！");
-                } else if (11 == mobileStr2.length()) {
-                    if (mPresenter != null) {
-                        mPresenter.sendVerificationCode(mobileStr2);
-                    }
-                } else {
-                    MyToast.showTheToast(this, "请输入正确的手机格式！");
-                }
-                break;
-            case R.id.login_read:
-                if (isExplainUnRead) {
-                    btnExplain.setImageResource(R.drawable.u6_pub_select_uncheck);
-                    isExplainUnRead = false;
-                } else {
-                    btnExplain.setImageResource(R.drawable.u6_pub_select_check);
-                    isExplainUnRead = true;
-                }
-                break;
-            case R.id.rule1:
-                startActivity(new Intent(activity, MainAgreement.class));
-                break;
-            case R.id.rule2:
-                startActivity(new Intent(activity, MainPrivacyClause.class));
-                break;
-            default:
-                break;
-        }
+    public void requestLoginError(String msg) {
+        new DialogByEnter(activity , msg).showPopupWindow();
     }
 
     /**
@@ -168,7 +124,7 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
             public void loginAuthSuccess(String loginToken) {
                 progressDialog.dismiss();
                 isOwnLogin = true;
-                clickJgSureReqyestLogin(loginToken);
+                loginByJPush(loginToken);
             }
 
             @Override
@@ -179,27 +135,15 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
         });
     }
 
-    @Override
-    public void sendVerificationCodeResult(String msg) {
-        MyToast.showTheToast(this, msg);
-        TimerCount timerCount = new TimerCount(60, setTimeHandler);
-        if (!timerCount.isAlive()) {
-            timerCount.start();
-        }
-    }
-
-    /**
-     * 请求登录接口
-     */
-    private void clickSureReqyestLogin(String confirm) {
+    private void loginByCode(String confirm) {
         String mobileStr = edtLoginPhone.getText().toString().trim();
         String verificationCodeStr = edtVerificationCode.getText().toString().trim();
         if (TextUtils.isEmpty(mobileStr)) {
-            MyToast.showTheToast(this, "手机号不能为空！");
+            new DialogByEnter(activity ,  "手机号不能为空！").showPopupWindow();
         } else if (TextUtils.isEmpty(verificationCodeStr)) {
-            MyToast.showTheToast(this, "验证码不能为空！");
+            new DialogByEnter(activity ,  "验证码不能为空！").showPopupWindow();
         } else if (11 != mobileStr.length()) {
-            MyToast.showTheToast(this, "请输入正确的手机格式！");
+            new DialogByEnter(activity ,  "请输入正确的手机格式！").showPopupWindow();
         } else {
             if (mPresenter != null) {
                 String appsn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
@@ -208,13 +152,10 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
         }
     }
 
-    /**
-     * 请求极光登录接口
-     */
-    private void clickJgSureReqyestLogin(String loginTokenStr) {
+    private void loginByJPush(String loginTokenStr) {
         if (mPresenter != null) {
-            String appsn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
-            mPresenter.sendJgVerificationLogin(loginTokenStr, confirmStr, appsn);
+            String appSn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
+            mPresenter.sendJgVerificationLogin(loginTokenStr, confirmStr, appSn);
         }
     }
 
@@ -234,24 +175,27 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
             if (bean.getData() != null) {
                 if (!TextUtils.isEmpty(bean.getData().getConfirm())) {
                     confirmStr = bean.getData().getConfirm();
-                    new CommonTipDialog().init(bean.getMsg(), "确认登录", () -> {
-                        //点击确认登录
-                        if (isOwnLogin) {
-                            requestJg();
-                        } else {
-                            clickSureReqyestLogin(confirmStr);
+                    new DialogByChoice(activity, bean.getMsg(), new DialogByChoice.DialogChoiceListener() {
+                        @Override
+                        public void enterReturn() {
+                            //点击确认登录
+                            if (isOwnLogin) {
+                                requestJg();
+                            } else {
+                                loginByCode(confirmStr);
+                            }
                         }
-                    }).setPosition(Gravity.CENTER).setWidth(1).setOutCancel(false).show(getSupportFragmentManager());
+
+                        @Override
+                        public void cancelReturn() {
+
+                        }
+                    }).showPopupWindow();
                 }
             }
         } else {
-            MyToast.showTheToast(this, bean.getMsg());
+            new DialogByEnter(activity ,  bean.getMsg()).showPopupWindow();
         }
-    }
-
-    @Override
-    public void requestLoginError(String msg) {
-        MyToast.showTheToast(this, msg);
     }
 
     /**
@@ -282,10 +226,6 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
             if (mPresenter != null) {
                 mPresenter.sendHttpVisitLogs(bean.getId());
             }
-            //通知主页刷新数据
-//            Main.handleRefreshMarker.sendEmptyMessage(1);
-//            MyToast.showTheToast(this, "正在刷新站点数据，请稍候");
-            MyToast.showTheToast(this, msg);
             activity.finish();
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
@@ -296,72 +236,94 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
     public static final String appSnFileName = "userAppSn.txt";
 
     private void httpReLoginSuccess(String str) {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        final Dialog dialog = new Dialog(this, R.style.Translucent_NoTitle);
-        View view = inflater.inflate(R.layout.alertdialog_bind, null);
-        TextView title = view.findViewById(R.id.title);
-        title.setText(str);
-        TextView success_t = view.findViewById(R.id.success);
-        success_t.setText("立即恢复");
-        success_t.setOnClickListener(new View.OnClickListener() {
+
+        new DialogByChoice(activity, "str", "立即恢复", "注册新账号", new DialogByChoice.DialogChoiceListener() {
             @Override
-            public void onClick(View v) {
-                clickSureReqyestLogin("2");
-                dialog.dismiss();
+            public void enterReturn() {
+                loginByCode("2");
             }
-        });
-        TextView error_t = view.findViewById(R.id.error);
-        error_t.setText("注册新账号");
-        error_t.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View v) {
-                clickSureReqyestLogin("");
-                dialog.dismiss();
+            public void cancelReturn() {
+                loginByCode("");
             }
-        });
-        dialog.setCancelable(false);
-        dialog.setContentView(view);
-        dialog.show();
+        }).showPopupWindow();
     }
 
     @Override
     public void onError(Throwable throwable) {
-        MyToast.showTheToast(this, throwable.getLocalizedMessage());
+        new DialogByEnter(activity , throwable.getLocalizedMessage()).showPopupWindow();
     }
 
-    class TimerCount extends Thread {
-        int count = 0;
-        Handler handler;
+    @OnClick(R.id.pageReturn)
+    public void onClickPageReturn(){
+        activity.finish();
+    }
 
-        public TimerCount(int count, Handler handler) {
-            this.count = count;
-            this.handler = handler;
-        }
-
-        @Override
-        public void run() {
-            super.run();
-            while (count > 0) {
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    System.out.println(e.getLocalizedMessage());
-                }
-                count = count - 1;
-                if (handler != null) {
-                    Message message = new Message();
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("time", count);
-                    message.setData(bundle);
-                    handler.sendMessage(message);
-                }
+    @OnClick(R.id.getNumber)
+    public void onClickGetNumber(){
+        //点击获取验证码
+        String phoneStr = edtLoginPhone.getText().toString().trim();
+        if (TextUtils.isEmpty(phoneStr)) {
+            new DialogByEnter(activity , "手机号不能为空！").showPopupWindow();
+        } else if (11 == phoneStr.length()) {
+            if (mPresenter != null) {
+                mPresenter.sendVerificationCode(phoneStr);
             }
+        } else {
+            new DialogByEnter(activity , "请输入正确的手机格式！").showPopupWindow();
+        }
+    }
+
+    @OnClick(R.id.isRead)
+    public void onClickIsRead(){
+        if (isReadSelect) {
+            isRead.setImageResource(R.drawable.u6_pub_select_uncheck);
+            isReadSelect = false;
+        } else {
+            isRead.setImageResource(R.drawable.u6_pub_select_check);
+            isReadSelect = true;
+        }
+    }
+
+    @OnClick(R.id.ruleByPrivacy)
+    public void onClickRuleByPrivacy(){
+        activity.startActivity(new Intent(activity , MainPrivacyClause.class));
+    }
+
+    @OnClick(R.id.ruleByUser)
+    public void onClickRuleByUser(){
+        activity.startActivity(new Intent(activity , MainAgreement.class));
+    }
+
+    @OnClick(R.id.jPushVerificationLogin)
+    public void onClickJPushVerificationLogin(){
+        requestJg();
+    }
+
+    @OnClick(R.id.submit)
+    public void onClickSubmit(){
+        if (isReadSelect) {
+            isOwnLogin = false;
+            loginByCode("1");
+        } else {
+            new DialogByEnter(activity , "请先阅读用户协议和隐私政策").showPopupWindow();
         }
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
+    public void showProgress() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void hideProgress() {
+        progressDialog.dismiss();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        timeState = false;
     }
 }

@@ -18,7 +18,7 @@ import butterknife.Unbinder;
 
 public class U6BaseActivity extends AppCompatActivity {
 
-    protected static final String TAG = "BaseActivity";
+    protected static final String Tag = "JiDianByClient";
     //上下文
     protected FragmentActivity activity;
     //软键盘

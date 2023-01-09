@@ -1,8 +1,8 @@
 package com.android.jidian.client.mvp.ui.activity.main;
 
-import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -23,15 +23,13 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.model.Marker;
-import com.amap.api.maps.model.MyLocationStyle;
 import com.android.jidian.client.BuildConfig;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
-import com.android.jidian.client.bean.MainActiyivyExpenseBean;
-import com.android.jidian.client.bean.MainAppVersionBean;
+import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
 import com.android.jidian.client.mvp.presenter.MainActivityPresenter;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
@@ -39,19 +37,17 @@ import com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment.Main
 import com.android.jidian.client.mvp.ui.activity.main.mainFindFragment.MainFindFragment;
 import com.android.jidian.client.mvp.ui.activity.main.mainShopFragment.MainShopFragment;
 import com.android.jidian.client.mvp.ui.activity.main.mainUserFragment.MainUserFragment;
+import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.util.file.FileManager;
 import com.android.jidian.client.widgets.MyToast;
-import com.permissionx.guolindev.PermissionX;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -83,11 +79,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     private MainShopFragment mainShopFragment;
     private MainUserFragment mainUserFragment;
 
-
     //定位相关
     public AMapLocationClient mLocationClient;
     public AMapLocationClientOption mLocationOption = null;
-    public MyLocationStyle myLocationStyle;
     public double[] coordinates = new double[]{0, 0};
     private ArrayList<Marker> markers = new ArrayList<>();
     private AMapLocation aMapLocation;
@@ -114,6 +108,51 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         registerReceiver();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //检查用户登录信息 以及 使用环境
+        boolean isLogin = !UserInfoHelper.getInstance().getUid().isEmpty();
+        //检查权限
+        if(permissionShow == false){
+            permissionShow = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    permissionShow = false;
+                }
+            }, 10 * 1000);
+            PermissionManager.getInstance().getLocalAndWrite(activity, new PermissionManager.PermissionListener() {
+                @Override
+                public void granted(List<String> grantedList) {
+                    for(int i = 0 ; i < grantedList.size() ; i++){
+                        if(grantedList.get(i).equals(PermissionManager.getInstance().local_1)){
+                            initLocation();
+                        }
+                        if(grantedList.get(i).equals(PermissionManager.getInstance().write)){
+                            if (isLogin) {
+                                apptoken = sharedPreferences.getString("apptoken", "");
+                                String appSn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
+                                if (!TextUtils.isEmpty(apptoken) && !TextUtils.isEmpty(appSn)) {
+                                    mPresenter.requestCheckAccv2(apptoken, appSn);
+                                }
+                            }
+                        }
+                    }
+                }
+                @Override
+                public void refused(List<String> deniedList) {
+                    DialogByEnter dialog = new DialogByEnter(activity , "当前应用缺少必要权限,会影响部分功能使用！");
+                    dialog.showPopupWindow();
+                }
+            });
+        }
+        //获取用户信息
+        if (!isLogin) {
+            changeMain(0);
+        }
+    }
+
     private void initLocation() {
         try {
             mLocationClient = new AMapLocationClient(MainActivity.this);
@@ -135,16 +174,12 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                             //定位成功回调信息，设置相关消息
                             mPositioned = true;
                             aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
-                            Log.d("xiaoming1223", "aMapLocation.getLocationType(): " + aMapLocation.getLocationType());
                             coordinates[0] = aMapLocation.getLongitude();//获取经度
                             coordinates[1] = aMapLocation.getLatitude();//获取纬度
-                            aMapLocation.getAccuracy();//获取精度信息
-                            Log.d("xiaoming1223", "aMapLocation.getAccuracy(): " + aMapLocation.getAccuracy());
-                            Log.d("xiaoming1223", "onLocationChanged:  aMapLocation.getCity(): " + aMapLocation.getAddress() + "aMapLocation.getCityCode(): " + aMapLocation.getCityCode()
-                                    + "aMapLocation.getLatitude() :" + aMapLocation.getLatitude() + "aMapLocation.getLongitude():" + aMapLocation.getLongitude());
+                            Log.d(Tag, "onLocationChanged:  aMapLocation.getCity(): " + aMapLocation.getAddress() + "aMapLocation.getCityCode(): " + aMapLocation.getCityCode() + "aMapLocation.getLatitude() :" + aMapLocation.getLatitude() + "aMapLocation.getLongitude():" + aMapLocation.getLongitude());
                         } else {
                             //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                            Log.e("AmapError", "location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
+                            Log.e(Tag, "location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
                         }
                     }
                 }
@@ -152,7 +187,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             //启动定位
             mLocationClient.startLocation();
         } catch (Exception e) {
-
+            Log.e(Tag , e.toString());
+            e.printStackTrace();
         }
     }
 
@@ -184,19 +220,15 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     }
 
     private void changeMain(int page) {
-
         if (page == localPage) {
             return;
         }
-
         if ((page == 2 || page == 3) && UserInfoHelper.getInstance().getUid().isEmpty()) {
             activity.startActivity(new Intent(activity, LoginActivity.class));
             return;
         }
-
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-
         if (mainEquipmentFragment != null) {
             ft.hide(mainEquipmentFragment);
         }
@@ -209,14 +241,12 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         if (mainUserFragment != null) {
             ft.hide(mainUserFragment);
         }
-
         for (int i = 0; i < footTextViewList.size(); i++) {
             footTextViewList.get(i).setTextColor(0xffffffff);
             footImageViewList.get(i).setImageResource(notSelectIcons[i]);
         }
         footTextViewList.get(page).setTextColor(activity.getResources().getColor(R.color.yellow_B69873));
         footImageViewList.get(page).setImageResource(isSelectIcons[page]);
-
         if (page == 0) {
             if (mainEquipmentFragment == null) {
                 mainEquipmentFragment = new MainEquipmentFragment();
@@ -246,11 +276,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                 ft.show(mainUserFragment);
             }
         }
-
         ft.commitAllowingStateLoss();
         localPage = page;
     }
-
 
     /**
      * 注册广播 广播切换页卡
@@ -275,16 +303,6 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     }
 
     @Override
-    public void requestMainInfoSuccess(MainActiyivyExpenseBean bean) {
-
-    }
-
-    @Override
-    public void requestMainInfoFail(String msg) {
-
-    }
-
-    @Override
     public void appVerUpgradeSuccess(MainAppVersionBean bean) {
         MainAppVersionBean.DataBean mainAppVersionBean = bean.getData();
         String url = mainAppVersionBean.getAndroid_url();
@@ -295,13 +313,12 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         }
         int netVersion = Integer.parseInt(mainAppVersionBean.getAndroid_code());
         int localVersion = BuildConfig.VERSION_CODE;
-        System.out.println("okh -   " + netVersion + "     " + localVersion + "    " + isForce);
         if (url != null && !url.equals("null") && netVersion > localVersion) {
 
             UpdateConfig updateConfig = new UpdateConfig();
             updateConfig.setCheckWifi(true);
             updateConfig.setNeedCheckMd5(true);
-            updateConfig.setNotifyImgRes(R.drawable.logo_update);
+            updateConfig.setNotifyImgRes(R.drawable.u6_pub_dialog_update);
             updateConfig.setApkSavePath(FileManager.getInstance().getRootPath());
             updateConfig.setAlwaysShowDownLoadDialog(true);
             updateConfig.setForce(isForce);
@@ -348,55 +365,6 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        //检查用户登录信息 以及 使用环境
-        boolean isLogin = !UserInfoHelper.getInstance().getUid().isEmpty();
-        //检查权限
-        if(permissionShow == false){
-            permissionShow = true;
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    permissionShow = false;
-                }
-            }, 10 * 1000);
-            PermissionManager.getInstance().getLocalAndWrite(activity, new PermissionManager.PermissionListener() {
-                @Override
-                public void granted(List<String> grantedList) {
-                    for(int i = 0 ; i < grantedList.size() ; i++){
-                        if(grantedList.get(i).equals(PermissionManager.getInstance().local_1)){
-                            initLocation();
-                        }
-                        if(grantedList.get(i).equals(PermissionManager.getInstance().write)){
-                            if (isLogin) {
-                                apptoken = sharedPreferences.getString("apptoken", "");
-                                String appsn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
-                                if (!TextUtils.isEmpty(apptoken) && !TextUtils.isEmpty(appsn)) {
-                                    mPresenter.requestCheckAccv2(apptoken, appsn);
-                                }
-                            }
-                        }
-                    }
-                }
-                @Override
-                public void refused(List<String> deniedList) {
-                    MyToast.showTheToast(activity, "当前应用缺少必要权限,会影响部分功能使用");
-                }
-            });
-        }
-        //获取用户信息
-        if (!isLogin) {
-            changeMain(0);
-        }
-    }
-
-    @Override
-    public void appVerUpgradeFail(String msg) {
-
-    }
-
-    @Override
     public void requestCheckAccv2Success(LoginCheckAccv2Bean bean) {
         MyToast.showTheToast(this, bean.getMsg());
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -407,33 +375,18 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     }
 
     @Override
-    public void requestCheckAccv2Error(String msg) {
-
-    }
-
-    @Override
     public void showProgress() {
         progressDialog.show();
-//        LoadingViewUtil.getInstance().show();
     }
 
     @Override
     public void hideProgress() {
         progressDialog.dismiss();
-//        LoadingViewUtil.getInstance().hide();
     }
 
     @Override
     public void onError(Throwable throwable) {
         showMessage("无网络链接，请检查您的网络设置！");
-        stop();
-    }
-
-    private void stop() {
-//        if (srlFragmentInviteDetail != null) {
-//            srlFragmentInviteDetail.finishRefresh();
-//            srlFragmentInviteDetail.finishLoadMore();
-//        }
     }
 
     @Override

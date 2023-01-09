@@ -13,7 +13,7 @@
         android:background="@color/grey_66000000"/>
 
     <LinearLayout
-        android:id="@+id/page_return"
+        android:id="@+id/pageReturn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:orientation="vertical"
@@ -34,8 +34,7 @@
         android:gravity="center"
         android:paddingRight="35dp"
         android:paddingLeft="35dp"
-        android:layout_marginBottom="40dp"
-        >
+        android:layout_marginBottom="40dp">
 
 
         <LinearLayout
@@ -87,7 +86,6 @@
                 android:singleLine="true"
                 android:textColor="@color/white_ffffff"
                 android:textColorHint="@color/white_aaaaaa"
-                android:textCursorDrawable="@drawable/shape_color_edt_cursor"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -116,11 +114,10 @@
                 android:singleLine="true"
                 android:textColor="@color/white_ffffff"
                 android:textColorHint="@color/white_aaaaaa"
-                android:textCursorDrawable="@drawable/shape_color_edt_cursor"
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/get_number_text"
+                android:id="@+id/getNumber"
                 android:layout_width="80dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -140,7 +137,7 @@
             android:layout_marginTop="15dp">
 
             <ImageView
-                android:id="@+id/login_read"
+                android:id="@+id/isRead"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:src="@drawable/u6_pub_select_uncheck" />
@@ -154,10 +151,10 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/rule1"
+                android:id="@+id/ruleByUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login1"
+                android:text="《用户协议》"
                 android:textColor="@color/yellow_D7A64A"
                 android:textSize="13sp" />
 
@@ -169,10 +166,10 @@
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/rule2"
+                android:id="@+id/ruleByPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login2"
+                android:text="《隐私政策》"
                 android:textColor="@color/yellow_D7A64A"
                 android:textSize="13sp" />
         </LinearLayout>
@@ -198,7 +195,7 @@
             android:textSize="17sp" />
 
         <TextView
-            android:id="@+id/btn_JVerificationLogin"
+            android:id="@+id/jPushVerificationLogin"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
