@@ -4,16 +4,14 @@ package com.android.jidian.client.mvp.ui.activity.main.mainShopFragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.MainAuthentication_;
-import com.android.jidian.client.Newshoppay_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.ShopRentZhima_;
 import com.android.jidian.client.base.BaseFragment;
@@ -22,6 +20,11 @@ import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserPersonalBean;
 import com.android.jidian.client.mvp.contract.MainShopContract;
 import com.android.jidian.client.mvp.presenter.MainShopPresenter;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderZhiMaActivity;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoAuthentication;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoiceType2;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.widgets.MyToast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -98,7 +101,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
                     } else if (is_sell == 1) {
                         if ("230".equals(otype) || "231".equals(otype) || "232".equals(otype)) {
                             if (is_buy == 1) {
-                                Intent intent = new Intent(getActivity(), Newshoppay_.class);
+                                Intent intent = new Intent(getActivity(), PayByCreateOrderActivity.class);
                                 intent.putExtra("id", item_id);
                                 intent.putExtra("from", "product");
                                 getActivity().startActivity(intent);
@@ -106,7 +109,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
                                 showMessage("每个用户年卡过期前，仅限购买同类型年卡~");
                             }
                         } else {
-                            Intent intent = new Intent(getActivity(), Newshoppay_.class);
+                            Intent intent = new Intent(getActivity(), PayByCreateOrderActivity.class);
                             intent.putExtra("id", item_id);
                             intent.putExtra("from", "product");
                             getActivity().startActivity(intent);
@@ -123,32 +126,22 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
                     } else if (is_sell == 1) {
                         if (getActivity() != null) {
                             if ("已认证".equals(idAuthTip)) {
-                                Intent intent = new Intent(getActivity(), ShopRentZhima_.class);
+                                Intent intent = new Intent(getActivity(), PayByCreateOrderZhiMaActivity.class);
                                 intent.putExtra("id", id_);
                                 intent.putExtra("from", "product");
                                 getActivity().startActivity(intent);
                             } else {
-                                LayoutInflater inflater = LayoutInflater.from(getActivity());
-                                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                final AlertDialog mAlertDialog = builder.create();
-                                View view1 = inflater.inflate(R.layout.alertdialog_is_auth, null);
-                                TextView success_t = (TextView) view1.findViewById(R.id.success);
-                                success_t.setOnClickListener(new View.OnClickListener() {
+                                new DialogByChoiceType2(getActivity(), "为了保障您的权益","请先进行实名认证", new DialogByChoiceType2.DialogChoiceListener() {
                                     @Override
-                                    public void onClick(View v) {
-                                        getActivity().startActivity(new Intent(getActivity(), MainAuthentication_.class));
+                                    public void enterReturn() {
+                                        getActivity().startActivity(new Intent(getActivity(), PersonalInfoAuthentication.class));
                                     }
-                                });
-                                TextView error_t = (TextView) view1.findViewById(R.id.error);
-                                error_t.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        mAlertDialog.dismiss();
-                                    }
-                                });
 
-                                mAlertDialog.show();
-                                mAlertDialog.getWindow().setContentView(view1);
+                                    @Override
+                                    public void cancelReturn() {
+
+                                    }
+                                }).showPopupWindow();
                             }
                         }
                     } else {
@@ -158,12 +151,8 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
             }
         });
         recyclerView.setAdapter(mainShopAdapter);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         //获取数据
+        showProgress();
         requestData();
     }
 
@@ -182,6 +171,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     @Override
     public void requestShopBuySuccess(ShopBuyBean bean) {
+        hideProgress();
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
             if (bean.getData().getPacks() != null) {
@@ -211,6 +201,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     @Override
     public void requestShopRentSuccess(ShopRentBean bean) {
+        hideProgress();
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
             if (bean.getData().getPacks() != null) {
@@ -240,6 +231,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     @Override
     public void requestUserPersonalSuccess(UserPersonalBean bean) {
+        hideProgress();
         if (bean.getData() != null) {
             idAuthTip = bean.getData().getId_auth_tip();
         }
@@ -248,6 +240,7 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     @Override
     public void requestShopFail(String msg) {
+        hideProgress();
         smartRefreshLayout.finishRefresh();
         showMessage(msg);
     }
@@ -264,12 +257,12 @@ public class MainShopFragment extends BaseFragment<MainShopPresenter> implements
 
     @Override
     public void showProgress() {
-        progressDialog.show();
+        dialogByLoading.show();
     }
 
     @Override
     public void hideProgress() {
-        progressDialog.dismiss();
+        dialogByLoading.dismiss();
     }
 
     @Override

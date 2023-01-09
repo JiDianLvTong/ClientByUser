@@ -1,9 +1,9 @@
 package com.android.jidian.client.mvp.ui.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,13 +29,13 @@ public class BluetoothDialogFragment extends DialogFragment implements View.OnCl
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.alertdialog_logout, container, false);
-        TextView success = view.findViewById(R.id.success);
-        TextView error = view.findViewById(R.id.error);
-        TextView tv_text = view.findViewById(R.id.tv_text);
-        tv_text.setText(title);
-        success.setOnClickListener(this);
-        error.setOnClickListener(this);
+        View view = inflater.inflate(null, container, false);
+//        TextView success = view.findViewById(R.id.success);
+//        TextView error = view.findViewById(R.id.error);
+//        TextView tv_text = view.findViewById(R.id.tv_text);
+//        tv_text.setText(title);
+//        success.setOnClickListener(this);
+//        error.setOnClickListener(this);
         return view;
     }
 

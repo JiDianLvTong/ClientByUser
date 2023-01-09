@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.android.jidian.client.R;
-import com.android.jidian.client.bean.MapJwduV5Bean;
+import com.android.jidian.client.mvp.bean.ChargeSiteMapBean;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MakerUtils {
 
@@ -28,12 +28,12 @@ public class MakerUtils {
         return bitmapDescriptor;
     }
 
-    public BitmapDescriptor chargeSiteMarker(Activity activity , ArrayList<MapJwduV5Bean.DataBean.ListBean> items) {
+    public BitmapDescriptor chargeSiteMarker(Activity activity , List<ChargeSiteMapBean.DataBean.ListBean> items) {
 
         int batteryCount = 0 ;
         int cabCount = items.size();
         for(int i = 0 ; i < cabCount ; i ++){
-            MapJwduV5Bean.DataBean.ListBean mapSiteItem = items.get(i);
+            ChargeSiteMapBean.DataBean.ListBean mapSiteItem = items.get(i);
             batteryCount = batteryCount + Integer.parseInt(mapSiteItem.getBattery_num());
         }
 

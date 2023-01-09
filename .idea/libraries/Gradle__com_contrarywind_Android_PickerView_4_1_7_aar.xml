@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/28bfe1815e311f5db4bd842bb1745af8/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/28bfe1815e311f5db4bd842bb1745af8/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/28bfe1815e311f5db4bd842bb1745af8/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/df11788d9f059df93a0952959acf646e/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/df11788d9f059df93a0952959acf646e/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/Android-PickerView-4.1.7.aar/df11788d9f059df93a0952959acf646e/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-Android-PickerView-4.1.7.aar/d2efa0981de06ca89d522db00da561b8/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-Android-PickerView-4.1.7.aar/d2efa0981de06ca89d522db00da561b8/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-Android-PickerView-4.1.7.aar/d2efa0981de06ca89d522db00da561b8/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

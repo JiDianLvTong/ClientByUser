@@ -10,7 +10,6 @@
         android:id="@+id/statusBarView"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/grey_33000000"
         android:layout_height="wrap_content"/>
 
     <LinearLayout
@@ -249,7 +248,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/circular_orange_d7a64a_100"
+            android:background="@drawable/u6_shape_d7a64a_corner_10"
             android:gravity="center"
             android:text="退出登录"
             android:textColor="@color/white_ffffff"

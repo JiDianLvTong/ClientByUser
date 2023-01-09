@@ -32,14 +32,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
+import com.google.android.material.tabs.TabLayout;
+
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -68,7 +72,6 @@ import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.CustomMapStyleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
-import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.android.jidian.client.base.AppLocationManager;
 import com.android.jidian.client.bean.ChargeSiteMapInfoBean;
@@ -77,12 +80,7 @@ import com.android.jidian.client.bean.PullActivityIndexBean;
 import com.android.jidian.client.bluetooth.BluetoothDeviceList;
 import com.android.jidian.client.bluetooth.BluetoothSpp;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
-import com.android.jidian.client.mvp.ui.activity.CustomH5Page;
-import com.android.jidian.client.mvp.ui.activity.EvaluationListsActivity;
-import com.android.jidian.client.mvp.ui.activity.InviteActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
-import com.android.jidian.client.mvp.ui.activity.NewWalletActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
 import com.android.jidian.client.mvp.ui.adapter.MainSceneDialogSecondAdapter;
 import com.android.jidian.client.adapter.SimpleAdapters;
 import com.android.jidian.client.bean.AdvicesNumsV2Bean;
@@ -116,13 +114,9 @@ import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.service.BluetoothLeServiceMain;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.util.ViewUtil;
-import com.android.jidian.client.mvp.ui.activity.AdvicesListsActivity;
+import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.dialog.CommonPopupWindow;
 import com.android.jidian.client.widgets.MyScrollView;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment1;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment2;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment3;
-import com.android.jidian.client.mvp.ui.fragment.BlankFragment4;
 import com.android.jidian.client.widgets.PersonalInfoDrawerMenu;
 import com.android.jidian.client.widgets.ViewPagerAdapter;
 import com.bumptech.glide.Glide;
@@ -501,27 +495,27 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
                 mAlertDialog = builder.create();
                 View view = inflater.inflate(R.layout.alertdialog_update1, null);
-                TextView payAlertdialogSuccess = view.findViewById(R.id.payAlertdialogSuccess);
-                TextView text_panel = view.findViewById(R.id.text_panel);
-                text_panel.setText("请重新下载更新包，安装之后正常使用");
-                payAlertdialogSuccess.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        PermissionX.init(Main.this)
-                                .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                                .request((allGranted, grantedList, deniedList) -> {
-                                    if (allGranted) {
-                                        payAlertdialogSuccess.setVisibility(View.GONE);
-                                        new DownLoadAndInstallApp(activity, Android_url, "myApp.apk");
-                                        MyToast.showTheToast(activity, "正在更新APP，请稍后！");
-                                    } else {
-                                        MyToast.showTheToast(Main.this, "当前应用缺少存储权限 ");
-                                    }
-                                });
-                    }
-                });
+//                TextView payAlertdialogSuccess = view.findViewById(R.id.payAlertdialogSuccess);
+//                TextView text_panel = view.findViewById(R.id.text_panel);
+//                text_panel.setText("请重新下载更新包，安装之后正常使用");
+//                payAlertdialogSuccess.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        PermissionX.init(Main.this)
+//                                .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+//                                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+//                                .request((allGranted, grantedList, deniedList) -> {
+//                                    if (allGranted) {
+//                                        payAlertdialogSuccess.setVisibility(View.GONE);
+//                                        new DownLoadAndInstallApp(activity, Android_url, "myApp.apk");
+//                                        MyToast.showTheToast(activity, "正在更新APP，请稍后！");
+//                                    } else {
+//                                        MyToast.showTheToast(Main.this, "当前应用缺少存储权限 ");
+//                                    }
+//                                });
+//                    }
+//                });
                 mAlertDialog.setCancelable(false);
                 mAlertDialog.show();
                 mAlertDialog.getWindow().setContentView(view);
@@ -701,24 +695,24 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         initViewpager();
     }
 
-    private BlankFragment1 blankFragment1;
-    private BlankFragment2 blankFragment2;
-    private BlankFragment3 blankFragment3;
-    private BlankFragment4 blankFragment4;
+//    private BlankFragment1 blankFragment1;
+//    private BlankFragment2 blankFragment2;
+//    private BlankFragment3 blankFragment3;
+//    private BlankFragment4 blankFragment4;
 
     private void initViewpager() {
         String jingdu = longitude == 0 ? "" : longitude.toString();
         String weidu = latitude == 0 ? "" : latitude.toString();
         List<Fragment> fragments = new ArrayList<>();
-        blankFragment1 = BlankFragment1.newInstance(jingdu, weidu, type + "");
-        blankFragment2 = BlankFragment2.newInstance(jingdu, weidu);
-        blankFragment3 = BlankFragment3.newInstance(jingdu, weidu);
-        blankFragment4 = BlankFragment4.newInstance(jingdu, weidu);
-        fragments.add(blankFragment1);
-        fragments.add(blankFragment2);
-        fragments.add(blankFragment3);
-        fragments.add(blankFragment4);
-        fragments.add(new android.support.v4.app.DialogFragment());
+//        blankFragment1 = BlankFragment1.newInstance(jingdu, weidu, type + "");
+//        blankFragment2 = BlankFragment2.newInstance(jingdu, weidu);
+//        blankFragment3 = BlankFragment3.newInstance(jingdu, weidu);
+//        blankFragment4 = BlankFragment4.newInstance(jingdu, weidu);
+//        fragments.add(blankFragment1);
+//        fragments.add(blankFragment2);
+//        fragments.add(blankFragment3);
+//        fragments.add(blankFragment4);
+        fragments.add(new DialogFragment());
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), fragments, titleStrings);
         home_viewPager.setAdapter(adapter);
         home_tabLayout.setupWithViewPager(home_viewPager);
@@ -1114,10 +1108,10 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
 //                        });
             case R.id.mustRead:
                 //点击新用户必读按钮
-                BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_NEW_USERS_MUST_READ);
-                Intent intent00 = new Intent(this, CustomH5Page.class);
-                intent00.putExtra("url", "https://h5x.mixiangx.com/Help/guide2.html");
-                startActivity(intent00);
+//                BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HOME_PAGE_NEW_USERS_MUST_READ);
+//                Intent intent00 = new Intent(this, CustomH5Page.class);
+//                intent00.putExtra("url", "https://h5x.mixiangx.com/Help/guide2.html");
+//                startActivity(intent00);
                 break;
             case R.id.lists:
                 //点击列表按钮
@@ -1127,18 +1121,18 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                         home_viewPager.setVisibility(View.GONE);
                     } else {
                         home_viewPager.setVisibility(View.VISIBLE);
-                        if (blankFragment1 != null) {
-                            blankFragment1.refreshData(type + "");
-                        }
-                        if (blankFragment2 != null) {
-                            blankFragment2.refreshData();
-                        }
-                        if (blankFragment3 != null) {
-                            blankFragment3.refreshData();
-                        }
-                        if (blankFragment4 != null) {
-                            blankFragment4.refreshData();
-                        }
+//                        if (blankFragment1 != null) {
+//                            blankFragment1.refreshData(type + "");
+//                        }
+//                        if (blankFragment2 != null) {
+//                            blankFragment2.refreshData();
+//                        }
+//                        if (blankFragment3 != null) {
+//                            blankFragment3.refreshData();
+//                        }
+//                        if (blankFragment4 != null) {
+//                            blankFragment4.refreshData();
+//                        }
                     }
                 }
                 break;
@@ -1213,7 +1207,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                     if (TextUtils.isEmpty(uid)) {
                         activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
-                        activity.startActivity(new Intent(activity, MainCustomer_.class));
+//                        activity.startActivity(new Intent(activity, MainCustomer_.class));
                     }
                 }
                 break;
@@ -1225,8 +1219,8 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                         MyToast.showTheToast(activity, "请先进行登录！");
                         activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
-                        Intent intent = new Intent(activity, MainShop_.class);
-                        activity.startActivity(intent);
+//                        Intent intent = new Intent(activity, MainShop_.class);
+//                        activity.startActivity(intent);
                         //商城访问节点统计
                         List<ParamTypeData> dataList1 = new ArrayList<>();
                         dataList1.add(new ParamTypeData("title", "商城访问"));
@@ -1438,8 +1432,8 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                     if (TextUtils.isEmpty(uid)) {
                         activity.startActivity(new Intent(activity, LoginActivity.class));
                     } else {
-                        Intent mIntent = new Intent(activity, ScanCodeNewActivity.class);
-                        mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+                        Intent mIntent = new Intent(activity, ScanCodeActivity.class);
+                        mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
                         startActivity(mIntent);
                     }
                 }
@@ -1704,18 +1698,18 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
             imgList = mapBean.getImg_list();
             List<MapJwduV5Bean.DataBean> dataBeanList = mapBean.getData();
             for(int i = 0 ; i < dataBeanList.size() ; i++){
-                String jingdu = dataBeanList.get(i).getJingdu() +"";
-                String weidu = dataBeanList.get(i).getWeidu() +"";
-                ArrayList<MapJwduV5Bean.DataBean.ListBean> mapSiteItemArrayList = new ArrayList<>(dataArrayList.get(i).getList());
-
-                MarkerOptions markerOption = new MarkerOptions();
-                markerOption.position(new LatLng(Double.parseDouble(weidu),Double.parseDouble(jingdu)));
-                markerOption.draggable(false);//设置Marker可拖动
-
-                markerOption.icon(new MakerUtils().chargeSiteMarker(activity,mapSiteItemArrayList));
-                markerOption.setFlat(true);//设置marker平贴地图效果
-                Marker marker = aMap.addMarker(markerOption);
-                markers.add(marker);
+//                String jingdu = dataBeanList.get(i).getJingdu() +"";
+//                String weidu = dataBeanList.get(i).getWeidu() +"";
+//                ArrayList<MapJwduV5Bean.DataBean.ListBean> mapSiteItemArrayList = new ArrayList<>(dataArrayList.get(i).getList());
+//
+//                MarkerOptions markerOption = new MarkerOptions();
+//                markerOption.position(new LatLng(Double.parseDouble(weidu),Double.parseDouble(jingdu)));
+//                markerOption.draggable(false);//设置Marker可拖动
+//
+//                markerOption.icon(new MakerUtils().chargeSiteMarker(activity,mapSiteItemArrayList));
+//                markerOption.setFlat(true);//设置marker平贴地图效果
+//                Marker marker = aMap.addMarker(markerOption);
+//                markers.add(marker);
             }
 //            for (int i = 0; i < dataBeanList.size(); i++) {
 //                MapJwduV5Bean.DataBean dataBean = dataBeanList.get(i);
@@ -1898,10 +1892,10 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                         @Override
                                         public void onClick(View view) {
                                             if (TextUtils.isEmpty(uid)) {
-                                                Intent intent = new Intent(Main.this, InviteActivity.class);
-                                                intent.putExtra("url", bean.getBig_jump());
-                                                intent.putExtra("inviteId", bean.getAid());
-                                                startActivity(intent);
+//                                                Intent intent = new Intent(Main.this, InviteActivity.class);
+//                                                intent.putExtra("url", bean.getBig_jump());
+//                                                intent.putExtra("inviteId", bean.getAid());
+//                                                startActivity(intent);
                                             } else {
                                                 isInviteDialogShowed = false;
                                                 startActivity(new Intent(Main.this, LoginActivity.class));
@@ -2094,10 +2088,10 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                             if (!TextUtils.isEmpty(uid)) {
                                 if (bean != null) {
                                     if ("1".equals(bean.getBig_click())) {
-                                        Intent intent = new Intent(this, InviteActivity.class);
-                                        intent.putExtra("url", bean.getBig_jump());
-                                        intent.putExtra("inviteId", bean.getAid());
-                                        startActivity(intent);
+//                                        Intent intent = new Intent(this, InviteActivity.class);
+//                                        intent.putExtra("url", bean.getBig_jump());
+//                                        intent.putExtra("inviteId", bean.getAid());
+//                                        startActivity(intent);
                                     }
                                 }
                             } else {
@@ -2123,10 +2117,10 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                                 @Override
                                 public void onClick(View view) {
                                     if (!TextUtils.isEmpty(uid)) {
-                                        Intent intent = new Intent(Main.this, InviteActivity.class);
-                                        intent.putExtra("url", bean.getBig_jump());
-                                        intent.putExtra("inviteId", bean.getAid());
-                                        startActivity(intent);
+//                                        Intent intent = new Intent(Main.this, InviteActivity.class);
+//                                        intent.putExtra("url", bean.getBig_jump());
+//                                        intent.putExtra("inviteId", bean.getAid());
+//                                        startActivity(intent);
                                     } else {
                                         isInviteDialogShowed = false;
                                         startActivity(new Intent(Main.this, LoginActivity.class));
@@ -2343,16 +2337,16 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
         if (rightBtnBean != null) {
             if ("1".equals(rightBtnBean.getIs_jump())) {
                 if ("Wallet/v".equals(rightBtnBean.getJump_to())) {
-                    startActivity(new Intent(activity, NewWalletActivity.class));
+//                    startActivity(new Intent(activity, NewWalletActivity.class));
                 } else if ("Goods/buy".equals(rightBtnBean.getJump_to())) {
-                    Intent intent = new Intent(activity, MainShop_.class);
-                    AdvicesNumsV2Bean.ParamBean paramBean = rightBtnBean.getParam();
-                    if (paramBean != null) {
-                        intent.putExtra(MainShop.MSG_OTYPE, paramBean.getOtype());
-                        intent.putExtra(MainShop.MSG_FROMS, paramBean.getFroms());
-                        intent.putExtra(MainShop.MSG_MERID, paramBean.getMerid());//"376"|paramBean.getMerid()
-                    }
-                    startActivity(intent);
+//                    Intent intent = new Intent(activity, MainShop_.class);
+//                    AdvicesNumsV2Bean.ParamBean paramBean = rightBtnBean.getParam();
+//                    if (paramBean != null) {
+//                        intent.putExtra(MainShop.MSG_OTYPE, paramBean.getOtype());
+//                        intent.putExtra(MainShop.MSG_FROMS, paramBean.getFroms());
+//                        intent.putExtra(MainShop.MSG_MERID, paramBean.getMerid());//"376"|paramBean.getMerid()
+//                    }
+//                    startActivity(intent);
                 } else {
                     Intent intent = new Intent(this, MainAdv.class);
                     intent.putExtra("url", rightBtnBean.getJump_to());
@@ -2515,11 +2509,11 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                 BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_SITE_DETAILS_COMMENT);
                 if (!uid.isEmpty()) {
                     requestHttpVisitLogs("站点详情-评价", "114");
-                    Intent intent = new Intent(Main.this, EvaluationListsActivity.class);
-                    intent.putExtra("cabid", dataBean.getCabid());
-                    intent.putExtra("name", dataBean.getName());
-                    intent.putExtra("repair", repair);
-                    startActivity(intent);
+//                    Intent intent = new Intent(Main.this, EvaluationListsActivity.class);
+//                    intent.putExtra("cabid", dataBean.getCabid());
+//                    intent.putExtra("name", dataBean.getName());
+//                    intent.putExtra("repair", repair);
+//                    startActivity(intent);
                 } else {
                     showMessage("请先进行登录！");
                     activity.startActivity(new Intent(activity, LoginActivity.class));
@@ -2533,11 +2527,11 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
                     requestHttpVisitLogs("站点详情-商城", "112");
                     if (0 == is_skip || 1 == is_skip) {
                         //is_skip 0不用扫码，1需要扫码
-                        Intent intent = new Intent(Main.this, MainShopFromCabinet_.class);
-                        intent.putExtra("merid", dataBean.getMerid());
-                        intent.putExtra("is_skip", is_skip + "");
-                        intent.putExtra("froms", "10");
-                        startActivity(intent);
+//                        Intent intent = new Intent(Main.this, MainShopFromCabinet_.class);
+//                        intent.putExtra("merid", dataBean.getMerid());
+//                        intent.putExtra("is_skip", is_skip + "");
+//                        intent.putExtra("froms", "10");
+//                        startActivity(intent);
                     } else {
                         //不跳转，给提示
                         MyToast.showTheToast(activity, tips);
@@ -2898,7 +2892,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
 //                public void run() {
 //                    Log.e(TAG, "stop.....................");
 //                    mBluetoothAdapter.stopLeScan(mLeScanCallback);
-//                    progressDialog.dismiss();
+//                    dialogByLoading.dismiss();
 //                    if (target_chara == null) {
 ////                        MyToast.showTheToast(activity, "未发现充电器设备");
 //                    }
@@ -2932,7 +2926,7 @@ public class Main extends U6BaseActivityByMvp<MainPresenter> implements MainCont
 //                    if (device_name.equals("XD-01")) {
 ////                    if (device_name.equals("HC-08")) {
 ////                        scanLeDevice(false);
-////                        progressDialog.dismiss();
+////                        dialogByLoading.dismiss();
 ////                        MyToast.showTheToast(activity, "已经发现设备！");
 //                        mDeviceAddress = device.getAddress();
 ////                        mDeviceName = device_name;

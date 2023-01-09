@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
-import com.android.jidian.client.widgets.ProgressDialog;
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.gyf.barlibrary.ImmersionBar;
 
 import me.jessyan.autosize.AutoSizeConfig;
@@ -16,7 +16,7 @@ import me.jessyan.autosize.AutoSizeConfig;
 public class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
     protected Activity activity;
-    protected ProgressDialog progressDialog;
+    protected DialogByLoading progressDialog;
     protected SharedPreferences sharedPreferences;
     protected SharedPreferences spNotClear;
     protected String uid;
@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
         spNotClear = getSharedPreferences("userNotClearInfo", Activity.MODE_PRIVATE);
         uid = sharedPreferences.getString("id", "");
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new DialogByLoading(this);
         // 设置状态栏白色底黑字
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)

@@ -5,7 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +23,8 @@ import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.google.gson.Gson;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.scwang.smart.refresh.header.MaterialHeader;
+import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Background;
@@ -89,12 +88,19 @@ public class CouponsListActivity extends BaseActivity {
         from = getIntent().getStringExtra("from");
         cList_json = getIntent().getStringExtra("cList_json");
         HttpCouponBefClists(json_data);
-        refresh.setOnRefreshListener(new OnRefreshListener() {
+
+        //下拉刷新
+        MaterialHeader materialHeader = new MaterialHeader(activity);
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        refresh.setRefreshHeader(materialHeader);
+        refresh.setEnableHeaderTranslationContent(true);
+        refresh.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
             @Override
-            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+            public void onRefresh(@NonNull com.scwang.smart.refresh.layout.api.RefreshLayout refreshLayout) {
                 HttpCouponBefClists(json_data);
             }
         });
+        refresh.setEnableLoadMore(false);
     }
 
     @Background
@@ -218,7 +224,7 @@ public class CouponsListActivity extends BaseActivity {
         public View getView(int i, View convertView, ViewGroup viewGroup) {
             ViewHolder viewHolder;
             if (null == convertView){
-                convertView = View.inflate(activity, R.layout.couponlist_item, null);
+                convertView = View.inflate(activity, R.layout.u6_activity_coupon_pick_item, null);
                 viewHolder = new ViewHolder();
                 viewHolder.t_1 = convertView.findViewById(R.id.t_1);
                 viewHolder.t_2 = convertView.findViewById(R.id.t_2);

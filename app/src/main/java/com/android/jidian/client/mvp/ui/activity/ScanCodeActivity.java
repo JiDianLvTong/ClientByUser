@@ -36,7 +36,7 @@ public class ScanCodeActivity extends U6BaseActivityByMvp {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_scan_qr_code);
+        setContentView(R.layout.u6_activity_pub_scan_code);
         super.onCreate(savedInstanceState);
     }
 

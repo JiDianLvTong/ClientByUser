@@ -7,18 +7,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Userjidian.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Userjidian.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Userjidian.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Userjidian.app.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Userjidian.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Userjidian.app.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.iml" filepath="$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/dsbridge/Userjidian.dsbridge.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.iml" filepath="$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.main.iml" filepath="$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/waveview/Userjidian.waveview.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.iml" filepath="$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.main.iml" filepath="$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/webviewjavascriptbridge/Userjidian.webviewjavascriptbridge.unitTest.iml" />
     </modules>
   </component>
 </project>

@@ -23,8 +23,7 @@
         <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
             android:id="@+id/statusBarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/grey_66000000"/>
+            android:layout_height="wrap_content"/>
         <!-- 下拉刷新 -->
         <com.scwang.smart.refresh.layout.SmartRefreshLayout
             android:id="@+id/smartRefreshLayout"
@@ -244,7 +243,7 @@
 
                             </LinearLayout>
 
-                            <android.support.constraint.ConstraintLayout
+                            <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/cl_bicycle_detail"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -308,11 +307,11 @@
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@id/tv_prioce_unit" />
 
-                            </android.support.constraint.ConstraintLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
                         </LinearLayout>
 
-                        <android.support.constraint.ConstraintLayout
+                        <androidx.constraintlayout.widget.ConstraintLayout
                             android:background="@drawable/shape_ffffff_corner_15"
                             android:layout_width="match_parent"
                             android:orientation="horizontal"
@@ -378,7 +377,7 @@
 
                                     </LinearLayout>
 
-                                    <android.support.constraint.ConstraintLayout
+                                    <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_1"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
@@ -411,7 +410,7 @@
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent" />
 
-                                    </android.support.constraint.ConstraintLayout>
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 </LinearLayout>
 
@@ -470,7 +469,7 @@
 
                                     </LinearLayout>
 
-                                    <android.support.constraint.ConstraintLayout
+                                    <androidx.constraintlayout.widget.ConstraintLayout
                                         android:id="@+id/cl_battery_detail_2"
                                         android:layout_width="0dp"
                                         android:visibility="gone"
@@ -504,13 +503,13 @@
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintStart_toStartOf="parent" />
 
-                                    </android.support.constraint.ConstraintLayout>
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 </LinearLayout>
 
                             </LinearLayout>
 
-                            <android.support.constraint.ConstraintLayout
+                            <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/cl_battery_package_price"
                                 app:layout_constraintTop_toTopOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -554,9 +553,9 @@
                                     app:layout_constraintTop_toBottomOf="@id/tv_battery_price"
                                     app:layout_constraintEnd_toEndOf="@id/tv_battery_prioce_unit" />
 
-                            </android.support.constraint.ConstraintLayout>
+                            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                        </android.support.constraint.ConstraintLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_main_re_pay"
@@ -580,7 +579,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="50dp"
                                 android:layout_marginTop="10dp"
-                                android:background="@drawable/u9_shape_e23e14_corner_15"
+                                android:background="@drawable/u6_shape_e23e14_corner_15"
                                 android:paddingLeft="20dp"
                                 android:paddingRight="20dp"
                                 android:gravity="center">

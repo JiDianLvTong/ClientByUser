@@ -20,7 +20,7 @@ import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -147,7 +147,7 @@ public class MainShopItem_2FromCabinet extends BaseFragment {
 
     @Click
     void scan_panel_text() {
-        Intent intent = new Intent(requireActivity(), ScanCodeNewActivity.class);
+        Intent intent = new Intent(requireActivity(), ScanCodeActivity.class);
         requireActivity().startActivityForResult(intent, 0x000108);
     }
 

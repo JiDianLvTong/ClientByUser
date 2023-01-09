@@ -5,10 +5,10 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/22ce7128750100e911a9800f181c300c/jars/libs/jpush-android-3.8.5.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/22ce7128750100e911a9800f181c300c/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/22ce7128750100e911a9800f181c300c/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/057dee2efbdfb7a2fd42357bba873c62/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/057dee2efbdfb7a2fd42357bba873c62/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/057dee2efbdfb7a2fd42357bba873c62/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jpush-3.8.5.aar/057dee2efbdfb7a2fd42357bba873c62/jars/libs/jpush-android-3.8.5.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jpush-3.8.5.aar/93ce4ae97220a76eb6e83bd5eee0bebd/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jpush-3.8.5.aar/93ce4ae97220a76eb6e83bd5eee0bebd/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jpush-3.8.5.aar/93ce4ae97220a76eb6e83bd5eee0bebd/jars/libs/jpush-android-3.8.5.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-jpush-3.8.5.aar/93ce4ae97220a76eb6e83bd5eee0bebd/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

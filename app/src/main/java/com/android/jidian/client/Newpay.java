@@ -8,14 +8,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.JavascriptInterface;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
@@ -27,6 +26,7 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
+import com.android.jidian.client.mvp.ui.activity.pay.MainPay;
 import com.android.jidian.client.mvp.ui.dialog.SelectTypeDialog;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.Util;
@@ -52,9 +52,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import wendu.dsbridge.CompletionHandler;
-import wendu.dsbridge.DWebView;
-
 import static com.android.jidian.client.bean.MainAppEventBean.PAYSUCCESSCLOSEORDER;
 
 /**
@@ -68,8 +65,6 @@ public class Newpay extends BaseActivity {
     TextView cheap_price, tv_title, total_price, subtotalPrice, price_1, select_coupons, tv_sure_order_package;
     @ViewById
     MyListView order_list;
-    @ViewById
-    DWebView web_view;
     List<Map<String, String>> datalist_order = new ArrayList<>();
     List<List<Map<String, String>>> select_rent_lists = new ArrayList<>();
     private String mjson = "";
@@ -103,12 +98,12 @@ public class Newpay extends BaseActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                if (msg.what == 1) {
-                    web_view.setVisibility(View.VISIBLE);
-                    web_view.loadUrl(PubFunction.h5 + "Activity/layerFullCut.html");
-                } else {
-                    web_view.setVisibility(View.GONE);
-                }
+//                if (msg.what == 1) {
+//                    web_view.setVisibility(View.VISIBLE);
+//                    web_view.loadUrl(PubFunction.h5 + "Activity/layerFullCut.html");
+//                } else {
+//                    web_view.setVisibility(View.GONE);
+//                }
             }
         };
     }
@@ -128,12 +123,6 @@ public class Newpay extends BaseActivity {
             mjson = getIntent().getStringExtra("mjson");
             HttpGetType(mjson, order_type);
         }
-        // 设置背景色
-        web_view.setBackgroundColor(0);
-        // 设置填充透明度
-        web_view.getBackground().setAlpha(0);
-        web_view.getSettings().setTextZoom(100);
-        web_view.addJavascriptObject(new NewPayJsApi(), null);
 //        web_view.loadUrl("https://testh5.halouhuandian.com/Activity/layerFullCut.html");
 //        tv_title.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -518,7 +507,7 @@ public class Newpay extends BaseActivity {
                             }
                         }
                     }
-                    Newpay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.main_shop_order_item_top_v21, R.layout.main_shop_order_item_top2_v2, R.layout.main_shop_order_item_top_v22});
+                    Newpay.MyBaseAdapter1 simpleAdapter = new MyBaseAdapter1(datalist_order, new int[]{R.layout.u6_activity_pay_create_order_item_v4, R.layout.u6_activity_pay_create_order_item_v2, R.layout.u6_activity_pay_create_order_item_v5});
                     order_list.setAdapter(simpleAdapter);
                     order_list.setDividerHeight(0);
                     simpleAdapter.notifyDataSetChanged();
@@ -721,25 +710,6 @@ public class Newpay extends BaseActivity {
             t_1.setText(data.get(position).get("name"));
             view.setTag(data.get(position).get("rprice"));
             return view;
-        }
-    }
-
-    public class NewPayJsApi {
-        //异步API
-        @JavascriptInterface
-        public void getInitInfo(Object msg, CompletionHandler<String> handler) {
-            Log.d("xiaoming1749", "getInitInfo: " + mFullCutData);
-            handler.complete(mFullCutData);
-        }
-
-        //异步API
-        @JavascriptInterface
-        public void OnClickExit(Object msg, CompletionHandler<String> handler) {
-            Log.d("xiaoming1749", "OnClickExit: ");
-//            web_view.setVisibility(View.GONE);
-            Message message = new Message();
-            message.what = 2;
-            mFullCutHandler.sendMessage(message);
         }
     }
 }

@@ -24,7 +24,7 @@ public class OrderListAdapter extends BaseQuickAdapter<UserUOrderBean.DataBean.L
     private OnClickItemViewListener mListener;
 
     public OrderListAdapter() {
-        super(R.layout.u6_order_list_item);
+        super(R.layout.u6_activity_order_list_item);
     }
 
     @Override

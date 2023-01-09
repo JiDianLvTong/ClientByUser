@@ -4,25 +4,25 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.client.MainDiscount_;
-import com.android.jidian.client.MainHello_;
-import com.android.jidian.client.MainInfo_;
-import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.Newpay_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseFragmentByMvp;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
-import com.android.jidian.client.mvp.ui.activity.OrderListActivity;
-import com.android.jidian.client.mvp.ui.activity.PersonalInfoActivity;
+import com.android.jidian.client.mvp.ui.activity.coupon.CouponActivity;
+import com.android.jidian.client.mvp.ui.activity.h5.MainMoreQuestion;
+import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByReNew;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoActivity;
 import com.android.jidian.client.mvp.ui.activity.set.MainSetActivity;
-import com.android.jidian.client.mvp.ui.activity.MoreQuestion;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.itheima.roundedimageview.RoundedImageView;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -102,6 +102,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         myInfoName.setText(name);
 
         //请求数据
+        showProgress();
         requestData();
     }
 
@@ -114,6 +115,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @Override
     public void requestMainInfoSuccess(MainActiyivyExpenseBean bean) {
+        hideProgress();
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
             String gid = bean.getData().getUmonth().getPackets().getGid();
@@ -145,6 +147,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @Override
     public void requestMainInfoFail(String msg) {
+        hideProgress();
         showMessage(msg);
         smartRefreshLayout.finishRefresh();
     }
@@ -153,7 +156,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
     public void onClickMyMonth() {
         //from=40
         if (mJSONArray != null) {
-            Intent intent = new Intent(getActivity(), Newpay_.class);
+            Intent intent = new Intent(getActivity(), PayByReNew.class);
             intent.putExtra("mjson", mJSONArray.toString());
             intent.putExtra("type", "40");
             requireActivity().startActivity(intent);
@@ -167,7 +170,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @OnClick(R.id.myCoupon)
     public void onClickMyCoupon() {
-        getActivity().startActivity(new Intent(getActivity(), MainDiscount_.class));
+        getActivity().startActivity(new Intent(getActivity(), CouponActivity.class));
     }
 
     @OnClick(R.id.myAddress)
@@ -177,7 +180,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @OnClick(R.id.myCommonProblem)
     public void onClickMyCommonProblem() {
-        getActivity().startActivity(new Intent(getActivity(), MoreQuestion.class));
+        getActivity().startActivity(new Intent(getActivity(), MainMoreQuestion.class));
     }
 
 
@@ -193,7 +196,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
 
     @OnClick(R.id.myMiDou)
     public void onClickMyMiDou() {
-        getActivity().startActivity(new Intent(getActivity(), MainHello_.class));
+        getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
     }
 
     @Override

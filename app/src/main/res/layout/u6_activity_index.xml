@@ -9,8 +9,7 @@
     <com.android.jidian.client.widgets.immersionStatusBar.StatusBarView
         android:id="@+id/statusBarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/grey_33000000"/>
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -22,10 +21,10 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="200dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/u6_logo_full"/>
+                android:src="@drawable/u6_a_logo_full"/>
 
         </LinearLayout>
 
@@ -41,7 +40,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/u6_circular_grey_33ffffff_30"
+                android:background="@drawable/u6_shape_33ffffff_corner_30"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textColor="#ffffff"/>

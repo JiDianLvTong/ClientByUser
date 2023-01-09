@@ -1,27 +1,27 @@
 package com.android.jidian.client.base;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.android.jidian.client.widgets.MyToast;
-import com.android.jidian.client.widgets.ProgressDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class U6BaseFragment extends Fragment{
 
-    protected ProgressDialog progressDialog;
+    protected DialogByLoading progressDialog;
     protected Unbinder unbinder;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        progressDialog = new ProgressDialog(requireActivity());
+        progressDialog = new DialogByLoading(requireActivity());
         super.onCreate(savedInstanceState);
     }
 

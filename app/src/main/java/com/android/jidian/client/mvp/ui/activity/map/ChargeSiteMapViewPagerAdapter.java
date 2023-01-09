@@ -1,7 +1,7 @@
 package com.android.jidian.client.mvp.ui.activity.map;
 
 import android.app.Activity;
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 

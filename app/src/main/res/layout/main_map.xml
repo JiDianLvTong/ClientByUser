@@ -14,7 +14,7 @@
         android:orientation="horizontal"
         android:visibility="gone">
 
-        <android.support.design.widget.TabLayout
+        <com.google.android.material.tabs.TabLayout
             android:id="@+id/home_tabLayout"
             android:layout_width="match_parent"
             android:layout_height="32dp"
@@ -345,7 +345,7 @@
         </LinearLayout>
     </com.android.jidian.client.widgets.MyScrollView>
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/home_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/6aa7d5ca886472d7565f6da7a2a95ee5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/6aa7d5ca886472d7565f6da7a2a95ee5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/6aa7d5ca886472d7565f6da7a2a95ee5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/77eb3a88a31aecaea10595d64d403917/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/77eb3a88a31aecaea10595d64d403917/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tdialog-2.1.1.aar/77eb3a88a31aecaea10595d64d403917/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-tdialog-2.1.1.aar/bcab9eb59ffe347b47efcd82adef023c/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-tdialog-2.1.1.aar/bcab9eb59ffe347b47efcd82adef023c/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-tdialog-2.1.1.aar/bcab9eb59ffe347b47efcd82adef023c/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

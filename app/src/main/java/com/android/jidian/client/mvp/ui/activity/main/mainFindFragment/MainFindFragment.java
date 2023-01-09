@@ -2,39 +2,26 @@ package com.android.jidian.client.mvp.ui.activity.main.mainFindFragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.util.Log;
+import androidx.annotation.NonNull;
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.amap.api.location.AMapLocation;
-import com.amap.api.location.AMapLocationClient;
-import com.amap.api.location.AMapLocationClientOption;
-import com.amap.api.location.AMapLocationListener;
-import com.android.jidian.client.Main_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.FindIndexBean;
-import com.android.jidian.client.bean.LoginBean;
-import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.contract.MainFindContract;
-import com.android.jidian.client.mvp.presenter.LoginPresenter;
 import com.android.jidian.client.mvp.presenter.MainFindPresenter;
 import com.android.jidian.client.mvp.ui.activity.map.ChargeSiteMap;
-import com.android.jidian.client.util.OtherUtils;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.bumptech.glide.Glide;
 import com.minminaya.widget.GeneralRoundFrameLayout;
-import com.scwang.smart.refresh.header.BezierRadarHeader;
-import com.scwang.smart.refresh.header.FalsifyHeader;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
-import com.sxu.shadowdrawable.ShadowDrawable;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class MainFindFragment extends BaseFragment<MainFindPresenter> implements MainFindContract.View {
 
@@ -147,12 +134,12 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
 
     @Override
     public void showProgress() {
-        progressDialog.show();
+        dialogByLoading.show();
     }
 
     @Override
     public void hideProgress() {
-        progressDialog.dismiss();
+        dialogByLoading.dismiss();
     }
 
     @Override

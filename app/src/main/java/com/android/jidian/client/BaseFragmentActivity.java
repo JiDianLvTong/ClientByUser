@@ -3,17 +3,17 @@ package com.android.jidian.client;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import android.util.Log;
 
-import com.android.jidian.client.widgets.ProgressDialog;
+import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.gyf.barlibrary.ImmersionBar;
 
 public class BaseFragmentActivity extends FragmentActivity {
     private static final String TAG = "BaseActivity";
     protected Activity activity;
-    protected ProgressDialog progressDialog;
+    protected DialogByLoading progressDialog;
     protected SharedPreferences sharedPreferences;
     protected String uid;
 
@@ -24,7 +24,7 @@ public class BaseFragmentActivity extends FragmentActivity {
 
         sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
         uid = sharedPreferences.getString("id", "");
-        progressDialog = new ProgressDialog(this);
+        progressDialog = new DialogByLoading(this);
         // 设置状态栏白色底黑字
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)

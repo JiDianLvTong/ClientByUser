@@ -2,13 +2,12 @@ package com.android.jidian.client;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,8 @@ import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoiceType2;
 import com.android.jidian.client.widgets.MyToast;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -135,7 +135,7 @@ public class MainShopItem_3 extends BaseFragment {
         if (getActivity() != null) {
             //点击扫一扫按钮
             BuryingPointManager.sendBuryingPoint(BuryingPointManager.BUTTON_HELLO_MALL_SCAN);
-            Intent intent = new Intent(getActivity(), ScanCodeNewActivity.class);
+            Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
             getActivity().startActivityForResult(intent, 0x00010);
         }
     }
@@ -204,28 +204,17 @@ public class MainShopItem_3 extends BaseFragment {
                                         intent.putExtra("from", "product");
                                         getActivity().startActivity(intent);
                                     } else {
-                                        LayoutInflater inflater = LayoutInflater.from(getActivity());
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                                        final AlertDialog mAlertDialog = builder.create();
-                                        View view1 = inflater.inflate(R.layout.alertdialog_is_auth, null);
-                                        TextView success_t = (TextView) view1.findViewById(R.id.success);
-                                        success_t.setOnClickListener(new View.OnClickListener() {
+                                        new DialogByChoiceType2(getActivity(), "为了保障您的权益","请先进行实名认证", new DialogByChoiceType2.DialogChoiceListener() {
                                             @Override
-                                            public void onClick(View v) {
+                                            public void enterReturn() {
                                                 getActivity().startActivity(new Intent(getActivity(), MainAuthentication_.class));
-                                                getActivity().finish();
                                             }
-                                        });
-                                        TextView error_t = (TextView) view1.findViewById(R.id.error);
-                                        error_t.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                mAlertDialog.dismiss();
-                                            }
-                                        });
 
-                                        mAlertDialog.show();
-                                        mAlertDialog.getWindow().setContentView(view1);
+                                            @Override
+                                            public void cancelReturn() {
+
+                                            }
+                                        }).showPopupWindow();
                                     }
                                 }
                             } else if (local_is_skip == 1) {

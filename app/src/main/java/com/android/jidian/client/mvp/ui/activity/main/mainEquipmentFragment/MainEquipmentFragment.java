@@ -2,24 +2,24 @@ package com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.jidian.client.Newpay_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
-import com.android.jidian.client.mvp.ui.activity.AdvicesListsActivity;
+import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
-import com.android.jidian.client.mvp.ui.activity.ScanCodeNewActivity;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.PayByReNew;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.ViewUtil;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -167,6 +167,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         //显示哪种情况
         //登录状态
         if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
+            showProgress();
             getEquipmentInfo();
         }
         //未登录状态
@@ -188,6 +189,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @Override
     public void requestWalletInfoSuccess(MainActiyivyExpenseBean bean) {
         smartRefreshLayout.finishRefresh();
+        hideProgress();
         if (bean.getData() != null) {
             mExpenseBean = bean;
             MainActiyivyExpenseBean.DataBean dataBean = bean.getData();
@@ -329,6 +331,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @Override
     public void requestWalletInfoFail(String msg) {
         smartRefreshLayout.finishRefresh();
+        hideProgress();
         showMessage(msg);
     }
 
@@ -454,7 +457,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         }
 
         //from=40
-        Intent intent = new Intent(getActivity(), Newpay_.class);
+        Intent intent = new Intent(getActivity(), PayByReNew.class);
         intent.putExtra("mjson", jsonArray.toString());
         intent.putExtra("type", "40");
         requireActivity().startActivity(intent);
@@ -473,8 +476,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (TextUtils.isEmpty(uid)) {
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "4");
+            Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
+            mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "4");
             startActivity(mIntent);
         }
     }
@@ -486,8 +489,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (TextUtils.isEmpty(uid)) {
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
+            mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
             startActivity(mIntent);
         }
     }
@@ -499,20 +502,20 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (TextUtils.isEmpty(uid)) {
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeNewActivity.class);
-            mIntent.putExtra(ScanCodeNewActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
+            mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
             startActivity(mIntent);
         }
     }
 
     @Override
     public void showProgress() {
-        progressDialog.show();
+        dialogByLoading.show();
     }
 
     @Override
     public void hideProgress() {
-        progressDialog.dismiss();
+        dialogByLoading.dismiss();
     }
 
     @Override

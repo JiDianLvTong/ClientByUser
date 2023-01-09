@@ -4,9 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/1f9a1e1deb71e5f4e6e8ae1fe0727e6d/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/1f9a1e1deb71e5f4e6e8ae1fe0727e6d/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/1f9a1e1deb71e5f4e6e8ae1fe0727e6d/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/f2436beeed3906733f9b29880f5b5cb1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/f2436beeed3906733f9b29880f5b5cb1/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/GenaralRoundLayout-1.0.0.aar/f2436beeed3906733f9b29880f5b5cb1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-GenaralRoundLayout-1.0.0.aar/554f2e03efb627b3d4d6e6c2df282175/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-GenaralRoundLayout-1.0.0.aar/554f2e03efb627b3d4d6e6c2df282175/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-GenaralRoundLayout-1.0.0.aar/554f2e03efb627b3d4d6e6c2df282175/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

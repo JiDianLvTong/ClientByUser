@@ -19,8 +19,8 @@ import com.android.jidian.client.R;
 import com.android.jidian.client.bean.LoginBean;
 import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.presenter.LoginPresenter;
-import com.android.jidian.client.mvp.ui.activity.H5.MainAgreement;
-import com.android.jidian.client.mvp.ui.activity.H5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
+import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
 import com.android.jidian.client.mvp.ui.dialog.CommonTipDialog;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.JgVerificationLoginAuthManager;
@@ -136,10 +136,10 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
                 break;
             case R.id.login_read:
                 if (isExplainUnRead) {
-                    btnExplain.setImageResource(R.drawable.u6_pub_agreement_uncheck);
+                    btnExplain.setImageResource(R.drawable.u6_pub_select_uncheck);
                     isExplainUnRead = false;
                 } else {
-                    btnExplain.setImageResource(R.drawable.u6_pub_agreement_check);
+                    btnExplain.setImageResource(R.drawable.u6_pub_select_check);
                     isExplainUnRead = true;
                 }
                 break;

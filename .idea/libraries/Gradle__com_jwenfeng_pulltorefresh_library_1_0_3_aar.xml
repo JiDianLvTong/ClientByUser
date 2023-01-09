@@ -2,15 +2,15 @@
   <library name="Gradle: com.jwenfeng.pulltorefresh:library:1.0.3@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/0d922b3cbec241e018e923f184078a44/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/1f3f6745ac725c1dbce1e58a3c9c308e/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-library-1.0.3.aar/e26a08f51d45efdfa8d6e7390146cbce/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/0d922b3cbec241e018e923f184078a44/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/0d922b3cbec241e018e923f184078a44/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/0d922b3cbec241e018e923f184078a44/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/1f3f6745ac725c1dbce1e58a3c9c308e/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/1f3f6745ac725c1dbce1e58a3c9c308e/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/library-1.0.3.aar/1f3f6745ac725c1dbce1e58a3c9c308e/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-library-1.0.3.aar/e26a08f51d45efdfa8d6e7390146cbce/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-library-1.0.3.aar/e26a08f51d45efdfa8d6e7390146cbce/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-library-1.0.3.aar/e26a08f51d45efdfa8d6e7390146cbce/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:orientation="vertical"
+        android:background="@drawable/circular_white_ffffff_top_5">
+
+        <ImageView
+            android:src="@drawable/u6_pub_dialog_question"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:paddingTop="20dp"
+            android:id="@+id/titleView"
+            android:textColor="#666666"
+            android:textSize="13dp"
+            android:text="这里是显示"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:paddingTop="5dp"
+            android:id="@+id/titleView2"
+            android:textColor="#666666"
+            android:textSize="13dp"
+            android:text="这里是显示"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/enterView"
+            android:textColor="#ffffff"
+            android:textSize="11dp"
+            android:text="确定"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:gravity="center"
+            android:background="@drawable/u6_shape_d7a64a_corner_bottom_left_5"/>
+
+        <TextView
+            android:id="@+id/cancelView"
+            android:textColor="#ffffff"
+            android:textSize="11dp"
+            android:text="取消"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="15dp"
+            android:background="@drawable/u6_shape_999999_corner_right_5"/>
+
+    </LinearLayout>
+
+</LinearLayout>

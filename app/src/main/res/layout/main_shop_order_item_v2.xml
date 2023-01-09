@@ -27,8 +27,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:src="@drawable/zf1" />
+                android:scaleType="fitXY"/>
 
             <TextView
                 android:id="@+id/t_1"
@@ -45,7 +44,7 @@
                 android:layout_width="15dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/zf3" />
+                android:src="@drawable/u6_pub_select_check" />
 
         </LinearLayout>
     </LinearLayout>

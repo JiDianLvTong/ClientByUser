@@ -2,15 +2,15 @@
   <library name="Gradle: com.github.open-android:RoundedImageView:v1.0.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/611decec1b76996982dc92c2cd6b2ed2/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/6499f384f53d58d6b61f1faabb15044d/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-RoundedImageView-v1.0.0.aar/a186c6479aeeba44349998dfb8b2dcbf/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/611decec1b76996982dc92c2cd6b2ed2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/611decec1b76996982dc92c2cd6b2ed2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/611decec1b76996982dc92c2cd6b2ed2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/6499f384f53d58d6b61f1faabb15044d/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/6499f384f53d58d6b61f1faabb15044d/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/RoundedImageView-v1.0.0.aar/6499f384f53d58d6b61f1faabb15044d/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-RoundedImageView-v1.0.0.aar/a186c6479aeeba44349998dfb8b2dcbf/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-RoundedImageView-v1.0.0.aar/a186c6479aeeba44349998dfb8b2dcbf/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-RoundedImageView-v1.0.0.aar/a186c6479aeeba44349998dfb8b2dcbf/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

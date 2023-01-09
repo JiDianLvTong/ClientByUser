@@ -1,7 +1,7 @@
 package com.android.jidian.client.widgets;
 
 import android.app.Activity;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,12 +10,6 @@ import android.widget.TextView;
 
 //import androidx.viewpager.widget.ViewPager;
 
-import com.amap.api.maps.model.LatLng;
-import com.amap.api.maps.model.Poi;
-import com.amap.api.navi.AmapNaviPage;
-import com.amap.api.navi.AmapNaviParams;
-import com.amap.api.navi.AmapNaviType;
-import com.amap.api.navi.AmapPageType;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.AbstractXdzlDialog;
 import com.android.jidian.client.base.ViewHolder;
@@ -31,8 +25,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import razerdp.basepopup.BasePopupWindow;
 
 public class ChargeSiteShowInfo extends AbstractXdzlDialog {
 
@@ -148,7 +140,7 @@ public class ChargeSiteShowInfo extends AbstractXdzlDialog {
 
     @Override
     public int intLayoutId() {
-        return R.layout.activity_charge_site_map_show_info;
+        return R.layout.u6_activity_map_show_info;
     }
 
     @Override
@@ -157,7 +149,7 @@ public class ChargeSiteShowInfo extends AbstractXdzlDialog {
         viewPager = holder.getView(R.id.viewPager);
         ArrayList<MapJwduV5Bean.DataBean.ListBean> mapSiteItemArrayList = new ArrayList<>(data.getList());
         for(int i = 0 ; i < mapSiteItemArrayList.size();i++){
-            View view = LayoutInflater.from(activity).inflate(R.layout.activity_charge_site_map_show_info_item,null);
+            View view = LayoutInflater.from(activity).inflate(R.layout.u6_activity_map_show_info_item,null);
             views.add(view);
             List<BaseHttpParameterFormat> baseHttpParameterFormats = new ArrayList<>();
             baseHttpParameterFormats.add(new BaseHttpParameterFormat("uid", UserInfoHelper.getInstance().getUid()));

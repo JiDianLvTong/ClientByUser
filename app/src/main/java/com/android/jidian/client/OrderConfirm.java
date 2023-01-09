@@ -20,6 +20,7 @@ import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.pay.MainPay;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.widgets.MyToast;
@@ -281,7 +282,7 @@ public class OrderConfirm extends BaseActivity {
                             payType = Integer.parseInt(datalist.get(0).get("type"));
                         }
                     }
-                    myBaseAdapter = new MyBaseAdapter(activity, datalist, R.layout.main_shop_order_item);
+                    myBaseAdapter = new MyBaseAdapter(activity, datalist, R.layout.u6_activity_pay_order_confirm_item);
                     listview.setAdapter(myBaseAdapter);
                     listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override

@@ -5,16 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,6 +26,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.android.jidian.client.BuildConfig;
 import com.android.jidian.client.R;
+import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
@@ -50,9 +48,10 @@ import com.permissionx.guolindev.PermissionX;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -94,36 +93,13 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     private AMapLocation aMapLocation;
     private boolean mPositioned = false;
 
+    //权限相关
+    private boolean permissionShow = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.u6_activity_main);
         super.onCreate(savedInstanceState);
-//        ButterKnife.bind(this);
-        statusBars();
-    }
-
-    //保证导航栏沉浸 并且 保持底部导航栏不被沉浸
-    //需要和 style 配合
-    private void statusBars() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) try {
-            Class decorViewClazz = Class.forName("com.android.internal.policy.DecorView");
-            Field field = decorViewClazz.getDeclaredField("mSemiTransparentStatusBarColor");
-            field.setAccessible(true);
-            field.setInt(getWindow().getDecorView(), Color.TRANSPARENT);  //改为透明
-        } catch (Exception e) {
-        }
-        //去除灰色遮罩
-        //Android5.0以上
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//Android4.4以上,5.0以下
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        }
     }
 
     @Override
@@ -136,14 +112,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         changeMain(0);
         //广播注册
         registerReceiver();
-
-//        statusBars();
-
     }
 
     private void initLocation() {
-//        NaviSetting.updatePrivacyShow(getActivity(), true, true);
-//        NaviSetting.updatePrivacyAgree(getActivity(), true);
         try {
             mLocationClient = new AMapLocationClient(MainActivity.this);
             //初始化定位参数
@@ -379,35 +350,45 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     @Override
     protected void onResume() {
         super.onResume();
-
         //检查用户登录信息 以及 使用环境
         boolean isLogin = !UserInfoHelper.getInstance().getUid().isEmpty();
-        //获取用户信息
-        if (isLogin) {
-            if (mPresenter != null) {
-                apptoken = sharedPreferences.getString("apptoken", "");
-                String appsn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
-                if (!TextUtils.isEmpty(apptoken) && !TextUtils.isEmpty(appsn)) {
-                    mPresenter.requestCheckAccv2(apptoken, appsn);
+        //检查权限
+        if(permissionShow == false){
+            permissionShow = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    permissionShow = false;
                 }
-//                mPresenter.requestMainInfo(uid);
-            }
-        }else {
-            changeMain(0);
-        }
-        PermissionX.init(MainActivity.this)
-                .permissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
-                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                .request((allGranted, grantedList, deniedList) -> {
-                    if (allGranted) {
-                        if (!mPositioned) {
+            }, 10 * 1000);
+            PermissionManager.getInstance().getLocalAndWrite(activity, new PermissionManager.PermissionListener() {
+                @Override
+                public void granted(List<String> grantedList) {
+                    for(int i = 0 ; i < grantedList.size() ; i++){
+                        if(grantedList.get(i).equals(PermissionManager.getInstance().local_1)){
                             initLocation();
                         }
-                    } else {
-                        MyToast.showTheToast(this, "当前应用缺少必要权限 ");
+                        if(grantedList.get(i).equals(PermissionManager.getInstance().write)){
+                            if (isLogin) {
+                                apptoken = sharedPreferences.getString("apptoken", "");
+                                String appsn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
+                                if (!TextUtils.isEmpty(apptoken) && !TextUtils.isEmpty(appsn)) {
+                                    mPresenter.requestCheckAccv2(apptoken, appsn);
+                                }
+                            }
+                        }
                     }
-                });
+                }
+                @Override
+                public void refused(List<String> deniedList) {
+                    MyToast.showTheToast(activity, "当前应用缺少必要权限,会影响部分功能使用");
+                }
+            });
+        }
+        //获取用户信息
+        if (!isLogin) {
+            changeMain(0);
+        }
     }
 
     @Override
