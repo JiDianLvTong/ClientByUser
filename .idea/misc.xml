@@ -34,6 +34,7 @@
         <entry key="app/src/main/res/drawable/line_03cbfc_corner_7.xml" value="0.1305" />
         <entry key="app/src/main/res/drawable/line_fb481e_corner_7.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/orange_corner_50d.xml" value="0.14" />
+        <entry key="app/src/main/res/drawable/recyclerview_decoration.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/red_corner_15dp.xml" value="0.1305" />
         <entry key="app/src/main/res/drawable/shape_03cbfc_corner_11.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/shape_03cbfc_r21.xml" value="0.14" />
@@ -114,7 +115,8 @@
         <entry key="app/src/main/res/layout/main_car.xml" value="0.375" />
         <entry key="app/src/main/res/layout/main_customer.xml" value="0.5" />
         <entry key="app/src/main/res/layout/main_discount.xml" value="0.1400709219858156" />
-        <entry key="app/src/main/res/layout/main_discount_item_1.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/main_discount_item_1.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/main_discount_item_2.xml" value="0.12234042553191489" />
         <entry key="app/src/main/res/layout/main_hello.xml" value="0.335" />
         <entry key="app/src/main/res/layout/main_info.xml" value="0.125" />
         <entry key="app/src/main/res/layout/main_map.xml" value="0.165" />
@@ -136,6 +138,17 @@
         <entry key="app/src/main/res/layout/pw_personal_info_drawer_layout.xml" value="0.1752786220871327" />
         <entry key="app/src/main/res/layout/siteinfo_layout.xml" value="0.17889492753623187" />
         <entry key="app/src/main/res/layout/title_layout.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/u6_activity_advices_detail.xml" value="0.11068895643363728" />
+        <entry key="app/src/main/res/layout/u6_activity_advices_fragment_advices_lists1.xml" value="0.11068895643363728" />
+        <entry key="app/src/main/res/layout/u6_activity_deposit.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/u6_activity_main_fragment_find.xml" value="0.1458966565349544" />
+        <entry key="app/src/main/res/layout/u6_activity_main_fragment_user.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/u6_activity_main_set.xml" value="0.11524822695035461" />
+        <entry key="app/src/main/res/layout/u6_activity_map.xml" value="0.1458966565349544" />
+        <entry key="app/src/main/res/layout/u6_activity_order_list.xml" value="0.1279128672745694" />
+        <entry key="app/src/main/res/layout/u6_activity_order_list_item.xml" value="0.14336372847011145" />
+        <entry key="app/src/main/res/layout/u6_activity_personal_info_authentication.xml" value="0.1458966565349544" />
+        <entry key="app/src/main/res/layout/u6_pub_dialog_card_choice.xml" value="0.45" />
         <entry key="app/src/main/res/layout/wallte_hello_fragment.xml" value="0.25" />
       </map>
     </option>
