@@ -1,8 +1,14 @@
 package com.android.jidian.repair.net;
 
+import static com.android.jidian.repair.MyApplication.getLocalVersion;
+import static com.android.jidian.repair.MyApplication.getLocalVersionName;
+
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 
-import com.android.jidian.repair.Application;
+import com.android.jidian.repair.MyApplication;
 import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.utils.LoggingInterceptor;
 import com.android.jidian.repair.utils.Md5;
@@ -43,8 +49,8 @@ public class RetrofitClient {
                     .addHeader("apud", UserInfoHelper.getInstance().getUid())
                     .addHeader("osname", "Android")
                     .addHeader("proname", "ape")
-                    .addHeader("verName", PubFunction.getLocalVersionName(Application.getContext()))
-                    .addHeader("version", String.valueOf(PubFunction.getLocalVersion(Application.getContext())))
+                    .addHeader("verName",  getLocalVersionName(MyApplication.getAppContext()))
+                    .addHeader("version", String.valueOf(getLocalVersion(MyApplication.getAppContext())))
                     .addHeader("company", "jidianlvtong")
                     .addHeader("device", Build.MODEL)
                     .addHeader("systemver", Build.VERSION.RELEASE);

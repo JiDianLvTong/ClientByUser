@@ -4,6 +4,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mvp.login.LoginActivity">
+    tools:context=".mvp.login.LoginActivity"
+    android:background="@color/grey_303030">
+
+    <!-- 沉浸状态栏 -->
+    <com.android.jidian.repair.widgets.immersionStatusBar.StatusBarView
+        android:id="@+id/statusBarView"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey_66000000"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="89.5dp"
+        android:text="登录"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="21sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/bg_login_edt_number"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="171dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0.5dp"
+        android:text="+86"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/bg_login_edt_number"
+        app:layout_constraintStart_toStartOf="@id/bg_login_edt_number"
+        app:layout_constraintTop_toTopOf="@id/bg_login_edt_number" />
+
+    <TextView
+        android:layout_width="1dp"
+        android:layout_height="12.5dp"
+        android:layout_marginStart="39dp"
+        android:background="@color/color_FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@id/bg_login_edt_number"
+        app:layout_constraintStart_toStartOf="@id/bg_login_edt_number"
+        app:layout_constraintTop_toTopOf="@id/bg_login_edt_number" />
+
+    <EditText
+        android:id="@+id/edit_login_number"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginStart="65.5dp"
+        android:layout_marginEnd="11.5dp"
+        android:background="@color/color_transparent"
+        android:gravity="center_vertical"
+        android:hint="请输入手机号"
+        android:inputType="number"
+        android:singleLine="true"
+        android:textColor="@color/color_FFFFFF"
+        android:textColorHint="@color/color_999999"
+        android:textCursorDrawable="@drawable/shape_color_edt_cursor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bg_login_edt_number"
+        app:layout_constraintTop_toTopOf="@id/bg_login_edt_number" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="11.5dp"
+        android:layout_marginEnd="11.5dp"
+        android:background="@color/color_CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/bg_login_edt_number" />
+
+    <TextView
+        android:id="@+id/bg_login_edt_password"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/bg_login_edt_number" />
+
+    <EditText
+        android:id="@+id/edit_login_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="45.5dp"
+        android:layout_marginStart="61.5dp"
+        android:layout_marginEnd="11.5dp"
+        android:background="@color/color_transparent"
+        android:gravity="center_vertical"
+        android:hint="请输入密码"
+        android:singleLine="true"
+        android:textColor="@color/color_FFFFFF"
+        android:textColorHint="@color/color_999999"
+        android:textCursorDrawable="@drawable/shape_color_edt_cursor"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/bg_login_edt_password" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="11.5dp"
+        android:layout_marginEnd="11.5dp"
+        android:background="@color/color_CCCCCC"
+        app:layout_constraintTop_toBottomOf="@id/bg_login_edt_password" />
+
+    <TextView
+        android:id="@+id/btn_login_go"
+        android:layout_width="280dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="47dp"
+        android:background="@drawable/shape_d7a64a_corner_10"
+        android:gravity="center"
+        android:onClick="@{listener::OnClickGoLogin}"
+        android:text="登录"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bg_login_edt_password" />
+
+<!--    <TextView-->
+<!--        android:layout_width="22dp"-->
+<!--        android:layout_height="22dp"-->
+<!--        android:layout_marginStart="9.5dp"-->
+<!--        android:layout_marginTop="7.5dp"-->
+<!--        android:background="@drawable/icon_black_return"-->
+<!--        android:onClick="@{listener::OnClickReturn}"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="49.5dp"-->
+<!--        android:gravity="center_vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_login_agreement"-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:onClick="@{listener::OnClickReadAgreementLast}"-->
+<!--            android:padding="5dp"-->
+<!--            android:src="@mipmap/icon_login_agree_normal" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_login_agreement"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:onClick="@{listener::OnClickAgreementLast}"-->
+<!--            android:text="@string/txt_login_agreement_str"-->
+<!--            android:textColor="@color/color_00D89E"-->
+<!--            android:textSize="12sp" />-->
+<!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

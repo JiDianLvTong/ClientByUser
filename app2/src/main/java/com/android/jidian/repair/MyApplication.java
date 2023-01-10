@@ -1,5 +1,6 @@
 package com.android.jidian.repair;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -20,12 +21,9 @@ import java.util.Locale;
  * date: 2023/1/10 15:15
  * description:
  */
-public class Application extends android.app.Application {
-    private static Application context;
-    public static int myWalletPanelSelect = -1;
+public class MyApplication extends Application {
+    private static MyApplication context;
     private static Context mContext;
-    /*由于骑呗后台不稳定暂时下架，暂删 public static BridgeCallback mBridgeCallback = null;
-    public static String qibeidata;*/
 
     /**
      * 获取进程号对应的进程名
@@ -66,11 +64,10 @@ public class Application extends android.app.Application {
         PermissionManager.getInstance().init(getApplicationContext());
         //本地储存初始化 - 用户sp
 //        SpUser.getInstance().init(getApplicationContext());
-
         UserInfoHelper.init(this);
     }
 
-    public static Application getContext() {
+    public static MyApplication getContext() {
         return context;
     }
 
@@ -103,5 +100,29 @@ public class Application extends android.app.Application {
      */
     public static Context getAppContext() {
         return mContext;
+    }
+
+    //获得版本名
+    public static String getLocalVersionName(Context ctx) {
+        String localVersion = "";
+        try {
+            PackageInfo packageInfo = ctx.getApplicationContext().getPackageManager().getPackageInfo(ctx.getPackageName(), 0);
+            localVersion = packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return localVersion;
+    }
+
+    //获得版本号
+    public static int getLocalVersion(Context ctx) {
+        int localVersion = 0;
+        try {
+            PackageInfo packageInfo = ctx.getApplicationContext().getPackageManager().getPackageInfo(ctx.getPackageName(), 0);
+            localVersion = packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            System.out.println(e.getLocalizedMessage());
+        }
+        return localVersion;
     }
 }
