@@ -121,7 +121,7 @@
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/u6_map_refresh_white"/>
+                    android:src="@drawable/u6_map_local_white"/>
 
             </LinearLayout>
 

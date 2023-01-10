@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.android.jidian.client.BaseActivity;
 import com.android.jidian.client.MainAdv;
 import com.android.jidian.client.R;
+import com.android.jidian.client.base.U6BaseActivity;
 import com.android.jidian.client.bean.AdvicesLists2Bean;
 import com.android.jidian.client.util.ViewUtil;
 import com.bumptech.glide.Glide;
@@ -26,7 +27,7 @@ import butterknife.OnClick;
 /**
  * 活动详情 activity
  */
-public class AdvicesShowActivity extends BaseActivity {
+public class AdvicesShowActivity extends U6BaseActivity {
     @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.tv_msg_detail_title)
@@ -44,9 +45,9 @@ public class AdvicesShowActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.u6_activity_advices_detail);
-        ButterKnife.bind(this);
+        super.onCreate(savedInstanceState);
+//        ButterKnife.bind(this);
         if (getIntent() != null) {
             Bundle args = getIntent().getBundleExtra(DATABEANBUNDLE);
             if (args != null) {

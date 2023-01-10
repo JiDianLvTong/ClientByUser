@@ -49,11 +49,11 @@ public class SystemMessageViewHolder extends AdvicesListsFragment2_RecyclerView_
     public void bindHolder(AdvicesLists2Bean.DataBean dataBean) {
         if ((dataBean != null)) {
             itemView.setTag(R.id.view_holder1, dataBean);
-            tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
-            tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
-            tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
+            tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+            tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+            tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
             ivActivityStatus.setImageResource(R.drawable.u6_message_item_type_1);
-            tvLookDetail.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
+            tvLookDetail.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
 
             if ("2".equals(dataBean.getType())) {
                 imageView1.setImageResource(R.drawable.u6_message_item_alert);
@@ -61,11 +61,11 @@ public class SystemMessageViewHolder extends AdvicesListsFragment2_RecyclerView_
                 //expire != 0 已结束
                 int expire = dataBean.getExpire();
                 if (expire != 0) {
-                    tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
-                    tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
-                    tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
+                    tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+                    tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+                    tvContent.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
                     ivActivityStatus.setImageResource(R.drawable.u6_message_item_type_2);
-                    tvLookDetail.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
+                    tvLookDetail.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
                 }
             } else {
                 imageView1.setImageResource(R.drawable.icon_system_message);

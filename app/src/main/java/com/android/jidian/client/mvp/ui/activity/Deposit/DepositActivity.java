@@ -23,17 +23,19 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> implements DepositContract.View {
     @BindView(R.id.tv_deposit_tips)
     public TextView tv_deposit_tips;
-
     @BindView(R.id.srl_deposit)
     public SmartRefreshLayout srl_deposit;
     @BindView(R.id.rv_deposit)
-    RecyclerView rv_deposit;
+    public RecyclerView rv_deposit;
     @BindView(R.id.nullDataPanel)
-    LinearLayout nullDataPanel;
+    public LinearLayout nullDataPanel;
+    @BindView(R.id.pageReturn)
+    public LinearLayout pageReturn;
 
     private DepositListAdapter mAdapter;
 
@@ -65,6 +67,11 @@ public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> imple
         });
     }
 
+    @OnClick(R.id.pageReturn)
+    public void onClickPageReturn() {
+        finish();
+    }
+
     private void requestData() {
         mPresenter.requestDepositRefundOrder(uid);
     }
@@ -78,10 +85,14 @@ public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> imple
     @Override
     public void requestDepositRefundOrderSuccess(DepositRefundOrderBean bean) {
         if (bean.getData() != null) {
-            srl_deposit.finishRefresh();
-            srl_deposit.setVisibility(View.VISIBLE);
-            nullDataPanel.setVisibility(View.GONE);
-            mAdapter.setNewData(bean.getData());
+            if (bean.getData().size() > 0) {
+                srl_deposit.finishRefresh();
+                srl_deposit.setVisibility(View.VISIBLE);
+                nullDataPanel.setVisibility(View.GONE);
+                mAdapter.setNewData(bean.getData());
+            } else {
+                dataNull();
+            }
         } else {
             dataNull();
         }

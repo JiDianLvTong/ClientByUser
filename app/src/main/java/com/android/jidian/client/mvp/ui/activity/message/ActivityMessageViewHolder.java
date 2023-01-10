@@ -50,8 +50,8 @@ public class ActivityMessageViewHolder extends AdvicesListsFragment2_RecyclerVie
     public void bindHolder(AdvicesLists2Bean.DataBean dataBean) {
         if (dataBean != null) {
             itemView.setTag(R.id.view_holder1, dataBean);
-            tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
-            tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.color_333333));
+            tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+            tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
             ivActivityStatus.setImageResource(R.drawable.u6_message_item_type_1);
 
             if ("2".equals(dataBean.getType())) {
@@ -61,8 +61,8 @@ public class ActivityMessageViewHolder extends AdvicesListsFragment2_RecyclerVie
                 //expire != 0 已结束
                 int expire = dataBean.getExpire();
                 if (expire != 0) {
-                    tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
-                    tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.color_CBCBCB));
+                    tvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
+                    tvTime.setTextColor(ContextCompat.getColor(mContext, R.color.white_ffffff));
                     ivActivityStatus.setImageResource(R.drawable.u6_message_item_type_2);
                 }
             } else {

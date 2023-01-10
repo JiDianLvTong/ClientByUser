@@ -187,6 +187,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
                                 Map<String, String> map = new HashMap<>();
                                 map.put("id", jsonObject.getString("id"));
                                 map.put("code", jsonObject.getString("code"));
+                                map.put("ustatus", jsonObject.getString("ustatus"));
                                 map.put("urules", jsonObject.getString("urules"));
                                 map.put("is_use", jsonObject.getString("is_use"));
                                 map.put("expire", jsonObject.getString("expire"));
@@ -256,6 +257,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
                                 Map<String, String> map = new HashMap<>();
                                 map.put("id", jsonObject.getString("id"));
                                 map.put("code", jsonObject.getString("code"));
+                                map.put("ustatus", jsonObject.getString("ustatus"));
                                 map.put("urules", jsonObject.getString("urules"));
                                 map.put("is_use", jsonObject.getString("is_use"));
                                 map.put("expire", jsonObject.getString("expire"));
@@ -269,7 +271,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
                                 dataList.add(map);
                             }
                             if (discountSimoleAdapter == null) {
-                                discountSimoleAdapter = new DiscountSimoleAdapter(getActivity(), dataList, R.layout.main_discount_item_2);
+                                discountSimoleAdapter = new DiscountSimoleAdapter(getActivity(), dataList, R.layout.main_discount_item_1);
                                 listView.setAdapter(discountSimoleAdapter);
                                 listView.setDividerHeight(0);
                             } else {
@@ -328,7 +330,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
                 viewHolder.t_3 = (TextView) convertView.findViewById(R.id.t_3);
                 viewHolder.t_4 = (TextView) convertView.findViewById(R.id.t_4);
                 viewHolder.t_5 = (TextView) convertView.findViewById(R.id.is_use);
-                viewHolder.i_1 = (ImageView) convertView.findViewById(R.id.i_1);
+                viewHolder.iv_coupon_status = (ImageView) convertView.findViewById(R.id.iv_coupon_status);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (DiscountSimoleAdapter.ViewHolder) convertView.getTag();
@@ -346,6 +348,34 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
                 viewHolder.t_2.setVisibility(View.GONE);
             }
 
+            String ustatus = data.get(position).get("ustatus").toString();
+            //is_use = 1 可以使用  -1 = 过期
+            //ustatus  2 可以使用  -1 = 过期 1 = 已经使用
+            if ("-1".equals(ustatus)) {
+                viewHolder.t_5.setVisibility(View.GONE);
+                viewHolder.iv_coupon_status.setVisibility(View.VISIBLE);
+                viewHolder.iv_coupon_status.setImageResource(R.drawable.u6_coupon_expire);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
+            } else if ("1".equals(ustatus)){
+                viewHolder.t_5.setVisibility(View.GONE);
+                viewHolder.iv_coupon_status.setVisibility(View.VISIBLE);
+                viewHolder.iv_coupon_status.setImageResource(R.drawable.u6_coupon_used);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
+            }else {
+                viewHolder.t_5.setVisibility(View.VISIBLE);
+                viewHolder.iv_coupon_status.setVisibility(View.GONE);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
+            }
+
             viewHolder.t_3.setText(data.get(position).get("expire").toString());
             viewHolder.t_4.setText(data.get(position).get("urules").toString());
             viewHolder.t_5.setVisibility(View.GONE);
@@ -355,7 +385,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
             } else {
                 viewHolder.t_2.setTextColor(0xffaaaaaa);
             }
-            Glide.with(getActivity()).load(data.get(position).get("bg_img").toString()).into(viewHolder.i_1);
+//            Glide.with(getActivity()).load(data.get(position).get("bg_img").toString()).into(viewHolder.i_1);
             return convertView;
         }
 
@@ -365,7 +395,7 @@ public class CouponPage2Fragment extends U6BaseFragment implements AbsListView.O
             TextView t_3;
             TextView t_4;
             TextView t_5;
-            ImageView i_1;
+            ImageView iv_coupon_status;
         }
     }
 

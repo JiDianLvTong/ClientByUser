@@ -2,31 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <FrameLayout
+        android:layout_margin="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/u6_shape_33ffffff_corner_10"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="1dp">
-
-        <ImageView
-            android:id="@+id/i_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            tools:src="@drawable/main_discount_1_item" />
+        android:layout_height="wrap_content" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_weight="2"
+                android:layout_height="0dp"
+                android:layout_weight="3"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -42,7 +37,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:text="免押金"
-                        android:textColor="#333333"
+                        android:textColor="@color/white_ffffff"
                         android:textSize="15sp" />
 
                     <TextView
@@ -52,7 +47,7 @@
                         android:layout_marginLeft="20dp"
                         android:layout_marginTop="5dp"
                         android:text="test"
-                        android:textColor="#666666"
+                        android:textColor="@color/white_ffffff"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -68,19 +63,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:textColor="#2ba245"
+                        android:textColor="@color/white_ffffff"
                         android:textSize="17dp" />
 
                 </LinearLayout>
 
             </LinearLayout>
-
-            <!--<View-->
-            <!--android:layout_marginStart="15dp"-->
-            <!--android:layout_marginEnd="15dp"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0.5dp"-->
-            <!--android:background="#EEEEEE"/>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2017年11月16日 - 2018年11月16日"
-                        android:textColor="#666666"
+                        android:textColor="@color/white_ffffff"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -117,13 +105,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:background="@drawable/textview_stroke_redius_orange"
+                        android:background="@drawable/u6_shape_d7a64a_corner_10"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:paddingRight="10dp"
                         android:paddingBottom="5dp"
                         android:text="立即使用"
-                        android:textColor="#2ba245"
+                        android:textColor="@color/white_ffffff"
                         android:textSize="9dp" />
 
                 </LinearLayout>
@@ -131,6 +119,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_coupon_status"
+            android:src="@drawable/u6_coupon_expire"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="20dp"
+            android:layout_gravity="right|bottom" />
 
     </FrameLayout>
 

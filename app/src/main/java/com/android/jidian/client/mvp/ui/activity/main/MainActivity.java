@@ -6,12 +6,14 @@ import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -48,6 +50,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.BindViews;
@@ -114,7 +118,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         //检查用户登录信息 以及 使用环境
         boolean isLogin = !UserInfoHelper.getInstance().getUid().isEmpty();
         //检查权限
-        if(permissionShow == false){
+        if (permissionShow == false) {
             permissionShow = true;
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -125,11 +129,11 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             PermissionManager.getInstance().getLocalAndWrite(activity, new PermissionManager.PermissionListener() {
                 @Override
                 public void granted(List<String> grantedList) {
-                    for(int i = 0 ; i < grantedList.size() ; i++){
-                        if(grantedList.get(i).equals(PermissionManager.getInstance().local_1)){
+                    for (int i = 0; i < grantedList.size(); i++) {
+                        if (grantedList.get(i).equals(PermissionManager.getInstance().local_1)) {
                             initLocation();
                         }
-                        if(grantedList.get(i).equals(PermissionManager.getInstance().write)){
+                        if (grantedList.get(i).equals(PermissionManager.getInstance().write)) {
                             if (isLogin) {
                                 apptoken = sharedPreferences.getString("apptoken", "");
                                 String appSn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
@@ -140,9 +144,10 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                         }
                     }
                 }
+
                 @Override
                 public void refused(List<String> deniedList) {
-                    DialogByEnter dialog = new DialogByEnter(activity , "当前应用缺少必要权限,会影响部分功能使用！");
+                    DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
                     dialog.showPopupWindow();
                 }
             });
@@ -187,7 +192,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             //启动定位
             mLocationClient.startLocation();
         } catch (Exception e) {
-            Log.e(Tag , e.toString());
+            Log.e(Tag, e.toString());
             e.printStackTrace();
         }
     }
@@ -209,7 +214,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             changeMain(2);
             if (mainShopFragment != null) {
                 if (mPositioned) {
-                    mainShopFragment.setFragmentPosition( coordinates[0] + "", coordinates[1] + "");
+                    mainShopFragment.setFragmentPosition(coordinates[0] + "", coordinates[1] + "");
                 } else {
                     mainShopFragment.setFragmentPosition("", "");
                 }
@@ -372,6 +377,33 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         editor.clear();
         editor.apply();
         startActivity(new Intent(activity, LoginActivity.class));
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exitByDoubleClick();
+        }
+        return false;
+    }
+
+    private boolean isExit;
+    private void exitByDoubleClick() {
+        Timer tExit;
+        if (!isExit) {
+            isExit = true;
+            MyToast.showTheToast(activity, "再按一次退出程序!");
+            tExit = new Timer();
+            tExit.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    isExit = false;//取消退出
+                }
+            }, 2000);// 如果2秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 
     @Override

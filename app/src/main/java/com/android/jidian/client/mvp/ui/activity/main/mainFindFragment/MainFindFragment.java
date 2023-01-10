@@ -84,9 +84,9 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
     public void requestFindIndexSuccess(FindIndexBean bean) {
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
-//            if (bean.getData().getToplist() != null & bean.getData().getToplist().size() > 0) {
-//                Glide.with(getActivity()).load(bean.getData().getToplist().get(0).getImgurl()).into(i_1);
-//            }
+            if (bean.getData().getToplist() != null & bean.getData().getToplist().size() > 0) {
+                Glide.with(getActivity()).load(bean.getData().getToplist().get(0).getImgurl()).into(i_1);
+            }
             if (bean.getData().getImglist() != null) {
                 if (bean.getData().getImglist().size() > 0) {
                     Glide.with(getActivity()).load(bean.getData().getImglist().get(0).getImgurl()).into(i_2);

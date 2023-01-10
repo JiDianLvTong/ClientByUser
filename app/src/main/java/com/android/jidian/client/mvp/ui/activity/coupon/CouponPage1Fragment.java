@@ -27,6 +27,7 @@ import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
+import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
 import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -189,6 +190,7 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
                                 Map<String, String> map = new HashMap<>();
                                 map.put("id", jsonObject.getString("id"));
                                 map.put("code", jsonObject.getString("code"));
+                                map.put("ustatus", jsonObject.getString("ustatus"));
                                 map.put("urules", jsonObject.getString("urules"));
                                 map.put("is_use", jsonObject.getString("is_use"));
                                 map.put("expire", jsonObject.getString("expire"));
@@ -265,6 +267,7 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
                                 Map<String, String> map = new HashMap<>();
                                 map.put("id", jsonObject.getString("id"));
                                 map.put("code", jsonObject.getString("code"));
+                                map.put("ustatus", jsonObject.getString("ustatus"));
                                 map.put("urules", jsonObject.getString("urules"));
                                 map.put("is_use", jsonObject.getString("is_use"));
                                 map.put("expire", jsonObject.getString("expire"));
@@ -362,8 +365,8 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
                         MyToast.showTheToast(getActivity(), "JSON：" + e.toString());
                     }
                 }
-                CouponPage1Fragment.reloadHandler.sendMessage(new Message());
-                MainDiscount_2.reloadHandler.sendMessage(new Message());
+//                CouponPage1Fragment.reloadHandler.sendMessage(new Message());
+//                MainDiscount_2.reloadHandler.sendMessage(new Message());
             }
         });
     }
@@ -394,7 +397,7 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
                 viewHolder.t_3 = (TextView) convertView.findViewById(R.id.t_3);
                 viewHolder.t_4 = (TextView) convertView.findViewById(R.id.t_4);
                 viewHolder.t_5 = (TextView) convertView.findViewById(R.id.is_use);
-                viewHolder.i_1 = (ImageView) convertView.findViewById(R.id.i_1);
+                viewHolder.iv_coupon_status = (ImageView) convertView.findViewById(R.id.iv_coupon_status);
                 convertView.setTag(viewHolder);
             } else {
                 viewHolder = (DiscountSimoleAdapter.ViewHolder) convertView.getTag();
@@ -415,21 +418,34 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
             viewHolder.t_3.setText(data.get(position).get("expire").toString());
             viewHolder.t_4.setText(data.get(position).get("urules").toString());
 
-            String is_use_str = data.get(position).get("is_use").toString();
-            if ("-1".equals(is_use_str)) {
+            String ustatus = data.get(position).get("ustatus").toString();
+            //is_use = 1 可以使用  -1 = 过期
+            //ustatus  2 可以使用  -1 = 过期 1 = 已经使用
+            if ("-1".equals(ustatus)) {
                 viewHolder.t_5.setVisibility(View.GONE);
-                viewHolder.t_1.setTextColor(Color.parseColor("#666666"));
-                viewHolder.t_2.setTextColor(Color.parseColor("#666666"));
-                viewHolder.t_3.setTextColor(Color.parseColor("#666666"));
-                viewHolder.t_4.setTextColor(Color.parseColor("#666666"));
-            } else {
+                viewHolder.iv_coupon_status.setVisibility(View.VISIBLE);
+                viewHolder.iv_coupon_status.setImageResource(R.drawable.u6_coupon_expire);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
+            } else if ("1".equals(ustatus)){
+                viewHolder.t_5.setVisibility(View.GONE);
+                viewHolder.iv_coupon_status.setVisibility(View.VISIBLE);
+                viewHolder.iv_coupon_status.setImageResource(R.drawable.u6_coupon_used);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
+            }else {
                 viewHolder.t_5.setVisibility(View.VISIBLE);
-                viewHolder.t_1.setTextColor(Color.parseColor("#333333"));
-                viewHolder.t_2.setTextColor(Color.parseColor("#FC481E"));
-                viewHolder.t_3.setTextColor(Color.parseColor("#666666"));
-                viewHolder.t_4.setTextColor(Color.parseColor("#666666"));
+                viewHolder.iv_coupon_status.setVisibility(View.GONE);
+                viewHolder.t_1.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_2.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_3.setTextColor(Color.parseColor("#FFFFFF"));
+                viewHolder.t_4.setTextColor(Color.parseColor("#FFFFFF"));
             }
-            Glide.with(getActivity()).load(data.get(position).get("bg_img").toString()).into(viewHolder.i_1);
+//            Glide.with(getActivity()).load(data.get(position).get("bg_img").toString()).into(viewHolder.i_1);
             return convertView;
         }
 
@@ -439,32 +455,44 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
             TextView t_3;
             TextView t_4;
             TextView t_5;
-            ImageView i_1;
+            ImageView iv_coupon_status;
         }
     }
 
     public void confirmAgain(String alter, String id_sre) {
-        View dialog_view = View.inflate(requireActivity(), R.layout.cashv2_confirm, null);
-        TextView textView = dialog_view.findViewById(R.id.textView);
-        textView.setText(alter);
-        new TDialog.Builder(requireActivity().getSupportFragmentManager())
-                .setDialogView(dialog_view)
-                .setScreenWidthAspect(requireActivity(), 0.7f)
-                .addOnClickListener(R.id.textView2, R.id.textView3)
-                .setOnViewClickListener((viewHolder, view, tDialog) -> {
-                    switch (view.getId()) {
-                        case R.id.textView2:
-                            tDialog.dismiss();
-                            break;
-                        case R.id.textView3:
-//                            dialogByLoading.show();
-                            HttpDiscount(id_sre);
-//                            number.setText("");
-                            tDialog.dismiss();
-                            break;
-                    }
-                })
-                .create()
-                .show();
+
+        new DialogByChoice(getActivity(), alter, new DialogByChoice.DialogChoiceListener() {
+            @Override
+            public void enterReturn() {
+                HttpDiscount(id_sre);
+            }
+            @Override
+            public void cancelReturn() {
+
+            }
+        }).showPopupWindow();
+
+//        View dialog_view = View.inflate(requireActivity(), R.layout.cashv2_confirm, null);
+//        TextView textView = dialog_view.findViewById(R.id.textView);
+//        textView.setText(alter);
+//        new TDialog.Builder(requireActivity().getSupportFragmentManager())
+//                .setDialogView(dialog_view)
+//                .setScreenWidthAspect(requireActivity(), 0.7f)
+//                .addOnClickListener(R.id.textView2, R.id.textView3)
+//                .setOnViewClickListener((viewHolder, view, tDialog) -> {
+//                    switch (view.getId()) {
+//                        case R.id.textView2:
+//                            tDialog.dismiss();
+//                            break;
+//                        case R.id.textView3:
+////                            dialogByLoading.show();
+//                            HttpDiscount(id_sre);
+////                            number.setText("");
+//                            tDialog.dismiss();
+//                            break;
+//                    }
+//                })
+//                .create()
+//                .show();
     }
 }

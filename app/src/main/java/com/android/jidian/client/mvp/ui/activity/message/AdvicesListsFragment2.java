@@ -94,14 +94,14 @@ public class AdvicesListsFragment2 extends BaseFragment<AdvicesLists2Presenter> 
             public void onRefresh(@NonNull com.scwang.smart.refresh.layout.api.RefreshLayout refreshLayout) {
                 isRefresh = true;
                 page = 1;
-                mPresenter.advicesListsV2(0, page);
+                mPresenter.advicesListsV2(2, page);
             }
         });
         fragmentAdvicesLists2SmartRefreshLayout.setOnLoadMoreListener(new com.scwang.smart.refresh.layout.listener.OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull com.scwang.smart.refresh.layout.api.RefreshLayout refreshLayout) {
                 page++;
-                mPresenter.advicesListsV2(0, page);
+                mPresenter.advicesListsV2(2, page);
             }
         });
         DividerItemDecoration divider = new DividerItemDecoration(requireActivity(), DividerItemDecoration.VERTICAL);
