@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.android.jidian.repair.base.dialog.DialogByLoading;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
@@ -22,6 +25,12 @@ public abstract class BaseFragment extends Fragment{
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         progressDialog = new DialogByLoading(requireActivity());
+        //判断是否需要注册EventBus
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
+            if (!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -39,6 +48,9 @@ public abstract class BaseFragment extends Fragment{
         super.onDestroy();
         if (unbinder != null) {
             unbinder.unbind();
+        }
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
+            EventBus.getDefault().unregister(this);
         }
     }
 
@@ -62,4 +74,11 @@ public abstract class BaseFragment extends Fragment{
      * @param view view
      */
     public abstract void initView(View view);
+
+    /**
+     * 默认绑定一个事件，防止源码里面去找方法的时候找不到报错。
+     */
+    @Subscribe
+    public void onEvent(BaseFragment activity) {
+    }
 }

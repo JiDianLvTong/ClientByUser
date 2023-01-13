@@ -10,7 +10,7 @@ import java.time.Instant;
  */
 public class Md5 {
 
-    private static String stringToMD5(String string) {
+    public static String stringToMD5(String string) {
         byte[] hash;
         try {
             hash = MessageDigest.getInstance("MD5").digest(string.getBytes(StandardCharsets.UTF_8));

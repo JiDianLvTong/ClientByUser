@@ -4,6 +4,7 @@ package com.android.jidian.repair.mvp.login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.ActivityCollector;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.mvp.main.MainActivity;
-import com.android.jidian.repair.utils.UserInfoHelper;
+import com.android.jidian.repair.utils.Md5;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -48,12 +49,14 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
             showMessage("请输入密码");
         }
         if (mPresenter != null) {
-            mPresenter.requestLoginJdLogin(phone, pwd);
+            String md5Pwd = Md5.stringToMD5(pwd);
+            mPresenter.requestLoginJdLogin(phone, md5Pwd);
         }
     }
 
     @Override
     public void requestLoginJdLoginSuccess(LoginBean.DataBean bean) {
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("id", bean.getId());
         editor.putString("dwrole", bean.getDwrole());
@@ -65,6 +68,8 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
         editor.apply();
         apptoken = bean.getApptoken();
         ActivityCollector.finishAll();
+        int[] i = new int[]{1, 1, 1, 1, 1};
+        int iiii = i[9];
         startActivity(new Intent(this, MainActivity.class));
     }
 

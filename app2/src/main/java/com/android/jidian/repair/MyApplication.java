@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.text.TextUtils;
 
+import com.amap.api.location.AMapLocationClient;
 import com.android.jidian.repair.base.PermissionManager.PermissionManager;
 import com.android.jidian.repair.utils.UserInfoHelper;
 
@@ -65,6 +66,8 @@ public class MyApplication extends Application {
         //本地储存初始化 - 用户sp
 //        SpUser.getInstance().init(getApplicationContext());
         UserInfoHelper.init(this);
+        AMapLocationClient.updatePrivacyAgree(getApplicationContext(), true);
+        AMapLocationClient.updatePrivacyShow(getApplicationContext(), true, true);
     }
 
     public static MyApplication getContext() {

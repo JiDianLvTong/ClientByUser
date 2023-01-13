@@ -71,7 +71,7 @@ public class RetrofitClient {
     public APEService getApeService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(genericClient())
-                .baseUrl(PubFunction.app)
+                .baseUrl(PubFunction.ape)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

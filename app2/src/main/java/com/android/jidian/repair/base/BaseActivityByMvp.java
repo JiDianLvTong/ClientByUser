@@ -17,6 +17,7 @@ public abstract class BaseActivityByMvp<T extends BasePresenter> extends BaseAct
         super.onCreate(savedInstanceState);
         compositeDisposable = new CompositeDisposable();
         initView();
+        ActivityCollector.addActivity(this);
     }
 
     protected void showMessage(String msg) {

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.main.TimeLimitTaskFragment.TimeLimitTaskFragment">
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/srl_time_task"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_time_task"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="10dp" />
+
+            <LinearLayout
+                android:id="@+id/nullDataPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/pub_null_data" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</FrameLayout>

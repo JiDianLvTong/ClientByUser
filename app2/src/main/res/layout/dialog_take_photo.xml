@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="350dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center"
+    android:background="@drawable/shape_ffffff_corner_20"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.itheima.roundedimageview.RoundedImageView
+        android:id="@+id/iv_example"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="30dp"
+        app:riv_corner_radius="20dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_take_photo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_d7a64a_corner_180">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_ffffff_corner_20_line"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:background="@drawable/shape_d7a64a_corner_180"
+            android:layout_width="105dp"
+            android:layout_height="105dp"
+            android:textColor="@color/color_FFFFFF"
+            android:text="点击拍照"
+            android:gravity="center"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

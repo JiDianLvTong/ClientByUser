@@ -42,7 +42,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
                 }, throwable -> {
                     if (mView != null) {
                         mView.hideProgress();
-                        mView.requestShowTips(throwable.getLocalizedMessage());
+                        mView.onError(throwable);
                     }
                 });
     }

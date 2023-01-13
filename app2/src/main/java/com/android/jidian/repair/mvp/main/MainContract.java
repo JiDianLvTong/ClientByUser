@@ -1,6 +1,9 @@
 package com.android.jidian.repair.mvp.main;
 
+import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.base.BaseView;
+
+import io.reactivex.Flowable;
 
 /**
  * @author : xiaoming
@@ -8,13 +11,17 @@ import com.android.jidian.repair.base.BaseView;
  * description:
  */
 public interface MainContract {
-    interface MainModel{
-
+    interface Model {
+        Flowable<BaseBean> requestLoginCheckAcc(String uid, String apptoken, String nowlng, String nowlat);
     }
-    interface View extends BaseView{
 
+    interface View extends BaseView {
+        void requestLoginCheckAccSuccess();
+
+        void requestShowTips(String msg);
     }
-    interface Presenter{
 
+    interface Presenter {
+        void requestLoginCheckAcc(String uid, String apptoken, String nowlng, String nowlat);
     }
 }

@@ -13,12 +13,15 @@ import com.android.jidian.repair.base.broadcastManage.BroadcastManager;
 import com.android.jidian.repair.base.dialog.DialogByLoading;
 import com.android.jidian.repair.base.inputManager.InputManager;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class BaseActivity extends AppCompatActivity {
 
-    protected static final String Tag = "JiDianByRepair";
+    protected static final String TAG = "JiDianByRepair";
     //上下文
     protected FragmentActivity activity;
     //软键盘
@@ -47,7 +50,12 @@ public class BaseActivity extends AppCompatActivity {
         progressDialog = new DialogByLoading(this);
 
         unbinder = ButterKnife.bind(this);
-
+        //判断是否需要注册EventBus
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
+            if (!EventBus.getDefault().isRegistered(this)) {
+                EventBus.getDefault().register(this);
+            }
+        }
         //初始化广播
         registerFinishReceiver();
         //初始化键盘
@@ -60,9 +68,10 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     //键盘初始化
-    private void inputInit(){
+    private void inputInit() {
         inputManager = new InputManager(activity);
     }
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
@@ -82,13 +91,23 @@ public class BaseActivity extends AppCompatActivity {
         if (unbinder != null) {
             unbinder.unbind();
         }
-        if(inputManager!=null){
+        if (inputManager != null) {
             inputManager.onDestroy();
         }
-        if(inputManager!=null){
+        if (inputManager != null) {
             broadcastManager.onDestroy();
         }
+        if (this.getClass().isAnnotationPresent(BindEventBus.class)) {
+            EventBus.getDefault().unregister(this);
+        }
 
+    }
+
+    /**
+     * 默认绑定一个事件，防止源码里面去找方法的时候找不到报错。
+     */
+    @Subscribe
+    public void onEvent(BaseActivity activity) {
     }
 
 }
