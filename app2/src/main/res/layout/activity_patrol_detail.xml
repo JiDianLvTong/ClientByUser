@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_303030"
+    tools:context=".mvp.patrol.PatrolDetailActivity">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/base_title_layout" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_layout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_patrol_detail_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="40dp"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="10sp"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_bg_punch"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_patrol_detail_address" />
+
+            <TextView
+                android:id="@+id/tv_punch_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="01"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_punch"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_punch"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_punch" />
+
+            <TextView
+                android:id="@+id/tv_punch_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="打卡"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bg_punch"
+                app:layout_constraintStart_toEndOf="@+id/tv_punch_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_punch" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_punch_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_punch"
+                app:layout_constraintEnd_toEndOf="@+id/tv_bg_punch"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_punch"
+                app:riv_corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/tv_bg_screen_clean"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_punch" />
+
+            <TextView
+                android:id="@+id/tv_screen_clean_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="02"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_screen_clean"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_screen_clean"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_screen_clean" />
+
+            <TextView
+                android:id="@+id/tv_screen_clean_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="屏幕清洁"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bg_screen_clean"
+                app:layout_constraintStart_toEndOf="@+id/tv_screen_clean_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_screen_clean" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_screen_clean_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_screen_clean"
+                app:layout_constraintEnd_toEndOf="@+id/tv_bg_screen_clean"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_screen_clean"
+                app:riv_corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/tv_bg_back_lock"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_screen_clean" />
+
+            <TextView
+                android:id="@+id/tv_back_lock_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="03"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_back_lock"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_back_lock"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_back_lock" />
+
+            <TextView
+                android:id="@+id/tv_back_lock_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="后门锁状态"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bg_back_lock"
+                app:layout_constraintStart_toEndOf="@+id/tv_back_lock_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_back_lock" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_back_lock_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_back_lock"
+                app:layout_constraintEnd_toEndOf="@+id/tv_bg_back_lock"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_back_lock"
+                app:riv_corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/tv_bg_outside_clean"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_back_lock" />
+
+            <TextView
+                android:id="@+id/tv_outside_clean_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="04"
+                android:textSize="60sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_outside_clean"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_outside_clean" />
+
+            <TextView
+                android:id="@+id/tv_outside_clean_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="柜体外部整理/清洁"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_outside_clean_num"
+                app:layout_constraintStart_toEndOf="@+id/tv_outside_clean_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_outside_clean_num" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_outside_clean_img_1"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_outside_clean"
+                app:layout_constraintEnd_toStartOf="@id/iv_outside_clean_img_2"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_outside_clean"
+                app:riv_corner_radius="10dp" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_outside_clean_img_2"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_outside_clean"
+                app:layout_constraintEnd_toStartOf="@id/iv_outside_clean_img_3"
+                app:layout_constraintStart_toEndOf="@+id/iv_outside_clean_img_1"
+                app:riv_corner_radius="10dp" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_outside_clean_img_3"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_outside_clean"
+                app:layout_constraintEnd_toStartOf="@id/iv_outside_clean_img_4"
+                app:layout_constraintStart_toEndOf="@id/iv_outside_clean_img_2"
+                app:riv_corner_radius="10dp" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_outside_clean_img_4"
+                android:layout_width="75dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_outside_clean"
+                app:layout_constraintEnd_toEndOf="@id/tv_bg_outside_clean"
+                app:layout_constraintStart_toEndOf="@id/iv_outside_clean_img_3"
+                app:riv_corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/tv_bg_inside_clean"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_outside_clean" />
+
+            <TextView
+                android:id="@+id/tv_inside_clean_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="05"
+                android:textSize="60sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_inside_clean"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_inside_clean" />
+
+            <TextView
+                android:id="@+id/tv_inside_clean_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="柜体内部整理/清洁"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_inside_clean_num"
+                app:layout_constraintStart_toEndOf="@+id/tv_inside_clean_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_inside_clean_num" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_inside_clean_img_1"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_inside_clean"
+                app:layout_constraintEnd_toStartOf="@id/iv_inside_clean_img_2"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_inside_clean"
+                app:riv_corner_radius="10dp" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_inside_clean_img_2"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_inside_clean"
+                app:layout_constraintEnd_toStartOf="@id/iv_inside_clean_img_3"
+                app:layout_constraintStart_toEndOf="@+id/iv_inside_clean_img_1"
+                app:riv_corner_radius="10dp" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_inside_clean_img_3"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_marginBottom="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_inside_clean"
+                app:layout_constraintEnd_toEndOf="@id/tv_bg_inside_clean"
+                app:layout_constraintStart_toEndOf="@id/iv_inside_clean_img_2"
+                app:riv_corner_radius="10dp" />
+
+            <TextView
+                android:id="@+id/tv_bg_electricity"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_inside_clean" />
+
+            <TextView
+                android:id="@+id/tv_electricity_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="06"
+                android:textSize="60sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_electricity"
+                app:layout_constraintStart_toStartOf="@+id/tv_bg_electricity"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_electricity" />
+
+            <TextView
+                android:id="@+id/tv_electricity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="漏电检查"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bg_electricity"
+                app:layout_constraintStart_toEndOf="@+id/tv_electricity_num"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_electricity" />
+
+            <com.itheima.roundedimageview.RoundedImageView
+                android:id="@+id/iv_electricity_img"
+                android:layout_width="120dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon_take_photo"
+                app:layout_constraintBottom_toBottomOf="@id/tv_bg_electricity"
+                app:layout_constraintEnd_toEndOf="@+id/tv_bg_electricity"
+                app:layout_constraintTop_toTopOf="@+id/tv_bg_electricity"
+                app:riv_corner_radius="10dp" />
+
+            <LinearLayout
+                android:id="@+id/linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_ffffff_corner_10"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/tv_bg_electricity">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="开仓检查"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="换电柜网络信号"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="柜体地线检查"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="换点按钮是否可用"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/ll_open_check_enable"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_open_check_enable"
+                                android:background="@drawable/icon_radio_check"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_open_check_unable"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_open_check_unable"
+                                android:background="@drawable/icon_radio_uncheck"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="不可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/ll_network_check_enable"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_network_check_enable"
+                                android:background="@drawable/icon_radio_check"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_network_check_unable"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_network_check_unable"
+                                android:background="@drawable/icon_radio_uncheck"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="不可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/ll_safe_check_enable"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_safe_check_enable"
+                                android:background="@drawable/icon_radio_check"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_safe_check_unable"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_safe_check_unable"
+                                android:background="@drawable/icon_radio_uncheck"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="不可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/ll_button_check_enable"
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_button_check_enable"
+                                android:background="@drawable/icon_radio_check"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_button_check_unable"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tv_bg_button_check_unable"
+                                android:background="@drawable/icon_radio_uncheck"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp" />
+
+                            <TextView
+                                android:text="不可用"
+                                android:textSize="15sp"
+                                android:layout_marginStart="5dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_submit"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:text="提交"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/shape_d7a64a_corner_10"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearlayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

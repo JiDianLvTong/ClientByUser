@@ -50,6 +50,7 @@ public class PubFunction {
     public static String apm;
     public static String ape;
     public static String h5;
+    public static String upload;
 
     public static String getLevel() {
         String s = "";

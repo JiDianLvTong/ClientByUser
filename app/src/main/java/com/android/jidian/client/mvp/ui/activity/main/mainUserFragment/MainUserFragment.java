@@ -1,11 +1,16 @@
 package com.android.jidian.client.mvp.ui.activity.main.mainUserFragment;
 
+import static com.android.jidian.client.bean.event.MainUserEvent.COUPON_USE;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import androidx.annotation.NonNull;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -16,6 +21,7 @@ import com.android.jidian.client.Newpay_;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseFragmentByMvp;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
+import com.android.jidian.client.bean.event.MainUserEvent;
 import com.android.jidian.client.mvp.contract.MainUserContract;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
 import com.android.jidian.client.mvp.ui.activity.Deposit.DepositActivity;
@@ -31,6 +37,8 @@ import com.itheima.roundedimageview.RoundedImageView;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,7 +78,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
     @BindView(R.id.myMonthOutTimePanelData)
     public TextView myMonthOutTimePanelData;
     @BindView(R.id.myMonthOutTimePanelRePay)
-    public TextView myMonthOutTimePanelRePay;
+    public LinearLayout myMonthOutTimePanelRePay;
     @BindView(R.id.smartRefreshLayout)
     public SmartRefreshLayout smartRefreshLayout;
 
@@ -82,13 +90,36 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
     }
 
     @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @Subscribe
+    public void onEvent(MainUserEvent event) {
+        if (event.getEvent() == COUPON_USE) {
+            requestData();
+        }
+    }
+
+    @Override
     public void initView(View view) {
         //mvp初始化
         mPresenter = new MainUserPresenter();
         mPresenter.attachView(this);
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(getActivity());
-        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"),Color.parseColor("#D7A64A"));
+        materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
         smartRefreshLayout.setRefreshHeader(materialHeader);
         smartRefreshLayout.setEnableHeaderTranslationContent(true);
         smartRefreshLayout.setOnRefreshListener(new com.scwang.smart.refresh.layout.listener.OnRefreshListener() {
@@ -113,15 +144,15 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         requestData();
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {//不可见
-            if (mPresenter != null) {
-                requestData();
-            }
-        }
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {//不可见
+//            if (mPresenter != null) {
+//                requestData();
+//            }
+//        }
+//    }
 
     //请求数据
     private void requestData() {
@@ -154,9 +185,15 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
                 myMonthOutTimePanel.setVisibility(View.GONE);
                 myMonthInTimePanelTime.setText(bean.getData().getUmonth().getPackets().getDays() + "");
                 myMonthInTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
+                myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
+            } else if ("2".equals(bean.getData().getUmonth().getPackets().getIsexpire())) {//没有包月
+                myMonthInTimePanel.setVisibility(View.GONE);
+                myMonthOutTimePanel.setVisibility(View.GONE);
+                myMonthOutTimePanelRePay.setVisibility(View.GONE);
             } else {//包月过期
                 myMonthInTimePanel.setVisibility(View.GONE);
                 myMonthOutTimePanel.setVisibility(View.VISIBLE);
+                myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
                 myMonthOutTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
             }
         }

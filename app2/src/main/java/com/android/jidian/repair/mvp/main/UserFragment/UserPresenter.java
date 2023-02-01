@@ -8,4 +8,8 @@ import com.android.jidian.repair.base.BasePresenter;
  * description:
  */
 public class UserPresenter extends BasePresenter<UserContract.View> implements UserContract.Presenter {
+    @Override
+    public void requestPatrolIndex(String lnh, String lat, String page) {
+
+    }
 }

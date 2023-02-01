@@ -105,8 +105,9 @@ public class PatrolIndexBean {
             private String jingdu;
             private String weidu;
             private String images;
-            private Object bgimg;
-            private double distance;
+            private String bgimg;
+            private String distance;
+            private String online;
 
             public String getId() {
                 return id;
@@ -156,20 +157,28 @@ public class PatrolIndexBean {
                 this.images = images;
             }
 
-            public Object getBgimg() {
+            public String getBgimg() {
                 return bgimg;
             }
 
-            public void setBgimg(Object bgimg) {
+            public void setBgimg(String bgimg) {
                 this.bgimg = bgimg;
             }
 
-            public double getDistance() {
+            public String getDistance() {
                 return distance;
             }
 
-            public void setDistance(double distance) {
+            public void setDistance(String distance) {
                 this.distance = distance;
+            }
+
+            public String getOnline() {
+                return online;
+            }
+
+            public void setOnline(String online) {
+                this.online = online;
             }
         }
     }

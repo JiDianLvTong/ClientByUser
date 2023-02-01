@@ -1,5 +1,7 @@
 package com.android.jidian.repair.mvp.task;
 
+import java.util.List;
+
 /**
  * @author : xiaoming
  * date: 2023/1/12 17:27
@@ -82,10 +84,12 @@ public class WorktaskDetailBean {
         private String address;
         private String content;
         private String ustatus;
-        private Object ustater;
+        private String ustater;
         private String create_time;
         private String phone;
         private String title;
+        private List<String> images;
+        private List<String> imagedw;
 
         public String getId() {
             return id;
@@ -151,11 +155,11 @@ public class WorktaskDetailBean {
             this.ustatus = ustatus;
         }
 
-        public Object getUstater() {
+        public String getUstater() {
             return ustater;
         }
 
-        public void setUstater(Object ustater) {
+        public void setUstater(String ustater) {
             this.ustater = ustater;
         }
 
@@ -181,6 +185,22 @@ public class WorktaskDetailBean {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        public List<String> getImages() {
+            return images;
+        }
+
+        public void setImages(List<String> images) {
+            this.images = images;
+        }
+
+        public List<String> getImagedw() {
+            return imagedw;
+        }
+
+        public void setImagedw(List<String> imagedw) {
+            this.imagedw = imagedw;
         }
     }
 }

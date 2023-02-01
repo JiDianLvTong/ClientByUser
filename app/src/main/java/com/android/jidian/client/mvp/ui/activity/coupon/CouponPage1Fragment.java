@@ -23,6 +23,7 @@ import androidx.annotation.NonNull;
 import com.android.jidian.client.MainDiscount_2;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseFragment;
+import com.android.jidian.client.bean.event.MainUserEvent;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
@@ -41,6 +42,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.timmy.tdialog.TDialog;
 
 import org.androidannotations.annotations.ViewById;
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -351,7 +353,9 @@ public class CouponPage1Fragment extends U6BaseFragment implements AbsListView.O
                             if (jsonObject_response.has("jump")) {
                                 String data = jsonObject_response.getString("jump");
                                 if ("1".equals(data)) {
-                                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
+                                    EventBus.getDefault().post(new MainUserEvent(1));
+                                    getActivity().finish();
+//                                    getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
                                 } else {
                                     MyToast.showTheToast(getActivity(), msg);
                                 }

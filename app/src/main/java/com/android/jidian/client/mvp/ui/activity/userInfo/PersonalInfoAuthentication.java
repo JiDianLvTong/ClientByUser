@@ -4,6 +4,7 @@ import static com.android.jidian.client.http.HeaderTypeData.getLocalVersion;
 import static com.android.jidian.client.http.HeaderTypeData.getLocalVersionName;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -536,6 +537,10 @@ public class PersonalInfoAuthentication extends U6BaseActivity {
                     Log.d(TAG, "上传用户信息成功: " + msg);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("auth", "1");
+                    editor.putString("real_name", str_name);
+//                    SharedPreferences sharedPreferences = getActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+//                    String name = sharedPreferences.getString("real_name", "");
+//                    myInfoName.setText(name);
                     editor.apply();
                 }
                 MyToast.showTheToast(activity, msg);

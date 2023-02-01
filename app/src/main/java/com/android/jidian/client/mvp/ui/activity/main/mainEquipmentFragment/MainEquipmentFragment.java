@@ -36,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -218,6 +219,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         smartRefreshLayout.finishRefresh();
         hideProgress();
         if (bean.getData() != null) {
+            BigDecimal total_price = new BigDecimal(0);//一键续费显示的钱
             mExpenseBean = bean;
             MainActiyivyExpenseBean.DataBean dataBean = bean.getData();
             //车辆信息更新
@@ -248,10 +250,13 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 if (dataBean.getTop().getCList().size() > 1) {
                     tv_expire_text.setText("您的设备还有" + dataBean.getUmonth().getPackets().getDays() + "天到期");
                 }
-                tv_package_price.setText(dataBean.getUmonth().getPackets().getRprice());
+                total_price = total_price.add(new BigDecimal(dataBean.getUmonth().getPackets().getRprice()));
             }
             if (dataBean.getEbike().size() > 0) {
                 //没有绑定车辆
+                if ("20".equals(dataBean.getEbike().get(0).getUse_type())) {//买
+                    total_price = total_price.add(new BigDecimal(dataBean.getEbike().get(0).getRprice()));
+                }
                 if (dataBean.getEbike().get(0).getIs_bind().equals("2") || dataBean.getEbike().get(0).getIs_bind().equals("0")) {
                     iv_bicycle.setImageResource(R.drawable.main_bicycle_gray);
                     tv_bicycle_status.setText("扫码绑定");
@@ -274,7 +279,6 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 //            loginHasBicyclePanelID.setText(userEquipmentBean.getEbike().getImei());
                 }
             }
-
             //电池信息更新
             int batteryCount = dataBean.getBattery().size();
             batteryStatus = new ArrayList<>();
@@ -297,7 +301,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                         tv_battery_1_price.setVisibility(View.VISIBLE);
                         tv_battery_1_unit.setVisibility(View.VISIBLE);
                         tv_battery_1_text.setVisibility(View.VISIBLE);
-                    }else {
+                    } else {
+                        total_price = total_price.add(new BigDecimal(battery.getRprice()));
                         tv_battery_1_price.setVisibility(View.GONE);
                         tv_battery_1_unit.setVisibility(View.GONE);
                         tv_battery_1_text.setVisibility(View.GONE);
@@ -322,7 +327,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     tv_battery_2_price.setVisibility(View.VISIBLE);
                     tv_battery_2_unit.setVisibility(View.VISIBLE);
                     tv_battery_2_text.setVisibility(View.VISIBLE);
-                }else {
+                } else {
+                    total_price = total_price.add(new BigDecimal(battery.getRprice()));
                     tv_battery_2_price.setVisibility(View.GONE);
                     tv_battery_2_unit.setVisibility(View.GONE);
                     tv_battery_2_text.setVisibility(View.GONE);
@@ -340,6 +346,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     cl_battery_detail_2.setVisibility(View.GONE);
                 }
             }
+            tv_package_price.setText(total_price.toString());
         }
     }
 

@@ -28,6 +28,7 @@ import com.android.jidian.client.mvp.contract.ScanCodeContract;
 import com.android.jidian.client.mvp.presenter.ScanCodePresenter;
 import com.android.jidian.client.mvp.ui.activity.CouponCashv2Activity;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
+import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.mvp.ui.dialog.ScanCodeBindingDialog;
 import com.android.jidian.client.util.Util;
 import com.android.jidian.client.pub.PubFunction;
@@ -277,8 +278,14 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
 //                                super.run();
 //                                try {
 //                                    sleep(3000);
-                                    Intent intent1 = new Intent(activity, MainActivity.class);
-                                    activity.startActivity(intent1);
+//                                    Intent intent1 = new Intent(activity, MainActivity.class);
+//                                    activity.startActivity(intent1);
+                        new DialogByEnter(activity, "绑定信息可能存在延迟，若有异常，请10秒后尝试刷新页面~", new DialogByEnter.DialogChoiceListener() {
+                            @Override
+                            public void enterReturn() {
+                                finish();
+                            }
+                        }).showPopupWindow();
 //                                } catch (InterruptedException e) {
 //                                    System.out.println(e.getLocalizedMessage());
 //                                }
@@ -303,8 +310,14 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                         break;
                     case "4":
                         //车辆二维码
-                        Intent intent3 = new Intent(activity, MainActivity.class);
-                        startActivity(intent3);
+//                        Intent intent3 = new Intent(activity, MainActivity.class);
+//                        startActivity(intent3);
+                        new DialogByEnter(activity, "绑定信息可能存在延迟，若有异常，请10秒后尝试刷新页面~", new DialogByEnter.DialogChoiceListener() {
+                            @Override
+                            public void enterReturn() {
+                                finish();
+                            }
+                        }).showPopupWindow();
                         break;
                 }
             }

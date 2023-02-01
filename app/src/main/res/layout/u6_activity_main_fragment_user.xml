@@ -338,12 +338,12 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/myMonthOutTimePanelRePay"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/shape_ffffff_corner_right_10">
 
                         <TextView
-                            android:id="@+id/myMonthOutTimePanelRePay"
                             android:text="续费"
                             android:textSize="11sp"
                             android:textColor="@color/yellow_D7A64A"
@@ -353,7 +353,6 @@
                             android:gravity="center"/>
 
                     </LinearLayout>
-
 
                 </LinearLayout>
 
