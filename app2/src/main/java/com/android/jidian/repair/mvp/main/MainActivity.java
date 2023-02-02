@@ -17,7 +17,6 @@ import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.base.PermissionManager.PermissionManager;
 import com.android.jidian.repair.dialog.DialogByEnter;
-import com.android.jidian.repair.mvp.login.LoginActivity;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureEvent;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureFragment;
 import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragment;
@@ -65,7 +64,6 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
 
     @Override
     public void initView() {
-//        startActivity(new Intent(this, LoginActivity.class));
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
         String[] mTitles = {"即时任务", "巡检", "故障", "我的"};
         int[] mIconUnSelectIds = {
@@ -86,9 +84,6 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
             public void onTabSelect(int position) {
                 vpContent.setCurrentItem(position, false);
                 tabLayoutMainPage.setCurrentTab(position);
-                if (TextUtils.isEmpty(UserInfoHelper.getInstance().getUid())) {
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                }
             }
 
             @Override
@@ -108,9 +103,6 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         vpContent.setOffscreenPageLimit(mTitles.length - 1);
         vpContent.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mFragments, mTitles));
         vpContent.setScrollEnable(false);
-        if (TextUtils.isEmpty(UserInfoHelper.getInstance().getUid())) {
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-        }
     }
 
     @Override

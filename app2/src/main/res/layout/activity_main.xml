@@ -26,12 +26,13 @@
     <com.flyco.tablayout.CommonTabLayout
         android:id="@+id/tab_layout_main_page"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_height="50dp"
         android:background="@color/white_33ffffff"
         app:tl_iconGravity="TOP"
-        app:tl_iconHeight="23dp"
-        app:tl_iconWidth="23dp"
+        app:tl_iconHeight="20dp"
+        app:tl_iconWidth="20dp"
         app:tl_indicator_height="0dp"
-        app:tl_textsize="10sp" />
+        app:tl_textSelectColor="@color/yellow_D7A64A"
+        app:tl_textsize="9sp" />
 
 </LinearLayout>

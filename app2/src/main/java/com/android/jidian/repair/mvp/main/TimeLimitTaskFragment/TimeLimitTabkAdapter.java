@@ -32,21 +32,21 @@ public class TimeLimitTabkAdapter extends BaseQuickAdapter<WorktaskListsBean.Dat
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.VISIBLE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.VISIBLE);
-            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_de0b15_corner_20);
+            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_d7a64a_corner_top_right_10);
         } else if ("20".equals(bean.getWtype())) {//救援任务
             holder.setText(R.id.tv_task_item_type, "救援任务")
                     .setText(R.id.tv_task_item_num, bean.getPhone())
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.GONE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.GONE);
-            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_64b22a_corner_20);
+            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_64b22a_corner_top_right_10);
         } else {//其他任务
             holder.setText(R.id.tv_task_item_type, "其他任务")
                     .setText(R.id.tv_task_item_num, bean.getTitle())
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.GONE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.GONE);
-            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_64b22a_corner_20);
+            holder.setBackgroundRes(R.id.tv_task_item_type, R.drawable.shape_64b22a_corner_top_right_10);
         }
         holder.getView(R.id.tv_task_item_guide).setOnClickListener(new View.OnClickListener() {
             @Override

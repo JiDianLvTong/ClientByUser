@@ -113,6 +113,9 @@ dependencies {
     //多页卡滑动界面
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
+    //权限申请，所有的权限申请请使用这个
+    implementation 'com.permissionx.guolindev:permission-support:1.4.0'
+
 
 
     
@@ -168,8 +171,7 @@ dependencies {
     // 阴影控件
     implementation 'com.mxy.fpshadowlayout:fpshadowlayout:0.0.1'
     implementation 'com.google.android.material:material:1.0.0'
-    //权限申请，所有的权限申请请使用这个
-    implementation 'com.permissionx.guolindev:permission-support:1.4.0'
+
     //与H5交互使用的webview，jsbridge交互
 //    implementation 'com.github.wendux:WebViewJavascriptBridge:master-SNAPSHOT'
     //状态栏

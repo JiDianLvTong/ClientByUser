@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.repair.R;
@@ -13,6 +14,7 @@ import com.android.jidian.repair.base.ActivityCollector;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.mvp.main.MainActivity;
 import com.android.jidian.repair.utils.Md5;
+import com.android.jidian.repair.utils.UserInfoHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,6 +27,8 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
     public EditText editLoginPwd;
     @BindView(R.id.btn_login_go)
     public TextView btnLoginGo;
+    @BindView(R.id.pageReturn)
+    public LinearLayout pageReturn;
 
     @Override
     public int getLayoutId() {
@@ -35,7 +39,9 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
     public void initView() {
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
-
+        if (!TextUtils.isEmpty(UserInfoHelper.getInstance().getUid())) {
+            startActivity(new Intent(activity, MainActivity.class));
+        }
     }
 
     @OnClick(R.id.btn_login_go)
@@ -90,4 +96,10 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
     public void onError(Throwable throwable) {
         showMessage("无网络链接，请检查您的网络设置！");
     }
+
+    @OnClick(R.id.pageReturn)
+    void onClickPageReturn(){
+        this.finish();
+    }
+
 }

@@ -3,79 +3,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_ffffff_corner_10"
     android:orientation="vertical"
-    android:layout_marginVertical="10dp"
-    android:paddingVertical="10dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/shape_ffffff_corner_top_10">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="15dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_task_item_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="编号：123123123123"
+                android:textColor="@color/color_000000"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/tv_task_item_guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="导航路线"
+                    android:textColor="#ffffff"
+                    android:textSize="7sp"
+                    android:background="@drawable/shape_d7a64a_corner_5"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tv_task_item_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_de0b15_corner_20"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_d7a64a_corner_top_right_10"
             android:gravity="center"
-            android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
             android:text="电柜故障"
             android:textColor="@color/color_FFFFFF"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/tv_task_item_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:text="编号：123123123123"
-            android:textColor="@color/color_000000"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/tv_task_item_guide"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/shape_b0815a_corner_20"
-            android:gravity="center"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="5dp"
-            android:text="导航路线"
-            android:textColor="@color/color_FFFFFF"
-            android:textSize="13sp" />
+            android:textSize="11sp" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_task_item_address"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="10dp"
-        android:maxLines="1"
-        android:visibility="gone"
-        android:textColor="@color/color_000000"
-        android:textSize="17sp"
-        tools:text="地址" />
+        android:orientation="vertical"
+        android:background="@drawable/shape_fafafa_corner_bottom_10"
+        android:padding="15dp">
 
-    <TextView
-        android:id="@+id/tv_test_item_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="10dp"
-        android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-        android:textColor="@color/color_000000"
-        android:textSize="13sp" />
+        <TextView
+            android:id="@+id/tv_task_item_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textColor="@color/color_000000"
+            android:textSize="13sp"
+            tools:text="地址"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_test_item_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+            android:textColor="@color/color_000000"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
