@@ -1,5 +1,7 @@
 package com.android.jidian.repair.mvp.main.PatrolFragment;
 
+import static com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent.LOCATION_SUCCESS;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,11 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
+import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.mvp.patrol.PatrolDetailActivity;
 import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -22,6 +26,9 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 
 /**
@@ -29,6 +36,7 @@ import butterknife.BindView;
  * Use the {@link PatrolFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
+@BindEventBus
 public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implements PatrolContract.View {
 
     @BindView(R.id.srl_patrol)
@@ -40,6 +48,7 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
 
     private PartolAdapter mAdapter;
     private int mPage = 1;
+    private boolean mHasPiosition = false;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -78,6 +87,7 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
         if (getArguments() != null) {
             mLng = getArguments().getString(ARG_PARAM1);
             mLat = getArguments().getString(ARG_PARAM2);
+            mHasPiosition = !TextUtils.isEmpty(mLng) && !TextUtils.isEmpty(mLat);
         }
     }
 
@@ -127,12 +137,28 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
                 requestData();
             }
         });
-        srlPatrol.autoRefresh();
+//        srlPatrol.autoRefresh();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void onEvent(PatrolFragmentEvent event) {
+        if (event != null) {
+            if (event.getEvent() == LOCATION_SUCCESS) {
+                if (!mHasPiosition) {
+                    mLng = event.getLng();
+                    mLat = event.getLat();
+                    requestData();
+                }
+            }
+        }
     }
 
     private void requestData() {
         if (mPresenter != null) {
-            mPresenter.requestPatrolIndex(mLng, mLat, mPage + "");
+            if (!TextUtils.isEmpty(mLng) && !TextUtils.isEmpty(mLat)) {
+                mPresenter.requestPatrolIndex(mLng, mLat, mPage + "");
+                mHasPiosition = true;
+            }
         }
     }
 
@@ -188,5 +214,7 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
     @Override
     public void requestShowTips(String msg) {
         showMessage(msg);
+        srlPatrol.finishRefresh();
+        srlPatrol.finishLoadMore();
     }
 }

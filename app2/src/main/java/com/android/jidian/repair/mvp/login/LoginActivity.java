@@ -68,8 +68,6 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
         editor.apply();
         apptoken = bean.getApptoken();
         ActivityCollector.finishAll();
-        int[] i = new int[]{1, 1, 1, 1, 1};
-        int iiii = i[9];
         startActivity(new Intent(this, MainActivity.class));
     }
 

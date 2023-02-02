@@ -1,5 +1,7 @@
 package com.android.jidian.repair.mvp.main;
 
+import static com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent.LOCATION_SUCCESS;
+
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
@@ -19,6 +21,7 @@ import com.android.jidian.repair.mvp.login.LoginActivity;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureEvent;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureFragment;
 import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragment;
+import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent;
 import com.android.jidian.repair.mvp.main.TimeLimitTaskFragment.TimeLimitTaskFragment;
 import com.android.jidian.repair.mvp.main.UserFragment.UserFragment;
 import com.android.jidian.repair.utils.UserInfoHelper;
@@ -199,6 +202,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
                             mPositioned = true;
                             coordinates[0] = aMapLocation.getLongitude();//获取经度
                             coordinates[1] = aMapLocation.getLatitude();//获取纬度
+                            EventBus.getDefault().postSticky(new PatrolFragmentEvent(LOCATION_SUCCESS, coordinates[0] + "", coordinates[1] + ""));
                             Log.d(TAG, "onLocationChanged:  aMapLocation.getCity(): " + aMapLocation.getAddress() + "aMapLocation.getCityCode(): " + aMapLocation.getCityCode() + "aMapLocation.getLatitude() :" + aMapLocation.getLatitude() + "aMapLocation.getLongitude():" + aMapLocation.getLongitude());
                         } else {
                             //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
