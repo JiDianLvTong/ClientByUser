@@ -81,13 +81,14 @@ public interface APEService {
 
     /**
      * 任务提交
-     * @param wtid 任务id
-     * @param ustat 处理状态：-2=无法完成，1=已完成。
+     *
+     * @param wtid    任务id
+     * @param ustat   处理状态：-2=无法完成，1=已完成。
      * @param content 处理结果描述
-     * @param img1 设备图
-     * @param img2 合影图
-     * @param img3 关建位置图
-     * @param img4 其他图（可选）
+     * @param img1    设备图
+     * @param img2    合影图
+     * @param img3    关建位置图
+     * @param img4    其他图（可选）
      */
     @FormUrlEncoded
     @POST("Worktask/resolve.html")
@@ -98,20 +99,21 @@ public interface APEService {
 
     /**
      * 巡检提交
-     * @param cabid 电柜编号
-     * @param img1 打卡合影
-     * @param img2 屏幕清洁
-     * @param img3 后门锁状态，
-     * @param img4_1 柜体前侧清洁
-     * @param img4_2 柜体左则清洁
-     * @param img4_3 柜体右则清洁
-     * @param img4_4 柜体顶部清洁
-     * @param img5_1 柜体内上部清洁
-     * @param img5_2 柜体内中部清洁
-     * @param img5_3 柜体内下部清洁
-     * @param img6_1 是否漏电检测笔图
-     * @param isnetdbm 网络信号：1=有，0=无
-     * @param isdixian 电柜地线：1=有，0=无
+     *
+     * @param cabid     电柜编号
+     * @param img1      打卡合影
+     * @param img2      屏幕清洁
+     * @param img3      后门锁状态，
+     * @param img4_1    柜体前侧清洁
+     * @param img4_2    柜体左则清洁
+     * @param img4_3    柜体右则清洁
+     * @param img4_4    柜体顶部清洁
+     * @param img5_1    柜体内上部清洁
+     * @param img5_2    柜体内中部清洁
+     * @param img5_3    柜体内下部清洁
+     * @param img6_1    是否漏电检测笔图
+     * @param isnetdbm  网络信号：1=有，0=无
+     * @param isdixian  电柜地线：1=有，0=无
      * @param isopenbtn 换点按钮是否可用：1=是，0=否
      */
     @FormUrlEncoded
@@ -124,5 +126,20 @@ public interface APEService {
                                               @Field("img5_3") String img5_3, @Field("img6_1") String img6_1,
                                               @Field("isnetdbm") String isnetdbm, @Field("isdixian") String isdixian,
                                               @Field("isopenbtn") String isopenbtn);
+
+
+    /**
+     * 故障上报
+     * cabid,
+     * content  描述，
+     * img1  必传图，
+     * img2  必传图，
+     * img3  可选上传
+     * img4  可选上传
+     */
+    @FormUrlEncoded
+    @POST("Worktask/addFault.html")
+    Flowable<BaseBean> requestWorktaskAddFault(@Field("cabid") String cabid, @Field("content") String content, @Field("img1") String img1,
+                                               @Field("img2") String img2, @Field("img3") String img3, @Field("img4") String img4);
 
 }

@@ -6,16 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".mvp.main.FailureFragment.FailureFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tv_test"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="故障" />
-
-    <ImageView
-        android:id="@+id/iv_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/base_title_layout" />
 
 </FrameLayout>

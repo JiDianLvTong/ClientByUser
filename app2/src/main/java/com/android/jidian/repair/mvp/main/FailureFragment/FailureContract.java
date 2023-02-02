@@ -1,6 +1,9 @@
 package com.android.jidian.repair.mvp.main.FailureFragment;
 
+import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.base.BaseView;
+
+import io.reactivex.Flowable;
 
 /**
  * @author : xiaoming
@@ -8,13 +11,17 @@ import com.android.jidian.repair.base.BaseView;
  * description:
  */
 public interface FailureContract {
-    interface Model{
-
+    interface Model {
+        Flowable<BaseBean> requestWorktaskAddFault(String cabid, String content, String img1, String img2, String img3, String img4);
     }
-    interface View extends BaseView{
 
+    interface View extends BaseView {
+        void requestWorktaskAddFaultSuccess(BaseBean bean);
+
+        void requestShowTips(String msg);
     }
-    interface Presenter{
 
+    interface Presenter {
+        void requestWorktaskAddFault(String cabid, String content, String img1, String img2, String img3, String img4);
     }
 }

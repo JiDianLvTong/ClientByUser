@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.jidian.repair.R;
+import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
 import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.dialog.TakePhotoDialog;
@@ -32,10 +33,10 @@ import butterknife.OnClick;
 @BindEventBus
 public class FailureFragment extends BaseFragmentByMvp<FailurePresenter> implements FailureContract.View {
 
-    @BindView(R.id.tv_test)
-    public TextView tvTest;
-    @BindView(R.id.iv_test)
-    public ImageView ivTest;
+//    @BindView(R.id.tv_test)
+//    public TextView tvTest;
+//    @BindView(R.id.iv_test)
+//    public ImageView ivTest;
 
     private static final int RESULT_PICTURE_SELECT = 101;
 
@@ -89,10 +90,10 @@ public class FailureFragment extends BaseFragmentByMvp<FailurePresenter> impleme
 
     }
 
-    @OnClick(R.id.tv_test)
-    public void OnClickRoot(){
-        showTakePhotoDialog();
-    };
+//    @OnClick(R.id.tv_test)
+//    public void OnClickRoot(){
+//        showTakePhotoDialog();
+//    };
 
     private void showTakePhotoDialog() {
         TakePhotoDialog dialog = new TakePhotoDialog(getActivity(), new TakePhotoDialog.OnDialogClickListener() {
@@ -110,8 +111,8 @@ public class FailureFragment extends BaseFragmentByMvp<FailurePresenter> impleme
             LocalMedia media = event.getMedia();
             String path = media.getCompressPath();
             if (event.getEvent() == FailureEvent.FAILURE_TAKE_PHOTO) {
-                Glide.with(getActivity()).load(PictureMimeType.isContent(path) && !media.isCut() && !media.isCompressed() ? Uri.parse(path)
-                        : path).into(ivTest);
+//                Glide.with(getActivity()).load(PictureMimeType.isContent(path) && !media.isCut() && !media.isCompressed() ? Uri.parse(path)
+//                        : path).into(ivTest);
             }
         }
     }
@@ -128,6 +129,16 @@ public class FailureFragment extends BaseFragmentByMvp<FailurePresenter> impleme
 
     @Override
     public void onError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void requestWorktaskAddFaultSuccess(BaseBean bean) {
+        showMessage(bean.getMsg());
+    }
+
+    @Override
+    public void requestShowTips(String msg) {
 
     }
 }

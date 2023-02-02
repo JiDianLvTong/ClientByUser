@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.User">
         <activity
+            android:name=".mvp.FailureAdd.FailureAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".mvp.patrol.PatrolDetailActivity"
             android:exported="false" />
         <activity

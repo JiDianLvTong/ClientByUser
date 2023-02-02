@@ -11,6 +11,7 @@ import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BaseBean;
+import com.android.jidian.repair.mvp.FailureAdd.FailureAddActivity;
 import com.android.jidian.repair.mvp.task.TimeTaskDetailActivity;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
@@ -93,6 +94,8 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
     public TextView tvBgButtonCheckEnable;
     @BindView(R.id.tv_bg_button_check_unable)
     public TextView tvBgButtonCheckUnable;
+    @BindView(R.id.btn_patrol_add)
+    public TextView btnPatrolAdd;
 
     /**
      * cabid,电柜编号
@@ -129,7 +132,7 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
         mCabid = getIntent().getStringExtra("id");
         String name = getIntent().getStringExtra("name");
         String address = getIntent().getStringExtra("address");
-        if (name.length() > 18) {
+        if (name.length() > 14) {
             tvTitle.setTextSize(12);
         }
         tvTitle.setText(name);
@@ -137,6 +140,13 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
         mPresenter = new PatrolDetailPresenter();
         mPresenter.attachView(this);
         mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+    }
+
+    @OnClick(R.id.btn_patrol_add)
+    public void onClickBtnPatrolAdd() {
+        Intent intent = new Intent(PatrolDetailActivity.this, FailureAddActivity.class);
+        intent.putExtra("id", mCabid);
+        startActivity(intent);
     }
 
     //img1,打卡合影
