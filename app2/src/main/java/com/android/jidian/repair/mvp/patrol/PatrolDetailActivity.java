@@ -431,4 +431,9 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
     public void onError(Throwable throwable) {
         showMessage("无网络链接，请检查您的网络设置！");
     }
+
+    @OnClick(R.id.pageReturn)
+    void onClickPageReturn(){
+        activity.finish();
+    }
 }

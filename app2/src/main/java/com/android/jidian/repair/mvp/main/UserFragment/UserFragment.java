@@ -1,21 +1,35 @@
 package com.android.jidian.repair.mvp.main.UserFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.jidian.repair.R;
+import com.android.jidian.repair.base.BaseFragment;
+import com.android.jidian.repair.mvp.login.LoginActivity;
+import com.android.jidian.repair.mvp.main.MainActivity;
+import com.android.jidian.repair.utils.Md5;
+import com.android.jidian.repair.utils.UserInfoHelper;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link UserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserFragment extends Fragment {
+public class UserFragment extends BaseFragment {
+
+    @BindView(R.id.btn_logout)
+    public TextView btnLogout;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,9 +72,20 @@ public class UserFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user, container, false);
+    public int getLayoutId() {
+        return R.layout.fragment_user;
+    }
+
+    @Override
+    public void initView(View view) {
+
+    }
+
+    @OnClick(R.id.btn_logout)
+    public void onClickBtnLogout() {
+        UserInfoHelper.getInstance().setUid("");
+        UserInfoHelper.getInstance().setAccess("");
+        getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+        getActivity().finish();
     }
 }

@@ -213,20 +213,19 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
         mlat = bean.getLat();
         mlng = bean.getLng();
         if ("10".equals(bean.getWtype())) {//电柜故障
-            tvTaskItemType.setBackgroundResource(R.drawable.shape_de0b15_corner_20);
             tvTaskItemNum.setText("电柜编号:" + bean.getCabid());
             tvTaskItemAddress.setVisibility(View.VISIBLE);
             tvTaskItemAddress.setText("地址：" + bean.getAddress());
             tvTestItemContent.setText(bean.getContent());
         } else if ("20".equals(bean.getWtype())) {//救援任务
-            tvTaskItemType.setBackgroundResource(R.drawable.shape_64b22a_corner_20);
-            tvTaskItemNum.setText("电柜编号:" + bean.getPhone());
+            tvTaskItemNum.setText("手机号码:" + bean.getPhone());
             tvTaskItemAddress.setVisibility(View.GONE);
+            tvTaskItemGuide.setVisibility(View.GONE);
             tvTestItemContent.setText(bean.getContent());
         } else {//其他任务
-            tvTaskItemType.setBackgroundResource(R.drawable.shape_64b22a_corner_20);
-            tvTaskItemNum.setText("电柜编号:" + bean.getTitle());
+            tvTaskItemNum.setText(bean.getTitle());
             tvTaskItemAddress.setVisibility(View.GONE);
+            tvTaskItemGuide.setVisibility(View.GONE);
             tvTestItemContent.setText(bean.getContent());
         }
         if (bean.getImages().size() > 0) {

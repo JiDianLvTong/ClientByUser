@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/shape_fafafa_corner_bottom_10"
+        android:background="@drawable/shape_f3f3f3_corner_bottom_10"
         android:padding="15dp">
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:textColor="@color/color_000000"
+            android:textColor="#333333"
             android:textSize="13sp"
             tools:text="地址"
             android:layout_marginBottom="10dp"
@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-            android:textColor="@color/color_000000"
+            android:textColor="#333333"
             android:textSize="11sp" />
 
     </LinearLayout>
