@@ -37,6 +37,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.User">
         <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".RepaireGuideActivity"
             android:exported="false" />
         <activity
@@ -103,6 +106,7 @@
         <activity android:name=".mvp.message.UserMessageActivity" />
         <activity android:name=".mvp.H5.CommonWebViewActivity" />
         <activity android:name=".mvp.UserLog.OperationLogActivity" />
+        <activity android:name=".mvp.password.ChangePasswordActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

@@ -260,4 +260,10 @@ public interface APEService {
     Flowable<MeterReadingBean> requestCabEleList(@Field("month") String month, @Field("uid") String uid, @Field("cabid") String cabid,
                                                  @Field("lastid") String lastid);
 
+    /**
+     * 点击确认更换登录密码
+     */
+    @FormUrlEncoded
+    @POST("User/resetPwd.html")
+    Flowable<BaseBean> requestResetLoginPwd(@Field("phone") String phone, @Field("newpwd") String newpwd, @Field("vcode") String vcode);
 }

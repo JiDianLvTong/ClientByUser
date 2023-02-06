@@ -23,6 +23,7 @@ import com.android.jidian.repair.mvp.UserTask.UserTaskList.UserTaskListActivity;
 import com.android.jidian.repair.mvp.login.LoginActivity;
 import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent;
 import com.android.jidian.repair.mvp.message.UserMessageActivity;
+import com.android.jidian.repair.mvp.password.ChangePasswordActivity;
 import com.android.jidian.repair.utils.UserInfoHelper;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -119,6 +120,12 @@ public class UserFragment extends BaseFragment {
                 }
             }
         }
+    }
+
+    @OnClick(R.id.ll_user_change_password)
+    public void onClickllUserChangePassword() {
+        Intent intent = new Intent(requireActivity(), ChangePasswordActivity.class);
+        startActivity(intent);
     }
 
     @OnClick(R.id.ll_user_operation_log)

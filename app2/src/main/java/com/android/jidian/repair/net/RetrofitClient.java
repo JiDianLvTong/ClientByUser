@@ -78,6 +78,16 @@ public class RetrofitClient {
         return retrofit.create(APEService.class);
     }
 
+    public APIService getApiService() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(genericClient())
+                .baseUrl(PubFunction.api)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+        return retrofit.create(APIService.class);
+    }
+
     public APEService getAppUploadImgService() {
         Retrofit retrofit = new Retrofit.Builder()
                 .client(genericClient())
