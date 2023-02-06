@@ -15,7 +15,7 @@ import io.reactivex.Observable;
  * date: 2023/2/1 17:03
  * description:
  */
-public interface PatrolDetailContract {
+public interface PatrolAddContract {
     interface Model {
         Flowable<BaseBean> requestPatrolAddpatrol(String cabid, String img1, String img2, String img3,
                                                   String img4_1, String img4_2, String img4_3, String img4_4,

@@ -12,7 +12,6 @@ import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.mvp.FailureAdd.FailureAddActivity;
-import com.android.jidian.repair.mvp.task.TimeTaskDetailActivity;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.utils.Md5;
@@ -27,7 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresenter> implements PatrolDetailContract.View {
+public class PatrolAddActivity extends BaseActivityByMvp<PatrolAddPresenter> implements PatrolAddContract.View {
 
     //上传图片类型
     private static final int PATROL_IMG_PUNCH = 1001;
@@ -124,7 +123,7 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_patrol_detail;
+        return R.layout.activity_patrol_add;
     }
 
     @Override
@@ -137,14 +136,14 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
         }
         tvTitle.setText(name);
         tvPatrolDetailAddress.setText(address);
-        mPresenter = new PatrolDetailPresenter();
+        mPresenter = new PatrolAddPresenter();
         mPresenter.attachView(this);
         mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
     }
 
     @OnClick(R.id.btn_patrol_add)
     public void onClickBtnPatrolAdd() {
-        Intent intent = new Intent(PatrolDetailActivity.this, FailureAddActivity.class);
+        Intent intent = new Intent(PatrolAddActivity.this, FailureAddActivity.class);
         intent.putExtra("id", mCabid);
         startActivity(intent);
     }
@@ -152,67 +151,67 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
     //img1,打卡合影
     @OnClick(R.id.iv_punch_img)
     public void onClickivPunchImg() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_PUNCH);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_PUNCH);
     }
 
     //img2,屏幕清洁
     @OnClick(R.id.iv_screen_clean_img)
     public void onClickivScreenCleanImg() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_SCREEN_CLEAN);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_SCREEN_CLEAN);
     }
 
     //img3,后门锁状态，
     @OnClick(R.id.iv_back_lock_img)
     public void onClickivBackLockImg() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_BACK_LOCK);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_BACK_LOCK);
     }
 
     //img4_1,柜体前侧清洁
     @OnClick(R.id.iv_outside_clean_img_1)
     public void onClickivOutsideCleanImg1() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_OUTSIDE_CLEAN_1);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_OUTSIDE_CLEAN_1);
     }
 
     //img4_2,柜体左则清洁
     @OnClick(R.id.iv_outside_clean_img_2)
     public void onClickivOutsideCleanImg2() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_OUTSIDE_CLEAN_2);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_OUTSIDE_CLEAN_2);
     }
 
     //img4_3,柜体右则清洁
     @OnClick(R.id.iv_outside_clean_img_3)
     public void onClickivOutsideCleanImg3() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_OUTSIDE_CLEAN_3);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_OUTSIDE_CLEAN_3);
     }
 
     //img4_4,柜体顶部清洁
     @OnClick(R.id.iv_outside_clean_img_4)
     public void onClickivOutsideCleanImg4() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_OUTSIDE_CLEAN_4);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_OUTSIDE_CLEAN_4);
     }
 
     //img5_1,柜体内上部清洁
     @OnClick(R.id.iv_inside_clean_img_1)
     public void onClickivInsideCleanImg1() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_INSIDE_CLIEN_1);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_INSIDE_CLIEN_1);
     }
 
     //img5_2,柜体内中部清洁
     @OnClick(R.id.iv_inside_clean_img_2)
     public void onClickivInsideCleanImg2() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_INSIDE_CLIEN_2);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_INSIDE_CLIEN_2);
     }
 
     //img5_3,柜体内下部清洁
     @OnClick(R.id.iv_inside_clean_img_3)
     public void onClickivInsideCleanImg3() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_INSIDE_CLIEN_3);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_INSIDE_CLIEN_3);
     }
 
     //img6_1,是否漏电检测笔图
     @OnClick(R.id.iv_electricity_img)
     public void onClickivElectricityImg() {
-        PictureSelectorUtils.addPhotoByCamera(PatrolDetailActivity.this, PATROL_IMG_ELECTRICITY);
+        PictureSelectorUtils.addPhotoByCamera(PatrolAddActivity.this, PATROL_IMG_ELECTRICITY);
     }
 
     //isnetdbm, 网络信号：1=有，0=无
@@ -324,48 +323,48 @@ public class PatrolDetailActivity extends BaseActivityByMvp<PatrolDetailPresente
             switch (index) {
                 case PATROL_IMG_PUNCH://img1,打卡合影
                     imgListSingle[0] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivPunchImg);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivPunchImg);
                     break;
                 case PATROL_IMG_SCREEN_CLEAN://img2,屏幕清洁
                     imgListSingle[1] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivScreenCleanImg);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivScreenCleanImg);
                     break;
                 case PATROL_IMG_BACK_LOCK://img3,后门锁状态，
                     imgListSingle[2] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivBackLockImg);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivBackLockImg);
                     break;
                 case PATROL_IMG_ELECTRICITY://img6_1,是否漏电检测笔图
                     imgListSingle[3] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivElectricityImg);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivElectricityImg);
                     break;
                 case PATROL_IMG_OUTSIDE_CLEAN_1://img4_1,柜体前侧清洁
                     imgListGroup[0] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg1);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg1);
                     break;
                 case PATROL_IMG_OUTSIDE_CLEAN_2://img4_2,柜体左则清洁
                     imgListGroup[1] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg2);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg2);
                     break;
                 case PATROL_IMG_OUTSIDE_CLEAN_3://img4_3,柜体右则清洁
                     imgListGroup[2] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg3);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg3);
                     break;
                 case PATROL_IMG_OUTSIDE_CLEAN_4://img4_4,柜体顶部清洁
                     imgListGroup[3] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg4);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivOutsideCleanImg4);
                     break;
 
                 case PATROL_IMG_INSIDE_CLIEN_1://img5_1,柜体内上部清洁
                     imgListGroup[4] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg1);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg1);
                     break;
                 case PATROL_IMG_INSIDE_CLIEN_2://img5_2,柜体内中部清洁
                     imgListGroup[5] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg2);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg2);
                     break;
                 case PATROL_IMG_INSIDE_CLIEN_3://img5_3,柜体内下部清洁
                     imgListGroup[6] = bean.getData().getFurl();
-                    Glide.with(PatrolDetailActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg3);
+                    Glide.with(PatrolAddActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivInsideCleanImg3);
                     break;
             }
         } else {

@@ -26,4 +26,11 @@
     <color name="color_EEEEEE">#EEEEEE</color>
     <color name="color_64B22A">#64B22A</color>
     <color name="color_666666">#666666</color>
+    <color name="color_1EC886">#1EC886</color>
+    <color name="color_FF6F1A">#FF6F1A</color>
+    <color name="color_88000000">#88000000</color>
+    <color name="color_F9F9F9">#F9F9F9</color>
+    <color name="color_F6F6F6">#F6F6F6</color>
+    <color name="transparent">#00000000</color>
+    <color name="color_FF6C12">#FF6C12</color>
 </resources>

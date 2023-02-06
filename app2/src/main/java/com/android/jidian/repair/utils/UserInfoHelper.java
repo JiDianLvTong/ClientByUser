@@ -36,4 +36,12 @@ public class UserInfoHelper {
     public String getAccess() {
         return PreferenceManager.getString(context, "access", "");
     }
+
+    public String getAdname() {
+        return PreferenceManager.getString(context, "adname", "");
+    }
+
+    public String getPhone() {
+        return PreferenceManager.getString(context, "phone", "");
+    }
 }

@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
 import com.android.jidian.repair.base.BindEventBus;
-import com.android.jidian.repair.mvp.patrol.PatrolDetailActivity;
+import com.android.jidian.repair.mvp.patrol.PatrolAddActivity;
 import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -118,7 +118,7 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
 
             @Override
             public void OnClickItem(PatrolIndexBean.DataBean.ListsBean bean) {
-                Intent intent = new Intent(requireActivity(), PatrolDetailActivity.class);
+                Intent intent = new Intent(requireActivity(), PatrolAddActivity.class);
                 intent.putExtra("name", bean.getName());
                 intent.putExtra("address", bean.getAddress());
                 intent.putExtra("id", bean.getId());

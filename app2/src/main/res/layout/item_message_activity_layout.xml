@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_F6F6F6">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        app:layout_constraintBottom_toBottomOf="@+id/li_item_msg_activity_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_item_msg_activity"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="11.5dp"
+        android:src="@drawable/icon_activity_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/point_item_msg_activity"
+        android:layout_width="6.5dp"
+        android:layout_height="6.5dp"
+        android:background="@drawable/shape_oval_ee4923"
+        app:layout_constraintEnd_toEndOf="@id/iv_item_msg_activity"
+        app:layout_constraintTop_toTopOf="@id/iv_item_msg_activity" />
+
+    <TextView
+        android:id="@+id/tv_item_msg_activity_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="27dp"
+        android:textColor="@color/color_999999"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_item_msg_activity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/iv_item_msg_activity"
+        tools:text="2020-12-25" />
+
+    <TextView
+        android:id="@+id/tv_item_msg_activity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7.5dp"
+        android:ellipsize="end"
+        android:maxWidth="165dp"
+        android:maxLines="1"
+        android:paddingEnd="5dp"
+        android:textColor="@color/color_333333"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_item_msg_activity"
+        app:layout_constraintStart_toEndOf="@id/iv_item_msg_activity"
+        app:layout_constraintTop_toTopOf="@id/iv_item_msg_activity"
+        tools:text="关于今晚预警的通知 " />
+
+    <ImageView
+        android:id="@+id/iv_item_msg_activity_ing"
+        android:layout_width="32dp"
+        android:layout_height="18dp"
+        android:src="@drawable/icon_activity_end"
+        app:layout_constraintBottom_toBottomOf="@id/iv_item_msg_activity"
+        app:layout_constraintStart_toEndOf="@id/tv_item_msg_activity_title"
+        app:layout_constraintTop_toTopOf="@id/iv_item_msg_activity" />
+
+    <LinearLayout
+        android:id="@+id/li_item_msg_activity_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_item_msg_activity">
+
+        <ImageView
+            android:id="@+id/iv_item_msg_activity_content"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/image032504" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/line_item_msg_activity"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        app:layout_constraintTop_toBottomOf="@id/li_item_msg_activity_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

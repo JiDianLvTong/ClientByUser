@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_1b1b1b"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title_layout"
+        layout="@layout/base_title_layout" />
+
+    <LinearLayout
+        android:id="@+id/ll_task_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_ffffff_corner_top_10">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:padding="15dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_task_item_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_weight="1"/>
+
+                <TextView
+                    android:id="@+id/tv_task_item_guide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_d7a64a_corner_5"
+                    android:gravity="center"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="5dp"
+                    android:text="导航路线"
+                    android:textColor="@color/color_FFFFFF"
+                    android:textSize="9sp"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_task_item_type"
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_d7a64a_corner_top_right_10"
+                android:gravity="center"
+                android:text="电柜故障"
+                android:textColor="@color/color_FFFFFF"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#f3f3f3"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/tv_task_item_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="#333333"
+                android:textSize="13sp"
+                android:visibility="gone"
+                tools:text="地址"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/tv_test_item_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址"
+                android:textColor="#333333"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_task_failure_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_f3f3f3_corner_bottom_10"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="15dp">
+
+            <ImageView
+                android:id="@+id/iv_task_failure_img_1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_failure_img_2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_failure_img_3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_failure_img_4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_has_salve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        android:padding="15dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_task_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:text=""
+            android:textColor="#333333"
+            android:textSize="11sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_task_has_solve_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_task_has_solve_img_1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_has_solve_img_2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_has_solve_img_3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/iv_task_has_solve_img_4"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:scaleType="fitXY" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

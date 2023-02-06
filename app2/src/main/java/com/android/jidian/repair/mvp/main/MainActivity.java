@@ -65,15 +65,15 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
     @Override
     public void initView() {
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
-        String[] mTitles = {"即时任务", "巡检", "故障", "我的"};
+        String[] mTitles = {"即时任务", "巡检",  "我的"};//"故障",
         int[] mIconUnSelectIds = {
                 R.drawable.main_count_gray, R.drawable.main_check_gray,
-                R.drawable.main_broken_gray, R.drawable.main_user_gray
-        };
+                 R.drawable.main_user_gray
+        };//R.drawable.main_broken_gray,
         int[] mIconSelectIds = {
                 R.drawable.main_count_yellow, R.drawable.main_check_yellow,
-                R.drawable.main_broken_yellow, R.drawable.main_user_yellow
-        };
+                 R.drawable.main_user_yellow
+        };//R.drawable.main_broken_yellow,
 
         for (int i = 0; i < mIconSelectIds.length; i++) {
             mMainTabEntities.add(new MainTabEntity(mTitles[i], mIconSelectIds[i], mIconUnSelectIds[i]));
@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
 //        mFragments.add(mMainChartFragment);
         mFragments.add(TimeLimitTaskFragment.newInstance("", ""));
         mFragments.add(PatrolFragment.newInstance("", ""));
-        mFragments.add(FailureFragment.newInstance("", ""));
+//        mFragments.add(FailureFragment.newInstance("", ""));
         mFragments.add(UserFragment.newInstance("", ""));
 
         vpContent.setOffscreenPageLimit(mTitles.length - 1);

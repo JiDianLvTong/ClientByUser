@@ -11,4 +11,9 @@
         <item name="android:backgroundDimEnabled">false</item>
     </style>
 
+    <style name="animate_dialog">
+        <item name="android:windowEnterAnimation">@anim/enter_translate_dialog</item>
+        <item name="android:windowExitAnimation">@anim/exit_translate_dialog</item>
+    </style>
+
 </resources>

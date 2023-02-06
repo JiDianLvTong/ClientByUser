@@ -37,10 +37,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.User">
         <activity
+            android:name=".RepaireGuideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCabActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserAuditCabActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserTaskDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserTaskListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyPatrolDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserMyTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".mvp.FailureAdd.FailureAddActivity"
             android:exported="false" />
         <activity
-            android:name=".mvp.patrol.PatrolDetailActivity"
+            android:name=".mvp.patrol.PatrolAddActivity"
             android:exported="false" />
         <activity
             android:name=".mvp.index.IndexActivity"
@@ -55,13 +79,11 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".mvp.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-
         <activity
             android:name=".mvp.login.LoginActivity"
             android:launchMode="singleTask"
@@ -72,6 +94,15 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".mvp.UserMyPatrol.patrolList.UserMyPatrolActivity" />
+        <activity android:name=".mvp.UserMyPatrol.patrolDetail.MyPatrolDetailActivity" />
+        <activity android:name=".mvp.UserTask.UserTaskList.UserTaskListActivity" />
+        <activity android:name=".mvp.UserTask.UserTaskDetail.UserTaskDetailActivity" />
+        <activity android:name=".mvp.UserAuditCab.UserAuditCabActivity" />
+        <activity android:name=".mvp.addCab.AddCabActivity" />
+        <activity android:name=".mvp.message.UserMessageActivity" />
+        <activity android:name=".mvp.H5.CommonWebViewActivity" />
+        <activity android:name=".mvp.UserLog.OperationLogActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
