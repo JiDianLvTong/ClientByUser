@@ -18,12 +18,10 @@ import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.base.PermissionManager.PermissionManager;
 import com.android.jidian.repair.dialog.DialogByEnter;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureEvent;
-import com.android.jidian.repair.mvp.main.FailureFragment.FailureFragment;
 import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragment;
 import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent;
 import com.android.jidian.repair.mvp.main.TimeLimitTaskFragment.TimeLimitTaskFragment;
 import com.android.jidian.repair.mvp.main.UserFragment.UserFragment;
-import com.android.jidian.repair.utils.UserInfoHelper;
 import com.android.jidian.repair.utils.WebSocketLongLink;
 import com.android.jidian.repair.widgets.NoScrollViewPager;
 import com.android.jidian.repair.widgets.ViewPagerAdapter;
@@ -98,7 +96,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         mFragments.add(TimeLimitTaskFragment.newInstance("", ""));
         mFragments.add(PatrolFragment.newInstance("", ""));
 //        mFragments.add(FailureFragment.newInstance("", ""));
-        mFragments.add(UserFragment.newInstance("", ""));
+        mFragments.add(new UserFragment());
 
         vpContent.setOffscreenPageLimit(mTitles.length - 1);
         vpContent.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mFragments, mTitles));

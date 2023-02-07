@@ -2,9 +2,7 @@ package com.android.jidian.repair.mvp.login;
 
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,9 +10,9 @@ import android.widget.TextView;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.ActivityCollector;
 import com.android.jidian.repair.base.BaseActivityByMvp;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.mvp.main.MainActivity;
 import com.android.jidian.repair.utils.Md5;
-import com.android.jidian.repair.utils.UserInfoHelper;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -39,7 +37,7 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
     public void initView() {
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
-        if (!TextUtils.isEmpty(UserInfoHelper.getInstance().getUid())) {
+        if (UserInfoSp.getInstance().isLogin()) {
             startActivity(new Intent(activity, MainActivity.class));
         }
     }
@@ -62,16 +60,15 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
 
     @Override
     public void requestLoginJdLoginSuccess(LoginBean.DataBean bean) {
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("id", bean.getId());
-        editor.putString("dwrole", bean.getDwrole());
-        editor.putString("apptoken", bean.getApptoken());
-        editor.putString("adname", bean.getAdname());
-        editor.putString("phone", bean.getPhone());
-        editor.putString("is_dwfirst", bean.getIs_dwfirst());
-        editor.putString("avater", bean.getAvater());
-        editor.apply();
+
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.id ,  bean.getId());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.dwrole ,  bean.getDwrole());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.apptoken ,  bean.getApptoken());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.adname ,  bean.getAdname());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.phone ,  bean.getPhone());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.is_dwfirst ,  bean.getIs_dwfirst());
+        UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.avater ,  bean.getAvater());
+
         apptoken = bean.getApptoken();
         ActivityCollector.finishAll();
         startActivity(new Intent(this, MainActivity.class));

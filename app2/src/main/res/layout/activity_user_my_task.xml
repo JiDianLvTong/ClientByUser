@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/grey_303030"
-    tools:context=".mvp.UserMyPatrol.patrolList.UserMyPatrolActivity">
+    tools:context=".mvp.user.userMyPatrol.patrolList.UserMyPatrolActivity">
 
     <include
         android:id="@+id/title_layout"
