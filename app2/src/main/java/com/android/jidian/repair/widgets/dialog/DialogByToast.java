@@ -1,4 +1,4 @@
-package com.android.jidian.repair.base;
+package com.android.jidian.repair.widgets.dialog;
 
 import android.content.Context;
 import android.os.Handler;
@@ -17,7 +17,7 @@ import com.android.jidian.repair.R;
  * date: 2023/1/10 14:52
  * description:
  */
-public class MyToast {
+public class DialogByToast {
     /**
      * 判断主线程Toast
      */

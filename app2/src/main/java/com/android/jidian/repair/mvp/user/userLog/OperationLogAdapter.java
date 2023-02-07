@@ -27,11 +27,6 @@ public class OperationLogAdapter extends BaseQuickAdapter<OperationLogBean.DataB
             helper.setText(R.id.tv_item_operation_log_name, item.getUname() + "  " + item.getUphone())
                     .setText(R.id.tv_item_operation_log_content, "操作内容：" + item.getDiftxt())
                     .setText(R.id.tv_item_operation_log_time, "时间：" + item.getCreate_time());
-            if (mDataLength == (helper.getLayoutPosition() + 1)) {
-                helper.setGone(R.id.li_item_list_foot, true);
-            } else {
-                helper.setGone(R.id.li_item_list_foot, false);
-            }
         }
     }
 }

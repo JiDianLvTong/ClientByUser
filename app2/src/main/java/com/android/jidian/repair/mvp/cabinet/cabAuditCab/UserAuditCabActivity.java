@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
+import com.android.jidian.repair.mvp.cabinet.cabAddCab.AddCabActivity;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -22,8 +24,6 @@ import butterknife.OnClick;
 
 public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresenter> implements UserAuditCabContract.View {
 
-    @BindView(R.id.tv_title)
-    public TextView tvTitle;
     @BindView(R.id.srl_audit_cab)
     public SmartRefreshLayout srlAuditCab;
     @BindView(R.id.rv_audit_cab)
@@ -43,7 +43,6 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
     public void initView() {
         mPresenter = new UserAuditCabPresenter();
         mPresenter.attachView(this);
-        tvTitle.setText("待审核电柜");
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(UserAuditCabActivity.this);
         materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
@@ -54,21 +53,6 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
         rvAuditCab.setLayoutManager(new LinearLayoutManager(UserAuditCabActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new UserAuditedAdapter();
         rvAuditCab.setAdapter(mAdapter);
-//        mAdapter.setListener(new PartolAdapter.OnItemViewClickListener() {
-//            @Override
-//            public void OnClickGuide(PatrolIndexBean.DataBean.ListsBean bean) {
-//                MapUtil.showNavigationDialog(UserAuditCabActivity.this, "", bean.getWeidu(), bean.getJingdu());
-//            }
-//
-//            @Override
-//            public void OnClickItem(PatrolIndexBean.DataBean.ListsBean bean) {
-//                Intent intent = new Intent(UserAuditCabActivity.this, PatrolAddActivity.class);
-//                intent.putExtra("name", bean.getName());
-//                intent.putExtra("address", bean.getAddress());
-//                intent.putExtra("id", bean.getId());
-//                startActivity(intent);
-//            }
-//        });
         srlAuditCab.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -142,6 +126,11 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
         } else {
 
         }
+    }
+
+    @OnClick(R.id.addCab)
+    public void onClickAddCab() {
+        startActivity(new Intent(activity, AddCabActivity.class));
     }
 
     @Override

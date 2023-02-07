@@ -9,7 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.android.jidian.repair.base.dialog.DialogByLoading;
+import com.android.jidian.repair.widgets.dialog.DialogByLoading;
+import com.android.jidian.repair.widgets.dialog.DialogByToast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -58,7 +59,7 @@ public abstract class BaseFragment extends Fragment{
      * 显示消息
      */
     protected void showMessage(String msg) {
-        MyToast.showTheToast(requireActivity(), msg);
+        DialogByToast.showTheToast(requireActivity(), msg);
     }
 
     /**

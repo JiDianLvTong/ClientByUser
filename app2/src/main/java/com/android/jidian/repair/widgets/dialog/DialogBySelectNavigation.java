@@ -1,6 +1,5 @@
-package com.android.jidian.repair.dialog;
+package com.android.jidian.repair.widgets.dialog;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
@@ -15,7 +14,7 @@ import butterknife.OnClick;
  * date: 2023/1/12 14:55
  * description:
  */
-public class SelectNavigationModeDialog extends BaseDialog {
+public class DialogBySelectNavigation extends BaseDialog {
 
     private Context mContext;
     private boolean mHasGaoDe = false, mHasBaidu = false, mHasTencent = false;
@@ -35,7 +34,7 @@ public class SelectNavigationModeDialog extends BaseDialog {
 
     private DialogChoiceListener mListener;
 
-    public SelectNavigationModeDialog(Context context, boolean hasGaode, boolean hasBaidu, boolean hasTencent, DialogChoiceListener listener) {
+    public DialogBySelectNavigation(Context context, boolean hasGaode, boolean hasBaidu, boolean hasTencent, DialogChoiceListener listener) {
         super(context);
         this.mListener = listener;
         this.mHasGaoDe = hasGaode;

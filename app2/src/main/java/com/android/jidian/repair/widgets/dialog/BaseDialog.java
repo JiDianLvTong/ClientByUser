@@ -1,4 +1,4 @@
-package com.android.jidian.repair.dialog;
+package com.android.jidian.repair.widgets.dialog;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
@@ -20,7 +20,7 @@ public class BaseDialog extends BasePopupWindow {
 
     @Override
     protected Animator onCreateShowAnimator() {
-        ObjectAnimator showAnimator = ObjectAnimator.ofFloat(getDisplayAnimateView(), View.TRANSLATION_Y, getHeight() * 0.25f, 0);
+        ObjectAnimator showAnimator = ObjectAnimator.ofFloat(getDisplayAnimateView(), View.TRANSLATION_Y, getHeight() * 0.05f, 0);
         showAnimator.setDuration(500);
         showAnimator.setInterpolator(new OvershootInterpolator(6));
         return showAnimator;

@@ -16,7 +16,7 @@ import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
-import com.android.jidian.repair.dialog.DialogByEnter;
+import com.android.jidian.repair.widgets.dialog.DialogByEnter;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.utils.Md5;

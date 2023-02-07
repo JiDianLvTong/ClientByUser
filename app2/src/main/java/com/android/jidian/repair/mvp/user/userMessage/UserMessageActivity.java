@@ -42,7 +42,7 @@ public class UserMessageActivity extends BaseActivityByMvp<UserMessagePresenter>
         mPresenter = new UserMessagePresenter();
         mPresenter.attachView(this);
         ((TextView) findViewById(R.id.tv_title)).setText("消息中心");
-        tvTitleRight.setText("全部标记已读");
+        tvTitleRight.setText("全部已读");
         String[] mTabs = new String[]{"系统消息", "活动消息"};
         List<Fragment> mFragmentList = new ArrayList<>();
         mFragmentList.add(MessageFragment.newInstance("0"));

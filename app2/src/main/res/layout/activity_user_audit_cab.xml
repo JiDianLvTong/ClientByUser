@@ -5,16 +5,73 @@
     android:background="@color/grey_303030"
     android:orientation="vertical">
 
-    <include layout="@layout/base_title_layout" />
+    <com.android.jidian.repair.widgets.immersionStatusBar.StatusBarView
+        android:id="@+id/statusBarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/pageReturn"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/pub_page_left_arrow_white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/titleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="电柜审核"
+                    android:textColor="#ffffff"
+                    android:textSize="17dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
         android:id="@+id/srl_audit_cab"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:id="@+id/nullDataPanel"
@@ -38,5 +95,29 @@
                 android:layout_height="match_parent" />
         </FrameLayout>
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/addCab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_d7a64a_corner_10"
+        android:layout_margin="10dp"
+        android:gravity="center">
+
+        <ImageView
+            android:src="@drawable/main_user_add_cab"
+            android:layout_width="15dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"/>
+
+        <TextView
+            android:text="上传电柜信息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
 
 </LinearLayout>

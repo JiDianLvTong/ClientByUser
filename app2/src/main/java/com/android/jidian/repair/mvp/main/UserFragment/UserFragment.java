@@ -73,17 +73,6 @@ public class UserFragment extends BaseFragment {
         startActivity(new Intent(requireActivity(), UserMessageActivity.class));
     }
 
-    @OnClick(R.id.ll_user_add_cab)
-    public void onClickllUserAddCab() {
-        startActivity(new Intent(requireActivity(), AddCabActivity.class));
-    }
-
-    @OnClick(R.id.ll_user_partol)
-    public void onClickllUserPartol() {
-        Intent intent = new Intent(requireActivity(), UserMyPatrolActivity.class);
-        startActivity(intent);
-    }
-
     @OnClick(R.id.ll_user_audit)
     public void onClickllUserAudit() {
         startActivity(new Intent(requireActivity(), UserAuditCabActivity.class));

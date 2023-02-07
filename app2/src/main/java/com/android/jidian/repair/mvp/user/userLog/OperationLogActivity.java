@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
-import com.android.jidian.repair.dialog.SelectTimeBoxDialog;
+import com.android.jidian.repair.widgets.dialog.SelectTimeBoxDialog;
 import com.android.jidian.repair.utils.DisplayUtils;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -27,14 +28,13 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresenter> implements OperationLogContract.View {
-    @BindView(R.id.tv_title)
-    TextView tvTitle;
+
     @BindView(R.id.edt_operation_log_search)
     EditText edtSearch;
     @BindView(R.id.tv_operation_log_time)
     TextView tvOperationLogTime;
     @BindView(R.id.iv_operation_log_time)
-    TextView ivOperationLogTime;
+    LinearLayout ivOperationLogTime;
     @BindView(R.id.rv_operation_log)
     RecyclerView rvOperationLog;
     @BindView(R.id.srf_operation_log)
@@ -75,7 +75,6 @@ public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresente
         srfOperationLog.setEnableHeaderTranslationContent(true);
         ClassicsFooter classicsFooter = new ClassicsFooter(this);
         srfOperationLog.setRefreshFooter(classicsFooter);
-        tvTitle.setText(mTitle);
         mPresenter = new OperationLogPresenter();
         mPresenter.attachView(this);
         selectTime = DisplayUtils.getTime(new Date(System.currentTimeMillis()), "yyyy-MM");
@@ -89,14 +88,12 @@ public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresente
             } else {
                 findViewById(R.id.edt_operation_log_search).setVisibility(View.GONE);
                 findViewById(R.id.btn_operation_log_search).setVisibility(View.GONE);
-                findViewById(R.id.line_operation_log_time).setVisibility(View.GONE);
             }
             mBatteryInquiryAdapter = new BatteryInquiryAdapter(this, mTitle);
             rvOperationLog.setAdapter(mBatteryInquiryAdapter);
         } else {
             findViewById(R.id.edt_operation_log_search).setVisibility(View.GONE);
             findViewById(R.id.btn_operation_log_search).setVisibility(View.GONE);
-            findViewById(R.id.line_operation_log_time).setVisibility(View.GONE);
             mMeterReadingAdapter = new MeterReadingAdapter();
             rvOperationLog.setAdapter(mMeterReadingAdapter);
         }
@@ -135,7 +132,6 @@ public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresente
             case R.id.tv_operation_log_time:
             case R.id.iv_operation_log_time:
                 if (getSupportFragmentManager() != null) {
-                    ivOperationLogTime.setBackgroundResource(R.drawable.icon_top_arrow);
                     if (mSelectTimeBoxDialog == null) {
                         mSelectTimeBoxDialog = new SelectTimeBoxDialog(OperationLogActivity.this, new SelectTimeBoxDialog.OnDialogClickListener() {
                             @Override
@@ -151,7 +147,6 @@ public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresente
 
                             @Override
                             public void onDismiss() {
-                                ivOperationLogTime.setBackgroundResource(R.drawable.icon_bottom_arrow);
 
                             }
                         });
@@ -214,7 +209,7 @@ public class OperationLogActivity extends BaseActivityByMvp<OperationLogPresente
     public void onError(Throwable throwable) {
         stop();
         showMessage("无网络链接，请检查您的网络设置！");
-//        MyToast.showTheToast(this, throwable.getLocalizedMessage());
+//        DialogByToast.showTheToast(this, throwable.getLocalizedMessage());
     }
 
     @Override

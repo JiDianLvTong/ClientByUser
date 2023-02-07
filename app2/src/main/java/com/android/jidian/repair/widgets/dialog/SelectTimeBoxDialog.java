@@ -1,4 +1,4 @@
-package com.android.jidian.repair.dialog;
+package com.android.jidian.repair.widgets.dialog;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import com.android.jidian.repair.R;

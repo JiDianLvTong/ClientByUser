@@ -25,7 +25,7 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     @BindView(R.id.tv_task_item_num)
     public TextView tvTaskItemNum;
     @BindView(R.id.tv_task_item_guide)
-    public TextView tvTaskItemGuide;
+    public ImageView tvTaskItemGuide;
     @BindView(R.id.tv_task_item_address)
     public TextView tvTaskItemAddress;
     @BindView(R.id.tv_test_item_content)

@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 
+import com.android.jidian.repair.widgets.dialog.DialogByToast;
+
 import io.reactivex.disposables.CompositeDisposable;
 
 public abstract class BaseActivityByMvp<T extends BasePresenter> extends BaseActivity {
@@ -21,7 +23,7 @@ public abstract class BaseActivityByMvp<T extends BasePresenter> extends BaseAct
     }
 
     protected void showMessage(String msg) {
-        MyToast.showTheToast(this, msg);
+        DialogByToast.showTheToast(this, msg);
     }
 
     public abstract int getLayoutId();

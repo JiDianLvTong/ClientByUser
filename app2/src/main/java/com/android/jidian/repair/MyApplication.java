@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.amap.api.location.AMapLocationClient;
-import com.android.jidian.repair.base.PermissionManager.PermissionManager;
+import com.android.jidian.repair.base.permissionManager.PermissionManager;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 
 /**

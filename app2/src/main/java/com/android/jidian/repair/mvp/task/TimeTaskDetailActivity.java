@@ -44,7 +44,7 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
     @BindView(R.id.tv_task_item_num)
     public TextView tvTaskItemNum;
     @BindView(R.id.tv_task_item_guide)
-    public TextView tvTaskItemGuide;
+    public ImageView tvTaskItemGuide;
     @BindView(R.id.tv_task_item_address)
     public TextView tvTaskItemAddress;
     @BindView(R.id.tv_test_item_content)
@@ -217,6 +217,7 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
             tvTaskItemAddress.setVisibility(View.VISIBLE);
             tvTaskItemAddress.setText("地址：" + bean.getAddress());
             tvTestItemContent.setText(bean.getContent());
+            tvTaskItemGuide.setVisibility(View.VISIBLE);
         } else if ("20".equals(bean.getWtype())) {//救援任务
             tvTaskItemNum.setText("手机号码:" + bean.getPhone());
             tvTaskItemAddress.setVisibility(View.GONE);

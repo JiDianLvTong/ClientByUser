@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
-import com.android.jidian.repair.base.MyToast;
-import com.android.jidian.repair.dialog.SelectNavigationModeDialog;
+import com.android.jidian.repair.widgets.dialog.DialogByToast;
+import com.android.jidian.repair.widgets.dialog.DialogBySelectNavigation;
 
 import java.io.File;
 
@@ -39,10 +39,10 @@ public class MapUtil {
         boolean hasBaidu = isBaiduMapInstalled();
         boolean hasTencent = isTencentMapInstalled();
         if (!hasGaode && !hasBaidu && !hasTencent) {
-            MyToast.showTheToast(context, "没有安装任何地图应用");
+            DialogByToast.showTheToast(context, "没有安装任何地图应用");
             return;
         }
-        SelectNavigationModeDialog dialog = new SelectNavigationModeDialog(context,hasGaode, hasBaidu, hasTencent, new SelectNavigationModeDialog.DialogChoiceListener() {
+        DialogBySelectNavigation dialog = new DialogBySelectNavigation(context,hasGaode, hasBaidu, hasTencent, new DialogBySelectNavigation.DialogChoiceListener() {
             @Override
             public void onChoose(String selectType) {
                 if ("GaoDe".equals(selectType)) {
@@ -92,7 +92,7 @@ public class MapUtil {
                     + "&coord_type=gcj02&mode=riding&src=andr.xingdazhilian.HelloDream"));
             context.startActivity(i1);
         } else {
-            MyToast.showTheToast(context, "百度地图未安装");
+            DialogByToast.showTheToast(context, "百度地图未安装");
         }
     }
 
@@ -113,7 +113,7 @@ public class MapUtil {
                     + "&dev=0&t=3"));
             context.startActivity(i1);
         } else {
-            MyToast.showTheToast(context, "高德地图未安装");
+            DialogByToast.showTheToast(context, "高德地图未安装");
         }
     }
 
@@ -133,7 +133,7 @@ public class MapUtil {
                     + "&referer=zhongshuo"));
             context.startActivity(i1);
         } else {
-            MyToast.showTheToast(context, "腾讯地图未安装");
+            DialogByToast.showTheToast(context, "腾讯地图未安装");
         }
     }
 }

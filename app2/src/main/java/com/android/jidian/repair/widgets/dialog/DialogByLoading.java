@@ -1,4 +1,4 @@
-package com.android.jidian.repair.base.dialog;
+package com.android.jidian.repair.widgets.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;

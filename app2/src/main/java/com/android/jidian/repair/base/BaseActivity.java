@@ -1,16 +1,13 @@
 package com.android.jidian.repair.base;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.jidian.repair.base.broadcastManage.BroadcastManager;
-import com.android.jidian.repair.base.dialog.DialogByLoading;
+import com.android.jidian.repair.widgets.dialog.DialogByLoading;
 import com.android.jidian.repair.base.inputManager.InputManager;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 

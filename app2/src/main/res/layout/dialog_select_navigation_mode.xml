@@ -1,79 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_ffffff_corner_20"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="vertical"
+        android:paddingHorizontal="15dp">
 
         <TextView
             android:id="@+id/btn_open_GaoDe_map"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="高德地图"
             android:textColor="@color/color_333333"
-            android:textSize="15sp"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/line_open_GaoDe_map"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/color_EEEEEE"
-            app:layout_constraintTop_toBottomOf="@id/btn_open_GaoDe_map" />
+            android:layout_height="1px"
+            android:background="@color/color_CCCCCC"/>
 
         <TextView
             android:id="@+id/btn_open_Baidu_map"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="百度地图"
             android:textColor="@color/color_333333"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@id/line_open_GaoDe_map" />
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/line_open_Baidu_map"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/color_EEEEEE"
-            app:layout_constraintTop_toBottomOf="@id/btn_open_Baidu_map" />
+            android:layout_height="1px"
+            android:background="@color/color_CCCCCC"/>
 
         <TextView
             android:id="@+id/btn_open_tencent_map"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="腾讯地图"
             android:textColor="@color/color_333333"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@id/line_open_Baidu_map" />
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/line_open_tencent_map"
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/color_EEEEEE"
-            app:layout_constraintTop_toBottomOf="@id/btn_open_tencent_map" />
+            android:layout_height="1px"
+            android:background="@color/color_CCCCCC"/>
 
         <TextView
             android:id="@+id/btn_cancel"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:gravity="center"
             android:text="取消"
-            android:textColor="@color/color_999999"
-            android:textSize="15sp"
-            app:layout_constraintTop_toBottomOf="@id/line_open_tencent_map" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:textColor="@color/color_CCCCCC"
+            android:textSize="13sp"
+            android:textStyle="bold"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

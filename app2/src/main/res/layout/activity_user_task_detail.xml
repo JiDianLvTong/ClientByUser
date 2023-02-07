@@ -41,17 +41,12 @@
                     android:textStyle="bold"
                     android:layout_weight="1"/>
 
-                <TextView
+                <ImageView
                     android:id="@+id/tv_task_item_guide"
-                    android:layout_width="wrap_content"
+                    android:src="@drawable/main_map"
+                    android:layout_width="20dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/shape_d7a64a_corner_5"
-                    android:gravity="center"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="5dp"
-                    android:text="导航路线"
-                    android:textColor="@color/color_FFFFFF"
-                    android:textSize="9sp"
+                    android:adjustViewBounds="true"
                     android:visibility="gone"/>
 
             </LinearLayout>

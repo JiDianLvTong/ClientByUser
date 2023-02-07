@@ -86,35 +86,8 @@
                     android:background="@drawable/shape_ffffff_corner_10"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="10dp"
-                    android:padding="15dp">
-
-                    <LinearLayout
-                        android:id="@+id/ll_user_partol"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="已巡检列表"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:layout_weight="1"/>
-
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/pub_page_right_arrow_black" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="@color/color_CCCCCC" />
+                    android:paddingHorizontal="15dp"
+                    android:paddingBottom="15dp">
 
                     <LinearLayout
                         android:id="@+id/ll_user_task"
@@ -126,7 +99,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="即时任务列表"
+                            android:text="已完成任务"
                             android:textColor="#333333"
                             android:textSize="13sp"
                             android:layout_weight="1"/>
@@ -154,7 +127,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="待审核电柜"
+                            android:text="电柜审核"
                             android:textColor="#333333"
                             android:textSize="13sp"
                             android:layout_weight="1"/>
@@ -171,34 +144,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="1px"
                         android:background="@color/color_CCCCCC" />
-
-                    <LinearLayout
-                        android:id="@+id/ll_user_add_cab"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="上传电柜"
-                            android:textColor="#333333"
-                            android:textSize="13sp"
-                            android:layout_weight="1"/>
-
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:src="@drawable/pub_page_right_arrow_black" />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="@color/color_CCCCCC"/>
 
                     <LinearLayout
                         android:id="@+id/ll_user_message"

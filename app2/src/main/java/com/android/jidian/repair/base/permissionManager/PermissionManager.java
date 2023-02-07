@@ -1,4 +1,4 @@
-package com.android.jidian.repair.base.PermissionManager;
+package com.android.jidian.repair.base.permissionManager;
 
 import android.Manifest;
 import android.content.Context;

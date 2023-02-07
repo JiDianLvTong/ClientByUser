@@ -38,7 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bg_r11point5_cccccc_line"
+                android:background="@drawable/shape_cccccc_tran_conner_10"
                 android:gravity="top"
                 android:hint="不超过200字"
                 android:imeOptions="actionDone"

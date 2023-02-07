@@ -31,26 +31,14 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <LinearLayout
+            <ImageView
                 android:id="@+id/tv_task_item_guide"
-                android:layout_width="wrap_content"
+                android:src="@drawable/main_map"
+                android:layout_width="20dp"
                 android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="导航路线"
-                    android:textColor="#ffffff"
-                    android:textSize="7sp"
-                    android:background="@drawable/shape_d7a64a_corner_5"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="15dp"
-                    android:paddingRight="15dp"/>
-
-            </LinearLayout>
+                android:adjustViewBounds="true"
+                android:visibility="gone"
+                />
 
         </LinearLayout>
 

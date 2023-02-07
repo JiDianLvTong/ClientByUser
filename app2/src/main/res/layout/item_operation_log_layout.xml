@@ -1,60 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_item_operation_log_content"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="11.5dp"
-        android:layout_marginEnd="11.5dp"
-        android:background="@drawable/shape_ffffff_corner_10"
-        android:paddingStart="15dp"
-        android:paddingTop="36dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="37dp"
-        android:text=""
-        android:textColor="@color/color_666666"
-        android:textSize="14sp"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_item_operation_log_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26.5dp"
-        android:layout_marginTop="13.5dp"
-        android:text=""
-        android:textColor="@color/color_333333"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_item_operation_log_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26.5dp"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:layout_marginHorizontal="15dp"
         android:layout_marginBottom="15dp"
-        android:text=""
-        android:textColor="@color/color_999999"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_item_operation_log_content"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/shape_ffffff_corner_10">
 
-    <TextView
-        android:id="@+id/line_item_operation_log"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        app:layout_constraintTop_toBottomOf="@id/tv_item_operation_log_content" />
+        <TextView
+            android:id="@+id/tv_item_operation_log_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="哈哈哈哈"
+            android:textColor="@color/color_333333"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
 
-    <include
-        android:id="@+id/li_item_list_foot"
-        layout="@layout/common_item_list_foot"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/line_item_operation_log" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_item_operation_log_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2010 - 10 - 21"
+            android:textColor="@color/color_999999"
+            android:textSize="11sp"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_item_operation_log_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="关大夫给开了反攻大陆国家的立法，肌肤的客户的是的咖啡馆的疯狂大佬打随机打乱"
+            android:textColor="@color/color_666666"
+            android:textSize="11sp"
+            android:layout_marginTop="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
