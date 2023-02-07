@@ -97,6 +97,7 @@ public class UserTaskListActivity extends BaseActivityByMvp<UserTaskListPresente
                 requestData();
             }
         });
+        srlMyTask.autoRefresh();
     }
 
     private void requestData() {

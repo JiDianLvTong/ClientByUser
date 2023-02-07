@@ -25,6 +25,7 @@ import com.scwang.smart.refresh.layout.api.RefreshLayout;
 import com.scwang.smart.refresh.layout.listener.OnRefreshLoadMoreListener;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresenter> implements UserAuditCabContract.View {
 
@@ -88,6 +89,11 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
             }
         });
         srlAuditCab.autoRefresh();
+    }
+
+    @OnClick(R.id.pageReturn)
+    public void onClickPageReturn() {
+        finish();
     }
 
     private void requestData() {

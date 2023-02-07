@@ -146,7 +146,7 @@
         android:background="@drawable/shape_ffffff_corner_10"
         android:orientation="vertical"
         android:padding="15dp"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <EditText
             android:id="@+id/et_task_solve"
@@ -167,36 +167,88 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/iv_task_solve_img_1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/icon_image_add"
-                android:scaleType="fitXY" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/iv_task_solve_img_2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:src="@drawable/icon_image_add"
-                android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+                <ImageView
+                    android:id="@+id/iv_task_solve_img_1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/icon_image_add"
+                    android:scaleType="fitXY" />
 
-            <ImageView
-                android:id="@+id/iv_task_solve_img_3"
-                android:layout_width="70dp"
-                android:src="@drawable/icon_image_add"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+                <TextView
+                    android:text="设备图"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/iv_task_solve_img_4"
-                android:layout_width="70dp"
-                android:src="@drawable/icon_image_add"
-                android:layout_height="70dp"
-                android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_task_solve_img_2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/icon_image_add"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:text="合影图"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_task_solve_img_3"
+                    android:layout_width="70dp"
+                    android:src="@drawable/icon_image_add"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:text="关键位置图"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_task_solve_img_4"
+                    android:layout_width="70dp"
+                    android:src="@drawable/icon_image_add"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:text="其他图"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

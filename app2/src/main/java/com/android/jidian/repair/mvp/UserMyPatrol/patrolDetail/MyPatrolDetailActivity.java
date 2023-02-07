@@ -68,8 +68,8 @@ public class MyPatrolDetailActivity extends BaseActivityByMvp<MyPartolDetailPres
     public TextView tvBgButtonCheckEnable;
     @BindView(R.id.tv_bg_button_check_unable)
     public TextView tvBgButtonCheckUnable;
-    @BindView(R.id.btn_patrol_add)
-    public TextView btnPatrolAdd;
+//    @BindView(R.id.btn_patrol_add)
+//    public TextView btnPatrolAdd;
 
     @Override
     public int getLayoutId() {
