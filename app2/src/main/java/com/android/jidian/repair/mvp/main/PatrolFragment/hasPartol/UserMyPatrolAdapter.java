@@ -1,11 +1,10 @@
-package com.android.jidian.repair.mvp.UserMyPatrol.patrolList;
+package com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol;
 
 import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.android.jidian.repair.R;
-import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.PatrolMyListBean;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

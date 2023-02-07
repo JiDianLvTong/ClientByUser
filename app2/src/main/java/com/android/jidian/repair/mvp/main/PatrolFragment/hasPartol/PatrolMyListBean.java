@@ -1,4 +1,4 @@
-package com.android.jidian.repair.mvp.UserMyPatrol.patrolList;
+package com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol;
 
 import java.util.List;
 

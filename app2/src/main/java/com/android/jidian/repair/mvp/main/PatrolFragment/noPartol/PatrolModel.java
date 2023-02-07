@@ -1,4 +1,4 @@
-package com.android.jidian.repair.mvp.main.PatrolFragment;
+package com.android.jidian.repair.mvp.main.PatrolFragment.noPartol;
 
 import com.android.jidian.repair.net.RetrofitClient;
 

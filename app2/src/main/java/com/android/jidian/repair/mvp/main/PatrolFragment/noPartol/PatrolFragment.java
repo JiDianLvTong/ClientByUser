@@ -1,6 +1,6 @@
-package com.android.jidian.repair.mvp.main.PatrolFragment;
+package com.android.jidian.repair.mvp.main.PatrolFragment.noPartol;
 
-import static com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent.LOCATION_SUCCESS;
+import static com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolFragmentEvent.LOCATION_SUCCESS;
 
 import android.content.Intent;
 import android.graphics.Color;

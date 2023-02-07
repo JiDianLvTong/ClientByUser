@@ -1,7 +1,6 @@
-package com.android.jidian.repair.mvp.UserMyPatrol.patrolList;
+package com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol;
 
 import com.android.jidian.repair.base.BaseView;
-import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.PatrolMyListBean;
 
 import io.reactivex.Flowable;
 

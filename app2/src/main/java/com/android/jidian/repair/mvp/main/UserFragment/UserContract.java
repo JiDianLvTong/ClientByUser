@@ -1,7 +1,7 @@
 package com.android.jidian.repair.mvp.main.UserFragment;
 
 import com.android.jidian.repair.base.BaseView;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolIndexBean;
+import com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolIndexBean;
 
 import io.reactivex.Flowable;
 

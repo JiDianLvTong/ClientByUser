@@ -1,6 +1,5 @@
-package com.android.jidian.repair.mvp.UserMyPatrol.patrolList;
+package com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol;
 
-import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.PatrolMyListBean;
 import com.android.jidian.repair.net.RetrofitClient;
 
 import io.reactivex.Flowable;

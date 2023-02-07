@@ -1,23 +1,16 @@
 package com.android.jidian.repair.mvp.UserAuditCab;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PartolAdapter;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolIndexBean;
-import com.android.jidian.repair.mvp.patrol.PatrolAddActivity;
-import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;

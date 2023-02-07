@@ -1,17 +1,8 @@
 package com.android.jidian.repair.mvp.UserAuditCab;
 
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextUtils;
-import android.view.View;
 import android.widget.ImageView;
 
-import androidx.fragment.app.FragmentManager;
-
 import com.android.jidian.repair.R;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PartolAdapter;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolIndexBean;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;

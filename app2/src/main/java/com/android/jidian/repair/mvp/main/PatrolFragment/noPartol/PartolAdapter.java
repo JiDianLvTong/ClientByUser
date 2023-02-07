@@ -1,4 +1,4 @@
-package com.android.jidian.repair.mvp.main.PatrolFragment;
+package com.android.jidian.repair.mvp.main.PatrolFragment.noPartol;
 
 import android.graphics.Color;
 import android.view.View;

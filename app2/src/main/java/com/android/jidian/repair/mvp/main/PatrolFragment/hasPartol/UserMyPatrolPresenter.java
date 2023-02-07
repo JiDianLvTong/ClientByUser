@@ -1,37 +1,37 @@
-package com.android.jidian.repair.mvp.main.PatrolFragment;
+package com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol;
 
 import com.android.jidian.repair.base.BasePresenter;
 import com.android.jidian.repair.net.RxScheduler;
 
 /**
  * @author : xiaoming
- * date: 2023/2/1 10:48
+ * date: 2023/2/3 13:57
  * description:
  */
-public class PatrolPresenter extends BasePresenter<PatrolContract.View> implements PatrolContract.Presenter {
+public class UserMyPatrolPresenter extends BasePresenter<UserMyPatrolContract.View> implements UserMyPatrolContract.Presenter {
 
-    private PatrolContract.Model mModel;
+    private UserMyPatrolContract.Model mModel;
 
-    public PatrolPresenter() {
-        mModel = new PatrolModel();
+    public UserMyPatrolPresenter() {
+        mModel = new UserMyPatrolModel();
     }
 
     @Override
-    public void requestPatrolIndex(String lng, String lat, String page) {
+    public void requestPatrolMylists(String lng, String lat, String page) {
         if (!isViewAttached()) {
             return;
         }
         if (mView != null) {
             mView.showProgress();
         }
-        mModel.requestPatrolIndex(lng, lat, page)
+        mModel.requestPatrolMylists(lng, lat, page)
                 .compose(RxScheduler.Flo_io_main())
                 .subscribe(bean -> {
                     if (mView != null) {
                         mView.hideProgress();
                         if (bean != null) {
                             if ("1".equals(bean.getStatus())) {
-                                mView.requestPatrolIndexSuccess(bean);
+                                mView.requestPatrolMylistsSuccess(bean);
                             } else {
                                 mView.requestShowTips(bean.getMsg());
                             }

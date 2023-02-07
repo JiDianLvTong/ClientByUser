@@ -1,6 +1,6 @@
 package com.android.jidian.repair.mvp.main.UserFragment;
 
-import static com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent.LOCATION_SUCCESS;
+import static com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolFragmentEvent.LOCATION_SUCCESS;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import com.android.jidian.repair.mvp.UserAuditCab.UserAuditCabActivity;
 import com.android.jidian.repair.mvp.UserMyPatrol.patrolList.UserMyPatrolActivity;
 import com.android.jidian.repair.mvp.UserTask.UserTaskList.UserTaskListActivity;
 import com.android.jidian.repair.mvp.login.LoginActivity;
-import com.android.jidian.repair.mvp.main.PatrolFragment.PatrolFragmentEvent;
+import com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolFragmentEvent;
 import com.android.jidian.repair.mvp.message.UserMessageActivity;
 import com.android.jidian.repair.mvp.password.ChangePasswordActivity;
 import com.android.jidian.repair.utils.UserInfoHelper;
