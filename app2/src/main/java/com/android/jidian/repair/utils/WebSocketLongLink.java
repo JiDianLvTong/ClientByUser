@@ -3,6 +3,7 @@ package com.android.jidian.repair.utils;
 import android.content.Context;
 
 import com.android.jidian.repair.base.BaseBean;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.net.RetrofitClient;
 import com.android.jidian.repair.net.RxScheduler;
 
@@ -174,7 +175,7 @@ public class WebSocketLongLink {
                                                     }
                                                     if (longLinkHeartThreadCount >= 80) {
                                                         longLinkHeartThreadCount = 0;
-                                                        Disposable disposable = RetrofitClient.getInstance().getApeService().requestConnectionWorkBind(clientID, UserInfoHelper.getInstance().getUid())
+                                                        Disposable disposable = RetrofitClient.getInstance().getApeService().requestConnectionWorkBind(clientID, UserInfoSp.getInstance().getId())
                                                                 .compose(RxScheduler.Flo_io_main())
                                                                 .subscribe(new Consumer<BaseBean>() {
                                                                     @Override

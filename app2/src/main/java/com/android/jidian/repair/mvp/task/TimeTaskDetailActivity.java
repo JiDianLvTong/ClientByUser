@@ -12,9 +12,9 @@ import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BaseBean;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.utils.MapUtil;
 import com.android.jidian.repair.utils.Md5;
-import com.android.jidian.repair.utils.UserInfoHelper;
 import com.android.jidian.repair.utils.picture.PictureSelectorUtils;
 import com.bumptech.glide.Glide;
 import com.luck.picture.lib.PictureSelector;
@@ -109,7 +109,7 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
         mWtid = getIntent().getStringExtra("wtid");
         mPresenter = new TimeTaskDetailPresenter();
         mPresenter.attachView(this);
-        if (!TextUtils.isEmpty(UserInfoHelper.getInstance().getUid())) {
+        if (UserInfoSp.getInstance().isLogin()) {
             mPresenter.requestWorktaskDetail(mWtid);
         }
         tvTitle.setText("任务详情");

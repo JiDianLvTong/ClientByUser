@@ -18,7 +18,7 @@ import android.widget.LinearLayout;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
 import com.android.jidian.repair.base.BindEventBus;
-import com.android.jidian.repair.mvp.patrol.PatrolAddActivity;
+import com.android.jidian.repair.mvp.cabinet.cabPatrol.PatrolAddActivity;
 import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;

@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.android.jidian.repair.base.broadcastManage.BroadcastManager;
 import com.android.jidian.repair.base.dialog.DialogByLoading;
 import com.android.jidian.repair.base.inputManager.InputManager;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -28,24 +29,23 @@ public class BaseActivity extends AppCompatActivity {
     protected InputManager inputManager;
     //butterKnife
     protected Unbinder unbinder;
-    //appToken
-    protected String apptoken;
     //广播
     protected BroadcastManager broadcastManager;
     //提示框
     protected DialogByLoading progressDialog;
-    //用户数据
-    protected SharedPreferences sharedPreferences;
+
+    //用户ID
     protected String uid;
+    //appToken
+    protected String apptoken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activity = this;
 
-        sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-        uid = sharedPreferences.getString("id", "");
-        apptoken = sharedPreferences.getString("apptoken", "");
+        uid = UserInfoSp.getInstance().getId();
+        apptoken = UserInfoSp.getInstance().getToken();
 
         progressDialog = new DialogByLoading(this);
 

@@ -1,17 +1,17 @@
 package com.android.jidian.repair.net;
 
 import com.android.jidian.repair.base.BaseBean;
-import com.android.jidian.repair.mvp.UserAuditCab.AuditCabListBean;
-import com.android.jidian.repair.mvp.UserLog.BatteryInquiryBean;
-import com.android.jidian.repair.mvp.UserLog.MeterReadingBean;
-import com.android.jidian.repair.mvp.UserLog.OperationLogBean;
-import com.android.jidian.repair.mvp.UserMyPatrol.patrolDetail.PatrolDetailBean;
-import com.android.jidian.repair.mvp.UserTask.UserTaskList.WorktaskMylistsBean;
+import com.android.jidian.repair.mvp.cabinet.cabAuditCab.AuditCabListBean;
+import com.android.jidian.repair.mvp.user.userLog.BatteryInquiryBean;
+import com.android.jidian.repair.mvp.user.userLog.MeterReadingBean;
+import com.android.jidian.repair.mvp.user.userLog.OperationLogBean;
+import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.PatrolDetailBean;
+import com.android.jidian.repair.mvp.task.userTask.UserTaskList.WorktaskMylistsBean;
 import com.android.jidian.repair.mvp.login.LoginBean;
 import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.PatrolMyListBean;
 import com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolIndexBean;
 import com.android.jidian.repair.mvp.main.TimeLimitTaskFragment.WorktaskListsBean;
-import com.android.jidian.repair.mvp.message.fragment.AdvicesListsBean;
+import com.android.jidian.repair.mvp.user.userMessage.fragment.AdvicesListsBean;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.mvp.task.WorktaskDetailBean;

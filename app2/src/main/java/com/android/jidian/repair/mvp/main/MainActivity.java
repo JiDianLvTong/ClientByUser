@@ -97,7 +97,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         mFragments.add(TimeLimitTaskFragment.newInstance("", ""));
         mFragments.add(MainPartolFragment.newInstance("", ""));
 //        mFragments.add(FailureFragment.newInstance("", ""));
-        mFragments.add(UserFragment.newInstance("", ""));
+        mFragments.add(new UserFragment());
 
         vpContent.setOffscreenPageLimit(mTitles.length - 1);
         vpContent.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mFragments, mTitles));

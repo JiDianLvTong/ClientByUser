@@ -11,11 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
-import com.android.jidian.repair.mvp.UserMyPatrol.patrolDetail.MyPatrolDetailActivity;
+import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.MyPatrolDetailActivity;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;

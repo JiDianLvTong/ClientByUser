@@ -5,18 +5,15 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
-import com.android.jidian.repair.mvp.UserMyPatrol.patrolDetail.MyPartolDetailContract;
-import com.android.jidian.repair.mvp.UserMyPatrol.patrolDetail.MyPartolDetailPresenter;
-import com.android.jidian.repair.mvp.UserMyPatrol.patrolDetail.PatrolDetailBean;
 import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.MyPartolFragment;
 import com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolFragment;
-import com.android.jidian.repair.mvp.message.fragment.MessageFragment;
+import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.MyPartolDetailContract;
+import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.MyPartolDetailPresenter;
+import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.PatrolDetailBean;
 import com.android.jidian.repair.widgets.ViewPagerAdapter;
 import com.flyco.tablayout.SlidingTabLayout;
 

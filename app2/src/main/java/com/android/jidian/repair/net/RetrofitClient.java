@@ -3,16 +3,13 @@ package com.android.jidian.repair.net;
 import static com.android.jidian.repair.MyApplication.getLocalVersion;
 import static com.android.jidian.repair.MyApplication.getLocalVersionName;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Build;
 
 import com.android.jidian.repair.MyApplication;
 import com.android.jidian.repair.PubFunction;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.utils.LoggingInterceptor;
 import com.android.jidian.repair.utils.Md5;
-import com.android.jidian.repair.utils.UserInfoHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -46,7 +43,7 @@ public class RetrofitClient {
             Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder()
                     .addHeader("aptk", Md5.getAptk())
-                    .addHeader("apud", UserInfoHelper.getInstance().getUid())
+                    .addHeader("apud", UserInfoSp.getInstance().getId())
                     .addHeader("osname", "Android")
                     .addHeader("proname", "ape")
                     .addHeader("verName",  getLocalVersionName(MyApplication.getAppContext()))

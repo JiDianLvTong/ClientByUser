@@ -31,9 +31,9 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/pub_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/pub_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.User">
         <activity
@@ -64,10 +64,10 @@
             android:name=".UserMyTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".mvp.FailureAdd.FailureAddActivity"
+            android:name=".mvp.cabinet.cabFailureAdd.FailureAddActivity"
             android:exported="false" />
         <activity
-            android:name=".mvp.patrol.PatrolAddActivity"
+            android:name=".mvp.cabinet.cabPatrol.PatrolAddActivity"
             android:exported="false" />
         <activity
             android:name=".mvp.index.IndexActivity"
@@ -97,16 +97,21 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".mvp.UserMyPatrol.patrolList.UserMyPatrolActivity" />
-        <activity android:name=".mvp.UserMyPatrol.patrolDetail.MyPatrolDetailActivity" />
-        <activity android:name=".mvp.UserTask.UserTaskList.UserTaskListActivity" />
-        <activity android:name=".mvp.UserTask.UserTaskDetail.UserTaskDetailActivity" />
-        <activity android:name=".mvp.UserAuditCab.UserAuditCabActivity" />
-        <activity android:name=".mvp.addCab.AddCabActivity" />
-        <activity android:name=".mvp.message.UserMessageActivity" />
+
+
+
+        <activity android:name=".mvp.user.userMyPatrol.patrolList.UserMyPatrolActivity" />
+        <activity android:name=".mvp.user.userMyPatrol.patrolDetail.MyPatrolDetailActivity" />
+        <activity android:name=".mvp.task.userTask.UserTaskList.UserTaskListActivity" />
+        <activity android:name=".mvp.task.userTask.UserTaskDetail.UserTaskDetailActivity" />
+        <activity android:name=".mvp.cabinet.cabAuditCab.UserAuditCabActivity" />
+        <activity android:name=".mvp.cabinet.cabAddCab.AddCabActivity" />
+        <activity android:name=".mvp.user.userMessage.UserMessageActivity" />
         <activity android:name=".mvp.H5.CommonWebViewActivity" />
-        <activity android:name=".mvp.UserLog.OperationLogActivity" />
-        <activity android:name=".mvp.password.ChangePasswordActivity" />
+        <activity android:name=".mvp.user.userLog.OperationLogActivity" />
+        <activity android:name=".mvp.user.userInfo.password.ChangePasswordActivity" />
+
+        <activity android:name=".mvp.user.userInfo.UserInfoActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
