@@ -7,12 +7,15 @@ package com.android.jidian.client.bean.event;
  */
 public class MainUserEvent {
     public static int COUPON_USE = 1;
+    public static int REFRESH_DATA = 2;
 
     public MainUserEvent(int event) {
         this.event = event;
     }
 
     private int event;
+//    private String name;
+//    private String
 
     public int getEvent() {
         return event;

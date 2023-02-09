@@ -2,10 +2,20 @@ package com.android.jidian.repair.mvp.main;
 
 import static com.android.jidian.repair.mvp.main.PatrolFragment.noPartol.PatrolFragmentEvent.LOCATION_SUCCESS;
 
+import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.amap.api.location.AMapLocation;
@@ -16,6 +26,8 @@ import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.base.permissionManager.PermissionManager;
+import com.android.jidian.repair.keepAlive.KeepLiveManager;
+import com.android.jidian.repair.service.LongLinkService;
 import com.android.jidian.repair.widgets.dialog.DialogByEnter;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureEvent;
 import com.android.jidian.repair.mvp.main.PatrolFragment.MainPartolFragment;
@@ -30,9 +42,13 @@ import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.entity.LocalMedia;
+import com.permissionx.guolindev.PermissionX;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,15 +78,17 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
 
     @Override
     public void initView() {
+        //1像素且透明Activity提升App进程优先级
+        KeepLiveManager.getInstance().registerKeepLiveReceiver(this);
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
-        String[] mTitles = {"即时任务", "巡检",  "我的"};//"故障",
+        String[] mTitles = {"即时任务", "巡检", "我的"};//"故障",
         int[] mIconUnSelectIds = {
                 R.drawable.main_count_gray, R.drawable.main_check_gray,
-                 R.drawable.main_user_gray
+                R.drawable.main_user_gray
         };//R.drawable.main_broken_gray,
         int[] mIconSelectIds = {
                 R.drawable.main_count_yellow, R.drawable.main_check_yellow,
-                 R.drawable.main_user_yellow
+                R.drawable.main_user_yellow
         };//R.drawable.main_broken_yellow,
 
         for (int i = 0; i < mIconSelectIds.length; i++) {
@@ -103,6 +121,17 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         vpContent.setScrollEnable(false);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MainEvent event) {
+        if (event != null) {
+            if (event.getEvent() == MainEvent.RECEIVE_LONG_LINK) {
+                Log.d(TAG, "onEvent: " + event.getData());
+
+            }
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,48 +155,19 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         if (mPresenter != null && !TextUtils.isEmpty(uid) && coordinates[0] != 0 && coordinates[1] != 0) {
             mPresenter.requestLoginCheckAcc(uid, apptoken, coordinates[0] + "", coordinates[1] + "");
         }
-        PermissionManager.getInstance().getLocal(activity, new PermissionManager.PermissionListener() {
-            @Override
-            public void granted(List<String> grantedList) {
-                for (int i = 0; i < grantedList.size(); i++) {
-                    if (grantedList.get(i).equals(PermissionManager.getInstance().local_1)) {
+        PermissionX.init(MainActivity.this)
+                .permissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+                .request((allGranted, grantedList, deniedList) -> {
+                    if (allGranted) {
                         initLocation();
+                    } else {
+                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
+                        dialog.showPopupWindow();
                     }
-//                    if (grantedList.get(i).equals(PermissionManager.getInstance().write)) {
-//                        if (isLogin) {
-//                            apptoken = sharedPreferences.getString("apptoken", "");
-//                            String appSn = Util.getFileContent(new File("/sdcard/Gyt/userAppSn.txt"));
-//                            if (!TextUtils.isEmpty(apptoken) && !TextUtils.isEmpty(appSn)) {
-//                                mPresenter.requestCheckAccv2(apptoken, appSn);
-//                            }
-//                        }
-//                    }
-                }
-            }
-
-            @Override
-            public void refused(List<String> deniedList) {
-                DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
-                dialog.showPopupWindow();
-            }
-        });
-
-        new WebSocketLongLink().init(MainActivity.this, new WebSocketLongLink.IFHttpOpenLongLinkLinstener() {
-            @Override
-            public void onHttpReTurnIDResult(String code) {
-
-            }
-
-            @Override
-            public void onHttpReturnDataResult(String data) {
-                System.out.println("longLink - onHttpReturnDataResult - " + data);
-            }
-
-            @Override
-            public void onHttpReturnErrorResult(int data) {
-
-            }
-        });
+                });
+//        startService(new Intent(MainActivity.this, LongLinkService.class));
     }
 
     private void initLocation() {

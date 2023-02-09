@@ -30,7 +30,7 @@ public class MyApplication extends Application {
         mContext = getApplicationContext();
 
         //权限管理初始化
-        PermissionManager.getInstance().init(getApplicationContext());
+//        PermissionManager.getInstance().init(getApplicationContext());
         //本地储存初始化 - 用户sp
         UserInfoSp.getInstance().init(getApplicationContext());
 

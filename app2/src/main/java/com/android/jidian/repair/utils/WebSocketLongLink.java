@@ -131,11 +131,8 @@ public class WebSocketLongLink {
 
     //客户端初始化
     private void initSocketClient() {
-
         try {
-
             if (mWebSocketClient == null) {
-
                 mWebSocketClient = new WebSocketClient(new URI("ws://link.mixiangx.com:2216")) {
                     @Override
                     public void onOpen(ServerHandshake serverHandshake) {
@@ -222,8 +219,6 @@ public class WebSocketLongLink {
                     }
                 };
             }
-
-
         } catch (Exception e) {
 //            LocalLog.getInstance().writeLog("longLink - error - " + e.toString(), WebSocketLongLink.class);
         }

@@ -1,6 +1,8 @@
 package com.android.jidian.client.mvp.ui.activity.main.mainShopFragment;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,7 +34,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implements MainShopContract.View  {
+public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implements MainShopContract.View {
 
 
     @BindView(R.id.smartRefreshLayout)
@@ -54,7 +56,7 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
     //获取用户信息 - 是否实名认证
     private String idAuthTip = "";
 
-    public MainShopItemFragment(int type , String mLng , String mLat){
+    public MainShopItemFragment(int type, String mLng, String mLat) {
         this.type = type;
         this.mLng = mLng;
         this.mLat = mLat;
@@ -167,9 +169,9 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
 
     private void requestData() {
         arrayList.clear();
-        if(type == 1){
+        if (type == 1) {
             mPresenter.requestShopBuy(mLng, mLat);
-        }else if(type == 2){
+        } else if (type == 2) {
             mPresenter.requestShopRent(mLng, mLat);
         }
         mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
@@ -267,6 +269,7 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
         super.onHiddenChanged(hidden);
         if (!hidden) {//不可见
             if (mPresenter != null) {
+                mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
                 requestData();
             }
         }

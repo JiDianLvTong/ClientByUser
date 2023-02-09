@@ -1,5 +1,7 @@
 package com.android.jidian.client.mvp.ui.activity.main;
 
+import static com.android.jidian.client.bean.MainAppEventBean.PAYSUCCESSCLOSESHOP;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Entity;
@@ -31,6 +33,7 @@ import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
+import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
 import com.android.jidian.client.mvp.presenter.MainActivityPresenter;
@@ -45,6 +48,9 @@ import com.android.jidian.client.util.Util;
 import com.android.jidian.client.util.file.FileManager;
 import com.android.jidian.client.widgets.MyToast;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -98,6 +104,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.u6_activity_main);
         super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
@@ -285,6 +294,15 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         localPage = page;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MainActivityEvent event) {
+        if (event != null) {
+            if (event.getEvent() == MainActivityEvent.CHANGEMAIN) {
+                changeMain(event.getIndex());
+            }
+        }
+    }
+
     /**
      * 注册广播 广播切换页卡
      */
@@ -388,6 +406,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
     }
 
     private boolean isExit;
+
     private void exitByDoubleClick() {
         Timer tExit;
         if (!isExit) {
@@ -426,5 +445,9 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         super.onDestroy();
         mLocationClient.stopLocation();
         mLocationClient.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+
     }
 }

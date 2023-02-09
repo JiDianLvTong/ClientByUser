@@ -22,6 +22,7 @@ import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
 import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
@@ -32,6 +33,7 @@ import com.android.jidian.client.util.ViewUtil;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -145,7 +147,6 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     private String gid = "";
     private String opt = "";
-    private List<Integer> batteryStatus; //两个电池 0=已绑定 1=未绑定
 
     private MainActiyivyExpenseBean mExpenseBean;
 
@@ -254,7 +255,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             }
             if (dataBean.getEbike().size() > 0) {
                 //没有绑定车辆
-                if ("20".equals(dataBean.getEbike().get(0).getUse_type())) {//买
+                if ("20".equals(dataBean.getEbike().get(0).getUse_type())) {//租
                     total_price = total_price.add(new BigDecimal(dataBean.getEbike().get(0).getRprice()));
                 }
                 if (dataBean.getEbike().get(0).getIs_bind().equals("2") || dataBean.getEbike().get(0).getIs_bind().equals("0")) {
@@ -274,14 +275,18 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                         tv_price.setVisibility(View.VISIBLE);
                         tv_prioce_unit.setVisibility(View.VISIBLE);
                         tv_prioce_text.setVisibility(View.VISIBLE);
-                        tv_price.setText(dataBean.getEbike().get(0).getUse_type() + "");
+                        tv_price.setText(dataBean.getEbike().get(0).getMrent());
                     }
 //            loginHasBicyclePanelID.setText(userEquipmentBean.getEbike().getImei());
                 }
+            } else {
+                iv_bicycle.setImageResource(R.drawable.main_bicycle_gray);
+                li_bicycle_add.setVisibility(View.VISIBLE);
+                cl_bicycle_detail.setVisibility(View.GONE);
+                tv_bicycle_status.setText("添加车辆");
             }
             //电池信息更新
             int batteryCount = dataBean.getBattery().size();
-            batteryStatus = new ArrayList<>();
             if (batteryCount > 0) {
                 ll_battery_2.setVisibility(View.GONE);
                 ConstraintSet constraintSet = new ConstraintSet();
@@ -291,12 +296,11 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(0);
                 String battery1IsBind = battery.getIs_bind();
                 if (battery1IsBind.equals("1")) {
-                    batteryStatus.add(1);
                     cl_battery_detail_1.setVisibility(View.VISIBLE);
                     li_battery_add_1.setVisibility(View.GONE);
                     iv_main_battery_1.setImageResource(R.drawable.main_battery);
                     tv_battery_num_1.setText(battery.getNumber());
-                    if ("20".equals(battery.getUse_type())) {//买
+                    if ("10".equals(battery.getUse_type())) {//买
                         tv_battery_1_price.setText(battery.getMrent() + "");
                         tv_battery_1_price.setVisibility(View.VISIBLE);
                         tv_battery_1_unit.setVisibility(View.VISIBLE);
@@ -308,11 +312,14 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                         tv_battery_1_text.setVisibility(View.GONE);
                     }
                 } else if (battery1IsBind.equals("2")) {
-                    batteryStatus.add(0);
                     tv_battery_status_1.setText("扫码绑定");
                     li_battery_add_1.setVisibility(View.VISIBLE);
                     cl_battery_detail_1.setVisibility(View.GONE);
                 }
+            } else {
+                tv_battery_status_1.setText("添加电池");
+                li_battery_add_1.setVisibility(View.VISIBLE);
+                cl_battery_detail_1.setVisibility(View.GONE);
             }
             if (batteryCount > 1) {
                 ll_battery_2.setVisibility(View.VISIBLE);
@@ -322,7 +329,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 constraintSet.constrainHeight(R.id.main_l1, ViewUtil.dp2px(getActivity(), 300));
                 MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(1);
                 String battery2IsBind = battery.getIs_bind();
-                if ("20".equals(battery.getUse_type())) {//买
+                if ("10".equals(battery.getUse_type())) {//买
                     tv_battery_2_price.setText(battery.getMrent() + "");
                     tv_battery_2_price.setVisibility(View.VISIBLE);
                     tv_battery_2_unit.setVisibility(View.VISIBLE);
@@ -334,13 +341,11 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     tv_battery_2_text.setVisibility(View.GONE);
                 }
                 if (battery2IsBind.equals("1")) {
-                    batteryStatus.add(1);
                     cl_battery_detail_2.setVisibility(View.VISIBLE);
                     li_battery_add_2.setVisibility(View.GONE);
                     iv_main_battery_2.setImageResource(R.drawable.main_battery);
                     tv_battery_num_2.setText(battery.getNumber());
                 } else if (battery2IsBind.equals("2")) {
-                    batteryStatus.add(0);
                     tv_battery_status_2.setText("扫码绑定");
                     li_battery_add_2.setVisibility(View.VISIBLE);
                     cl_battery_detail_2.setVisibility(View.GONE);
@@ -394,29 +399,26 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         }
     }
 
-    @OnClick(R.id.li_bicycle_add)
-    public void onClickLoginAddBicycle() {
-//        getActivity().startActivityForResult(new Intent(getActivity(), QrCode.class), 00);
-    }
+//    @OnClick(R.id.li_bicycle_add)
+//    public void onClickLoginAddBicycle() {
+////        getActivity().startActivityForResult(new Intent(getActivity(), QrCode.class), 00);
+//        EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 2));
+//    }
 
-    @OnClick(R.id.li_battery_add_1)
-    public void onCliclBatteryAdd1() {
-        if (batteryStatus.size() > 0) {
-            if (batteryStatus.get(0) == 0) {
-//                getActivity().startActivityForResult(new Intent(getActivity(), QrCode.class), 01);
-            }
-        }
-    }
+//    @OnClick(R.id.li_battery_add_1)
+//    public void onCliclBatteryAdd1() {
+//        EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 2));
+//    }
 
-    @OnClick(R.id.li_battery_add_2)
-    public void onCliclBatteryAdd2() {
-        if (batteryStatus.size() > 1) {
-            if (batteryStatus.get(1) == 0) {
-//                getActivity().startActivityForResult(new Intent(getActivity(), QrCode.class), 02);
-            }
-        }
-
-    }
+//    @OnClick(R.id.li_battery_add_2)
+//    public void onCliclBatteryAdd2() {
+//        if (batteryStatus.size() > 1) {
+//            if (batteryStatus.get(1) == 0) {
+////                getActivity().startActivityForResult(new Intent(getActivity(), QrCode.class), 02);
+//            }
+//        }
+//
+//    }
 
     @OnClick(R.id.ll_repay)
     public void onClickLoginHasOrderSubmit() {
@@ -430,14 +432,16 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             for (int i = 0; i < ebikeBeans.size(); i++) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.put("devid", ebikeBeans.get(i).getDevid());
-                    jsonObject.put("otype", ebikeBeans.get(i).getOtype());
-                    jsonObject.put("relet", ebikeBeans.get(i).getRelet());
-                    jsonObject.put("numt", ebikeBeans.get(i).getNumt());
+                    if (!"10".equals(ebikeBeans.get(i).getUse_type())) {
+                        jsonObject.put("devid", ebikeBeans.get(i).getDevid());
+                        jsonObject.put("otype", ebikeBeans.get(i).getOtype());
+                        jsonObject.put("relet", ebikeBeans.get(i).getRelet());
+                        jsonObject.put("numt", ebikeBeans.get(i).getNumt());
+                        jsonArray.put(jsonObject);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                jsonArray.put(jsonObject);
             }
         }
 
@@ -445,14 +449,16 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             for (int i = 0; i < batteryBeans.size(); i++) {
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.put("devid", batteryBeans.get(i).getDevid());
-                    jsonObject.put("otype", batteryBeans.get(i).getOtype());
-                    jsonObject.put("relet", batteryBeans.get(i).getRelet());
-                    jsonObject.put("numt", batteryBeans.get(i).getNumt());
+                    if (!"10".equals(batteryBeans.get(i).getUse_type())) {
+                        jsonObject.put("devid", batteryBeans.get(i).getDevid());
+                        jsonObject.put("otype", batteryBeans.get(i).getOtype());
+                        jsonObject.put("relet", batteryBeans.get(i).getRelet());
+                        jsonObject.put("numt", batteryBeans.get(i).getNumt());
+                        jsonArray.put(jsonObject);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                jsonArray.put(jsonObject);
             }
         }
 
@@ -462,10 +468,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 try {
                     jsonObject.put("gid", ucardBeans.get(i).getGid());
                     jsonObject.put("otype", ucardBeans.get(i).getOtype());
+                    jsonArray.put(jsonObject);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                jsonArray.put(jsonObject);
             }
         }
 
@@ -475,10 +481,10 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 try {
                     jsonObject.put("gid", umonthBean.get(i).getGid());
                     jsonObject.put("otype", umonthBean.get(i).getOtype());
+                    jsonArray.put(jsonObject);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                jsonArray.put(jsonObject);
             }
         }
 
@@ -505,9 +511,15 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (TextUtils.isEmpty(uid)) {
             getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
         } else {
-            Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
-            mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "4");
-            startActivity(mIntent);
+            if (mExpenseBean != null) {
+                if (mExpenseBean.getData().getEbike().size() == 0) {
+                    EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 2));
+                }else {
+                    Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
+                    mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "4");
+                    startActivity(mIntent);
+                }
+            }
         }
     }
 

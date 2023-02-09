@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.android.jidian.client.widgets.MyToast;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
