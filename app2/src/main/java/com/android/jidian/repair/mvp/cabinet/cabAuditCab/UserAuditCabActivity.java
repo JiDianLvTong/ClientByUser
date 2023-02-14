@@ -10,9 +10,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.mvp.cabinet.cabAddCab.AddCabActivity;
+import com.android.jidian.repair.mvp.task.userTask.UserTaskDetail.UserTaskDetailActivity;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -53,6 +55,17 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
         rvAuditCab.setLayoutManager(new LinearLayoutManager(UserAuditCabActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new UserAuditedAdapter();
         rvAuditCab.setAdapter(mAdapter);
+        mAdapter.setListener(new UserAuditedAdapter.OnClickItemViewListener() {
+            @Override
+            public void onClickItem(AuditCabListBean.DataBean bean) {
+                if ("2".equals(bean.getAudit_status())) {//0 = 待审核  1 = 审核通过   2= 驳回
+                    Intent intent = new Intent(UserAuditCabActivity.this, AddCabActivity.class);
+                    intent.putExtra("baseUrl", PubFunction.ape + "Cabinet/edit");
+                    intent.putExtra("tid", bean.getId());
+                    startActivity(intent);
+                }
+            }
+        });
         srlAuditCab.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
@@ -130,7 +143,9 @@ public class UserAuditCabActivity extends BaseActivityByMvp<UserAuditCabPresente
 
     @OnClick(R.id.addCab)
     public void onClickAddCab() {
-        startActivity(new Intent(activity, AddCabActivity.class));
+        Intent intent = new Intent(activity, AddCabActivity.class);
+        intent.putExtra("baseUrl", PubFunction.ape + "Cabinet/cabinet");
+        startActivity(intent);
     }
 
     @Override

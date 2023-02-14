@@ -135,9 +135,9 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
         }
 
-        if (!"1".equals(bean.getUstatus())){
-            llNoSalve.setVisibility(View.VISIBLE);
-        }
+//        if (!"1".equals(bean.getUstatus())){
+//            llNoSalve.setVisibility(View.VISIBLE);
+//        }
     }
 
     @OnClick(R.id.pageReturn)

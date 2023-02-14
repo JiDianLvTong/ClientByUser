@@ -94,8 +94,8 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
         mPresenter = new AddCabPresenter();
         mPresenter.attachView(this);
         Intent intent = getIntent();
-        baseUrl = PubFunction.ape + "Cabinet/cabinet/companyid/3";
-//        tid = intent.getStringExtra("tid");
+        baseUrl = intent.getStringExtra("baseUrl") + "/companyid/3";
+        tid = intent.getStringExtra("tid");
 //        id = intent.getStringExtra("id");
         title = "上传电柜";
 
