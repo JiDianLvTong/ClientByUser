@@ -1,25 +1,18 @@
 package com.android.jidian.client.mvp.ui.activity.main.mainShopFragment;
 
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.android.jidian.client.R;
-import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.base.U6BaseFragment;
-import com.android.jidian.client.bean.ShopBuyBean;
-import com.android.jidian.client.bean.ShopRentBean;
-import com.android.jidian.client.bean.UserPersonalBean;
-import com.android.jidian.client.mvp.contract.MainShopContract;
-import com.android.jidian.client.mvp.presenter.MainShopPresenter;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
+import com.android.jidian.client.util.UserInfoHelper;
 import com.flyco.tablayout.SlidingTabLayout;
-import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
-import java.util.ArrayList;
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 
@@ -30,7 +23,7 @@ public class MainShopFragment extends U6BaseFragment {
     @BindView(R.id.viewPager)
     public ViewPager viewPager;
 
-    private String[] nameList = new String[]{"购买","租赁"};
+    private String[] nameList = new String[]{"购买", "租赁"};
     private MainShopItemFragment[] fragments = new MainShopItemFragment[2];
     private MainShopAdapter mainShopAdapter;
 
@@ -45,23 +38,70 @@ public class MainShopFragment extends U6BaseFragment {
 
     @Override
     public void initView(View view) {
-        fragments[0] = new MainShopItemFragment(1,mLng , mLat);
-        fragments[1] = new MainShopItemFragment(2,mLng , mLat);
-        mainShopAdapter = new MainShopAdapter(getFragmentManager() , fragments , nameList);
+        fragments[0] = new MainShopItemFragment(1, mLng, mLat);
+        fragments[1] = new MainShopItemFragment(2, mLng, mLat);
+        mainShopAdapter = new MainShopAdapter(getFragmentManager(), fragments, nameList);
         viewPager.setAdapter(mainShopAdapter);
         viewPager.setOffscreenPageLimit(2);
         slidingTabLayout.setViewPager(viewPager, nameList);
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int i, float v, int i1) {
+////                if (i == 0) {
+////                }else {
+////                    EventBus.getDefault().post(new ShopFragmentItemEvent(ShopFragmentItemEvent.SHOP_ITEM_2_REFRESH));
+////                }
+//            }
+//
+//            @Override
+//            public void onPageSelected(int i) {
+//                Log.d("xiaoming0214", "onPageSelected: " + i);
+//                EventBus.getDefault().post(new ShopFragmentItemEvent(ShopFragmentItemEvent.SHOP_ITEM_REFRESH));
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int i) {
+//
+//            }
+//        });
+    }
+
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (!hidden) {//不可见
+//            Log.d("xiaoming0214", "onHiddenChanged: " +viewPager.getCurrentItem());
+//        }
+//    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("xiaoming0214", "onResume: " + viewPager.getCurrentItem());
+        if (viewPager.getCurrentItem() == 0) {
+            if (fragments[0] != null) {
+                fragments[0].setFragmentRefresh();
+            }
+        }else {
+            if (fragments[1] != null) {
+                fragments[1].setFragmentRefresh();
+            }
+        }
+//        if (mPresenter != null) {
+//            mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
+//            requestData();
+//        }
     }
 
     //设置坐标
     public void setFragmentPosition(String lng, String lat) {
         this.mLng = lng;
         this.mLat = lat;
-        if(fragments[0] != null){
-            fragments[0].setFragmentPosition(lng,lat);
+        if (fragments[0] != null) {
+            fragments[0].setFragmentPosition(lng, lat);
         }
-        if(fragments[1] != null){
-            fragments[1].setFragmentPosition(lng,lat);
+        if (fragments[1] != null) {
+            fragments[1].setFragmentPosition(lng, lat);
         }
     }
 

@@ -9,7 +9,6 @@ import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,7 +20,6 @@ import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.mvp.contract.MainEquipmentContract;
 import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
-import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
 import com.android.jidian.client.mvp.ui.activity.message.AdvicesListsActivity;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
@@ -145,6 +143,9 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @BindView(R.id.main_l2_charge)
     public TextView main_l2_charge;
 
+    @BindView(R.id.ll_custom_phone)
+    public LinearLayout llCustomPhone;
+
     private String gid = "";
     private String opt = "";
 
@@ -188,6 +189,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
             showProgress();
             getEquipmentInfo();
+            llCustomPhone.setVisibility(View.VISIBLE);
         }
         //未登录状态
         else {
@@ -196,6 +198,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             main_l2.setVisibility(View.INVISIBLE);
             main_l1.setVisibility(View.GONE);
             main_i1.setVisibility(View.VISIBLE);
+            llCustomPhone.setVisibility(View.GONE);
         }
     }
 
@@ -251,12 +254,14 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 if (dataBean.getTop().getCList().size() > 1) {
                     tv_expire_text.setText("您的设备还有" + dataBean.getUmonth().getPackets().getDays() + "天到期");
                 }
-                total_price = total_price.add(new BigDecimal(dataBean.getUmonth().getPackets().getRprice()));
+                if (dataBean.getUmonth().getPackets().getRprice() != null) {
+                    total_price = total_price.add(new BigDecimal(dataBean.getUmonth().getPackets().getRprice()));
+                }
             }
             if (dataBean.getEbike().size() > 0) {
                 //没有绑定车辆
                 if ("20".equals(dataBean.getEbike().get(0).getUse_type())) {//租
-                    total_price = total_price.add(new BigDecimal(dataBean.getEbike().get(0).getRprice()));
+                    total_price = total_price.add(new BigDecimal(dataBean.getEbike().get(0).getMrent()));
                 }
                 if (dataBean.getEbike().get(0).getIs_bind().equals("2") || dataBean.getEbike().get(0).getIs_bind().equals("0")) {
                     iv_bicycle.setImageResource(R.drawable.main_bicycle_gray);
@@ -264,6 +269,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     li_bicycle_add.setVisibility(View.VISIBLE);
                     cl_bicycle_detail.setVisibility(View.GONE);
                 } else if (dataBean.getEbike().get(0).getIs_bind().equals("1")) {//绑定车辆
+                    tv_bike_num.setText(dataBean.getEbike().get(0).getNumber());
                     iv_bicycle.setImageResource(R.drawable.main_bicycle);
                     li_bicycle_add.setVisibility(View.GONE);
                     cl_bicycle_detail.setVisibility(View.VISIBLE);
@@ -294,23 +300,23 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 constraintSet.connect(R.id.main_l1, ConstraintSet.TOP, R.id.main_f1, ConstraintSet.BOTTOM, 0);
                 constraintSet.constrainHeight(R.id.main_l1, ViewUtil.dp2px(getActivity(), 240));
                 MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(0);
+                if ("10".equals(battery.getUse_type())) {//买
+                    tv_battery_1_price.setVisibility(View.GONE);
+                    tv_battery_1_unit.setVisibility(View.GONE);
+                    tv_battery_1_text.setVisibility(View.GONE);
+                } else {
+                    total_price = total_price.add(new BigDecimal(battery.getMrent()));
+                    tv_battery_1_price.setText(battery.getMrent() + "");
+                    tv_battery_1_price.setVisibility(View.VISIBLE);
+                    tv_battery_1_unit.setVisibility(View.VISIBLE);
+                    tv_battery_1_text.setVisibility(View.VISIBLE);
+                }
                 String battery1IsBind = battery.getIs_bind();
                 if (battery1IsBind.equals("1")) {
                     cl_battery_detail_1.setVisibility(View.VISIBLE);
                     li_battery_add_1.setVisibility(View.GONE);
                     iv_main_battery_1.setImageResource(R.drawable.main_battery);
                     tv_battery_num_1.setText(battery.getNumber());
-                    if ("10".equals(battery.getUse_type())) {//买
-                        tv_battery_1_price.setText(battery.getMrent() + "");
-                        tv_battery_1_price.setVisibility(View.VISIBLE);
-                        tv_battery_1_unit.setVisibility(View.VISIBLE);
-                        tv_battery_1_text.setVisibility(View.VISIBLE);
-                    } else {
-                        total_price = total_price.add(new BigDecimal(battery.getRprice()));
-                        tv_battery_1_price.setVisibility(View.GONE);
-                        tv_battery_1_unit.setVisibility(View.GONE);
-                        tv_battery_1_text.setVisibility(View.GONE);
-                    }
                 } else if (battery1IsBind.equals("2")) {
                     tv_battery_status_1.setText("扫码绑定");
                     li_battery_add_1.setVisibility(View.VISIBLE);
@@ -330,15 +336,15 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                 MainActiyivyExpenseBean.DataBean.BatteryBean battery = dataBean.getBattery().get(1);
                 String battery2IsBind = battery.getIs_bind();
                 if ("10".equals(battery.getUse_type())) {//买
+                    tv_battery_2_price.setVisibility(View.GONE);
+                    tv_battery_2_unit.setVisibility(View.GONE);
+                    tv_battery_2_text.setVisibility(View.GONE);
+                } else {
+                    total_price = total_price.add(new BigDecimal(battery.getMrent()));
                     tv_battery_2_price.setText(battery.getMrent() + "");
                     tv_battery_2_price.setVisibility(View.VISIBLE);
                     tv_battery_2_unit.setVisibility(View.VISIBLE);
                     tv_battery_2_text.setVisibility(View.VISIBLE);
-                } else {
-                    total_price = total_price.add(new BigDecimal(battery.getRprice()));
-                    tv_battery_2_price.setVisibility(View.GONE);
-                    tv_battery_2_unit.setVisibility(View.GONE);
-                    tv_battery_2_text.setVisibility(View.GONE);
                 }
                 if (battery2IsBind.equals("1")) {
                     cl_battery_detail_2.setVisibility(View.VISIBLE);

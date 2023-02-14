@@ -1,20 +1,18 @@
 package com.android.jidian.client.mvp.ui.activity.main.mainShopFragment;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
-import com.android.jidian.client.base.U6BaseFragment;
 import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserPersonalBean;
@@ -29,6 +27,10 @@ import com.android.jidian.client.widgets.MyToast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -65,6 +67,13 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
     @Override
     public int getLayoutId() {
         return R.layout.u6_activity_main_fragment_shop_item;
+    }
+
+    //设置坐标
+    public void setFragmentRefresh() {
+        if (mPresenter != null) {
+            requestData();
+        }
     }
 
     @Override
@@ -261,17 +270,6 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
         } else {
             mullDataPanel.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
-        }
-    }
-
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (!hidden) {//不可见
-            if (mPresenter != null) {
-                mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
-                requestData();
-            }
         }
     }
 

@@ -1,10 +1,7 @@
 package com.android.jidian.client.mvp.ui.activity.main;
 
-import static com.android.jidian.client.bean.MainAppEventBean.PAYSUCCESSCLOSESHOP;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -33,7 +30,6 @@ import com.android.jidian.client.base.PermissionManager.PermissionManager;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
 import com.android.jidian.client.bean.LoginCheckAccv2Bean;
-import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
 import com.android.jidian.client.mvp.presenter.MainActivityPresenter;

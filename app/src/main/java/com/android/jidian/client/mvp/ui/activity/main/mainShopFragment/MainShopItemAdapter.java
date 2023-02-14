@@ -40,6 +40,8 @@ public class MainShopItemAdapter extends BaseQuickAdapter<MainShopBean, BaseView
             helper.setTextColor(R.id.tv_main_shop_item_price_unit, Color.parseColor(color));
             helper.setText(R.id.tv_main_shop_item_title,bean.getName());
             helper.setText(R.id.tv_main_shop_item_price,bean.getRprice());
+            helper.setText(R.id.t_4,"购买");
+            helper.setBackgroundRes(R.id.t_4, R.drawable.text_corners_jianibian_radius);
             Glide.with(mContext).load(bean.getBg_img()).into(((ImageView)helper.getView(R.id.iv_main_shop_bg)));
             List<ShopBuyBean.DataBean.PacksBean.MainsBean> mainsBean = bean.getMains();
             ((LinearLayout)helper.getView(R.id.ll_main_shop_item_detail)).removeAllViews();
@@ -73,6 +75,8 @@ public class MainShopItemAdapter extends BaseQuickAdapter<MainShopBean, BaseView
             helper.setTextColor(R.id.tv_main_shop_item_price_unit, Color.parseColor(color));
             helper.setText(R.id.tv_main_shop_item_title,bean.getName());
             helper.setText(R.id.tv_main_shop_item_price,bean.getRprice());
+            helper.setText(R.id.t_4,"租赁");
+            helper.setBackgroundRes(R.id.t_4, R.drawable.text_corners_jianibian_radius_orange);
             Glide.with(mContext).load(bean.getBg_img()).into(((ImageView)helper.getView(R.id.iv_main_shop_bg)));
             List<ShopRentBean.DataBean.PacksBean.MainsBean.LeftBean> mainsBean = bean.getMains().getLeft();
             ((LinearLayout)helper.getView(R.id.ll_main_shop_item_detail)).removeAllViews();

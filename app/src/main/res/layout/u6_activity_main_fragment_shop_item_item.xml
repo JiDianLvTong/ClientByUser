@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
@@ -16,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 
@@ -28,32 +27,51 @@
 
         <TextView
             android:id="@+id/tv_main_shop_item_title"
-            tools:text="电动摩托车"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            tools:text="电动摩托车" />
 
         <TextView
             android:id="@+id/tv_main_shop_item_price"
-            tools:text="999"
-            android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            tools:text="999" />
 
         <TextView
             android:id="@+id/tv_main_shop_item_price_unit"
-            android:text="元/月"
-            android:textSize="13sp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="元/月"
+            android:textSize="13sp" />
 
         <LinearLayout
-            android:id="@+id/ll_main_shop_item_detail"
-            android:orientation="horizontal"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll_main_shop_item_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/t_4"
+                android:layout_width="68.5dp"
+                android:layout_height="27dp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/text_corners_jianibian_radius"
+                android:gravity="center"
+                android:text="购 买"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
