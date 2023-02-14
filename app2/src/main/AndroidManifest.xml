@@ -101,28 +101,6 @@
             </intent-filter>
         </receiver>
 
-<!--        <provider-->
-<!--            android:name="com.luck.picture.lib.PictureFileProvider"-->
-<!--            android:authorities="${applicationId}.fileprovider"-->
-<!--            android:exported="false"-->
-<!--            android:grantUriPermissions="true">-->
-<!--            <meta-data-->
-<!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-<!--                android:resource="@xml/external_path"/>-->
-<!--        </provider>-->
-
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.android.jidian.repair.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-
-            <!-- 元数据 -->
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-
     </application>
 
 </manifest>

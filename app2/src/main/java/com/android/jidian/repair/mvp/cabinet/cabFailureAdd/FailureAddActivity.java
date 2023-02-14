@@ -1,6 +1,9 @@
 package com.android.jidian.repair.mvp.cabinet.cabFailureAdd;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -17,10 +20,10 @@ import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.utils.Md5;
+import com.android.jidian.repair.utils.picture.BitmapManager;
 import com.android.jidian.repair.utils.picture.PictureSelectorUtils;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.entity.LocalMedia;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,21 +98,16 @@ public class FailureAddActivity extends BaseActivityByMvp<FailurePresenter> impl
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
-            if (selectList != null) {
-                if (selectList.size() > 0) {
-                    LocalMedia media = selectList.get(0);
-                    if (media != null) {
-                        String compressPath = media.getCompressPath();
-                        if (mPresenter != null) {
-                            if (!TextUtils.isEmpty(mPath)) {
-                                mPresenter.requestUpLoadImg(mPath, compressPath, mUpToken, mCompanyid, requestCode);
-                            } else {
-                                showMessage("出错了，请重新选择~");
-                                mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
-                            }
-                        }
-                    }
+            Bundle extras = data.getExtras();
+            Bitmap bitmap = (Bitmap) extras.get("data");
+            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+            BitmapManager.saveBitmapFile(new File(filePath), bitmap);
+            if (mPresenter != null) {
+                if (!TextUtils.isEmpty(mPath)) {
+                    mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
+                } else {
+                    showMessage("出错了，请重新选择~");
+                    mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
                 }
             }
         }

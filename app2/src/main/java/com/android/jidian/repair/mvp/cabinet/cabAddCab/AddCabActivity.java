@@ -2,7 +2,10 @@ package com.android.jidian.repair.mvp.cabinet.cabAddCab;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 import android.webkit.JavascriptInterface;
@@ -16,16 +19,14 @@ import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
+import com.android.jidian.repair.utils.picture.BitmapManager;
 import com.android.jidian.repair.widgets.dialog.DialogByEnter;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.utils.Md5;
 import com.android.jidian.repair.utils.RSAUtil;
 import com.android.jidian.repair.utils.picture.PictureSelectorUtils;
-import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.entity.LocalMedia;
 import com.permissionx.guolindev.PermissionX;
-import com.timmy.tdialog.TDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -199,19 +200,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
         if (bean.getData() != null) {
             if (ADD_IMAGE_IMG_1 == index) {
                 callback1.complete(bean.getData().getFurl());
-//                mSolveImageList[0] = bean.getData().getFurl();
-//                Glide.with(AddCabActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivTaskSolveImg1);
             }
-//            else if (ADD_SOLVE_IMG_2 == index) {
-//                mSolveImageList[1] = bean.getData().getFurl();
-//                Glide.with(AddCabActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivTaskSolveImg2);
-//            } else if (ADD_SOLVE_IMG_3 == index) {
-//                mSolveImageList[2] = bean.getData().getFurl();
-//                Glide.with(AddCabActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivTaskSolveImg3);
-//            } else if (ADD_SOLVE_IMG_4 == index) {
-//                mSolveImageList[3] = bean.getData().getFurl();
-//                Glide.with(AddCabActivity.this).load(bean.getData().getFurl()).error(R.drawable.icon_image_broken).into(ivTaskSolveImg4);
-//            }
         } else {
             showMessage(bean.getMsg());
         }
@@ -260,21 +249,16 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(data);
-            if (selectList != null) {
-                if (selectList.size() > 0) {
-                    LocalMedia media = selectList.get(0);
-                    if (media != null) {
-                        String compressPath = media.getCompressPath();
-                        if (mPresenter != null) {
-                            if (!TextUtils.isEmpty(mPath)) {
-                                mPresenter.requestUpLoadImg(mPath, compressPath, mUpToken, mCompanyid, requestCode);
-                            } else {
-                                showMessage("出错了，请重新选择~");
-                                mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
-                            }
-                        }
-                    }
+            Bundle extras = data.getExtras();
+            Bitmap bitmap = (Bitmap) extras.get("data");
+            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+            BitmapManager.saveBitmapFile(new File(filePath), bitmap);
+            if (mPresenter != null) {
+                if (!TextUtils.isEmpty(mPath)) {
+                    mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
+                } else {
+                    showMessage("出错了，请重新选择~");
+                    mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
                 }
             }
         }
