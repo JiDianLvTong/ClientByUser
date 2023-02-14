@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.android.jidian.repair">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -36,47 +35,7 @@
         android:roundIcon="@drawable/pub_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.User">
-        <activity android:name=".keepAlive.KeepLiveActivity"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:finishOnTaskLaunch="false"
-            android:launchMode="singleInstance"
-            android:theme="@style/KeepLiveTheme"/>
 
-
-        <activity
-            android:name=".ChangePasswordActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RepaireGuideActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserMessageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCabActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserAuditCabActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserTaskDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserTaskListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MyPatrolDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserMyTaskActivity"
-            android:exported="false" />
-        <activity
-            android:name=".mvp.cabinet.cabFailureAdd.FailureAddActivity"
-            android:exported="false" />
-        <activity
-            android:name=".mvp.cabinet.cabPatrol.PatrolAddActivity"
-            android:exported="false" />
         <activity
             android:name=".mvp.index.IndexActivity"
             android:exported="true">
@@ -85,46 +44,54 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".mvp.main.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+
         <activity
             android:name=".mvp.login.LoginActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity
-            android:name=".mvp.task.TimeTaskDetailActivity"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name=".mvp.user.userMyPatrol.patrolList.UserMyPatrolActivity" />
-        <activity android:name=".mvp.user.userMyPatrol.patrolDetail.MyPatrolDetailActivity" />
+
+        <activity android:name=".mvp.task.TimeTaskDetailActivity"/>
         <activity android:name=".mvp.task.userTask.UserTaskList.UserTaskListActivity" />
         <activity android:name=".mvp.task.userTask.UserTaskDetail.UserTaskDetailActivity" />
         <activity android:name=".mvp.cabinet.cabAuditCab.UserAuditCabActivity" />
         <activity android:name=".mvp.cabinet.cabAddCab.AddCabActivity" />
+        <activity android:name=".mvp.cabinet.cabFailureAdd.FailureAddActivity"/>
+        <activity android:name=".mvp.cabinet.cabPatrol.PatrolAddActivity"/>
         <activity android:name=".mvp.user.userMessage.UserMessageActivity" />
-        <activity android:name=".mvp.H5.CommonWebViewActivity" />
         <activity android:name=".mvp.user.userLog.OperationLogActivity" />
         <activity android:name=".mvp.user.userInfo.password.ChangePasswordActivity" />
         <activity android:name=".mvp.user.userInfo.UserInfoActivity" />
+        <activity android:name=".mvp.user.userMyPatrol.patrolList.UserMyPatrolActivity" />
+        <activity android:name=".mvp.user.userMyPatrol.patrolDetail.MyPatrolDetailActivity" />
+        <activity android:name=".mvp.H5.CommonWebViewActivity" />
+
+        <activity android:name=".keepAlive.KeepLiveActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:finishOnTaskLaunch="false"
+            android:launchMode="singleInstance"
+            android:theme="@style/KeepLiveTheme"/>
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="07569aca1051dc1b364b95eed3b041be" /> <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
+
         <service android:name="com.amap.api.location.APSService" />
+
         <service android:name=".service.LongLinkService"
             android:enabled="true"
-            android:exported="true"
-            />
+            android:exported="true"/>
 
         <receiver android:name=".service.RestartLongLinkReceiver"
             android:enabled="true"

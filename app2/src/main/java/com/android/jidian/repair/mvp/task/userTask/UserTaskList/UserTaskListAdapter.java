@@ -16,7 +16,7 @@ public class UserTaskListAdapter extends BaseQuickAdapter<WorktaskMylistsBean.Da
     private OnItemViewClickListener mListener;
 
     public UserTaskListAdapter() {
-        super(R.layout.item_time_task);
+        super(R.layout.item_user_time_task);
     }
 
     public void setListener(OnItemViewClickListener listener) {
@@ -26,24 +26,42 @@ public class UserTaskListAdapter extends BaseQuickAdapter<WorktaskMylistsBean.Da
     @Override
     protected void convert(BaseViewHolder holder, WorktaskMylistsBean.DataBean.ListsBean bean) {
         if ("10".equals(bean.getWtype())) {//电柜故障
-            holder.setText(R.id.tv_task_item_type, "电柜故障")
-                    .setText(R.id.tv_task_item_num, "电柜编号:" + bean.getCabid())
+            holder.setText(R.id.tv_task_item_num, "电柜编号:" + bean.getCabid())
                     .setText(R.id.tv_task_item_address, "地址:" + bean.getAddress())
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.VISIBLE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.VISIBLE);
+            if(bean.getUstatus().equals("1")){
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "电柜故障: 已完成");
+            }else{
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "电柜故障: 未完成");
+            }
         } else if ("20".equals(bean.getWtype())) {//救援任务
-            holder.setText(R.id.tv_task_item_type, "救援任务")
-                    .setText(R.id.tv_task_item_num, "手机号码：" + bean.getPhone())
+            holder.setText(R.id.tv_task_item_num, "手机号码：" + bean.getPhone())
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.GONE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.GONE);
+            if(bean.getUstatus().equals("1")){
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "救援任务: 已完成");
+            }else{
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "救援任务: 未完成");
+            }
         } else {//其他任务
-            holder.setText(R.id.tv_task_item_type, "其他任务")
-                    .setText(R.id.tv_task_item_num, bean.getTitle())
+            holder.setText(R.id.tv_task_item_num, bean.getTitle())
                     .setText(R.id.tv_test_item_content, bean.getContent());
             holder.getView(R.id.tv_task_item_guide).setVisibility(View.GONE);
             holder.getView(R.id.tv_task_item_address).setVisibility(View.GONE);
+            if(bean.getUstatus().equals("1")){
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "其他任务: 已完成");
+            }else{
+                holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+                holder.setText(R.id.tv_task_item_type, "其他任务: 未完成");
+            }
         }
         holder.getView(R.id.tv_task_item_guide).setOnClickListener(new View.OnClickListener() {
             @Override

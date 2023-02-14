@@ -99,7 +99,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="已完成任务"
+                            android:text="已处理任务"
                             android:textColor="#333333"
                             android:textSize="13sp"
                             android:layout_weight="1"/>

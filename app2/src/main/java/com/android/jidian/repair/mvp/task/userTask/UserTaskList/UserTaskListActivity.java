@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.mvp.task.TimeTaskDetailActivity;
+import com.android.jidian.repair.mvp.task.userTask.UserTaskDetail.UserTaskDetailActivity;
 import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -48,7 +49,7 @@ public class UserTaskListActivity extends BaseActivityByMvp<UserTaskListPresente
     public void initView() {
         mPresenter = new UserTaskListPresenter();
         mPresenter.attachView(this);
-        tvTitle.setText("即时任务列表");
+        tvTitle.setText("已处理任务");
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(this);
         materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
@@ -75,7 +76,7 @@ public class UserTaskListActivity extends BaseActivityByMvp<UserTaskListPresente
 
             @Override
             public void OnClickItem(WorktaskMylistsBean.DataBean.ListsBean bean) {
-                Intent intent = new Intent(UserTaskListActivity.this, TimeTaskDetailActivity.class);
+                Intent intent = new Intent(UserTaskListActivity.this, UserTaskDetailActivity.class);
                 intent.putExtra("wtid", bean.getId());
                 startActivity(intent);
             }

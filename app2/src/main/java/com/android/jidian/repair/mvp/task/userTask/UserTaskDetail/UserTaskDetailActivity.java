@@ -1,5 +1,6 @@
 package com.android.jidian.repair.mvp.task.userTask.UserTaskDetail;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -8,13 +9,21 @@ import android.widget.TextView;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
+import com.android.jidian.repair.mvp.task.TimeTaskDetailActivity;
 import com.android.jidian.repair.mvp.task.WorktaskDetailBean;
+import com.android.jidian.repair.utils.picture.PictureSelectorUtils;
 import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPresenter> implements UserTaskDetailContract.View {
+
+    //上传图片类型
+    private static final int ADD_SOLVE_IMG_1 = 101;
+    private static final int ADD_SOLVE_IMG_2 = 102;
+    private static final int ADD_SOLVE_IMG_3 = 103;
+    private static final int ADD_SOLVE_IMG_4 = 104;
 
     @BindView(R.id.tv_title)
     public TextView tvTitle;
@@ -30,18 +39,7 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     public TextView tvTaskItemAddress;
     @BindView(R.id.tv_test_item_content)
     public TextView tvTestItemContent;
-    @BindView(R.id.ll_no_salve)
-    public LinearLayout llNoSalve;
-    @BindView(R.id.et_task_solve)
-    public EditText etTaskSolve;
-    @BindView(R.id.btn_task_solve)
-    public TextView btnTaskSolve;
-    @BindView(R.id.btn_task_cant_solve)
-    public TextView btnTaskCantSolve;
-    @BindView(R.id.ll_task_failure_image)
-    public LinearLayout llTaskFailureImage;
-    @BindView(R.id.ll_has_salve)
-    public LinearLayout llHasSalve;
+
     @BindView(R.id.iv_task_failure_img_1)
     public ImageView ivTaskFailureImg1;
     @BindView(R.id.iv_task_failure_img_2)
@@ -50,6 +48,11 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     public ImageView ivTaskFailureImg3;
     @BindView(R.id.iv_task_failure_img_4)
     public ImageView ivTaskFailureImg4;
+
+    @BindView(R.id.ll_no_salve)
+    public LinearLayout llNoSalve;
+    @BindView(R.id.et_task_solve)
+    public EditText etTaskSolve;
     @BindView(R.id.ll_task_solve_image)
     public LinearLayout llTaskSolveImage;
     @BindView(R.id.iv_task_solve_img_1)
@@ -60,20 +63,11 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     public ImageView ivTaskSolveImg3;
     @BindView(R.id.iv_task_solve_img_4)
     public ImageView ivTaskSolveImg4;
-    @BindView(R.id.ll_task_has_solve_image)
-    public LinearLayout llTaskHasSolveImage;
-    @BindView(R.id.iv_task_has_solve_img_1)
-    public ImageView ivTaskHasSolveImg1;
-    @BindView(R.id.iv_task_has_solve_img_2)
-    public ImageView ivTaskHasSolveImg2;
-    @BindView(R.id.iv_task_has_solve_img_3)
-    public ImageView ivTaskHasSolveImg3;
-    @BindView(R.id.iv_task_has_solve_img_4)
-    public ImageView ivTaskHasSolveImg4;
-    @BindView(R.id.tv_task_content)
-    public TextView tvTaskContent;
+    @BindView(R.id.btn_task_solve)
+    public TextView btnTaskSolve;
 
-    private String mLng, mLat;
+    private String wtId = "";
+    private String[] mSolveImageList = new String[]{"", "", "", ""};
 
     @Override
     public int getLayoutId() {
@@ -82,31 +76,51 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
 
     @Override
     public void initView() {
-        String wtid = getIntent().getStringExtra("id");
+        wtId = getIntent().getStringExtra("wtid");
         mPresenter = new UserTaskDetailPresenter();
         mPresenter.attachView(this);
-        mPresenter.requestWorktaskDetail(wtid);
+        mPresenter.requestWorktaskDetail(wtId);
     }
 
     @Override
     public void requestWorktaskDetailSuccess(WorktaskDetailBean.DataBean bean) {
-        mLat = bean.getLat();
-        mLng = bean.getLng();
+        llTaskTop.setVisibility(View.VISIBLE);
         if ("10".equals(bean.getWtype())) {//电柜故障
             tvTaskItemNum.setText("电柜编号:" + bean.getCabid());
             tvTaskItemAddress.setVisibility(View.VISIBLE);
             tvTaskItemAddress.setText("地址：" + bean.getAddress());
             tvTestItemContent.setText(bean.getContent());
+            if ("1".equals(bean.getUstatus())) {
+                tvTaskItemType.setText("电柜故障: 已完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+            }else{
+                tvTaskItemType.setText("电柜故障: 未完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+            }
         } else if ("20".equals(bean.getWtype())) {//救援任务
             tvTaskItemNum.setText("手机号码:" + bean.getPhone());
             tvTaskItemAddress.setVisibility(View.GONE);
             tvTaskItemGuide.setVisibility(View.GONE);
             tvTestItemContent.setText(bean.getContent());
+            if ("1".equals(bean.getUstatus())) {
+                tvTaskItemType.setText("救援任务: 已完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+            }else{
+                tvTaskItemType.setText("救援任务: 未完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+            }
         } else {//其他任务
             tvTaskItemNum.setText(bean.getTitle());
             tvTaskItemAddress.setVisibility(View.GONE);
             tvTaskItemGuide.setVisibility(View.GONE);
             tvTestItemContent.setText(bean.getContent());
+            if ("1".equals(bean.getUstatus())) {
+                tvTaskItemType.setText("其他任务: 已完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
+            }else{
+                tvTaskItemType.setText("其他任务: 未完成");
+                tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
+            }
         }
         if (bean.getImages().size() > 0) {
             Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg1);
@@ -120,22 +134,9 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
         if (bean.getImages().size() > 3) {
             Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
         }
-        if ("1".equals(bean.getUstatus())) {// 1 == 已完成   2 == 待完成
-            llNoSalve.setVisibility(View.GONE);
-            llHasSalve.setVisibility(View.VISIBLE);
-            tvTaskContent.setText(bean.getContent());
-            if (bean.getImages().size() > 0) {
-                Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg1);
-            }
-            if (bean.getImages().size() > 1) {
-                Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg2);
-            }
-            if (bean.getImages().size() > 2) {
-                Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg3);
-            }
-            if (bean.getImages().size() > 3) {
-                Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg4);
-            }
+
+        if (!"1".equals(bean.getUstatus())){
+            llNoSalve.setVisibility(View.VISIBLE);
         }
     }
 
@@ -148,6 +149,50 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     @Override
     public void requestShowTips(String msg) {
         showMessage(msg);
+    }
+
+    @OnClick(R.id.iv_task_solve_img_1)
+    public void OnClickivTaskSolveImg1() {
+        PictureSelectorUtils.addPhotoByCameraAndAlbum(UserTaskDetailActivity.this, ADD_SOLVE_IMG_1);
+    }
+
+    @OnClick(R.id.iv_task_solve_img_2)
+    public void OnClickivTaskSolveImg2() {
+        PictureSelectorUtils.addPhotoByCameraAndAlbum(UserTaskDetailActivity.this, ADD_SOLVE_IMG_2);
+    }
+
+    @OnClick(R.id.iv_task_solve_img_3)
+    public void OnClickivTaskSolveImg3() {
+        PictureSelectorUtils.addPhotoByCameraAndAlbum(UserTaskDetailActivity.this, ADD_SOLVE_IMG_3);
+    }
+
+    @OnClick(R.id.iv_task_solve_img_4)
+    public void OnClickivTaskSolveImg4() {
+        PictureSelectorUtils.addPhotoByCameraAndAlbum(UserTaskDetailActivity.this, ADD_SOLVE_IMG_4);
+    }
+
+    @OnClick(R.id.btn_task_solve)
+    public void OnClickbtnTaskSolve() {
+        if (TextUtils.isEmpty(etTaskSolve.getText().toString().trim())) {
+            showMessage("请输入解决内容");
+            return;
+        }
+        if (TextUtils.isEmpty(mSolveImageList[0])) {
+            showMessage("设备图不能为空");
+            return;
+        }
+        if (TextUtils.isEmpty(mSolveImageList[1])) {
+            showMessage("合影图不能为空");
+            return;
+        }
+        if (TextUtils.isEmpty(mSolveImageList[2])) {
+            showMessage("关键位置图不能为空");
+            return;
+        }
+
+        //todo:: 待完成任务 需要完成
+//        mPresenter.requestWorktaskResolve(wtId, "1", etTaskSolve.getText().toString().trim(),
+//                mSolveImageList[0], mSolveImageList[1], mSolveImageList[2], mSolveImageList[3]);
     }
 
     @Override

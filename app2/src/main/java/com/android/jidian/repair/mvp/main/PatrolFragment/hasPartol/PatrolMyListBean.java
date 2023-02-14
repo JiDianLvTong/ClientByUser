@@ -109,6 +109,25 @@ public class PatrolMyListBean {
             private String online;
             private String fstat;
 
+            private String cabname;
+            private String address;
+
+            public String getCabname() {
+                return cabname;
+            }
+
+            public void setCabname(String cabname) {
+                this.cabname = cabname;
+            }
+
+            public String getAddress() {
+                return address;
+            }
+
+            public void setAddress(String address) {
+                this.address = address;
+            }
+
             public String getCabid() {
                 return cabid;
             }

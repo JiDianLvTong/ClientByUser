@@ -29,8 +29,8 @@ public class UserMyPatrolAdapter extends BaseQuickAdapter<PatrolMyListBean.DataB
     @Override
     protected void convert(BaseViewHolder holder, PatrolMyListBean.DataBean.ListsBean bean) {
         holder.setText(R.id.tv_my_patrol_item_num, "编号:" + bean.getCabid())
-//                .setText(R.id.tv_my_patrol_item_name, bean.getName())
-//                .setText(R.id.tv_my_patrol_item_address, "地址:" + bean.getAddress() + "")
+                .setText(R.id.tv_my_patrol_item_name, bean.getCabname())
+                .setText(R.id.tv_my_patrol_item_address, "地址:" + bean.getAddress() + "")
                 .setText(R.id.tv_my_patrol_item_distance, "距离:" + bean.getDistance() + "KM")
                 .setText(R.id.tv_my_patrol_item_status, bean.getOnline());
         holder.setTextColor(R.id.tv_my_patrol_item_status, "在线".equals(bean.getOnline()) ? Color.parseColor("#D7A64A") : Color.parseColor("#cccccc"));

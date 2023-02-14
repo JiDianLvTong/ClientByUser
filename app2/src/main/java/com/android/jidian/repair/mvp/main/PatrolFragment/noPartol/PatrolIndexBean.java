@@ -109,6 +109,16 @@ public class PatrolIndexBean {
             private String distance;
             private String online;
 
+            private String cabname;
+
+            public String getCabname() {
+                return cabname;
+            }
+
+            public void setCabname(String cabname) {
+                this.cabname = cabname;
+            }
+
             public String getId() {
                 return id;
             }

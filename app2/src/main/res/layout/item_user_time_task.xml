@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/tv_task_item_type"
-            android:layout_width="65dp"
+            android:layout_width="100dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_d7a64a_corner_top_right_10"
             android:gravity="center"
