@@ -57,7 +57,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_d7a64a_corner_top_right_10"
                 android:gravity="center"
-                android:text="电柜故障"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="11sp" />
 
@@ -85,7 +84,6 @@
                 android:id="@+id/tv_test_item_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址"
                 android:textColor="#333333"
                 android:textSize="11sp" />
 
@@ -101,32 +99,40 @@
             android:paddingHorizontal="15dp"
             android:paddingBottom="15dp">
 
-            <ImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/iv_task_failure_img_1"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:scaleType="fitXY" />
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                app:riv_corner_radius="5dp"/>
 
-            <ImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/iv_task_failure_img_2"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                app:riv_corner_radius="5dp"/>
 
-            <ImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/iv_task_failure_img_3"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                app:riv_corner_radius="5dp"/>
 
-            <ImageView
+            <com.itheima.roundedimageview.RoundedImageView
                 android:id="@+id/iv_task_failure_img_4"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="70dp"
+                android:layout_weight="1"
                 android:layout_marginStart="10dp"
-                android:scaleType="fitXY" />
+                android:scaleType="fitXY"
+                app:riv_corner_radius="5dp"/>
 
         </LinearLayout>
 
@@ -164,18 +170,37 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/iv_task_solve_img_1"
-                    android:layout_width="70dp"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:scaleType="fitXY" />
+                    android:background="@drawable/shape_cccccc_corner_5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@drawable/pub_add_image"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_task_solve_img_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"/>
+
+                </FrameLayout>
 
                 <TextView
                     android:text="设备图"
+                    android:textSize="11sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -184,19 +209,38 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginLeft="5dp">
 
-                <ImageView
-                    android:id="@+id/iv_task_solve_img_2"
-                    android:layout_width="70dp"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY" />
+                    android:background="@drawable/shape_cccccc_corner_5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@drawable/pub_add_image"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_task_solve_img_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"/>
+
+                </FrameLayout>
 
                 <TextView
                     android:text="合影图"
+                    android:textSize="11sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -205,19 +249,38 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginLeft="5dp">
 
-                <ImageView
-                    android:id="@+id/iv_task_solve_img_3"
-                    android:layout_width="70dp"
-                    android:src="@drawable/icon_image_add"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY" />
+                    android:background="@drawable/shape_cccccc_corner_5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@drawable/pub_add_image"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_task_solve_img_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"/>
+
+                </FrameLayout>
 
                 <TextView
                     android:text="关键位置图"
+                    android:textSize="11sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -226,19 +289,38 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginLeft="5dp">
 
-                <ImageView
-                    android:id="@+id/iv_task_solve_img_4"
-                    android:layout_width="70dp"
-                    android:src="@drawable/icon_image_add"
+                <FrameLayout
+                    android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY" />
+                    android:background="@drawable/shape_cccccc_corner_5">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:src="@drawable/pub_add_image"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"/>
+
+                    <ImageView
+                        android:id="@+id/iv_task_solve_img_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"/>
+
+                </FrameLayout>
 
                 <TextView
                     android:text="其他图"
+                    android:textSize="11sp"
+                    android:textColor="#333333"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />

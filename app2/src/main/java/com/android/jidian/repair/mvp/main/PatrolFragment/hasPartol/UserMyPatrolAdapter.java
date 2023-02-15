@@ -35,14 +35,6 @@ public class UserMyPatrolAdapter extends BaseQuickAdapter<PatrolMyListBean.DataB
                 .setText(R.id.tv_my_patrol_item_status, bean.getOnline());
         holder.setTextColor(R.id.tv_my_patrol_item_status, "在线".equals(bean.getOnline()) ? Color.parseColor("#D7A64A") : Color.parseColor("#cccccc"));
         Glide.with(mContext).load(bean.getBgimg()).into(((ImageView) holder.getView(R.id.iv_my_patrol_item_img)));
-//        holder.getView(R.id.tv_my_patrol_item_guiide).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mListener != null) {
-//                    mListener.OnClickGuide(bean);
-//                }
-//            }
-//        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,8 +46,6 @@ public class UserMyPatrolAdapter extends BaseQuickAdapter<PatrolMyListBean.DataB
     }
 
     public interface OnItemViewClickListener {
-//        void OnClickGuide(PatrolMyListBean.DataBean.ListsBean Bean);
-
-        void OnClickItem(PatrolMyListBean.DataBean.ListsBean Bean);
+        void OnClickItem(PatrolMyListBean.DataBean.ListsBean bean);
     }
 }

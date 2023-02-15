@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.jidian.repair.R;
+import com.android.jidian.repair.mvp.main.PatrolFragment.hasPartol.PatrolMyListBean;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -35,6 +36,7 @@ public class PartolAdapter extends BaseQuickAdapter<PatrolIndexBean.DataBean.Lis
                 .setText(R.id.tv_patrol_item_status, listsBean.getOnline());
         holder.setTextColor(R.id.tv_patrol_item_status, "在线".equals(listsBean.getOnline()) ? Color.parseColor("#D7A64A") : Color.parseColor("#cccccc"));
         Glide.with(mContext).load(listsBean.getBgimg()).into(((ImageView) holder.getView(R.id.iv_patrol_item_img)));
+
         holder.getView(R.id.tv_patrol_item_guiide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,19 +45,27 @@ public class PartolAdapter extends BaseQuickAdapter<PatrolIndexBean.DataBean.Lis
                 }
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.getView(R.id.t_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mListener != null) {
-                    mListener.OnClickItem(listsBean);
+                    mListener.OnClickItemT1(listsBean);
+                }
+            }
+        });
+        holder.getView(R.id.t_2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener != null) {
+                    mListener.OnClickItemT2(listsBean);
                 }
             }
         });
     }
 
     public interface OnItemViewClickListener {
-        void OnClickGuide(PatrolIndexBean.DataBean.ListsBean Bean);
-
-        void OnClickItem(PatrolIndexBean.DataBean.ListsBean Bean);
+        void OnClickGuide(PatrolIndexBean.DataBean.ListsBean bean);
+        void OnClickItemT1(PatrolIndexBean.DataBean.ListsBean bean);
+        void OnClickItemT2(PatrolIndexBean.DataBean.ListsBean bean);
     }
 }

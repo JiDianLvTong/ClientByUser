@@ -95,8 +95,6 @@ public class PatrolAddActivity extends BaseActivityByMvp<PatrolAddPresenter> imp
     public TextView tvBgButtonCheckEnable;
     @BindView(R.id.tv_bg_button_check_unable)
     public TextView tvBgButtonCheckUnable;
-    @BindView(R.id.btn_patrol_add)
-    public TextView btnPatrolAdd;
 
     /**
      * cabid,电柜编号
@@ -141,13 +139,6 @@ public class PatrolAddActivity extends BaseActivityByMvp<PatrolAddPresenter> imp
         mPresenter = new PatrolAddPresenter();
         mPresenter.attachView(this);
         mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
-    }
-
-    @OnClick(R.id.btn_patrol_add)
-    public void onClickBtnPatrolAdd() {
-        Intent intent = new Intent(PatrolAddActivity.this, FailureAddActivity.class);
-        intent.putExtra("id", mCabid);
-        startActivity(intent);
     }
 
     //img1,打卡合影

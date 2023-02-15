@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:text="编号：123123123123"
                 android:textColor="@color/color_000000"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -44,7 +44,7 @@
 
         <TextView
             android:id="@+id/tv_task_item_type"
-            android:layout_width="100dp"
+            android:layout_width="110dp"
             android:layout_height="match_parent"
             android:background="@drawable/shape_d7a64a_corner_top_right_10"
             android:gravity="center"

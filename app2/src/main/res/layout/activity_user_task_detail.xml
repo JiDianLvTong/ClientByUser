@@ -111,7 +111,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_d7a64a_corner_top_right_10"
                 android:gravity="center"
-                android:text="电柜故障"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="11sp" />
 
@@ -132,14 +131,12 @@
                 android:textColor="#333333"
                 android:textSize="13sp"
                 android:visibility="gone"
-                tools:text="地址"
                 android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:id="@+id/tv_test_item_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址地址"
                 android:textColor="#333333"
                 android:textSize="11sp" />
 

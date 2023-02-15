@@ -178,7 +178,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
 
                         <TextView
                             android:text="维修手册"
@@ -199,14 +200,16 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="@color/color_CCCCCC"/>
+                        android:background="@color/color_CCCCCC"
+                        android:visibility="gone"/>
 
                     <LinearLayout
                         android:id="@+id/ll_user_operation_log"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
 
                         <TextView
                             android:text="操作日志"
@@ -227,8 +230,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="@color/color_CCCCCC"/>
-
+                        android:background="@color/color_CCCCCC"
+                        android:visibility="gone"/>
 
                 </LinearLayout>
 

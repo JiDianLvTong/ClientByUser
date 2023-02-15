@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="10dp">
 
     <FrameLayout
@@ -9,26 +10,31 @@
         android:layout_height="match_parent"
         android:background="@drawable/shape_cccccc_corner_5">
 
-        <ImageView
+        <com.itheima.roundedimageview.RoundedImageView
             android:id="@+id/imageImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:visibility="gone" />
+            android:visibility="gone"
+            app:riv_corner_radius="5dp"/>
 
         <ImageView
             android:id="@+id/addImage"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/icon_image_add"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:src="@drawable/pub_add_image"
+            android:adjustViewBounds="true"
             android:layout_gravity="center"/>
 
         <ImageView
             android:id="@+id/delectImage"
             android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
             android:layout_gravity="right"
             android:src="@drawable/image_delete"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:layout_marginTop="3dp"
+            android:layout_marginRight="3dp"/>
     </FrameLayout>
 </FrameLayout>

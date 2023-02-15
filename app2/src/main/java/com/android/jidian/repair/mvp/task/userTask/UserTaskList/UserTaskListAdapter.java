@@ -36,7 +36,7 @@ public class UserTaskListAdapter extends BaseQuickAdapter<WorktaskMylistsBean.Da
                 holder.setText(R.id.tv_task_item_type, "电柜故障: 已完成");
             }else{
                 holder.getView(R.id.tv_task_item_type).setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
-                holder.setText(R.id.tv_task_item_type, "电柜故障: 未完成");
+                holder.setText(R.id.tv_task_item_type, "电柜故障: 无法完成");
             }
         } else if ("20".equals(bean.getWtype())) {//救援任务
             holder.setText(R.id.tv_task_item_num, "手机号码：" + bean.getPhone())

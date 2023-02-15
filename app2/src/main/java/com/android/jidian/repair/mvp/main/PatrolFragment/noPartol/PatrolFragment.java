@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
 import com.android.jidian.repair.base.BindEventBus;
+import com.android.jidian.repair.mvp.cabinet.cabFailureAdd.FailureAddActivity;
 import com.android.jidian.repair.mvp.cabinet.cabPatrol.PatrolAddActivity;
 import com.android.jidian.repair.utils.MapUtil;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
@@ -121,12 +122,17 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
             public void OnClickGuide(PatrolIndexBean.DataBean.ListsBean bean) {
                 MapUtil.showNavigationDialog(requireActivity(), "", bean.getWeidu(), bean.getJingdu());
             }
-
             @Override
-            public void OnClickItem(PatrolIndexBean.DataBean.ListsBean bean) {
+            public void OnClickItemT1(PatrolIndexBean.DataBean.ListsBean bean) {
                 Intent intent = new Intent(requireActivity(), PatrolAddActivity.class);
                 intent.putExtra("name", bean.getName());
                 intent.putExtra("address", bean.getAddress());
+                intent.putExtra("id", bean.getId());
+                startActivity(intent);
+            }
+            @Override
+            public void OnClickItemT2(PatrolIndexBean.DataBean.ListsBean bean) {
+                Intent intent = new Intent(requireActivity(), FailureAddActivity.class);
                 intent.putExtra("id", bean.getId());
                 startActivity(intent);
             }

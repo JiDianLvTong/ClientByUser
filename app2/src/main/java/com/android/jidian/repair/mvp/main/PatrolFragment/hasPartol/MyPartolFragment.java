@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseFragmentByMvp;
+import com.android.jidian.repair.mvp.cabinet.cabFailureAdd.FailureAddActivity;
 import com.android.jidian.repair.mvp.user.userMyPatrol.patrolDetail.MyPatrolDetailActivity;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -96,7 +97,6 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
     public void initView(View view) {
         mPresenter = new UserMyPatrolPresenter();
         mPresenter.attachView(this);
-//        tvTitle.setText("已巡检列表");
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(requireActivity());
         materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
@@ -108,14 +108,9 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
         mAdapter = new UserMyPatrolAdapter();
         rvMyPartol.setAdapter(mAdapter);
         mAdapter.setListener(new UserMyPatrolAdapter.OnItemViewClickListener() {
-//            @Override
-//            public void OnClickGuide(PatrolMyListBean.DataBean.ListsBean bean) {
-//                MapUtil.showNavigationDialog(UserMyPatrolActivity.this,"",bean.g);
-//            }
-
             @Override
             public void OnClickItem(PatrolMyListBean.DataBean.ListsBean bean) {
-                Intent intent = new Intent(requireActivity(), MyPatrolDetailActivity.class);
+                Intent intent = new Intent(requireActivity(),MyPatrolDetailActivity.class);
                 intent.putExtra("id", bean.getId());
                 startActivity(intent);
             }

@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:text="编号：123123123123"
                 android:textColor="@color/color_000000"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <ImageView

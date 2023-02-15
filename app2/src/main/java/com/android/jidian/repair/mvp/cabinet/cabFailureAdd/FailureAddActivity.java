@@ -39,8 +39,6 @@ public class FailureAddActivity extends BaseActivityByMvp<FailurePresenter> impl
 
     @BindView(R.id.pageReturn)
     public LinearLayout pageReturn;
-    @BindView(R.id.tv_title)
-    public TextView tvTitle;
     @BindView(R.id.inputEdit)
     public EditText inputEdit;
     @BindView(R.id.recyclerView)
@@ -65,7 +63,6 @@ public class FailureAddActivity extends BaseActivityByMvp<FailurePresenter> impl
         recyclerView.setLayoutManager(new GridLayoutManager(FailureAddActivity.this, 3));
         mAdapter = new FailureImgAdapter();
         recyclerView.setAdapter(mAdapter);
-        tvTitle.setText("故障上报");
         mList.add("");
         mAdapter.setNewData(mList);
         mAdapter.setListener(new FailureImgAdapter.OnClickListener() {
