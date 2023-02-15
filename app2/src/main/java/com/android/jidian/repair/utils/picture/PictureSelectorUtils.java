@@ -18,7 +18,7 @@ public class PictureSelectorUtils {
         intent.putExtra("autofocus", true); // 自动对焦
         intent.putExtra("fullScreen", false); // 全屏
         intent.putExtra("showActionIcons", false);
-        activity.startActivityForResult(intent, activityResultCallbackCode);
+        activity.startActivityForResult(intent, 101);
     }
 
     public static void addPhotoByCameraAndAlbum(Activity activity, int activityResultCallbackCode) {

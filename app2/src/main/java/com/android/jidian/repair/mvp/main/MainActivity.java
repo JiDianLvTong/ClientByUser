@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
     @Override
     public void initView() {
         //1像素且透明Activity提升App进程优先级
-        KeepLiveManager.getInstance().registerKeepLiveReceiver(this);
+//        KeepLiveManager.getInstance().registerKeepLiveReceiver(this);
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
         String[] mTitles = {"即时任务", "巡检", "我的"};//"故障",
         int[] mIconUnSelectIds = {
@@ -119,6 +119,18 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         vpContent.setOffscreenPageLimit(mTitles.length - 1);
         vpContent.setAdapter(new ViewPagerAdapter(getSupportFragmentManager(), mFragments, mTitles));
         vpContent.setScrollEnable(false);
+        PermissionX.init(MainActivity.this)
+                .permissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+                .request((allGranted, grantedList, deniedList) -> {
+                    if (allGranted) {
+                        initLocation();
+                    } else {
+                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
+                        dialog.showPopupWindow();
+                    }
+                });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -155,18 +167,15 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         if (mPresenter != null && !TextUtils.isEmpty(uid) && coordinates[0] != 0 && coordinates[1] != 0) {
             mPresenter.requestLoginCheckAcc(uid, apptoken, coordinates[0] + "", coordinates[1] + "");
         }
-        PermissionX.init(MainActivity.this)
-                .permissions(Manifest.permission.ACCESS_FINE_LOCATION)
-                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                .request((allGranted, grantedList, deniedList) -> {
-                    if (allGranted) {
-                        initLocation();
-                    } else {
-                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
-                        dialog.showPopupWindow();
-                    }
-                });
+        if (0 == tabLayoutMainPage.getCurrentTab()) {
+            if (mFragments.get(0) != null) {
+                ((TimeLimitTaskFragment) mFragments.get(0)).setFragmentRefresh();
+            }
+        }else if (1 == tabLayoutMainPage.getCurrentTab()){
+            if (mFragments.get(1) != null) {
+                ((MainPartolFragment) mFragments.get(1)).setFragmentRefresh();
+            }
+        }
 //        startService(new Intent(MainActivity.this, LongLinkService.class));
     }
 

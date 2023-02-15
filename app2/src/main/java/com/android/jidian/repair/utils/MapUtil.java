@@ -2,12 +2,17 @@ package com.android.jidian.repair.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.util.Log;
 
 import com.android.jidian.repair.widgets.dialog.DialogByToast;
 import com.android.jidian.repair.widgets.dialog.DialogBySelectNavigation;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @author : xiaoming
@@ -35,14 +40,14 @@ public class MapUtil {
         if (context == null) {
             return;
         }
-        boolean hasGaode = isGdMapInstalled();
-        boolean hasBaidu = isBaiduMapInstalled();
-        boolean hasTencent = isTencentMapInstalled();
+        boolean hasGaode = isGdMapInstalled(context);
+        boolean hasBaidu = isBaiduMapInstalled(context);
+        boolean hasTencent = isTencentMapInstalled(context);
         if (!hasGaode && !hasBaidu && !hasTencent) {
             DialogByToast.showTheToast(context, "没有安装任何地图应用");
             return;
         }
-        DialogBySelectNavigation dialog = new DialogBySelectNavigation(context,hasGaode, hasBaidu, hasTencent, new DialogBySelectNavigation.DialogChoiceListener() {
+        DialogBySelectNavigation dialog = new DialogBySelectNavigation(context, hasGaode, hasBaidu, hasTencent, new DialogBySelectNavigation.DialogChoiceListener() {
             @Override
             public void onChoose(String selectType) {
                 if ("GaoDe".equals(selectType)) {
@@ -61,20 +66,39 @@ public class MapUtil {
     /**
      * 检查地图应用是否安装
      */
-    public static boolean isBaiduMapInstalled() {
-        return isInstallPackage(PN_BAIDU_MAP);
+    public static boolean isBaiduMapInstalled(Context context) {
+        return checkAppInstalled(context, PN_BAIDU_MAP);
     }
 
-    public static boolean isGdMapInstalled() {
-        return isInstallPackage(PN_GAODE_MAP);
+    public static boolean isGdMapInstalled(Context context) {
+        return checkAppInstalled(context, PN_GAODE_MAP);
     }
 
-    public static boolean isTencentMapInstalled() {
-        return isInstallPackage(PN_TENCENT_MAP);
+    public static boolean isTencentMapInstalled(Context context) {
+        return checkAppInstalled(context, PN_TENCENT_MAP);
     }
 
     private static boolean isInstallPackage(String packageName) {
         return new File("/data/data/" + packageName).exists();
+    }
+
+    private static boolean checkAppInstalled(Context context, String pkgName) {
+        if (pkgName == null || pkgName.isEmpty()) {
+            return false;
+        }
+        final PackageManager packageManager = context.getPackageManager();
+        List<PackageInfo> info = packageManager.getInstalledPackages(0);
+        if (info == null || info.isEmpty())
+            return false;
+        for (int i = 0; i < info.size(); i++) {
+            Log.d("xiaoming", "checkAppInstalled: " + info.get(i).packageName);
+        }
+        for (int i = 0; i < info.size(); i++) {
+            if (pkgName.equals(info.get(i).packageName)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -86,7 +110,7 @@ public class MapUtil {
      * src:统计来源，必选参数。参数格式为：andr.companyName.appName
      */
     public static void openBaiduMapCyclingNavi(Context context, String name, String lat, String lng) {
-        if (isBaiduMapInstalled()) {
+        if (isBaiduMapInstalled(context)) {
             Intent i1 = new Intent();
             i1.setData(Uri.parse("baidumap://map/direction?destination=name:" + name + "|latlng:" + lat + "," + lng
                     + "&coord_type=gcj02&mode=riding&src=andr.xingdazhilian.HelloDream"));
@@ -107,7 +131,7 @@ public class MapUtil {
      * t:0驾车、1公交、2步行、3骑行、4火车、5长途客车（骑行仅在V7.8.8以上版本支持）
      */
     public static void openGaoDeMapCyclingNavi(Context context, String name, String lat, String lng) {
-        if (isGdMapInstalled()) {
+        if (isGdMapInstalled(context)) {
             Intent i1 = new Intent();
             i1.setData(Uri.parse("amapuri://route/plan/?sourceApplication=maxuslife&dname=" + name + "&dlat=" + lat + "&dlon=" + lng
                     + "&dev=0&t=3"));
@@ -126,7 +150,7 @@ public class MapUtil {
      * referer:请填写开发者key referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77
      */
     public static void openTencentMapCyclingNavi(Context context, String name, String lat, String lng) {
-        if (isTencentMapInstalled()) {
+        if (isTencentMapInstalled(context)) {
             Intent i1 = new Intent();
             //qqmap://map/routeplan?type=drive&from=清华&fromcoord=39.994745,116.247282&to=怡和世家&tocoord=39.867192,116.493187&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77
             i1.setData(Uri.parse("qqmap://map/routeplan?type=bike&to=" + name + "&tocoord=" + lat + "," + lng

@@ -27,6 +27,7 @@ import com.android.jidian.client.mvp.bean.ChargeSiteMapBean;
 import com.android.jidian.client.mvp.contract.ChargeSiteMapContract;
 import com.android.jidian.client.mvp.presenter.ChargeSiteMapPresenter;
 import com.android.jidian.client.util.MakerUtils;
+import com.android.jidian.client.util.MapUtil;
 import com.android.jidian.client.util.UserInfoHelper;
 
 import java.util.ArrayList;
@@ -53,7 +54,7 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     public AMapLocationClient mLocationClient;
     public AMapLocationClientOption mLocationOption = null;
     public MyLocationStyle myLocationStyle;
-    public double[] coordinates = new double[]{0,0};
+    public double[] coordinates = new double[]{0, 0};
     private ArrayList<Marker> markers = new ArrayList<>();
     private AMapLocation aMapLocation;
 
@@ -73,6 +74,7 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
         //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
         mapView.onResume();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -97,14 +99,14 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     }
 
     //地图初始化
-    public void mapInit(){
+    public void mapInit() {
         mapView.onCreate(savedInstanceState);
         if (aMap == null) {
             aMap = mapView.getMap();
         }
         //定位相关()
         myLocationStyle = new MyLocationStyle();//初始化定位蓝点样式类myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_LOCATION_ROTATE);//连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）如果不设置myLocationType，默认也会执行此种模式。
-        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER) ;
+        myLocationStyle.myLocationType(MyLocationStyle.LOCATION_TYPE_FOLLOW_NO_CENTER);
         myLocationStyle.interval(2000); //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
         myLocationStyle.strokeColor(0x00000000);
         myLocationStyle.strokeWidth(0.0f);
@@ -123,7 +125,7 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
         mUiSettings.setMyLocationButtonEnabled(false); //显示默认的定位按钮
     }
 
-    private void mapLocation(){
+    private void mapLocation() {
         try {
             mLocationClient = new AMapLocationClient(this);
             //初始化定位参数
@@ -150,40 +152,40 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
                                 aMap.setMyLocationStyle(myLocationStyle);
 
                             }
-                            if(hasRequestInternet == false){
+                            if (hasRequestInternet == false) {
                                 hasRequestInternet = true;
                                 getInternetData();
                                 onClickL_2();
                             }
                         } else {
                             //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-                            Log.e("AmapError","location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
+                            Log.e("AmapError", "location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
                         }
                     }
                 }
             });
             //启动定位
             mLocationClient.startLocation();
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
 
     //获取网络数据
-    private void getInternetData(){
+    private void getInternetData() {
         progressDialog.show();
-        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(),coordinates[0]+"",coordinates[1]+"" , "0");
+        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(), coordinates[0] + "", coordinates[1] + "", "0");
     }
 
     @OnClick(R.id.pageReturn)
-    public void onClickPageReturn(){
+    public void onClickPageReturn() {
         activity.finish();
     }
 
     @OnClick(R.id.l_1)
-    public void onClickL_1(){
+    public void onClickL_1() {
         hasRequestInternet = false;
-        for(int i = 0 ; i < markers.size();i++){
+        for (int i = 0; i < markers.size(); i++) {
             markers.get(i).remove();
         }
         markers.clear();
@@ -191,9 +193,9 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     }
 
     @OnClick(R.id.l_2)
-    public void onClickL_2(){
-        if(aMapLocation!=null){
-            CameraUpdate mCameraUpdate = CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(coordinates[1],coordinates[0]),18,0,0));
+    public void onClickL_2() {
+        if (aMapLocation != null) {
+            CameraUpdate mCameraUpdate = CameraUpdateFactory.newCameraPosition(new CameraPosition(new LatLng(coordinates[1], coordinates[0]), 18, 0, 0));
             aMap.moveCamera(mCameraUpdate);
         }
     }
@@ -201,7 +203,7 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(mapView!=null){
+        if (mapView != null) {
             mapView.onDestroy();
         }
     }
@@ -210,17 +212,17 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     public void requestChargeSiteSuccess(ChargeSiteMapBean bean) {
         progressDialog.dismiss();
         List<ChargeSiteMapBean.DataBean> dataArrayList = bean.getData();
-        for(int i = 0 ; i < dataArrayList.size() ; i++){
+        for (int i = 0; i < dataArrayList.size(); i++) {
             String jingdu = dataArrayList.get(i).getJingdu() + "";
             String weidu = dataArrayList.get(i).getWeidu() + "";
 
             List<ChargeSiteMapBean.DataBean.ListBean> mapSiteItemArrayList = dataArrayList.get(i).getList();
 
             MarkerOptions markerOption = new MarkerOptions();
-            markerOption.position(new LatLng(Double.parseDouble(weidu),Double.parseDouble(jingdu)));
+            markerOption.position(new LatLng(Double.parseDouble(weidu), Double.parseDouble(jingdu)));
             markerOption.draggable(false);//设置Marker可拖动
 
-            markerOption.icon(new MakerUtils().chargeSiteMarker(activity,mapSiteItemArrayList));
+            markerOption.icon(new MakerUtils().chargeSiteMarker(activity, mapSiteItemArrayList));
             markerOption.setFlat(true);//设置marker平贴地图效果
             Marker marker = aMap.addMarker(markerOption);
             markers.add(marker);
@@ -230,12 +232,17 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
             @Override
             public boolean onMarkerClick(Marker marker) {
                 LatLng latLng = marker.getPosition();
-                for(int i = 0 ; i < dataArrayList.size() ; i++){
+                for (int i = 0; i < dataArrayList.size(); i++) {
                     String jingdu = dataArrayList.get(i).getJingdu() + "";
                     String weidu = dataArrayList.get(i).getWeidu() + "";
-                    if(jingdu.equals(latLng.longitude + "") && weidu.equals(latLng.latitude + "")){
+                    if (jingdu.equals(latLng.longitude + "") && weidu.equals(latLng.latitude + "")) {
                         ChargeSiteMapBean.DataBean dataBean = dataArrayList.get(i);
-                        ChargeSiteShowInfo chargeSiteShowInfo = new ChargeSiteShowInfo(activity, dataBean , coordinates[1] , coordinates[0]);
+                        ChargeSiteShowInfo chargeSiteShowInfo = new ChargeSiteShowInfo(activity, dataBean, coordinates[1], coordinates[0], new ChargeSiteShowInfo.OnClickItemViewListener() {
+                            @Override
+                            public void OnClickNavigation(String name, String weidu, String jingdu) {
+                                MapUtil.showNavigationDialog(activity, getSupportFragmentManager(), name, weidu, jingdu);
+                            }
+                        });
                         chargeSiteShowInfo.showPopupWindow();
                     }
                 }
@@ -248,8 +255,6 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     public void requestChargeSiteError(String msg) {
         progressDialog.dismiss();
     }
-
-
 
 
     @Override

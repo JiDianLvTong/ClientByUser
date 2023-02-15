@@ -30,10 +30,10 @@ import butterknife.BindView;
  */
 public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> implements UserMyPatrolContract.View {
 
-    @BindView(R.id.srl_my_time_task)
-    public SmartRefreshLayout srlMyTimeTask;
-    @BindView(R.id.rv_my_time_task)
-    public RecyclerView rvMyTimeTask;
+    @BindView(R.id.srl_my_partol)
+    public SmartRefreshLayout srlMyPartol;
+    @BindView(R.id.rv_my_partol)
+    public RecyclerView rvMyPartol;
     @BindView(R.id.nullDataPanel)
     public LinearLayout nullDataPanel;
 
@@ -86,6 +86,12 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
         return R.layout.fragment_my_partol;
     }
 
+    public void setFragmentRefresh() {
+        if (srlMyPartol != null) {
+            srlMyPartol.autoRefresh();
+        }
+    }
+
     @Override
     public void initView(View view) {
         mPresenter = new UserMyPatrolPresenter();
@@ -94,13 +100,13 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(requireActivity());
         materialHeader.setColorSchemeColors(Color.parseColor("#D7A64A"), Color.parseColor("#D7A64A"));
-        srlMyTimeTask.setRefreshHeader(materialHeader);
-        srlMyTimeTask.setEnableHeaderTranslationContent(true);
+        srlMyPartol.setRefreshHeader(materialHeader);
+        srlMyPartol.setEnableHeaderTranslationContent(true);
         ClassicsFooter classicsFooter = new ClassicsFooter(requireActivity());
-        srlMyTimeTask.setRefreshFooter(classicsFooter);
-        rvMyTimeTask.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+        srlMyPartol.setRefreshFooter(classicsFooter);
+        rvMyPartol.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
         mAdapter = new UserMyPatrolAdapter();
-        rvMyTimeTask.setAdapter(mAdapter);
+        rvMyPartol.setAdapter(mAdapter);
         mAdapter.setListener(new UserMyPatrolAdapter.OnItemViewClickListener() {
 //            @Override
 //            public void OnClickGuide(PatrolMyListBean.DataBean.ListsBean bean) {
@@ -114,7 +120,7 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
                 startActivity(intent);
             }
         });
-        srlMyTimeTask.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+        srlMyPartol.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 requestData();
@@ -126,7 +132,7 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
                 requestData();
             }
         });
-        srlMyTimeTask.autoRefresh();
+        srlMyPartol.autoRefresh();
     }
 
     private void requestData() {
@@ -154,7 +160,7 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
     public void requestPatrolMylistsSuccess(PatrolMyListBean bean) {
         if (bean.getData() != null) {
             if (bean.getData().getLists().size() > 0) {
-                rvMyTimeTask.setVisibility(View.VISIBLE);
+                rvMyPartol.setVisibility(View.VISIBLE);
                 nullDataPanel.setVisibility(View.GONE);
                 if (mPage == 1) {
                     mAdapter.setNewData(bean.getData().getLists());
@@ -168,22 +174,22 @@ public class MyPartolFragment extends BaseFragmentByMvp<UserMyPatrolPresenter> i
         } else {
             dataNull();
         }
-        srlMyTimeTask.finishRefresh();
-        srlMyTimeTask.finishLoadMore();
+        srlMyPartol.finishRefresh();
+        srlMyPartol.finishLoadMore();
     }
 
     @Override
     public void requestShowTips(String msg) {
         showMessage(msg);
-        srlMyTimeTask.finishRefresh();
-        srlMyTimeTask.finishLoadMore();
+        srlMyPartol.finishRefresh();
+        srlMyPartol.finishLoadMore();
     }
 
     private void dataNull() {
-        srlMyTimeTask.finishRefresh();
-        srlMyTimeTask.finishLoadMore();
+        srlMyPartol.finishRefresh();
+        srlMyPartol.finishLoadMore();
         if (mPage == 1) {
-            rvMyTimeTask.setVisibility(View.GONE);
+            rvMyPartol.setVisibility(View.GONE);
             nullDataPanel.setVisibility(View.VISIBLE);
         }
     }

@@ -79,10 +79,21 @@ public class MainPartolFragment extends BaseFragmentByMvp<MyPartolDetailPresente
         return R.layout.fragment_main_partol;
     }
 
+    public void setFragmentRefresh() {
+        if (advicesListsViewPager != null) {
+            if (advicesListsViewPager.getCurrentItem() == 0) {
+                ((PatrolFragment)mFragmentList.get(0)).setFragmentRefresh();
+            }else {
+                ((MyPartolFragment)mFragmentList.get(1)).setFragmentRefresh();
+            }
+        }
+    }
+
+    private List<Fragment> mFragmentList;
     @Override
     public void initView(View view) {
         String[] mTabs = new String[]{"巡检列表", "已巡检"};
-        List<Fragment> mFragmentList = new ArrayList<>();
+        mFragmentList = new ArrayList<>();
         mFragmentList.add(PatrolFragment.newInstance(mParam1,mParam2));
         mFragmentList.add(MyPartolFragment.newInstance(mParam1,mParam2));
         ViewPagerAdapter adapter = new ViewPagerAdapter(requireActivity().getSupportFragmentManager(), mFragmentList, mTabs);

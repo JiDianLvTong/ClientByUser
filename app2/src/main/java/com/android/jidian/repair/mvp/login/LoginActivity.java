@@ -38,6 +38,7 @@ public class LoginActivity extends BaseActivityByMvp<LoginPresenter> implements 
         mPresenter = new LoginPresenter();
         mPresenter.attachView(this);
         if (UserInfoSp.getInstance().isLogin()) {
+            LoginActivity.this.finish();
             startActivity(new Intent(activity, MainActivity.class));
         }
     }

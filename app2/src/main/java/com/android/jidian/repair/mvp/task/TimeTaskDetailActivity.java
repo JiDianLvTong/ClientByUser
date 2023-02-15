@@ -1,9 +1,15 @@
 package com.android.jidian.repair.mvp.task;
 
+import static com.android.jidian.repair.utils.picture.PictureUtil.calculateInSampleSize;
+
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -316,18 +322,69 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap bitmap = (Bitmap) extras.get("data");
-            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
-            BitmapManager.saveBitmapFile(new File(filePath), bitmap);
-            if (mPresenter != null) {
-                if (!TextUtils.isEmpty(mPath)) {
-                    mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
-                } else {
-                    showMessage("出错了，请重新选择~");
-                    mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+            if (extras != null) {
+                Bitmap bitmap = (Bitmap) extras.get("data");
+                String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                BitmapManager.saveBitmapFile(new File(filePath), bitmap);
+                if (mPresenter != null) {
+                    if (!TextUtils.isEmpty(mPath)) {
+                        mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
+                    } else {
+                        showMessage("出错了，请重新选择~");
+                        mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+                    }
+                }
+            } else {
+                Uri uri = data.getData();
+                String filePath = getRealPathFromURI(uri);
+                //图片上传，需要压缩一下
+                int requestWidth = (int) (1024 / 2.625);//计算1024像素的dp
+                //首先使用inJustDecodeBounds = true进行解码以检查尺寸
+                final BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(filePath, options);
+                //计算inSampleSize
+                options.inSampleSize = calculateInSampleSize(options, requestWidth, requestWidth);
+                //使用inSampleSize集解码位图
+                options.inJustDecodeBounds = false;
+                Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
+                String bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                BitmapManager.saveBitmapFile(new File(bitmapFilePath), bitmap);
+                if (mPresenter != null) {
+                    if (!TextUtils.isEmpty(mPath)) {
+                        mPresenter.requestUpLoadImg(mPath, bitmapFilePath, mUpToken, mCompanyid, requestCode);
+                    } else {
+                        showMessage("出错了，请重新选择~");
+                        mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+                    }
                 }
             }
+//            Bitmap bitmap = (Bitmap) extras.get("data");
+//            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+//            BitmapManager.saveBitmapFile(new File(filePath), bitmap);
+//            if (mPresenter != null) {
+//                if (!TextUtils.isEmpty(mPath)) {
+//                    mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
+//                } else {
+//                    showMessage("出错了，请重新选择~");
+//                    mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+//                }
+//            }
         }
+    }
+
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
     }
 
     @Override

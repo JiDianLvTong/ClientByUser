@@ -6,7 +6,7 @@
     tools:context=".mvp.main.PatrolFragment.hasPartol.MyPartolFragment">
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout
-        android:id="@+id/srl_my_time_task"
+        android:id="@+id/srl_my_partol"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -15,7 +15,7 @@
             android:layout_height="match_parent">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_my_time_task"
+                android:id="@+id/rv_my_partol"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 

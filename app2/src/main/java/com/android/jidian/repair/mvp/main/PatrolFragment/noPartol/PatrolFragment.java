@@ -96,6 +96,12 @@ public class PatrolFragment extends BaseFragmentByMvp<PatrolPresenter> implement
         return R.layout.fragment_patrol;
     }
 
+    public void setFragmentRefresh() {
+        if (srlPatrol != null) {
+            srlPatrol.autoRefresh();
+        }
+    }
+
     @Override
     public void initView(View view) {
         mPresenter = new PatrolPresenter();

@@ -89,6 +89,10 @@ public class TimeLimitTaskFragment extends BaseFragmentByMvp<TimeLimitTaskPresen
         }
     }
 
+    public void setFragmentRefresh() {
+        requestData(true);
+    }
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_time_limit_task;

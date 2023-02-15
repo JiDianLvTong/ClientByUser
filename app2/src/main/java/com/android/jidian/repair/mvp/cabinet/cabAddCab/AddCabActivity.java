@@ -1,13 +1,22 @@
 package com.android.jidian.repair.mvp.cabinet.cabAddCab;
 
+import static com.android.jidian.repair.utils.picture.PictureUtil.calculateInSampleSize;
+
 import android.Manifest;
+import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.TextView;
 
@@ -18,6 +27,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
+import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.utils.picture.BitmapManager;
 import com.android.jidian.repair.widgets.dialog.DialogByEnter;
@@ -28,6 +38,9 @@ import com.android.jidian.repair.utils.RSAUtil;
 import com.android.jidian.repair.utils.picture.PictureSelectorUtils;
 import com.permissionx.guolindev.PermissionX;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -43,9 +56,11 @@ import butterknife.OnClick;
 import wendu.dsbridge.CompletionHandler;
 import wendu.dsbridge.DWebView;
 
+@BindEventBus
 public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implements AddCabContract.View {
 
-    private static final int ADD_IMAGE_IMG_1 = 101;
+    public static final int ADD_IMAGE_IMG_1 = 101;
+    public static final int ADD_IMAGE_ABLBUM = 102;
     /**
      * 需要进行检测的权限数组
      */
@@ -176,6 +191,23 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(AddCabEvent event) {
+        PermissionX.init(activity)
+                .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+                .request((allGranted, grantedList, deniedList) -> {
+                    if (allGranted) {
+                        PictureSelectorUtils.addPhotoByCameraAndAlbum(AddCabActivity.this, ADD_IMAGE_IMG_1);
+//                        pushPhotoUrl(data1, callback1);
+                    } else {
+                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
+                        dialog.showPopupWindow();
+                    }
+                });
+    }
+
     @OnClick(R.id.pageReturn)
     public void onClickPageReturn() {
         finish();
@@ -198,9 +230,9 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     @Override
     public void requestUpLoadImgSuccess(UploadImageBean bean, int index) {
         if (bean.getData() != null) {
-            if (ADD_IMAGE_IMG_1 == index) {
-                callback1.complete(bean.getData().getFurl());
-            }
+//            if (ADD_IMAGE_IMG_1 == index) {
+            callback1.complete(bean.getData().getFurl());
+//            }
         } else {
             showMessage(bean.getMsg());
         }
@@ -249,37 +281,64 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap bitmap = (Bitmap) extras.get("data");
-            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
-            BitmapManager.saveBitmapFile(new File(filePath), bitmap);
-            if (mPresenter != null) {
-                if (!TextUtils.isEmpty(mPath)) {
-                    mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
-                } else {
-                    showMessage("出错了，请重新选择~");
-                    mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+            if (data.getData() == null) {
+                Bundle extras = data.getExtras();
+                Bitmap bitmap = (Bitmap) extras.get("data");
+                String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                BitmapManager.saveBitmapFile(new File(filePath), bitmap);
+                if (mPresenter != null) {
+                    if (!TextUtils.isEmpty(mPath)) {
+                        mPresenter.requestUpLoadImg(mPath, filePath, mUpToken, mCompanyid, requestCode);
+                    } else {
+                        showMessage("出错了，请重新选择~");
+                        mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+                    }
+                }
+            } else {
+                Uri uri = data.getData();
+                String filePath = getRealPathFromURI(uri);
+                //图片上传，需要压缩一下
+                int requestWidth = (int) (1024 / 2.625);//计算1024像素的dp
+                //首先使用inJustDecodeBounds = true进行解码以检查尺寸
+                final BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true;
+                BitmapFactory.decodeFile(filePath, options);
+                //计算inSampleSize
+                options.inSampleSize = calculateInSampleSize(options, requestWidth, requestWidth);
+                //使用inSampleSize集解码位图
+                options.inJustDecodeBounds = false;
+                Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
+                String bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                BitmapManager.saveBitmapFile(new File(bitmapFilePath), bitmap);
+                if (mPresenter != null) {
+                    if (!TextUtils.isEmpty(mPath)) {
+                        mPresenter.requestUpLoadImg(mPath, bitmapFilePath, mUpToken, mCompanyid, requestCode);
+                    } else {
+                        showMessage("出错了，请重新选择~");
+                        mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
+                    }
                 }
             }
         }
     }
 
+    private String getRealPathFromURI(Uri contentURI) {
+        String result;
+        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        if (cursor == null) { // Source is Dropbox or other similar local file path
+            result = contentURI.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+        return result;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        PermissionX.init(activity)
-                .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                .request((allGranted, grantedList, deniedList) -> {
-                    if (allGranted) {
-                        initLocation();
-
-                    } else {
-                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
-                        dialog.showPopupWindow();
-                    }
-                });
     }
 
     @Override
@@ -298,7 +357,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     }
 
     private void pushPhotoUrl(Object data, CompletionHandler<String> callback) {
-        PictureSelectorUtils.addPhotoByCameraAndAlbum(AddCabActivity.this, ADD_IMAGE_IMG_1);
+//        PictureSelectorUtils.addPhotoByCameraAndAlbum(AddCabActivity.this, ADD_IMAGE_IMG_1);
 //        View view = LayoutInflater.from(this).inflate(R.layout.dialog_change_avatar, null);
 //        TextView tv_open_album = view.findViewById(R.id.tv_open_album);
 //        View line2 = view.findViewById(R.id.line2);
@@ -344,19 +403,8 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
         public void testObjcCallback(Object msg, CompletionHandler<String> handler) throws JSONException {
 //            data1 = data;
             callback1 = handler;
+            EventBus.getDefault().post(new AddCabEvent());
 
-            PermissionX.init(activity)
-                    .permissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
-                    .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                    .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                    .request((allGranted, grantedList, deniedList) -> {
-                        if (allGranted) {
-                            pushPhotoUrl(data1, callback1);
-                        } else {
-                            DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
-                            dialog.showPopupWindow();
-                        }
-                    });
         }
 
         @JavascriptInterface
