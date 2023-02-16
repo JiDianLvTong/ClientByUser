@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.android.jidian.repair.R;
+import com.android.jidian.repair.base.ActivityCollector;
 import com.android.jidian.repair.base.BaseActivity;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.mvp.login.LoginActivity;
@@ -46,7 +47,10 @@ public class UserInfoActivity extends BaseActivity {
     @OnClick(R.id.logoutView)
     public void onClickLogoutView(){
         UserInfoSp.getInstance().cleanUserInfoData();
-        activity.startActivity(new Intent(activity, LoginActivity.class));
-        activity.finish();
+        Intent intent = new Intent(activity, LoginActivity.class);
+        //下面2个flags ,可以将原有任务栈清空
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(intent);
     }
 }
