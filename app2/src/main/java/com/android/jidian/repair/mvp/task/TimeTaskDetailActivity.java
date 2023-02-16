@@ -240,17 +240,19 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
             tvTaskItemGuide.setVisibility(View.GONE);
             tvTestItemContent.setText(bean.getContent());
         }
+
+
         if (bean.getImages().size() > 0) {
-            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg1);
+            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).into(ivTaskFailureImg1);
         }
         if (bean.getImages().size() > 1) {
-            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg2);
+            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(1)).into(ivTaskFailureImg2);
         }
         if (bean.getImages().size() > 2) {
-            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg3);
+            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(2)).into(ivTaskFailureImg3);
         }
         if (bean.getImages().size() > 3) {
-            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
+            Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(3)).into(ivTaskFailureImg4);
         }
         if ("1".equals(bean.getUstatus())) {// 1 == 已完成   2 == 待完成
             llNoSalve.setVisibility(View.GONE);
@@ -260,13 +262,13 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
                 Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg1);
             }
             if (bean.getImages().size() > 1) {
-                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg2);
+                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(1)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg2);
             }
             if (bean.getImages().size() > 2) {
-                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg3);
+                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(2)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg3);
             }
             if (bean.getImages().size() > 3) {
-                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg4);
+                Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(3)).placeholder(R.drawable.icon_image_broken).into(ivTaskSolveImg4);
             }
         } else if ("2".equals(bean.getUstatus())) {
             llNoSalve.setVisibility(View.VISIBLE);

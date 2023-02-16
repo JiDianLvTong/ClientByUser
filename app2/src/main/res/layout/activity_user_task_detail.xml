@@ -151,40 +151,68 @@
             android:paddingHorizontal="15dp"
             android:paddingBottom="15dp">
 
-            <com.itheima.roundedimageview.RoundedImageView
-                android:id="@+id/iv_task_failure_img_1"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="1px"
                 android:layout_height="70dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                app:riv_corner_radius="5dp"/>
+                android:layout_weight="1">
 
-            <com.itheima.roundedimageview.RoundedImageView
-                android:id="@+id/iv_task_failure_img_2"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                app:riv_corner_radius="5dp"
-                android:layout_marginLeft="5dp"/>
+                <com.itheima.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_task_failure_img_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="5dp"/>
 
-            <com.itheima.roundedimageview.RoundedImageView
-                android:id="@+id/iv_task_failure_img_3"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:scaleType="fitXY"
-                app:riv_corner_radius="5dp"
-                android:layout_marginLeft="5dp"/>
+            </FrameLayout>
 
-            <com.itheima.roundedimageview.RoundedImageView
-                android:id="@+id/iv_task_failure_img_4"
-                android:layout_width="wrap_content"
+            <FrameLayout
+                android:layout_width="1px"
                 android:layout_height="70dp"
                 android:layout_weight="1"
-                android:scaleType="fitXY"
-                app:riv_corner_radius="5dp"
-                android:layout_marginLeft="5dp"/>
+                android:layout_marginLeft="5dp">
+
+                <com.itheima.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_task_failure_img_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="5dp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="1px"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp">
+
+                <com.itheima.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_task_failure_img_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="5dp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="1px"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp">
+
+                <com.itheima.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_task_failure_img_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:riv_corner_radius="5dp"/>
+
+            </FrameLayout>
 
         </LinearLayout>
 

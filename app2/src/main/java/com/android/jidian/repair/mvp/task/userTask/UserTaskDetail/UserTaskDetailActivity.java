@@ -126,13 +126,13 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg1);
         }
         if (bean.getImages().size() > 1) {
-            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg2);
+            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(1)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg2);
         }
         if (bean.getImages().size() > 2) {
-            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg3);
+            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(2)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg3);
         }
         if (bean.getImages().size() > 3) {
-            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
+            Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(3)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
         }
 
 //        if (!"1".equals(bean.getUstatus())){
