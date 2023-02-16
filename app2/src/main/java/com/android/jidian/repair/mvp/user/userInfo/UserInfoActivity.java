@@ -11,6 +11,7 @@ import com.android.jidian.repair.base.BaseActivity;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.mvp.login.LoginActivity;
 import com.android.jidian.repair.mvp.user.userInfo.password.ChangePasswordActivity;
+import com.android.jidian.repair.widgets.dialog.DialogByChoice;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -46,11 +47,22 @@ public class UserInfoActivity extends BaseActivity {
     }
     @OnClick(R.id.logoutView)
     public void onClickLogoutView(){
-        UserInfoSp.getInstance().cleanUserInfoData();
-        Intent intent = new Intent(activity, LoginActivity.class);
-        //下面2个flags ,可以将原有任务栈清空
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        activity.startActivity(intent);
+        DialogByChoice dialog = new DialogByChoice(activity, "确定要退出登录？", new DialogByChoice.DialogChoiceListener() {
+            @Override
+            public void enterReturn() {
+                UserInfoSp.getInstance().cleanUserInfoData();
+                Intent intent = new Intent(activity, LoginActivity.class);
+                //下面2个flags ,可以将原有任务栈清空
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                activity.startActivity(intent);
+            }
+
+            @Override
+            public void cancelReturn() {
+
+            }
+        });
+        dialog.showPopupWindow();
     }
 }
