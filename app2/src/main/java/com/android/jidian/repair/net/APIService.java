@@ -1,6 +1,7 @@
 package com.android.jidian.repair.net;
 
 import com.android.jidian.repair.base.BaseBean;
+import com.android.jidian.repair.mvp.main.UpdateVersionBean;
 
 import io.reactivex.Flowable;
 import retrofit2.http.Field;
@@ -19,4 +20,11 @@ public interface APIService {
     @FormUrlEncoded
     @POST("Sms/msgSend.html")
     Flowable<BaseBean> requestVerificationCode(@Field("phone") String phone);
+
+    /**
+     * 请求app更新
+     */
+    @FormUrlEncoded
+    @POST("AppVer/version.html")
+    Flowable<UpdateVersionBean> requestAppUpdateVersion(@Field("uid") String uid);
 }

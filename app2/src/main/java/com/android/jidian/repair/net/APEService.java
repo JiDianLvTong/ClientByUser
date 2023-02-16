@@ -2,6 +2,7 @@ package com.android.jidian.repair.net;
 
 import com.android.jidian.repair.base.BaseBean;
 import com.android.jidian.repair.mvp.cabinet.cabAuditCab.AuditCabListBean;
+import com.android.jidian.repair.mvp.main.UpdateVersionBean;
 import com.android.jidian.repair.mvp.user.userLog.BatteryInquiryBean;
 import com.android.jidian.repair.mvp.user.userLog.MeterReadingBean;
 import com.android.jidian.repair.mvp.user.userLog.OperationLogBean;

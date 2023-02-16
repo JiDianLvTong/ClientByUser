@@ -22,12 +22,15 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.android.jidian.repair.BuildConfig;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BindEventBus;
 import com.android.jidian.repair.base.permissionManager.PermissionManager;
+import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.keepAlive.KeepLiveManager;
 import com.android.jidian.repair.service.LongLinkService;
+import com.android.jidian.repair.utils.file.FileManager;
 import com.android.jidian.repair.widgets.dialog.DialogByEnter;
 import com.android.jidian.repair.mvp.main.FailureFragment.FailureEvent;
 import com.android.jidian.repair.mvp.main.PatrolFragment.MainPartolFragment;
@@ -47,12 +50,19 @@ import com.permissionx.guolindev.PermissionX;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import constant.UiType;
+import listener.Md5CheckResultListener;
+import listener.UpdateDownloadListener;
+import model.UiConfig;
+import model.UpdateConfig;
+import update.UpdateAppUtils;
 
 @BindEventBus
 public class MainActivity extends BaseActivityByMvp<MainPresenter> implements MainContract.View {
@@ -78,6 +88,9 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
 
     @Override
     public void initView() {
+        mPresenter = new MainPresenter();
+        mPresenter.attachView(this);
+        mPresenter.requestAppUpdateVersion(UserInfoSp.getInstance().getId());
         //1像素且透明Activity提升App进程优先级
 //        KeepLiveManager.getInstance().registerKeepLiveReceiver(this);
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
@@ -256,6 +269,67 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
     @Override
     public void requestShowTips(String msg) {
         showMessage(msg);
+    }
+
+    @Override
+    public void requestAppUpdateVersionSuccess(UpdateVersionBean.DataBean bean) {
+        String url = bean.getAndroid_url();
+        String force = bean.getAndroid_force();
+        boolean isForce = false;
+        if (force.equals("1")) {
+            isForce = true;
+        }
+        int netVersion = Integer.parseInt(bean.getAndroid_code());
+        int localVersion = BuildConfig.VERSION_CODE;
+        if (url != null && !url.equals("null") && netVersion > localVersion) {
+
+            UpdateConfig updateConfig = new UpdateConfig();
+            updateConfig.setCheckWifi(true);
+            updateConfig.setNeedCheckMd5(true);
+            updateConfig.setNotifyImgRes(R.drawable.u6_pub_dialog_update);
+            updateConfig.setApkSavePath(FileManager.getInstance().getRootPath());
+            updateConfig.setAlwaysShowDownLoadDialog(true);
+            updateConfig.setForce(isForce);
+
+            UiConfig uiConfig = new UiConfig();
+            uiConfig.setUiType(UiType.CUSTOM);
+            uiConfig.setCustomLayoutId(R.layout.dialog_update);
+
+            UpdateAppUtils
+                    .getInstance()
+                    .apkUrl(url)
+                    .updateTitle("发现新版本:" + "Ver_" + bean.getAndroid_name())
+                    .updateContent("1.bug更改")
+                    .uiConfig(uiConfig)
+                    .updateConfig(updateConfig)
+                    .setMd5CheckResultListener(new Md5CheckResultListener() {
+                        @Override
+                        public void onResult(boolean result) {
+
+                        }
+                    })
+                    .setUpdateDownloadListener(new UpdateDownloadListener() {
+                        @Override
+                        public void onStart() {
+
+                        }
+
+                        @Override
+                        public void onDownload(int progress) {
+
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+
+                        @Override
+                        public void onError(@NotNull Throwable e) {
+
+                        }
+                    }).update();
+        }
     }
 
     /**

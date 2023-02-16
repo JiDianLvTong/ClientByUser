@@ -42,4 +42,35 @@ public class MainPresenter extends BasePresenter<MainContract.View> implements M
                     }
                 });
     }
+
+    @Override
+    public void requestAppUpdateVersion(String uid) {
+        if (!isViewAttached()) {
+            return;
+        }
+        if (mView != null) {
+            mView.showProgress();
+        }
+        mModel.requestAppUpdateVersion(uid)
+                .compose(RxScheduler.Flo_io_main())
+                .subscribe(bean -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        if (bean != null) {
+                            if ("1".equals(bean.getStatus())) {
+                                if (bean.getData() != null) {
+                                    mView.requestAppUpdateVersionSuccess(bean.getData());
+                                }
+                            } else {
+
+                            }
+                        }
+                    }
+                }, throwable -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        mView.onError(throwable);
+                    }
+                });
+    }
 }

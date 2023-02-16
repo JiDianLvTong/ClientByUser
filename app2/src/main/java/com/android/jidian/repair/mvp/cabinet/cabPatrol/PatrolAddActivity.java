@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -14,7 +15,6 @@ import com.android.jidian.repair.PubFunction;
 import com.android.jidian.repair.R;
 import com.android.jidian.repair.base.BaseActivityByMvp;
 import com.android.jidian.repair.base.BaseBean;
-import com.android.jidian.repair.mvp.cabinet.cabFailureAdd.FailureAddActivity;
 import com.android.jidian.repair.mvp.task.UploadImageBean;
 import com.android.jidian.repair.mvp.task.UploadUploadUrlSetBean;
 import com.android.jidian.repair.utils.Md5;

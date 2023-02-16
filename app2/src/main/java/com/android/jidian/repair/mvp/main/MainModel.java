@@ -15,4 +15,9 @@ public class MainModel implements MainContract.Model {
     public Flowable<BaseBean> requestLoginCheckAcc(String uid, String apptoken, String nowlng, String nowlat) {
         return RetrofitClient.getInstance().getApeService().requestCheckAcc(uid, apptoken, nowlng, nowlat);
     }
+
+    @Override
+    public Flowable<UpdateVersionBean> requestAppUpdateVersion(String uid) {
+        return RetrofitClient.getInstance().getApiService().requestAppUpdateVersion(uid);
+    }
 }

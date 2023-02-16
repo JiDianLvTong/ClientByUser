@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -87,6 +89,24 @@ public class FailureAddActivity extends BaseActivityByMvp<FailurePresenter> impl
                     PictureSelectorUtils.addPhotoByCamera(FailureAddActivity.this, FAILURE_TAKT_PHOTO_4);
                 }
 
+            }
+        });
+        inputEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().length() > 199) {
+                    showMessage("最多输入200个字~");
+                }
             }
         });
     }
