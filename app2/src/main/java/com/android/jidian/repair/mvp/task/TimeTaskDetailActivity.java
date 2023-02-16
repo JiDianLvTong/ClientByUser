@@ -100,6 +100,9 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
     @BindView(R.id.tv_task_content)
     public TextView tvTaskContent;
 
+    @BindView(R.id.tv_task_item_date)
+    public TextView tvTaskItemDate;
+
     private String mWtid = "";
     private String mPath, mProj, mUpToken, mCompanyid;
     private String mlng, mlat;
@@ -193,22 +196,22 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
 
     @OnClick(R.id.iv_task_solve_img_1)
     public void OnClickivTaskSolveImg1() {
-        PictureSelectorUtils.addPhotoByCameraAndAlbum(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_1);
+        PictureSelectorUtils.addPhotoByCamera(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_1);
     }
 
     @OnClick(R.id.iv_task_solve_img_2)
     public void OnClickivTaskSolveImg2() {
-        PictureSelectorUtils.addPhotoByCameraAndAlbum(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_2);
+        PictureSelectorUtils.addPhotoByCamera(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_2);
     }
 
     @OnClick(R.id.iv_task_solve_img_3)
     public void OnClickivTaskSolveImg3() {
-        PictureSelectorUtils.addPhotoByCameraAndAlbum(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_3);
+        PictureSelectorUtils.addPhotoByCamera(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_3);
     }
 
     @OnClick(R.id.iv_task_solve_img_4)
     public void OnClickivTaskSolveImg4() {
-        PictureSelectorUtils.addPhotoByCameraAndAlbum(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_4);
+        PictureSelectorUtils.addPhotoByCamera(TimeTaskDetailActivity.this, ADD_SOLVE_IMG_4);
     }
 
     @OnClick(R.id.pageReturn)
@@ -241,6 +244,18 @@ public class TimeTaskDetailActivity extends BaseActivityByMvp<TimeTaskDetailPres
             tvTestItemContent.setText(bean.getContent());
         }
 
+        tvTaskItemDate.setText("发布时间: " + bean.getCreate_time());
+
+
+        int imageCount = 0;
+        for(int i = 0 ; i < bean.getImages().size() ; i ++){
+            if(bean.getImages().get(i).equals("")){
+                imageCount = imageCount + 1;
+            }
+        }
+        if(imageCount == 4){
+            llTaskFailureImage.setVisibility(View.GONE);
+        }
 
         if (bean.getImages().size() > 0) {
             Glide.with(TimeTaskDetailActivity.this).load(bean.getImages().get(0)).into(ivTaskFailureImg1);

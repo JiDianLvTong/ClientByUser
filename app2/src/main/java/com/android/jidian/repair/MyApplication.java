@@ -2,12 +2,13 @@ package com.android.jidian.repair;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.amap.api.location.AMapLocationClient;
-import com.android.jidian.repair.base.permissionManager.PermissionManager;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
+import com.android.jidian.repair.service.WebSocketController;
 
 /**
  * @author : xiaoming
@@ -33,7 +34,9 @@ public class MyApplication extends Application {
 //        PermissionManager.getInstance().init(getApplicationContext());
         //本地储存初始化 - 用户sp
         UserInfoSp.getInstance().init(getApplicationContext());
-
+        //长连接初始化
+        WebSocketController.getInstance().init(getApplicationContext());
+        //高德地图
         AMapLocationClient.updatePrivacyAgree(getApplicationContext(), true);
         AMapLocationClient.updatePrivacyShow(getApplicationContext(), true, true);
     }

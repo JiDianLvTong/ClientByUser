@@ -92,10 +92,6 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <service android:name=".service.LongLinkService"
-            android:enabled="true"
-            android:exported="true"/>
-
         <receiver android:name=".service.RestartLongLinkReceiver"
             android:enabled="true"
             android:exported="true">

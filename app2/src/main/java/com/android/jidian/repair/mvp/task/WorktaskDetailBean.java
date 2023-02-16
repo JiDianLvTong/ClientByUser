@@ -90,6 +90,24 @@ public class WorktaskDetailBean {
         private String title;
         private List<String> images;
         private List<String> imagedw;
+        private String contentdw;
+        private String timedw;
+
+        public String getContentdw() {
+            return contentdw;
+        }
+
+        public void setContentdw(String contentdw) {
+            this.contentdw = contentdw;
+        }
+
+        public String getTimedw() {
+            return timedw;
+        }
+
+        public void setTimedw(String timedw) {
+            this.timedw = timedw;
+        }
 
         public String getId() {
             return id;

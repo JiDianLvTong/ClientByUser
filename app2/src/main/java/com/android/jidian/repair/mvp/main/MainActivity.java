@@ -79,7 +79,6 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
     public AMapLocationClientOption mLocationOption = null;
     public double[] coordinates = new double[]{0, 0};
     private AMapLocation aMapLocation;
-    private boolean mPositioned = false;
 
     @Override
     public int getLayoutId() {
@@ -94,7 +93,7 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
         //1像素且透明Activity提升App进程优先级
 //        KeepLiveManager.getInstance().registerKeepLiveReceiver(this);
         ArrayList<CustomTabEntity> mMainTabEntities = new ArrayList<>();
-        String[] mTitles = {"即时任务", "巡检", "我的"};//"故障",
+        String[] mTitles = {"即时任务", "巡检", "我的"};
         int[] mIconUnSelectIds = {
                 R.drawable.main_count_gray, R.drawable.main_check_gray,
                 R.drawable.main_user_gray
@@ -122,11 +121,8 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
 
         //添加fragment
         mFragments = new ArrayList<>();
-//        mMainChartFragment = MainChartFragment.newInstance();
-//        mFragments.add(mMainChartFragment);
         mFragments.add(TimeLimitTaskFragment.newInstance("", ""));
         mFragments.add(MainPartolFragment.newInstance("", ""));
-//        mFragments.add(FailureFragment.newInstance("", ""));
         mFragments.add(new UserFragment());
 
         vpContent.setOffscreenPageLimit(mTitles.length - 1);
@@ -211,7 +207,6 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
                         aMapLocation = mAMapLocation;
                         if (aMapLocation.getErrorCode() == 0) {
                             //定位成功回调信息，设置相关消息
-                            mPositioned = true;
                             coordinates[0] = aMapLocation.getLongitude();//获取经度
                             coordinates[1] = aMapLocation.getLatitude();//获取纬度
                             EventBus.getDefault().postSticky(new PatrolFragmentEvent(LOCATION_SUCCESS, coordinates[0] + "", coordinates[1] + ""));

@@ -99,7 +99,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="01"
-                    android:textSize="50sp"/>
+                    android:textSize="50sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <TextView
                     android:id="@+id/tv_punch_title"
@@ -112,7 +113,8 @@
                     android:textSize="15sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_bg_punch"
                     app:layout_constraintStart_toEndOf="@+id/tv_punch_num"
-                    app:layout_constraintTop_toTopOf="@+id/tv_bg_punch" />
+                    app:layout_constraintTop_toTopOf="@+id/tv_bg_punch"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <FrameLayout
                     android:layout_width="120dp"
@@ -152,7 +154,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="02"
-                    android:textSize="50sp"/>
+                    android:textSize="50sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <TextView
                     android:id="@+id/tv_screen_clean_title"
@@ -162,7 +165,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:text="屏幕清洁"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <FrameLayout
                     android:layout_width="120dp"
@@ -202,7 +206,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="03"
-                    android:textSize="50sp" />
+                    android:textSize="50sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <TextView
                     android:id="@+id/tv_back_lock_title"
@@ -212,7 +217,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:text="后门锁状态"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <FrameLayout
                     android:layout_width="120dp"
@@ -256,7 +262,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="04"
-                        android:textSize="50sp" />
+                        android:textSize="50sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                     <TextView
                         android:id="@+id/tv_outside_clean_title"
@@ -266,7 +273,8 @@
                         android:layout_marginStart="20dp"
                         android:layout_weight="1"
                         android:text="柜体外部整理/清洁"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                 </LinearLayout>
 
@@ -391,7 +399,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:text="05"
-                        android:textSize="50sp" />
+                        android:textSize="50sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                     <TextView
                         android:id="@+id/tv_inside_clean_title"
@@ -400,7 +409,8 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="20dp"
                         android:text="柜体内部整理/清洁"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                 </LinearLayout>
 
@@ -494,7 +504,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:text="06"
-                    android:textSize="50sp" />
+                    android:textSize="50sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <TextView
                     android:id="@+id/tv_electricity_title"
@@ -504,7 +515,8 @@
                     android:layout_marginStart="20dp"
                     android:layout_weight="1"
                     android:text="漏电检查"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textColor="@color/yellow_D7A64A"/>
 
                 <FrameLayout
                     android:layout_width="120dp"
@@ -552,7 +564,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="换电柜网络信号"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -617,7 +630,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="柜体地线检查"
-                        android:textSize="13sp" />
+                        android:textSize="13sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -681,8 +695,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="换点按钮是否可用"
-                        android:textSize="13sp" />
+                        android:text="换电按钮是否可用"
+                        android:textSize="13sp"
+                        android:textColor="@color/yellow_D7A64A"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"

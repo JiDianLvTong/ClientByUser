@@ -29,10 +29,10 @@ public class PartolAdapter extends BaseQuickAdapter<PatrolIndexBean.DataBean.Lis
 
     @Override
     protected void convert(BaseViewHolder holder, PatrolIndexBean.DataBean.ListsBean listsBean) {
-        holder.setText(R.id.tv_patrol_item_num, "编号:" + listsBean.getId())
+        holder.setText(R.id.tv_patrol_item_num, "编号: " + listsBean.getId())
                 .setText(R.id.tv_patrol_item_name,  listsBean.getName())
-                .setText(R.id.tv_patrol_item_address, "地址:" + listsBean.getAddress() + "")
-                .setText(R.id.tv_patrol_item_distance, "距离:" + listsBean.getDistance() + "KM")
+                .setText(R.id.tv_patrol_item_address, "地址: " + listsBean.getAddress() + "")
+                .setText(R.id.tv_patrol_item_distance, "距离: " + listsBean.getDistance() + "KM")
                 .setText(R.id.tv_patrol_item_status, listsBean.getOnline());
         holder.setTextColor(R.id.tv_patrol_item_status, "在线".equals(listsBean.getOnline()) ? Color.parseColor("#D7A64A") : Color.parseColor("#cccccc"));
         Glide.with(mContext).load(listsBean.getBgimg()).into(((ImageView) holder.getView(R.id.iv_patrol_item_img)));

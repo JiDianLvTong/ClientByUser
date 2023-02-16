@@ -85,14 +85,31 @@
                 android:padding="15dp"
                 android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tv_task_item_num"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_000000"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_task_item_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_000000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/tv_task_item_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/color_999999"
+                        android:textSize="9sp"
+                        android:layout_marginTop="5dp"/>
+
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/tv_task_item_guide"
@@ -219,142 +236,463 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_no_salve"
+        android:id="@+id/ll_has_salve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/shape_ffffff_corner_10"
         android:orientation="vertical"
-        android:padding="15dp"
         android:visibility="gone">
 
-        <EditText
-            android:id="@+id/et_task_solve"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:padding="15dp"
-            android:background="@drawable/shape_cccccc_corner_10_line"
-            android:gravity="top|start"
-            android:hint="请输入..."
-            android:textSize="13sp" />
-
-        <LinearLayout
-            android:id="@+id/ll_task_solve_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.itheima.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_task_solve_img_1"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:scaleType="fitXY"
-                    app:riv_corner_radius="5dp"/>
-
-                <TextView
-                    android:text="设备图"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.itheima.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_task_solve_img_2"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY"
-                    app:riv_corner_radius="5dp"/>
-
-                <TextView
-                    android:text="合影图"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.itheima.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_task_solve_img_3"
-                    android:layout_width="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY"
-                    app:riv_corner_radius="5dp"/>
-
-                <TextView
-                    android:text="关键位置图"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <com.itheima.roundedimageview.RoundedImageView
-                    android:id="@+id/iv_task_solve_img_4"
-                    android:layout_width="70dp"
-                    android:src="@drawable/icon_image_add"
-                    android:layout_height="70dp"
-                    android:layout_marginStart="10dp"
-                    android:scaleType="fitXY"
-                    app:riv_corner_radius="5dp"/>
-
-                <TextView
-                    android:text="其他图"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
-                android:id="@+id/btn_task_solve"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:background="@drawable/shape_d7a64a_corner_10"
-                android:gravity="center"
-                android:text="确认完成"
-                android:textColor="@color/color_FFFFFF"
-                android:textSize="13sp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="完成信息"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_task_has_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textStyle="bold"/>
+                android:textColor="@color/color_999999"
+                android:textSize="9sp"
+                android:layout_marginTop="5dp"/>
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_f3f3f3_corner_bottom_10"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/et_task_has_solve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textColor="#333333"
+                android:gravity="top|start"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_task_has_solve_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_has_solve_img_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="设备图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_has_solve_img_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="合影图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_has_solve_img_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="关键位置图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_has_solve_img_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="其他图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_not_salve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_ffffff_corner_10"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_000000"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="未完成信息"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/tv_task_not_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/color_999999"
+                android:textSize="9sp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/shape_f3f3f3_corner_bottom_10"
+            android:padding="15dp">
+
+
+            <TextView
+                android:id="@+id/et_task_not_solve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:textColor="#333333"
+                android:gravity="top|start"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_task_not_solve_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_not_solve_img_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="设备图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_not_solve_img_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="合影图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_not_solve_img_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="关键位置图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="1px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:background="@drawable/shape_cccccc_corner_5">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:src="@drawable/pub_add_image"
+                            android:layout_gravity="center"
+                            android:adjustViewBounds="true"/>
+
+                        <com.itheima.roundedimageview.RoundedImageView
+                            android:id="@+id/iv_task_not_solve_img_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"
+                            app:riv_corner_radius="5dp"/>
+
+                    </FrameLayout>
+
+                    <TextView
+                        android:text="其他图"
+                        android:textSize="11sp"
+                        android:textColor="#333333"
+                        android:layout_marginTop="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
