@@ -90,9 +90,9 @@ public class MapUtil {
         List<PackageInfo> info = packageManager.getInstalledPackages(0);
         if (info == null || info.isEmpty())
             return false;
-        for (int i = 0; i < info.size(); i++) {
-            Log.d("xiaoming", "checkAppInstalled: " + info.get(i).packageName);
-        }
+//        for (int i = 0; i < info.size(); i++) {
+//            Log.d("xiaoming", "checkAppInstalled: " + info.get(i).packageName);
+//        }
         for (int i = 0; i < info.size(); i++) {
             if (pkgName.equals(info.get(i).packageName)) {
                 return true;
