@@ -49,8 +49,6 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     @BindView(R.id.iv_task_failure_img_4)
     public ImageView ivTaskFailureImg4;
 
-    @BindView(R.id.ll_no_salve)
-    public LinearLayout llNoSalve;
     @BindView(R.id.et_task_solve)
     public EditText etTaskSolve;
     @BindView(R.id.ll_task_solve_image)
@@ -65,6 +63,19 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
     public ImageView ivTaskSolveImg4;
     @BindView(R.id.btn_task_solve)
     public TextView btnTaskSolve;
+
+    @BindView(R.id.ll_has_salve)
+    public LinearLayout llHasSalve;
+    @BindView(R.id.tv_task_content)
+    public TextView tvTaskContent;
+    @BindView(R.id.iv_task_has_solve_img_1)
+    public ImageView ivTaskHasSolveImg1;
+    @BindView(R.id.iv_task_has_solve_img_2)
+    public ImageView ivTaskHasSolveImg2;
+    @BindView(R.id.iv_task_has_solve_img_3)
+    public ImageView ivTaskHasSolveImg3;
+    @BindView(R.id.iv_task_has_solve_img_4)
+    public ImageView ivTaskHasSolveImg4;
 
     private String wtId = "";
     private String[] mSolveImageList = new String[]{"", "", "", ""};
@@ -93,7 +104,7 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             if ("1".equals(bean.getUstatus())) {
                 tvTaskItemType.setText("电柜故障: 已完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
-            }else{
+            } else {
                 tvTaskItemType.setText("电柜故障: 未完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
             }
@@ -105,7 +116,7 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             if ("1".equals(bean.getUstatus())) {
                 tvTaskItemType.setText("救援任务: 已完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
-            }else{
+            } else {
                 tvTaskItemType.setText("救援任务: 未完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
             }
@@ -117,7 +128,7 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             if ("1".equals(bean.getUstatus())) {
                 tvTaskItemType.setText("其他任务: 已完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_d7a64a_corner_top_right_10);
-            }else{
+            } else {
                 tvTaskItemType.setText("其他任务: 未完成");
                 tvTaskItemType.setBackgroundResource(R.drawable.shape_cccccc_corner_top_right_10);
             }
@@ -135,9 +146,22 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             Glide.with(UserTaskDetailActivity.this).load(bean.getImages().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskFailureImg4);
         }
 
-//        if (!"1".equals(bean.getUstatus())){
-//            llNoSalve.setVisibility(View.VISIBLE);
-//        }
+        if ("1".equals(bean.getUstatus())) {
+            llHasSalve.setVisibility(View.VISIBLE);
+            tvTaskContent.setText(bean.getContentdw());
+            if (bean.getImages().size() > 0) {
+                Glide.with(UserTaskDetailActivity.this).load(bean.getImagedw().get(0)).placeholder(R.drawable.icon_image_broken).into(ivTaskHasSolveImg1);
+            }
+            if (bean.getImages().size() > 1) {
+                Glide.with(UserTaskDetailActivity.this).load(bean.getImagedw().get(1)).placeholder(R.drawable.icon_image_broken).into(ivTaskHasSolveImg2);
+            }
+            if (bean.getImages().size() > 2) {
+                Glide.with(UserTaskDetailActivity.this).load(bean.getImagedw().get(2)).placeholder(R.drawable.icon_image_broken).into(ivTaskHasSolveImg3);
+            }
+            if (bean.getImages().size() > 3) {
+                Glide.with(UserTaskDetailActivity.this).load(bean.getImagedw().get(3)).placeholder(R.drawable.icon_image_broken).into(ivTaskHasSolveImg4);
+            }
+        }
     }
 
     @OnClick(R.id.pageReturn)

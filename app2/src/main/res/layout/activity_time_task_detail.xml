@@ -357,6 +357,7 @@
                 android:background="@drawable/shape_cccccc_corner_10"
                 android:gravity="center"
                 android:text="无法完成"
+                android:visibility="gone"
                 android:textColor="@color/color_FFFFFF"
                 android:textSize="13sp"
                 android:layout_weight="1"
