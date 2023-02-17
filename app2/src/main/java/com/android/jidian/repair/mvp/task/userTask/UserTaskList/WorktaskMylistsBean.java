@@ -115,6 +115,15 @@ public class WorktaskMylistsBean {
             private String lng;
             private String lat;
             private String address;
+            private String timedw;
+
+            public String getTimedw() {
+                return timedw;
+            }
+
+            public void setTimedw(String timedw) {
+                this.timedw = timedw;
+            }
 
             public String getId() {
                 return id;

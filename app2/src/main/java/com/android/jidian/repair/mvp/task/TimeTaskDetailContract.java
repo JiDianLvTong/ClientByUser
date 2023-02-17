@@ -17,11 +17,8 @@ import okhttp3.RequestBody;
 public interface TimeTaskDetailContract {
     interface Model {
         Flowable<WorktaskDetailBean> requestWorktaskDetail(String wtid);
-
         Flowable<UploadUploadUrlSetBean> requestUploadUploadUrlSet(String token);
-
         Observable<UploadImageBean> requestUpLoadImg(String url, File file, String upToken, String companyid);
-
         Flowable<BaseBean> requestWorktaskResolve(String wtid, String ustat, String content, String img1, String img2, String img3, String img4);
     }
 

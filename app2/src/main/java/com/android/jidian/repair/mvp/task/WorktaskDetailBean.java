@@ -91,7 +91,6 @@ public class WorktaskDetailBean {
         private String contentdw;
         private List<String> images;
         private List<String> imagedw;
-        private String contentdw;
         private String timedw;
 
         public String getContentdw() {
@@ -222,12 +221,5 @@ public class WorktaskDetailBean {
             this.imagedw = imagedw;
         }
 
-        public String getContentdw() {
-            return contentdw;
-        }
-
-        public void setContentdw(String contentdw) {
-            this.contentdw = contentdw;
-        }
     }
 }

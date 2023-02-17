@@ -123,7 +123,12 @@ public class BaseHttp {
         OkHttpClient client = new OkHttpClient();
         //初始化请求本体
         FormBody.Builder formBodybuilder = new FormBody.Builder();
+
+        for(int i = 0 ; i < baseHttpParameterFormats.size() ; i++){
+            formBodybuilder.add(baseHttpParameterFormats.get(i).getName() , baseHttpParameterFormats.get(i).getData());
+        }
         FormBody formBody = formBodybuilder.build();
+
         //初始化请求头文件
         Headers.Builder headerBuilder = new Headers.Builder();
         headerBuilder.add("aptk", Md5.getAptk());

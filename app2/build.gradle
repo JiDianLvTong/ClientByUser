@@ -87,6 +87,7 @@ dependencies {
 
     //权限申请，所有的权限申请请使用这个
     implementation "com.permissionx.guolindev:permissionx:1.4.0"
+    implementation 'com.github.getActivity:XXPermissions:16.6'
 
     implementation "com.gyf.immersionbar:immersionbar:3.0.0"
     implementation "me.jessyan:autosize:1.2.1"

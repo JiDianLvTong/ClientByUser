@@ -7,6 +7,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
 import com.amap.api.location.AMapLocationClient;
+import com.android.jidian.repair.base.permissionManager.PermissionManager;
 import com.android.jidian.repair.dao.sp.UserInfoSp;
 import com.android.jidian.repair.service.WebSocketController;
 
@@ -31,7 +32,7 @@ public class MyApplication extends Application {
         mContext = getApplicationContext();
 
         //权限管理初始化
-//        PermissionManager.getInstance().init(getApplicationContext());
+        PermissionManager.getInstance().init(getApplicationContext());
         //本地储存初始化 - 用户sp
         UserInfoSp.getInstance().init(getApplicationContext());
         //长连接初始化

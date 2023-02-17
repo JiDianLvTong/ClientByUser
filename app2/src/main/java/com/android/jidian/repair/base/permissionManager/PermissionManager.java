@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 import com.permissionx.guolindev.PermissionX;
 
 import java.util.List;
@@ -16,13 +18,6 @@ public class PermissionManager {
 
         void refused(List<String> refusedList);
     }
-
-    public final String local_1 = "android.permission.ACCESS_FINE_LOCATION";
-    public final String local_2 = "android.permission.ACCESS_COARSE_LOCATION";
-    public final String write = "android.permission.WRITE_EXTERNAL_STORAGE";
-    public final String camera = "android.permission.CAMERA";
-    public final String read = "android.permission.READ_EXTERNAL_STORAGE";
-
 
     private volatile static PermissionManager permissionManager;
 
@@ -61,6 +56,7 @@ public class PermissionManager {
                     }
                 });
     }
+
 
     public void getWrite(FragmentActivity activity, PermissionListener listener) {
         PermissionX.init(activity)

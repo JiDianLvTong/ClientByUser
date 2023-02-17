@@ -61,15 +61,6 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
 
     public static final int ADD_IMAGE_IMG_1 = 101;
     public static final int ADD_IMAGE_ABLBUM = 102;
-    /**
-     * 需要进行检测的权限数组
-     */
-    protected String[] needPermissions = {
-            Manifest.permission.ACCESS_COARSE_LOCATION,
-            Manifest.permission.CAMERA,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE
-    };
 
     @BindView(R.id.tv_title)
     TextView tv_title;
