@@ -214,6 +214,9 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     //请求设备信息
     private void getEquipmentInfo() {
+        if (UserInfoHelper.getInstance().getUid().isEmpty()) {
+            return;
+        }
         mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
     }
 

@@ -141,6 +141,18 @@ public class MainActivity extends BaseActivityByMvp<MainPresenter> implements Ma
                 dialog.showPopupWindow();
             }
         });
+
+//        PermissionX.init(this)
+//                .permissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+////                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+//                .request((allGranted, grantedList, deniedList) -> {
+//                    if (!allGranted) {
+//                        showMessage("当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限");
+//                    }else {
+////                        showMessage("222222");
+//                    }
+//                });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)

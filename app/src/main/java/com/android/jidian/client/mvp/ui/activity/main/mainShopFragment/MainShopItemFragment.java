@@ -177,6 +177,9 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
     }
 
     private void requestData() {
+        if (UserInfoHelper.getInstance().getUid().isEmpty()) {
+            return;
+        }
         arrayList.clear();
         if (type == 1) {
             mPresenter.requestShopBuy(mLng, mLat);

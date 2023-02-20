@@ -126,6 +126,9 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
     }
 
     private void requestData() {
+        if (UserInfoHelper.getInstance().getUid().isEmpty()) {
+            return;
+        }
         mPresenter.requestFindIndex(lng, lat);
     }
 
