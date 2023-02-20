@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.graphics.Color;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,13 +16,19 @@ import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.bean.FindIndexBean;
 import com.android.jidian.client.mvp.contract.MainFindContract;
+import com.android.jidian.client.mvp.presenter.MainEquipmentPresenter;
 import com.android.jidian.client.mvp.presenter.MainFindPresenter;
+import com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment.MainEquipmentEvent;
 import com.android.jidian.client.mvp.ui.activity.map.ChargeSiteMap;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.bumptech.glide.Glide;
 import com.minminaya.widget.GeneralRoundFrameLayout;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -52,6 +60,40 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
     @Override
     public int getLayoutId() {
         return R.layout.u6_activity_main_fragment_find;
+    }
+
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onEvent(MainFindEvent event) {
+        if (event != null) {
+            if (event.getEvent() == MainFindEvent.REFRESH) {
+                requestData();
+            }
+        }
+    }
+
+    //设置坐标
+    public void setFragmentRefresh() {
+        if (mPresenter == null) {
+            mPresenter = new MainFindPresenter();
+            mPresenter.attachView(this);
+        }
+        requestData();
     }
 
     @Override
@@ -118,11 +160,11 @@ public class MainFindFragment extends BaseFragment<MainFindPresenter> implements
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {//不可见
-            if (mPresenter != null) {
-                mPresenter.requestFindIndex(lng, lat);
-            }
-        }
+//        if (!hidden) {//不可见
+//            if (mPresenter != null) {
+//                mPresenter.requestFindIndex(lng, lat);
+//            }
+//        }
     }
 
     private void requestData() {

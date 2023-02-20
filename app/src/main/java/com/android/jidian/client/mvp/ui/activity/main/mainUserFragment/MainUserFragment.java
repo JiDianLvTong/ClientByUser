@@ -24,6 +24,7 @@ import com.android.jidian.client.base.U6BaseFragmentByMvp;
 import com.android.jidian.client.bean.MainActiyivyExpenseBean;
 import com.android.jidian.client.bean.event.MainUserEvent;
 import com.android.jidian.client.mvp.contract.MainUserContract;
+import com.android.jidian.client.mvp.presenter.MainShopPresenter;
 import com.android.jidian.client.mvp.presenter.MainUserPresenter;
 import com.android.jidian.client.mvp.ui.activity.Deposit.DepositActivity;
 import com.android.jidian.client.mvp.ui.activity.coupon.CouponActivity;
@@ -40,6 +41,7 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -106,12 +108,20 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         }
     }
 
-    @Subscribe
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void onEvent(MainUserEvent event) {
         if (event.getEvent() == COUPON_USE) {
             requestData();
         }
-//        else if (event.getEvent() == )
+    }
+
+    //设置坐标
+    public void setFragmentRefresh() {
+        if (mPresenter == null) {
+            mPresenter = new MainUserPresenter();
+            mPresenter.attachView(this);
+        }
+        requestData();
     }
 
     @Override
@@ -200,7 +210,7 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
                     myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
                     myMonthOutTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
                 }
-            }else {//没有包月
+            } else {//没有包月
                 myMonthInTimePanel.setVisibility(View.GONE);
                 myMonthOutTimePanel.setVisibility(View.GONE);
                 myMonthOutTimePanelRePay.setVisibility(View.GONE);

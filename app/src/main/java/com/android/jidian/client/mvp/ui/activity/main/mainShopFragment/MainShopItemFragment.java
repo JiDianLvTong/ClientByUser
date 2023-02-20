@@ -17,6 +17,7 @@ import com.android.jidian.client.bean.ShopBuyBean;
 import com.android.jidian.client.bean.ShopRentBean;
 import com.android.jidian.client.bean.UserPersonalBean;
 import com.android.jidian.client.mvp.contract.MainShopContract;
+import com.android.jidian.client.mvp.presenter.MainFindPresenter;
 import com.android.jidian.client.mvp.presenter.MainShopPresenter;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCreateOrderZhiMaActivity;
@@ -71,9 +72,11 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
 
     //设置坐标
     public void setFragmentRefresh() {
-        if (mPresenter != null) {
-            requestData();
+        if (mPresenter == null) {
+            mPresenter = new MainShopPresenter();
+            mPresenter.attachView(this);
         }
+        requestData();
     }
 
     @Override

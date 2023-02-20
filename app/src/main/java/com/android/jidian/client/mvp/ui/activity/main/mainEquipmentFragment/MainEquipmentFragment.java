@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +34,8 @@ import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -157,6 +161,41 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         return R.layout.u6_activity_main_fragment_equipment;
     }
 
+    @Override
+    public void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void onEvent(MainEquipmentEvent event) {
+        if (event != null) {
+            if (event.getEvent() == MainEquipmentEvent.REFRESH) {
+                getEquipmentInfo();
+            }
+        }
+    }
+
+    //设置坐标
+    public void setFragmentRefresh() {
+        if (mPresenter == null) {
+            mPresenter = new MainEquipmentPresenter();
+            mPresenter.attachView(this);
+        }
+        getEquipmentInfo();
+    }
+
+
     //初始化页面
     @Override
     public void initView(View view) {
@@ -187,9 +226,9 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         //显示哪种情况
         //登录状态
         if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
-            showProgress();
-            getEquipmentInfo();
-            llCustomPhone.setVisibility(View.VISIBLE);
+//            showProgress();
+//            getEquipmentInfo();
+//            llCustomPhone.setVisibility(View.VISIBLE);
         }
         //未登录状态
         else {
@@ -205,11 +244,11 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {//不可见
-            if (mPresenter != null && !UserInfoHelper.getInstance().getUid().isEmpty()) {
-                mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
-            }
-        }
+//        if (!hidden) {//不可见
+//            if (mPresenter != null && !UserInfoHelper.getInstance().getUid().isEmpty()) {
+//                mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
+//            }
+//        }
     }
 
     //请求设备信息
@@ -523,7 +562,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             if (mExpenseBean != null) {
                 if (mExpenseBean.getData().getEbike().size() == 0) {
                     EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 2));
-                }else {
+                } else {
                     Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
                     mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "4");
                     startActivity(mIntent);

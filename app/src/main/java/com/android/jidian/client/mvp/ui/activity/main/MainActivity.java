@@ -34,9 +34,13 @@ import com.android.jidian.client.mvp.bean.MainAppVersionBean;
 import com.android.jidian.client.mvp.contract.MainActivityContract;
 import com.android.jidian.client.mvp.presenter.MainActivityPresenter;
 import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
+import com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment.MainEquipmentEvent;
 import com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment.MainEquipmentFragment;
+import com.android.jidian.client.mvp.ui.activity.main.mainFindFragment.MainFindEvent;
 import com.android.jidian.client.mvp.ui.activity.main.mainFindFragment.MainFindFragment;
+import com.android.jidian.client.mvp.ui.activity.main.mainShopFragment.MainShopEvent;
 import com.android.jidian.client.mvp.ui.activity.main.mainShopFragment.MainShopFragment;
+import com.android.jidian.client.mvp.ui.activity.main.mainUserFragment.MainUserEvent;
 import com.android.jidian.client.mvp.ui.activity.main.mainUserFragment.MainUserFragment;
 import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.util.UserInfoHelper;
@@ -157,8 +161,10 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                 }
             });
         }
+
         //获取用户信息
-        if (!isLogin) {
+        if (isLogin) {
+            Log.d("xiaoming0220", "onResume: " + isLogin);
             changeMain(0);
         }
     }
@@ -264,6 +270,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             } else {
                 ft.show(mainEquipmentFragment);
             }
+            mainEquipmentFragment.setFragmentRefresh();
+//            EventBus.getDefault().postSticky(new MainEquipmentEvent(MainEquipmentEvent.REFRESH));
         } else if (page == 1) {
             if (mainFindFragment == null) {
                 mainFindFragment = new MainFindFragment();
@@ -271,6 +279,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             } else {
                 ft.show(mainFindFragment);
             }
+//            EventBus.getDefault().postSticky(new MainFindEvent(MainFindEvent.REFRESH));
+            mainFindFragment.setFragmentRefresh();
         } else if (page == 2) {
             if (mainShopFragment == null) {
                 mainShopFragment = new MainShopFragment();
@@ -278,6 +288,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             } else {
                 ft.show(mainShopFragment);
             }
+//            EventBus.getDefault().postSticky(new MainShopEvent(MainShopEvent.REFRESH));
+            mainShopFragment.setFragmentRefresh();
         } else if (page == 3) {
             if (mainUserFragment == null) {
                 mainUserFragment = new MainUserFragment();
@@ -285,6 +297,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             } else {
                 ft.show(mainUserFragment);
             }
+//            EventBus.getDefault().postSticky(new MainUserEvent(MainUserEvent.REFRESH));
+            mainUserFragment.setFragmentRefresh();
         }
         ft.commitAllowingStateLoss();
         localPage = page;

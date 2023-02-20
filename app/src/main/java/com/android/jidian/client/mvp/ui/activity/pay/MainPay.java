@@ -289,7 +289,8 @@ public class MainPay {
                         }
                     }
                     MyToast.showTheToast(activity, msg.getData().getString("msg"));
-                    activity.startActivity(new Intent(activity, MainMessage_1_.class));
+
+                    activity.startActivity(new Intent(activity, MainActivity.class));
                     activity.finish();
                     return;
                 }
