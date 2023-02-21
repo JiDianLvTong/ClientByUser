@@ -15,6 +15,10 @@ import com.android.jidian.client.bean.MainAppEventBean;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
+import com.android.jidian.client.mvp.ui.activity.main.mainEquipmentFragment.MainEquipmentEvent;
+import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
 import com.android.jidian.client.pub.PubFunction;
 import com.android.jidian.client.pub.weixin.Constants;
 import com.android.jidian.client.util.BuryingPointManager;
@@ -87,8 +91,10 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
             } else if (baseResp.errCode == -1) {
                 //用户取消支付
                 showPayFailDialog("您已取消付款");
+//                startActivity(new Intent(WXPayEntryActivity.this, OrderListActivity.class));
             } else if (baseResp.errCode == -2) {
                 showPayFailDialog("支付失败");
+//                startActivity(new Intent(WXPayEntryActivity.this, OrderListActivity.class));
             }
         } else {
             this.finish();
@@ -119,7 +125,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
                 HttpVisitLogs(dataList1);
             }
             Toast.makeText(WXPayEntryActivity.this, "支付成功！", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(WXPayEntryActivity.this, MainActivity.class));
             finish();
+            EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.LOGIN_SUCCESS));
             EventBus.getDefault().post(new MainAppEventBean(PAYSUCCESS));
             EventBus.getDefault().post(new MainAppEventBean(PAYSUCCESSCLOSEORDERLIST));
         }

@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.jidian.repair.base.permissionManager.PermissionManager;
+import com.android.jidian.repair.mvp.cabinet.cabAddCab.AddCabActivity;
 import com.android.jidian.repair.widgets.dialog.DialogByChoiceImg;
 
 import java.util.List;
@@ -37,7 +38,7 @@ public class PictureSelectorUtils {
         });
     }
 
-    public static void addPhotoByCameraAndAlbum(FragmentActivity activity, int activityResultCallbackCode) {
+    public static void addPhotoByCameraAndAlbum(FragmentActivity activity) {
 
         PermissionManager.getInstance().getCamera(activity, new PermissionManager.PermissionListener() {
             @Override
@@ -49,14 +50,14 @@ public class PictureSelectorUtils {
                         intent.putExtra("autofocus", true); // 自动对焦
                         intent.putExtra("fullScreen", false); // 全屏
                         intent.putExtra("showActionIcons", false);
-                        activity.startActivityForResult(intent, activityResultCallbackCode);
+                        activity.startActivityForResult(intent, AddCabActivity.ADD_IMAGE_IMG_CAMERA);
                     }
 
                     @Override
                     public void albumReturn() {
                         Intent intent = new Intent(Intent.ACTION_PICK);
                         intent.setDataAndType(MediaStore.Images.Media.INTERNAL_CONTENT_URI, "image/*");//相片类型
-                        activity.startActivityForResult(intent, activityResultCallbackCode);
+                        activity.startActivityForResult(intent, AddCabActivity.ADD_IMAGE_ABLBUM);
                     }
                 });
                 dialogByIdCardChoice.showPopupWindow();

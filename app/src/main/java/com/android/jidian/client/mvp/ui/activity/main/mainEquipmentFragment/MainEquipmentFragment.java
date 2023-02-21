@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -188,11 +189,13 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     //设置坐标
     public void setFragmentRefresh() {
-        if (mPresenter == null) {
-            mPresenter = new MainEquipmentPresenter();
-            mPresenter.attachView(this);
+        if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
+            if (mPresenter == null) {
+                mPresenter = new MainEquipmentPresenter();
+                mPresenter.attachView(this);
+            }
+            getEquipmentInfo();
         }
-        getEquipmentInfo();
     }
 
 
@@ -244,6 +247,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        Log.d("xiaoming0221", "onHiddenChanged: " + hidden);
 //        if (!hidden) {//不可见
 //            if (mPresenter != null && !UserInfoHelper.getInstance().getUid().isEmpty()) {
 //                mPresenter.requestWalletInfo(UserInfoHelper.getInstance().getUid());
@@ -271,6 +275,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             //车辆信息更新
 //        UserLoginBean userLoginBean = SpUser.getInstance().getUserLoginBean();
             main_l2.setVisibility(View.VISIBLE);
+            llCustomPhone.setVisibility(View.VISIBLE);
             tv_level.setText("青铜会员");
             tv_main_tip.setText("享有7项会员权益，点击查看详情");
             tv_custom_phone.setText(dataBean.getServtel());

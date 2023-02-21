@@ -30,6 +30,12 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            //打包命名规则
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "repairJiDian_v${variant.versionName}_vc${variant.versionCode}_${releaseTime()}.apk"
+                }
+            }
         }
         debug {
             debuggable true
@@ -115,4 +121,9 @@ dependencies {
 
     //版本更新
     implementation 'com.teprinciple:updateapputils:2.3.0'
+}
+
+/*时间*/
+static def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"));
 }

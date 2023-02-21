@@ -14,12 +14,11 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.android.jidian.client.Main;
-import com.android.jidian.client.MainMessage_1_;
 import com.android.jidian.client.http.HeaderTypeData;
 import com.android.jidian.client.http.OkHttpConnect;
 import com.android.jidian.client.http.ParamTypeData;
 import com.android.jidian.client.mvp.ui.activity.main.MainActivity;
-import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
 import com.android.jidian.client.mvp.ui.dialog.DialogByLoading;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.widgets.MyToast;
@@ -30,6 +29,7 @@ import com.tencent.mm.sdk.modelpay.PayReq;
 import com.tencent.mm.sdk.openapi.IWXAPI;
 import com.tencent.mm.sdk.openapi.WXAPIFactory;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -152,6 +152,7 @@ public class MainPay {
                         // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                         if (TextUtils.equals(resultStatus, "9000")) {
                             MyToast.showTheToast(activity, "支付成功！");
+                            EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.LOGIN_SUCCESS));
 //                            支付宝支付成功
                             if (!TextUtils.isEmpty(PubFunction.PAT_ING_TYPE)) {
                                 switch (PubFunction.PAT_ING_TYPE) {
@@ -247,8 +248,8 @@ public class MainPay {
                                 } else {
                                     // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
                                     MyToast.showTheToast(activity, "支付失败！");
-                                    activity.startActivity(new Intent(activity, OrderListActivity.class));
-                                    activity.finish();
+//                                    activity.startActivity(new Intent(activity, OrderListActivity.class));
+//                                    activity.finish();
                                 }
                             }
                         }

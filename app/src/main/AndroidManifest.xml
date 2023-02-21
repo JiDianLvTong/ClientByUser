@@ -524,10 +524,13 @@
             android:screenOrientation="behind" />
         <activity
             android:name=".wxapi.WXPayEntryActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:exported="true"
             android:launchMode="singleTop" />
         <activity
             android:name=".wxapi.WXEntryActivity"
+            tools:replace="android:theme"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true" />
         <activity

@@ -2,6 +2,7 @@ package com.android.jidian.repair.mvp.cabinet.cabPatrol;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -371,7 +372,12 @@ public class PatrolAddActivity extends BaseActivityByMvp<PatrolAddPresenter> imp
         if (resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
             Bitmap bitmap = (Bitmap) extras.get("data");
-            String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+            String filePath = "";
+            if (Build.VERSION.SDK_INT >= 29) {
+                filePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg" ;
+            }else {
+                filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+            }
             BitmapManager.saveBitmapFile(new File(filePath), bitmap);
             if (mPresenter != null) {
                 if (!TextUtils.isEmpty(mPath)) {

@@ -16,10 +16,13 @@ import com.android.jidian.client.mvp.presenter.MainSetPresenter;
 import com.android.jidian.client.mvp.ui.activity.h5.MainAbout;
 import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
 import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
 import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
 import com.android.jidian.client.mvp.ui.dialog.SplashAgainAgreeDialog;
 import com.android.jidian.client.mvp.ui.dialog.DialogByLogoff;
 import com.android.jidian.client.pub.PubFunction;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -118,6 +121,7 @@ public class MainSetActivity extends U6BaseActivityByMvp<MainSetPresenter> imple
                     editor.putString("user_avatar", "");
                     editor.clear();
                     editor.commit();
+                    EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 0));
                     activity.finish();
                 }
             }

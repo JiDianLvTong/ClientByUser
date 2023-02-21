@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
@@ -59,7 +60,7 @@ import wendu.dsbridge.DWebView;
 @BindEventBus
 public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implements AddCabContract.View {
 
-    public static final int ADD_IMAGE_IMG_1 = 101;
+    public static final int ADD_IMAGE_IMG_CAMERA = 101;
     public static final int ADD_IMAGE_ABLBUM = 102;
 
     @BindView(R.id.tv_title)
@@ -111,7 +112,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
         tv_title.setText(title);
 
         information_webView.addJavascriptObject(new JsApi(), null);
-
+        initLocation();
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("uid", uid);
@@ -190,7 +191,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
                 .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
                 .request((allGranted, grantedList, deniedList) -> {
                     if (allGranted) {
-                        PictureSelectorUtils.addPhotoByCameraAndAlbum(AddCabActivity.this, ADD_IMAGE_IMG_1);
+                        PictureSelectorUtils.addPhotoByCameraAndAlbum(AddCabActivity.this);
 //                        pushPhotoUrl(data1, callback1);
                     } else {
                         DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
@@ -255,7 +256,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
                             Log.d("xiaoming0203", "onLocationChanged:  aMapLocation.getCity(): " + aMapLocation.getAddress() + "aMapLocation.getCityCode(): " + aMapLocation.getCityCode() + "aMapLocation.getLatitude() :" + aMapLocation.getLatitude() + "aMapLocation.getLongitude():" + aMapLocation.getLongitude());
                         } else {
                             //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
-//                            Log.e(Tag, "location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
+                            Log.d("xiaoming0203", "location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
                         }
                     }
                 }
@@ -263,7 +264,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
             //启动定位
             mLocationClient.startLocation();
         } catch (Exception e) {
-//            Log.e(Tag, e.toString());
+            Log.e("xiaoming0203", e.toString());
             e.printStackTrace();
         }
     }
@@ -272,10 +273,15 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            if (data.getData() == null) {
+            if (ADD_IMAGE_IMG_CAMERA == requestCode) {
                 Bundle extras = data.getExtras();
                 Bitmap bitmap = (Bitmap) extras.get("data");
-                String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                String filePath = "";
+                if (Build.VERSION.SDK_INT >= 29) {
+                    filePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                } else {
+                    filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                }
                 BitmapManager.saveBitmapFile(new File(filePath), bitmap);
                 if (mPresenter != null) {
                     if (!TextUtils.isEmpty(mPath)) {
@@ -285,7 +291,7 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
                         mPresenter.requestUploadUploadUrlSet(Md5.getAptk());
                     }
                 }
-            } else {
+            } else if (ADD_IMAGE_ABLBUM == requestCode) {
                 Uri uri = data.getData();
                 String filePath = getRealPathFromURI(uri);
                 //图片上传，需要压缩一下
@@ -299,7 +305,12 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
                 //使用inSampleSize集解码位图
                 options.inJustDecodeBounds = false;
                 Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
-                String bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                String bitmapFilePath = "";
+                if (Build.VERSION.SDK_INT >= 29) {
+                    bitmapFilePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                } else {
+                    bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                }
                 BitmapManager.saveBitmapFile(new File(bitmapFilePath), bitmap);
                 if (mPresenter != null) {
                     if (!TextUtils.isEmpty(mPath)) {
@@ -330,6 +341,18 @@ public class AddCabActivity extends BaseActivityByMvp<AddCabPresenter> implement
     @Override
     protected void onResume() {
         super.onResume();
+        PermissionX.init(activity)
+                .permissions(Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION)
+                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
+                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+                .request((allGranted, grantedList, deniedList) -> {
+                    if (allGranted) {
+                        initLocation();
+                    } else {
+                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
+                        dialog.showPopupWindow();
+                    }
+                });
     }
 
     @Override

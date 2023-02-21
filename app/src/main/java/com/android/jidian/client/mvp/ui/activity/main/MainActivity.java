@@ -309,6 +309,12 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
         if (event != null) {
             if (event.getEvent() == MainActivityEvent.CHANGEMAIN) {
                 changeMain(event.getIndex());
+            }else if (event.getEvent() == MainActivityEvent.LOGIN_SUCCESS){
+                if (localPage == 0) {
+                    if (mainEquipmentFragment != null) {
+                        mainEquipmentFragment.setFragmentRefresh();
+                    }
+                }
             }
         }
     }

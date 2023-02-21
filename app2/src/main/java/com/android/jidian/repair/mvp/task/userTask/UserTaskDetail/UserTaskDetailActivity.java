@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -310,7 +311,12 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
             Bundle extras = data.getExtras();
             if (extras != null) {
                 Bitmap bitmap = (Bitmap) extras.get("data");
-                String filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                String filePath = "";
+                if (Build.VERSION.SDK_INT >= 29) {
+                    filePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg" ;
+                }else {
+                    filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                }
                 BitmapManager.saveBitmapFile(new File(filePath), bitmap);
                 if (mPresenter != null) {
                     if (!TextUtils.isEmpty(mPath)) {
@@ -334,7 +340,13 @@ public class UserTaskDetailActivity extends BaseActivityByMvp<UserTaskDetailPres
                 //使用inSampleSize集解码位图
                 options.inJustDecodeBounds = false;
                 Bitmap bitmap = BitmapFactory.decodeFile(filePath, options);
-                String bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+
+                String bitmapFilePath = "";
+                if (Build.VERSION.SDK_INT >= 29) {
+                    bitmapFilePath = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg" ;
+                }else {
+                    bitmapFilePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath() + File.separator + "img111.jpeg";
+                }
                 BitmapManager.saveBitmapFile(new File(bitmapFilePath), bitmap);
                 if (mPresenter != null) {
                     if (!TextUtils.isEmpty(mPath)) {

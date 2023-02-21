@@ -15,11 +15,14 @@ import com.android.jidian.client.mvp.contract.LoginContract;
 import com.android.jidian.client.mvp.presenter.LoginPresenter;
 import com.android.jidian.client.mvp.ui.activity.h5.MainAgreement;
 import com.android.jidian.client.mvp.ui.activity.h5.MainPrivacyClause;
+import com.android.jidian.client.mvp.ui.activity.main.MainActivityEvent;
 import com.android.jidian.client.mvp.ui.dialog.DialogByChoice;
 import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.util.BuryingPointManager;
 import com.android.jidian.client.util.JgVerificationLoginAuthManager;
 import com.android.jidian.client.util.Util;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.File;
 
@@ -226,6 +229,7 @@ public class LoginActivity extends U6BaseActivityByMvp<LoginPresenter> implement
             if (mPresenter != null) {
                 mPresenter.sendHttpVisitLogs(bean.getId());
             }
+            EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.LOGIN_SUCCESS));
             activity.finish();
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());

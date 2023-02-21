@@ -7,6 +7,11 @@ package com.android.jidian.client.mvp.ui.activity.main;
  */
 public class MainActivityEvent {
     public static int CHANGEMAIN = 1;
+    public static int LOGIN_SUCCESS = 2;
+
+    public MainActivityEvent(int event) {
+        this.event = event;
+    }
 
     public MainActivityEvent(int event, int index) {
         this.event = event;

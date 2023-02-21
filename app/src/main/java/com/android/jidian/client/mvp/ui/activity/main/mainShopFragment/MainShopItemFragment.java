@@ -110,7 +110,9 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
         mainShopAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
-
+                if (baseQuickAdapter.getData().size() == 0) {
+                    return;
+                }
                 MainShopBean mainShopBean = (MainShopBean) baseQuickAdapter.getData().get(i);
                 String type = mainShopBean.getMainShopDataType();
                 if (type.equals("buy")) {
@@ -182,12 +184,6 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
     private void requestData() {
         if (UserInfoHelper.getInstance().getUid().isEmpty()) {
             return;
-        }
-        arrayList.clear();
-        if (type == 1) {
-            mPresenter.requestShopBuy(mLng, mLat);
-        } else if (type == 2) {
-            mPresenter.requestShopRent(mLng, mLat);
         }
         mPresenter.requestUserPersonal(UserInfoHelper.getInstance().getUid());
     }
@@ -291,6 +287,12 @@ public class MainShopItemFragment extends BaseFragment<MainShopPresenter> implem
         hideProgress();
         if (bean.getData() != null) {
             idAuthTip = bean.getData().getId_auth_tip();
+            arrayList.clear();
+            if (type == 1) {
+                mPresenter.requestShopBuy(mLng, mLat);
+            } else if (type == 2) {
+                mPresenter.requestShopRent(mLng, mLat);
+            }
         }
     }
 
