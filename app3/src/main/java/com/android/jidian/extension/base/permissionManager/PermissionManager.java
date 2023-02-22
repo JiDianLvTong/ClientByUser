@@ -1,10 +1,14 @@
 package com.android.jidian.extension.base.permissionManager;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 import com.permissionx.guolindev.PermissionX;
 
 import java.util.List;
@@ -35,18 +39,21 @@ public class PermissionManager {
         this.context = context;
     }
 
-    public void getCamera(FragmentActivity activity, PermissionListener listener) {
-        PermissionX.init(activity)
-                .permissions(Manifest.permission.CAMERA)
-                .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-//                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
-                .request((allGranted, grantedList, deniedList) -> {
-                    if (allGranted) {
-                        listener.granted(grantedList);
-                    } else {
-                        listener.refused(deniedList);
-                    }
-                });
+    public void getCamera(Activity activity, PermissionListener listener) {
+        XXPermissions.with(activity)
+            .permission(Permission.CAMERA)
+            .request(new OnPermissionCallback() {
+
+                @Override
+                public void onGranted(List<String> permissions, boolean all) {
+                    listener.granted(permissions);
+                }
+
+                @Override
+                public void onDenied(List<String> permissions, boolean never) {
+                    listener.refused(permissions);
+                }
+            });
     }
 
 

@@ -12,6 +12,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 
 import com.android.jidian.extension.base.broadcastManage.BroadcastManager;
@@ -20,7 +21,7 @@ import com.android.jidian.extension.view.commonPlug.dialog.DialogByLoading;
 
 import java.lang.reflect.Field;
 
-public class BaseActivity extends AppCompatActivity {
+public class BaseActivity extends FragmentActivity {
 
     protected Activity activity;
 

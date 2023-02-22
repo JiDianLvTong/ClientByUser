@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.android.jidian.extension.R;
 import com.android.jidian.extension.base.BaseActivity;
+import com.android.jidian.extension.bean.LoginGetUserInfoBean;
 import com.android.jidian.extension.dao.sp.UserInfoSp;
 import com.android.jidian.extension.net.BaseHttp;
 import com.android.jidian.extension.net.BaseHttpParameterFormat;
@@ -15,6 +16,7 @@ import com.android.jidian.extension.net.HttpUrlMap;
 import com.android.jidian.extension.util.DataVerification;
 import com.android.jidian.extension.view.activity.main.MainActivity;
 import com.android.jidian.extension.view.commonPlug.dialog.DialogByEnter;
+import com.google.gson.Gson;
 
 
 import java.util.ArrayList;
@@ -128,7 +130,6 @@ public class LoginActivity extends BaseActivity {
         List<BaseHttpParameterFormat> baseHttpParameterFormats = new ArrayList<>();
         baseHttpParameterFormats.add(new BaseHttpParameterFormat("phone",phoneStr));
         baseHttpParameterFormats.add(new BaseHttpParameterFormat("vcode",verCode));
-        System.out.println(verCode);
         BaseHttp baseHttp = new BaseHttp(activity, HttpUrlMap.login, baseHttpParameterFormats, new BaseHttp.BaseHttpListener() {
             @Override
             public void dataReturn(int code, String errorMessage , String message , String data) {
@@ -137,8 +138,16 @@ public class LoginActivity extends BaseActivity {
                     public void run() {
                         dialogLoading.dismiss();
                         if(code == 1){
-                            
+                            LoginGetUserInfoBean loginGetUserInfoBean = new Gson().fromJson(data , LoginGetUserInfoBean.class);
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.uid , loginGetUserInfoBean.getId());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.apptoken , loginGetUserInfoBean.getApptoken());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.realname , loginGetUserInfoBean.getReadlName());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.phone , loginGetUserInfoBean.getPhone());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.isfirst , loginGetUserInfoBean.getIsfirst());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.avater , loginGetUserInfoBean.getAvater());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.qrcode , loginGetUserInfoBean.getQrcode());
                             activity.startActivity(new Intent(activity, MainActivity.class));
+                            activity.finish();
                         }else{
                             new DialogByEnter(activity,message).showPopupWindow();
                         }

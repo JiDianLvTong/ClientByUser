@@ -6,54 +6,36 @@
     android:background="@color/grey_1b1b1b"
     android:gravity="center">
 
-    <LinearLayout
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/p_1"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/t_1"
-                android:text="用户列表"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:id="@+id/nullDataPanel"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/orange_b69873"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:orientation="vertical">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/pub_null_data" />
 
-        <LinearLayout
-            android:id="@+id/p_2"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:layout_weight="1">
+            </LinearLayout>
+        </FrameLayout>
 
-            <TextView
-                android:id="@+id/t_2"
-                android:text="收益列表"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textColor="@color/white_ffffff"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-    </LinearLayout>
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
 </LinearLayout>

@@ -20,7 +20,7 @@ public class UserInfoSp {
     };
 
     public enum UserInfoEnum{
-        uid,access,getVerData
+        uid,apptoken,uptoken,realname,phone,isfirst,avater,qrcode,ucardfurl,ucardzurl,astater,zfb,status,idcard
     }
 
     //上下文
@@ -58,8 +58,11 @@ public class UserInfoSp {
         return getUserInfoData(UserInfoEnum.uid);
     }
 
-    public String getAccess(){
-        return getUserInfoData(UserInfoEnum.access);
+    public String getAppToken(){
+        return getUserInfoData(UserInfoEnum.apptoken);
+    }
+    public String getUpToken(){
+        return getUserInfoData(UserInfoEnum.uptoken);
     }
 
     public void cleanUserInfoData(){

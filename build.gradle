@@ -30,7 +30,7 @@ allprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
         maven { url 'https://repo1.maven.org/maven2/' }
-        /*由于骑呗后台不稳定暂时下架，暂删 maven { url 'http://d.qibeigo.com:18080/open/qbsdk/raw/master/' }*/
+
     }
 }
 

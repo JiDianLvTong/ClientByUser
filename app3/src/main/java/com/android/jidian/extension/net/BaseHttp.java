@@ -86,7 +86,7 @@ public class BaseHttp {
         for(int i = 0 ; i < baseHttpParameterFormats.size() ; i++){
             if(baseHttpParameterFormats.get(i).getName() == "uid"){
                 isHasUid = true;
-                uid = baseHttpParameterFormats.get(i).getName();
+                uid = baseHttpParameterFormats.get(i).getData();
             }
             formBodybuilder.add(baseHttpParameterFormats.get(i).getName() , baseHttpParameterFormats.get(i).getData());
         }
@@ -99,8 +99,9 @@ public class BaseHttp {
         }
         headerBuilder.add("proname" , "apu");
         headerBuilder.add("osname" , "Android");
+        headerBuilder.add("company" , "jidianlvtong");
         headerBuilder.add("version" , BuildConfig.VERSION_CODE + "");
-        headerBuilder.add("ACCESS" , UserInfoSp.getInstance().getAccess());
+        headerBuilder.add("ACCESS" , UserInfoSp.getInstance().getAppToken());
         Headers headers = headerBuilder.build();
         //初始化请求
         Request request = new Request.Builder()

@@ -58,13 +58,6 @@ public class HttpUploadImage {
             conn.setRequestProperty("Connection", "Keep-Alive");
             conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.6)");
             conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + BOUNDARY);
-            conn.setRequestProperty("apud", uid);
-            conn.setRequestProperty("aptk", Md5.getAptk());
-            conn.setRequestProperty("verName", BuildConfig.VERSION_NAME);
-            conn.setRequestProperty("version", BuildConfig.VERSION_CODE + "");
-            conn.setRequestProperty("osname", "Android");
-            conn.setRequestProperty("proname", "app");
-            conn.setRequestProperty("company", "mixiang");
 
             OutputStream out = new DataOutputStream(conn.getOutputStream());
 
