@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -33,8 +32,8 @@ public class MainActivity extends BaseActivity {
 
     @BindViews({R.id.i_1, R.id.i_2})
     public List<ImageView> footImageViewList;
-    private int[] isSelectIcons = new int[]{R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
-    private int[] notSelectIcons = new int[]{R.drawable.ic_launcher_background, R.drawable.ic_launcher_background};
+    private int[] isSelectIcons = new int[]{R.drawable.activity_main_extension_select_is, R.drawable.activity_main_profit_select_is};
+    private int[] notSelectIcons = new int[]{R.drawable.activity_main_extension_select_not, R.drawable.activity_main_profit_select_not};
     private int localPage = -1;
 
     private ExtensionFragment extensionFragment;
@@ -42,7 +41,7 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(activity);

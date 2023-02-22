@@ -129,7 +129,9 @@ public class WebSocketLongLink {
                                                     if(longLinkHeartThreadCount % 5 == 0){
                                                         if(mWebSocketClient!=null){
                                                             String send = "{\"type\":\"ping\",\"number\":\""+ "XXXXXXXXXX" +"\"}";
-                                                            mWebSocketClient.send(send);
+                                                            if(!mWebSocketClient.isClosed()){
+                                                                mWebSocketClient.send(send);
+                                                            }
                                                             System.out.println("longLink - send - " + send);
                                                             ifHttpOpenLongLinkLinstener.onHttpReturnErrorResult(1);
                                                         }
@@ -137,7 +139,7 @@ public class WebSocketLongLink {
                                                     if(longLinkHeartThreadCount >= 80){
                                                         longLinkHeartThreadCount = 0;
                                                     }
-                                                } catch (InterruptedException e) {
+                                                } catch (Exception e) {
                                                     e.printStackTrace();
                                                 }
                                             }

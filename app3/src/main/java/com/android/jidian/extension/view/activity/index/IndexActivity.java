@@ -64,8 +64,8 @@ public class IndexActivity extends BaseActivity {
                     }
                 }
 
-//                activity.startActivity(new Intent(activity, LoginActivity.class));
-                activity.startActivity(new Intent(activity, MainActivity.class));
+                activity.startActivity(new Intent(activity, LoginActivity.class));
+//                activity.startActivity(new Intent(activity, MainActivity.class));
                 activity.finish();
 
             }

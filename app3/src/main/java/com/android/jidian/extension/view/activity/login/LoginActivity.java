@@ -54,6 +54,13 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void initView() {
+
+        if(UserInfoSp.getInstance().isLogin()){
+            activity.startActivity(new Intent(activity , MainActivity.class));
+            activity.finish();
+            return;
+        }
+
         //时间线程
         if(timeThread == null){
             timeThread = new Thread(){
@@ -120,7 +127,7 @@ public class LoginActivity extends BaseActivity {
         String verCode = verCodeView.getText().toString().toString();
         List<BaseHttpParameterFormat> baseHttpParameterFormats = new ArrayList<>();
         baseHttpParameterFormats.add(new BaseHttpParameterFormat("phone",phoneStr));
-        baseHttpParameterFormats.add(new BaseHttpParameterFormat("passwd",verCode));
+        baseHttpParameterFormats.add(new BaseHttpParameterFormat("vcode",verCode));
         System.out.println(verCode);
         BaseHttp baseHttp = new BaseHttp(activity, HttpUrlMap.login, baseHttpParameterFormats, new BaseHttp.BaseHttpListener() {
             @Override
@@ -130,6 +137,7 @@ public class LoginActivity extends BaseActivity {
                     public void run() {
                         dialogLoading.dismiss();
                         if(code == 1){
+                            
                             activity.startActivity(new Intent(activity, MainActivity.class));
                         }else{
                             new DialogByEnter(activity,message).showPopupWindow();
