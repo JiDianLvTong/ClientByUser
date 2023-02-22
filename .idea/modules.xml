@@ -11,6 +11,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app2/Userjidian.app2.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.iml" filepath="$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app3/Userjidian.app3.unitTest.iml" />
     </modules>
   </component>
 </project>

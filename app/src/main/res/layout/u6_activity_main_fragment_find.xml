@@ -77,7 +77,7 @@
                         android:gravity="center_vertical">
 
                         <TextView
-                            android:text="附件的换电站"
+                            android:text="附近的换电站"
                             android:textSize="13dp"
                             android:textColor="@color/yellow_D7A64A"
                             android:layout_width="wrap_content"
