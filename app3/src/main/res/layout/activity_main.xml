@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@color/grey_1b1b1b">
+    android:background="@color/orange_b69873">
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawerView"
@@ -24,7 +24,7 @@
                 android:id="@+id/statusBarView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#22ffffff"/>
+                android:background="#66000000"/>
 
             <LinearLayout
                 android:id="@+id/userPanel"
@@ -32,9 +32,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingVertical="10dp"
-                android:background="#22ffffff"
                 android:paddingHorizontal="15dp"
-                android:gravity="center_vertical">
+                android:gravity="center|left"
+                android:background="#66000000">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -48,7 +48,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="#ffffff"
                     android:textSize="13dp"
-                    android:layout_marginLeft="10dp"/>
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -65,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:background="#33ffffff">
+                android:background="#aa000000">
 
                 <LinearLayout
                     android:id="@+id/p_1"
@@ -86,7 +87,7 @@
                         android:id="@+id/t_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/orange_b69873"
+                        android:textColor="@color/white_ffffff"
                         android:text="推广码"
                         android:textSize="11sp"
                         android:layout_marginTop="3dp"/>
@@ -112,7 +113,7 @@
                         android:id="@+id/t_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#ffffff"
+                        android:textColor="#cccccc"
                         android:text="收益"
                         android:textSize="11sp"
                         android:layout_marginTop="3dp"/>
@@ -164,7 +165,8 @@
                         android:layout_height="wrap_content"
                         android:textSize="13dp"
                         android:textColor="#ffffff"
-                        android:layout_marginLeft="10dp"/>
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"/>
 
                 </LinearLayout>
 
@@ -177,14 +179,29 @@
                 android:layout_height="50dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:padding="15dp">
+                android:paddingHorizontal="10dp">
 
-                <TextView
-                    android:text="个人信息"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#333333"/>
+                    android:gravity="center|left">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/main_user_info"/>
+
+                    <TextView
+                        android:text="个人信息"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:textColor="#333333"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -194,6 +211,38 @@
                 android:layout_marginHorizontal="15dp"
                 android:background="#cccccc"/>
 
+            <LinearLayout
+                android:id="@+id/slideP2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="10dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/main_user_connect"/>
+
+                    <TextView
+                        android:text="联系方式"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:textColor="#333333"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/logoutView"
                 android:text="退出登录"
@@ -201,11 +250,10 @@
                 android:layout_height="35dp"
                 android:textSize="11dp"
                 android:textColor="#ffffff"
-                android:background="@drawable/shape_orange_b69873_10"
+                android:background="#b69873"
                 android:gravity="center"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="20dp"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

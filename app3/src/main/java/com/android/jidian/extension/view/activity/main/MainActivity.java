@@ -27,6 +27,7 @@ import com.android.jidian.extension.view.activity.login.LoginActivity;
 import com.android.jidian.extension.view.activity.main.extensionFragment.ExtensionFragment;
 import com.android.jidian.extension.view.activity.main.profitFragment.ProfitFragment;
 import com.android.jidian.extension.view.activity.user.PayInfoActivity;
+import com.android.jidian.extension.view.activity.user.PhoneActivity;
 import com.android.jidian.extension.view.commonPlug.dialog.DialogByChoice;
 import com.android.jidian.extension.view.commonPlug.dialog.DialogByEnter;
 import com.google.gson.Gson;
@@ -148,7 +149,7 @@ public class MainActivity extends BaseActivity {
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.phone , mainGetUserInfoBean.getPhone());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.qrcode , mainGetUserInfoBean.getQrcode());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.uptoken , mainGetUserInfoBean.getUptoken());
-                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.status , mainGetUserInfoBean.getStatus());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.astatus , mainGetUserInfoBean.getAstatus());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.idcard , mainGetUserInfoBean.getIdcard());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.zfb , mainGetUserInfoBean.getZfb());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.astater , mainGetUserInfoBean.getAstater());
@@ -182,6 +183,10 @@ public class MainActivity extends BaseActivity {
     public void onClickSlideP1(){
         activity.startActivity(new Intent(activity , PayInfoActivity.class));
     }
+    @OnClick(R.id.slideP2)
+    public void onClickSlideP2(){
+        activity.startActivity(new Intent(activity , PhoneActivity.class));
+    }
 
 
     @OnClick(R.id.logoutView)
@@ -207,6 +212,7 @@ public class MainActivity extends BaseActivity {
         }
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
+
         if (extensionFragment != null) {
             ft.hide(extensionFragment);
         }
@@ -214,10 +220,10 @@ public class MainActivity extends BaseActivity {
             ft.hide(profitFragment);
         }
         for (int i = 0; i < footTextViewList.size(); i++) {
-            footTextViewList.get(i).setTextColor(0xffffffff);
+            footTextViewList.get(i).setTextColor(0xff999999);
             footImageViewList.get(i).setImageResource(notSelectIcons[i]);
         }
-        footTextViewList.get(page).setTextColor(activity.getResources().getColor(R.color.orange_b69873));
+        footTextViewList.get(page).setTextColor(activity.getResources().getColor(R.color.white_ffffff));
         footImageViewList.get(page).setImageResource(isSelectIcons[page]);
         if (page == 0) {
             if (extensionFragment == null) {

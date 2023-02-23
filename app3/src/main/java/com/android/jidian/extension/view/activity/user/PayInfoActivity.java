@@ -105,26 +105,39 @@ public class PayInfoActivity extends BaseActivity {
     }
 
     private void init(){
-        String status = UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.avater);
+        String status = UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.astatus);
+        System.out.println("aaaaaaaaaaaaaaaaaaaaa" + status);
         if(status.equals("3")){
             editPanel.setVisibility(View.VISIBLE);
             infoPanel.setVisibility(View.GONE);
         }else{
-
-            if(status.equals("-1") && status.equals("1")){
-                intoEdit.setVisibility(View.VISIBLE);
-            }else{
-                intoEdit.setVisibility(View.GONE);
-            }
-
             editPanel.setVisibility(View.GONE);
             infoPanel.setVisibility(View.VISIBLE);
+            if(status.equals("-1")){
+                intoEdit.setVisibility(View.VISIBLE);
+                i_t_0.setTextColor(0xffcccccc);
+            }else if(status.equals("1")){
+                intoEdit.setVisibility(View.VISIBLE);
+                i_t_0.setTextColor(0xffb69873);
+            }else{
+                intoEdit.setVisibility(View.GONE);
+                i_t_0.setTextColor(0xff999999);
+            }
             i_t_0.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.astater));
             i_t_1.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.realname));
             i_t_2.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.idcard));
             i_t_3.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.zfb));
-            Picasso.get().load(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardfurl)).into(i_l_1_image);
-            Picasso.get().load(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardzurl)).into(i_l_2_image);
+
+            t_1.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.realname));
+            t_2.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.idcard));
+            t_3.setText(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.zfb));
+
+            if(!UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardfurl).equals("")){
+                Picasso.get().load(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardfurl)).into(i_l_1_image);
+            }
+            if(!UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardzurl).equals("")){
+                Picasso.get().load(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.ucardzurl)).into(i_l_2_image);
+            }
         }
 
         showLoadingHandler = new Handler(){

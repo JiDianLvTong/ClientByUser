@@ -11,7 +11,7 @@ public class MainGetUserInfoBean {
     private String uptoken;
 
     private String zfb;
-    private String status;
+    private String astatus;
     private String astater;
     private String ucardzurl;
     private String ucardfurl;
@@ -25,12 +25,12 @@ public class MainGetUserInfoBean {
         this.idcard = idcard;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAstatus() {
+        return astatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAstatus(String astatus) {
+        this.astatus = astatus;
     }
 
     public String getZfb() {
