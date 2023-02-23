@@ -36,9 +36,9 @@ public class MainActivityPresenter extends BasePresenter<MainActivityContract.Vi
                     }
                 }
             }, throwable -> {
-                if (mView != null) {
-                    mView.onError(throwable);
-                }
+//                if (mView != null) {
+//                    mView.onError(throwable);
+//                }
             });
     }
 
@@ -60,9 +60,9 @@ public class MainActivityPresenter extends BasePresenter<MainActivityContract.Vi
                         }
                     }
                 }, throwable -> {
-                    if (mView != null) {
-                        mView.onError(throwable);
-                    }
+//                    if (mView != null) {
+//                        mView.onError(throwable);
+//                    }
                 });
     }
 

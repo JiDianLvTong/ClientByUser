@@ -195,6 +195,7 @@ public class MainPay {
                                                 zhimaAuthStep++;
                                             } else {
                                                 activity.startActivity(new Intent(activity, MainActivity.class));
+//                                                EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 0));
                                                 activity.finish();
                                             }
                                         } else {
@@ -203,15 +204,18 @@ public class MainPay {
                                                 zhimaAuthStep++;
                                             } else {
                                                 activity.startActivity(new Intent(activity, MainActivity.class));
+//                                                EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 0));
                                                 activity.finish();
                                             }
                                         }
                                     } else {
                                         activity.startActivity(new Intent(activity, MainActivity.class));
+//                                        EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 0));
                                         activity.finish();
                                     }
                                 } else {
                                     activity.startActivity(new Intent(activity, MainActivity.class));
+//                                    EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 0));
 
                                     if (!uid.isEmpty()) {
                                         List<ParamTypeData> dataList1 = new ArrayList<>();
@@ -388,6 +392,7 @@ public class MainPay {
 //						Toast.makeText(getApplication(), "正常调起支付", Toast.LENGTH_SHORT).show();
                                         // 在支付之前，如果应用没有注册到微信，应该先调用IWXMsg.registerApp将应用注册到微信
                                         api.sendReq(req);
+                                        activity.finish();
                                     } else {
                                         Log.d("PAY_GET", "返回错误" + jsonObject.getString("retmsg"));
                                         MyToast.showTheToast(activity, "返回错误" + jsonObject.getString("retmsg"));

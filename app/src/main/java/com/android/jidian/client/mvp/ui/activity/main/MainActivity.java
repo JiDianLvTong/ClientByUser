@@ -164,8 +164,7 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
 
         //获取用户信息
         if (isLogin) {
-            Log.d("xiaoming0220", "onResume: " + isLogin);
-            changeMain(0);
+            refreshCurrentPage();
         }
     }
 
@@ -232,6 +231,18 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
             }
         } else if (layout.getId() == R.id.p_4) {
             changeMain(3);
+        }
+    }
+
+    private void refreshCurrentPage() {
+        if (0 == localPage) {
+            mainEquipmentFragment.setFragmentRefresh();
+        } else if (1 == localPage) {
+            mainFindFragment.setFragmentRefresh();
+        } else if (2 == localPage) {
+            mainShopFragment.setFragmentRefresh();
+        } else if (3 == localPage) {
+            mainUserFragment.setFragmentRefresh();
         }
     }
 
@@ -314,6 +325,8 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                     if (mainEquipmentFragment != null) {
                         mainEquipmentFragment.setFragmentRefresh();
                     }
+                }else {
+                    changeMain(0);
                 }
             }
         }
