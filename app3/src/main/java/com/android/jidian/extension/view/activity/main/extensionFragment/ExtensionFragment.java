@@ -67,8 +67,6 @@ public class ExtensionFragment extends BaseFragment {
     }
 
     private void init(){
-        //更新数据
-        getUserInfo();
         //下拉刷新
         MaterialHeader materialHeader = new MaterialHeader(requireActivity());
         materialHeader.setColorSchemeColors(Color.parseColor("#b69873"), Color.parseColor("#b69873"));
@@ -81,11 +79,12 @@ public class ExtensionFragment extends BaseFragment {
             }
         });
         refreshView.setEnableAutoLoadMore(false);
+        refreshView.autoRefresh();
     }
 
     private void setView(){
         mainActivity.setFragmentRefresh();
-        qrCodeView.setImageBitmap(Public.generateBitmap(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.qrcode), 400, 400 , 0xffffffff , 0xff1b1b1b));
+        qrCodeView.setImageBitmap(Public.generateBitmap(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.qrcode), 400, 400 , 0xff000000 , 0xffffffff));
     }
 
 
@@ -107,7 +106,7 @@ public class ExtensionFragment extends BaseFragment {
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.phone , mainGetUserInfoBean.getPhone());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.qrcode , mainGetUserInfoBean.getQrcode());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.uptoken , mainGetUserInfoBean.getUptoken());
-                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.status , mainGetUserInfoBean.getStatus());
+                            UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.astatus , mainGetUserInfoBean.getAstatus());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.idcard , mainGetUserInfoBean.getIdcard());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.zfb , mainGetUserInfoBean.getZfb());
                             UserInfoSp.getInstance().setUserInfoData(UserInfoSp.UserInfoEnum.astater , mainGetUserInfoBean.getAstater());

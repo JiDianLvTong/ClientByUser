@@ -19,5 +19,7 @@ public class HttpUrlMap {
     public static String getUploadImagePath = apu + "/Upload/uploadUrlSet.html";
     //获取用户信息
     public static String getUploadUserInfo = apu + "/User/edit.html";
+    //获取联系方式
+    public static String getTel = apu + "/User/telnum.html";
 
 }

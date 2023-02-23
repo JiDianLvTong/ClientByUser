@@ -20,7 +20,7 @@ public class UserInfoSp {
     };
 
     public enum UserInfoEnum{
-        uid,apptoken,uptoken,realname,phone,isfirst,avater,qrcode,ucardfurl,ucardzurl,astater,zfb,status,idcard
+        uid,apptoken,uptoken,realname,phone,isfirst,avater,qrcode,ucardfurl,ucardzurl,astater,zfb,astatus,idcard
     }
 
     //上下文

@@ -5,6 +5,24 @@ import java.util.ArrayList;
 public class MainGetProfitInfoBean {
 
     private ArrayList<Lists> lists;
+    private String incomet;
+    private String montht;
+
+    public String getIncomet() {
+        return incomet;
+    }
+
+    public void setIncomet(String incomet) {
+        this.incomet = incomet;
+    }
+
+    public String getMontht() {
+        return montht;
+    }
+
+    public void setMontht(String montht) {
+        this.montht = montht;
+    }
 
     public ArrayList<Lists> getLists() {
         return lists;

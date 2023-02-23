@@ -54,6 +54,12 @@ public class ProfitFragment extends BaseFragment {
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
 
+    @BindView(R.id.t_1)
+    public TextView t_1;
+    @BindView(R.id.t_2)
+    public TextView t_2;
+
+
     private ProfitAdapter profitAdapter;
     private ArrayList<MainGetProfitInfoBean.Lists> dataList = new ArrayList<>();
     private int currentPage = 1;
@@ -73,7 +79,7 @@ public class ProfitFragment extends BaseFragment {
         materialHeader.setColorSchemeColors(Color.parseColor("#b69873"), Color.parseColor("#b69873"));
         refreshView.setRefreshHeader(materialHeader);
         ClassicsFooter classicsFooter = new ClassicsFooter(requireActivity());
-        classicsFooter.setAccentColor(Color.parseColor("#b69873"));
+        classicsFooter.setAccentColor(Color.parseColor("#ffffff"));
         refreshView.setRefreshFooter(classicsFooter);
         refreshView.setEnableHeaderTranslationContent(true);
         refreshView.setOnRefreshListener(new OnRefreshListener() {
@@ -91,7 +97,7 @@ public class ProfitFragment extends BaseFragment {
                 getData();
             }
         });
-        getData();
+        refreshView.autoRefresh();
     }
 
     private void getData(){
@@ -110,6 +116,8 @@ public class ProfitFragment extends BaseFragment {
                         if(code == 1){
                             nullDataPanel.setVisibility(View.GONE);
                             MainGetProfitInfoBean mainGetProfitInfoBean = new Gson().fromJson(data , MainGetProfitInfoBean.class);
+                            t_1.setText(mainGetProfitInfoBean.getMontht()+"元");
+                            t_2.setText(mainGetProfitInfoBean.getIncomet()+"元");
                             ArrayList<MainGetProfitInfoBean.Lists> tempArrayList = mainGetProfitInfoBean.getLists();
                             for(int i = 0 ; i < tempArrayList.size() ; i++){
                                 dataList.add(tempArrayList.get(i));
@@ -136,7 +144,7 @@ public class ProfitFragment extends BaseFragment {
     }
 
     public void setFragmentRefresh(){
-
+        getData();
     }
 
 
