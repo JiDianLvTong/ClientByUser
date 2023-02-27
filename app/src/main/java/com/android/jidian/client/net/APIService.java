@@ -307,7 +307,7 @@ public interface APIService {
      */
     @FormUrlEncoded
     @POST("User/depositRefundData.html")
-    Flowable<BaseBean> submitDepositRefund(@Field("uid") String uid, @Field("oid") String oid, @Field("id") String id);
+    Flowable<BaseBean> requestSubmitDepositRefund(@Field("uid") String uid, @Field("oid") String oid, @Field("id") String id);
 
     /**
      * 获取当前收益

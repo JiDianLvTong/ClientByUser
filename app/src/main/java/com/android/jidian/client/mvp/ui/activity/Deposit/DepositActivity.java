@@ -12,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.U6BaseActivityByMvp;
+import com.android.jidian.client.bean.BaseBean;
 import com.android.jidian.client.bean.DepositRefundOrderBean;
 import com.android.jidian.client.mvp.contract.DepositContract;
 import com.android.jidian.client.mvp.presenter.DepositPresenter;
 import com.android.jidian.client.mvp.ui.adapter.DepositListAdapter;
+import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
+import com.android.jidian.client.util.UserInfoHelper;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
 import com.scwang.smart.refresh.layout.SmartRefreshLayout;
@@ -59,6 +62,19 @@ public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> imple
         rv_deposit.setLayoutManager(new LinearLayoutManager(DepositActivity.this, LinearLayoutManager.VERTICAL, false));
         mAdapter = new DepositListAdapter();
         rv_deposit.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new DepositListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DepositRefundOrderBean.DataBean bean) {
+                if (mPresenter != null) {
+                    mPresenter.requestSubmitDepositRefund(UserInfoHelper.getInstance().getUid(), bean.getId(), bean.getRefund_id());
+                }
+            }
+
+            @Override
+            public void onRejectClick(String msg) {
+                new DialogByEnter(activity, msg).showPopupWindow();
+            }
+        });
         srl_deposit.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
@@ -73,7 +89,9 @@ public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> imple
     }
 
     private void requestData() {
-        mPresenter.requestDepositRefundOrder(uid);
+        if (mPresenter != null) {
+            mPresenter.requestDepositRefundOrder(uid);
+        }
     }
 
     @Override
@@ -102,6 +120,18 @@ public class DepositActivity extends U6BaseActivityByMvp<DepositPresenter> imple
     public void requestDepositRefundOrderFail(String msg) {
         showMessage(msg);
         dataNull();
+    }
+
+    @Override
+    public void requestSubmitDepositRefundSuccess(BaseBean bean) {
+        showMessage(bean.msg);
+        srl_deposit.autoRefresh();
+    }
+
+    @Override
+    public void requestSubmitDepositRefundFail(String msg) {
+        showMessage(msg);
+        srl_deposit.autoRefresh();
     }
 
     @Override

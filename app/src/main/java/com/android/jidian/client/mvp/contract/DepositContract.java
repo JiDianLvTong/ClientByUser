@@ -1,6 +1,7 @@
 package com.android.jidian.client.mvp.contract;
 
 import com.android.jidian.client.base.BaseView;
+import com.android.jidian.client.bean.BaseBean;
 import com.android.jidian.client.bean.DepositRefundOrderBean;
 
 import io.reactivex.Flowable;
@@ -12,17 +13,25 @@ import io.reactivex.Flowable;
  * description:
  */
 public interface DepositContract {
-    interface Model{
+    interface Model {
         Flowable<DepositRefundOrderBean> requestDepositRefundOrder(String uid);
+
+        Flowable<BaseBean> requestSubmitDepositRefund(String uid, String oid, String id);
     }
 
-    interface View extends BaseView{
+    interface View extends BaseView {
         void requestDepositRefundOrderSuccess(DepositRefundOrderBean bean);
 
         void requestDepositRefundOrderFail(String msg);
+
+        void requestSubmitDepositRefundSuccess(BaseBean bean);
+
+        void requestSubmitDepositRefundFail(String msg);
     }
 
-    interface Presenter{
+    interface Presenter {
         void requestDepositRefundOrder(String uid);
+
+        void requestSubmitDepositRefund(String uid, String oid, String id);
     }
 }

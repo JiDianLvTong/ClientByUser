@@ -174,7 +174,8 @@ public class ChargeSiteMap extends U6BaseActivityByMvp<ChargeSiteMapPresenter> i
     //获取网络数据
     private void getInternetData() {
         progressDialog.show();
-        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(), coordinates[0] + "", coordinates[1] + "", "0");
+//        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(), coordinates[0] + "", coordinates[1] + "", "0");
+        mPresenter.requestChargeSite(UserInfoHelper.getInstance().getUid(), "123.420572", "41.783563","0");
     }
 
     @OnClick(R.id.pageReturn)

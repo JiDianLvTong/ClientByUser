@@ -45,4 +45,29 @@ public class DepositPresenter extends BasePresenter<DepositContract.View> implem
                     }
                 });
     }
+
+    @Override
+    public void requestSubmitDepositRefund(String uid, String oid, String id) {
+        if (!isViewAttached()) {
+            return;
+        }
+        mView.showProgress();
+        Disposable disposable = model.requestSubmitDepositRefund(uid, oid, id)
+                .compose(RxScheduler.Flo_io_main())
+                .subscribe(bean -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        if (1 == bean.status) {
+                            mView.requestSubmitDepositRefundSuccess(bean);
+                        } else {
+                            mView.requestSubmitDepositRefundFail(bean.msg);
+                        }
+                    }
+                }, throwable -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        mView.onError(throwable);
+                    }
+                });
+    }
 }

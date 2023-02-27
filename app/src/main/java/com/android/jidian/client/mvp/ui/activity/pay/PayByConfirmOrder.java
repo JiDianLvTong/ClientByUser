@@ -241,11 +241,11 @@ public class PayByConfirmOrder extends U6BaseActivity {
                         data_panel.setVisibility(View.VISIBLE);
                         JSONObject jsonObject1 = new JSONObject(response);
                         String status = jsonObject1.getString("status");
-                        otype = jsonObject1.getString("otype");
                         String msg = jsonObject1.getString("msg");
                         String guoqi = jsonObject1.getString("guoqi");
                         if ("1".equals(status)) {
                             String rprice = jsonObject1.getString("rprice");
+                            otype = jsonObject1.getString("otype");
                             price.setText("¥" + rprice);
                             submit.setText("确认支付 ¥" + rprice + "元");
                             JSONArray jsonArray = jsonObject1.getJSONArray("payList");
