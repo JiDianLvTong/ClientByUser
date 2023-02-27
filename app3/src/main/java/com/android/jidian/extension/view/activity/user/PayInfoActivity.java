@@ -106,7 +106,6 @@ public class PayInfoActivity extends BaseActivity {
 
     private void init(){
         String status = UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.astatus);
-        System.out.println("aaaaaaaaaaaaaaaaaaaaa" + status);
         if(status.equals("3")){
             editPanel.setVisibility(View.VISIBLE);
             infoPanel.setVisibility(View.GONE);
