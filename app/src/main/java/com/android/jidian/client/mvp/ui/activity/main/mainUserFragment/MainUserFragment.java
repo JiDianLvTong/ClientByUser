@@ -179,42 +179,42 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         hideProgress();
         smartRefreshLayout.finishRefresh();
         if (bean.getData() != null) {
-            String gid = bean.getData().getUmonth().getPackets().getGid();
-            String otype = bean.getData().getUmonth().getPackets().getOtype();
-            mJSONArray = new JSONArray();
-            JSONObject jsonObject = new JSONObject();
-            try {
-                jsonObject.put("gid", gid);
-                jsonObject.put("otype", otype);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            mJSONArray.put(jsonObject);
+//            String gid = bean.getData().getUmonth().getPackets().getGid();
+//            String otype = bean.getData().getUmonth().getPackets().getOtype();
+//            mJSONArray = new JSONArray();
+//            JSONObject jsonObject = new JSONObject();
+//            try {
+//                jsonObject.put("gid", gid);
+//                jsonObject.put("otype", otype);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//            mJSONArray.put(jsonObject);
 
             myMiDouCount.setText(bean.getData().getTop().getCList().get(0).getNums() + "");
-            if (!TextUtils.isEmpty(bean.getData().getUmonth().getPackets().getGid())) {//可能有包月
-                //0=未过期，1=已过期
-                if ("0".equals(bean.getData().getUmonth().getPackets().getIsexpire())) {//包月没过期
-                    myMonthInTimePanel.setVisibility(View.VISIBLE);
-                    myMonthOutTimePanel.setVisibility(View.GONE);
-                    myMonthInTimePanelTime.setText(bean.getData().getUmonth().getPackets().getDays() + "");
-                    myMonthInTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
-                    myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
-                } else if ("2".equals(bean.getData().getUmonth().getPackets().getIsexpire())) {//没有包月
-                    myMonthInTimePanel.setVisibility(View.GONE);
-                    myMonthOutTimePanel.setVisibility(View.GONE);
-                    myMonthOutTimePanelRePay.setVisibility(View.GONE);
-                } else {//包月过期
-                    myMonthInTimePanel.setVisibility(View.GONE);
-                    myMonthOutTimePanel.setVisibility(View.VISIBLE);
-                    myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
-                    myMonthOutTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
-                }
-            } else {//没有包月
-                myMonthInTimePanel.setVisibility(View.GONE);
-                myMonthOutTimePanel.setVisibility(View.GONE);
-                myMonthOutTimePanelRePay.setVisibility(View.GONE);
-            }
+//            if (!TextUtils.isEmpty(bean.getData().getUmonth().getPackets().getGid())) {//可能有包月
+//                //0=未过期，1=已过期
+//                if ("0".equals(bean.getData().getUmonth().getPackets().getIsexpire())) {//包月没过期
+//                    myMonthInTimePanel.setVisibility(View.VISIBLE);
+//                    myMonthOutTimePanel.setVisibility(View.GONE);
+//                    myMonthInTimePanelTime.setText(bean.getData().getUmonth().getPackets().getDays() + "");
+//                    myMonthInTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
+//                    myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
+//                } else if ("2".equals(bean.getData().getUmonth().getPackets().getIsexpire())) {//没有包月
+//                    myMonthInTimePanel.setVisibility(View.GONE);
+//                    myMonthOutTimePanel.setVisibility(View.GONE);
+//                    myMonthOutTimePanelRePay.setVisibility(View.GONE);
+//                } else {//包月过期
+//                    myMonthInTimePanel.setVisibility(View.GONE);
+//                    myMonthOutTimePanel.setVisibility(View.VISIBLE);
+//                    myMonthOutTimePanelRePay.setVisibility(View.VISIBLE);
+//                    myMonthOutTimePanelData.setText(bean.getData().getUmonth().getPackets().getExpire());
+//                }
+//            } else {//没有包月
+//                myMonthInTimePanel.setVisibility(View.GONE);
+//                myMonthOutTimePanel.setVisibility(View.GONE);
+//                myMonthOutTimePanelRePay.setVisibility(View.GONE);
+//            }
 
         }
     }

@@ -111,18 +111,18 @@ public class MyPatrolDetailActivity extends BaseActivityByMvp<MyPartolDetailPres
                 tvBgNetworkCheckUnable.setBackgroundResource(R.drawable.icon_radio_check);
             }
             if ("1".equals(bean.getData().getIsdixian())) {
-                tvBgNetworkCheckEnable.setBackgroundResource(R.drawable.icon_radio_check);
-                tvBgNetworkCheckUnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
-            } else {
-                tvBgNetworkCheckEnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
-                tvBgNetworkCheckUnable.setBackgroundResource(R.drawable.icon_radio_check);
-            }
-            if ("1".equals(bean.getData().getIsopenbtn())) {
                 tvBgSafeCheckEnable.setBackgroundResource(R.drawable.icon_radio_check);
                 tvBgSafeCheckUnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
             } else {
                 tvBgSafeCheckEnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
                 tvBgSafeCheckUnable.setBackgroundResource(R.drawable.icon_radio_check);
+            }
+            if ("1".equals(bean.getData().getIsopenbtn())) {
+                tvBgButtonCheckEnable.setBackgroundResource(R.drawable.icon_radio_check);
+                tvBgButtonCheckUnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
+            } else {
+                tvBgButtonCheckEnable.setBackgroundResource(R.drawable.icon_radio_uncheck);
+                tvBgButtonCheckUnable.setBackgroundResource(R.drawable.icon_radio_check);
             }
         }
     }
