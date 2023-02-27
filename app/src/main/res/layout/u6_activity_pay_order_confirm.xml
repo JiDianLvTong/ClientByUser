@@ -196,7 +196,7 @@
                 android:layout_marginTop="50dp"
                 android:background="@drawable/u6_shape_d7a64a_corner_10"
                 android:gravity="center"
-                android:text="返回我的钱包"
+                android:text="返回"
                 android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 android:visibility="gone"/>

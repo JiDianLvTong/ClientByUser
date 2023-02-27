@@ -367,6 +367,7 @@ public class PayByConfirmOrder extends U6BaseActivity {
 
     @Override
     protected void onDestroy() {
+        Log.d("xiaoming0227", "onDestroy: ");
         EventBus.getDefault().unregister(this);
         if (timer != null) {
             timer.cancel();
@@ -382,6 +383,7 @@ public class PayByConfirmOrder extends U6BaseActivity {
 
     @Override
     protected void onResume() {
+        Log.d("xiaoming0227", "onResume: ");
         super.onResume();
         if (timer != null) {
             timer.cancel();

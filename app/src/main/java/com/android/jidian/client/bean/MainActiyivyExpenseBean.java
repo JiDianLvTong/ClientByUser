@@ -51,6 +51,7 @@ public class MainActiyivyExpenseBean {
         private List<EbikeBean> ebike;
         private List<BatteryBean> battery;
         private String servtel;
+        private String rentFee;
 
         public TopBean getTop() {
             return top;
@@ -90,6 +91,14 @@ public class MainActiyivyExpenseBean {
 
         public void setServtel(String servtel) {
             this.servtel = servtel;
+        }
+
+        public String getRentFee() {
+            return rentFee;
+        }
+
+        public void setRentFee(String rentFee) {
+            this.rentFee = rentFee;
         }
 
         public static class TopBean {
