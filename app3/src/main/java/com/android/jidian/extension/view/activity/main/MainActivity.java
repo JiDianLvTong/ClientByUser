@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.android.jidian.extension.R;
 import com.android.jidian.extension.base.BaseActivity;
+import com.android.jidian.extension.base.permissionManager.PermissionManager;
 import com.android.jidian.extension.bean.LoginGetUserInfoBean;
 import com.android.jidian.extension.bean.MainGetUserInfoBean;
 import com.android.jidian.extension.dao.sp.UserInfoSp;

@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 
 import com.android.jidian.extension.R;
 import com.android.jidian.extension.base.BaseActivity;
+import com.android.jidian.extension.base.permissionManager.PermissionManager;
 import com.android.jidian.extension.bean.LoginGetUserInfoBean;
 import com.android.jidian.extension.bean.PayInfoGetUploadImagePathBean;
 import com.android.jidian.extension.bean.PayInfoUploadImageBean;
@@ -102,6 +103,23 @@ public class PayInfoActivity extends BaseActivity {
         setContentView(R.layout.activity_pay_info);
         ButterKnife.bind(activity);
         init();
+        PermissionManager.getInstance().getCameraAndWriteAndRead(PayInfoActivity.this, new PermissionManager.PermissionListener() {
+            @Override
+            public void granted(List<String> grantedList) {
+
+            }
+
+            @Override
+            public void refused(List<String> refusedList) {
+                new DialogByEnter(PayInfoActivity.this, "缺少权限~", new DialogByEnter.DialogChoiceListener() {
+                    @Override
+                    public void enterReturn() {
+                        finish();
+
+                    }
+                }).showPopupWindow();
+            }
+        });
     }
 
     private void init(){
