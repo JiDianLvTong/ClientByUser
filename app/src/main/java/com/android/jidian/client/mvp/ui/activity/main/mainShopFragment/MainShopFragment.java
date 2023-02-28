@@ -79,6 +79,7 @@ public class MainShopFragment extends U6BaseFragment {
         viewPager.setAdapter(mainShopAdapter);
         viewPager.setOffscreenPageLimit(2);
         slidingTabLayout.setViewPager(viewPager, nameList);
+        viewPager.setCurrentItem(1);
 //        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 //            @Override
 //            public void onPageScrolled(int i, float v, int i1) {
