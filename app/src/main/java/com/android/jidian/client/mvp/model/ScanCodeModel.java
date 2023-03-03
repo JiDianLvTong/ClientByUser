@@ -22,4 +22,9 @@ public class ScanCodeModel implements ScanCodeContract.Model {
     public Flowable<BaseBean> requestCouponScan(String uid, String code) {
         return RetrofitClient.getInstance().getApiService().sendScan(uid, code);
     }
+
+    @Override
+    public Flowable<BaseBean> requestUserScanBind(String qrstr) {
+        return RetrofitClient.getInstance().getApuService().requestUserScanBind(qrstr);
+    }
 }

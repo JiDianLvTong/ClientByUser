@@ -32,6 +32,7 @@ import com.android.jidian.client.mvp.ui.activity.h5.MainMoreQuestion;
 import com.android.jidian.client.mvp.ui.activity.order.OrderListActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByReNew;
+import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoActivity;
 import com.android.jidian.client.mvp.ui.activity.set.MainSetActivity;
 import com.android.jidian.client.util.UserInfoHelper;
@@ -84,6 +85,8 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
     public LinearLayout myMonthOutTimePanelRePay;
     @BindView(R.id.smartRefreshLayout)
     public SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.myScan)
+    public LinearLayout myScan;
 
     private JSONArray mJSONArray;
 
@@ -224,6 +227,13 @@ public class MainUserFragment extends U6BaseFragmentByMvp<MainUserPresenter> imp
         hideProgress();
         showMessage(msg);
         smartRefreshLayout.finishRefresh();
+    }
+
+    @OnClick(R.id.myScan)
+    public void onClickmyScan(){
+        Intent intent = new Intent(requireActivity(), ScanCodeActivity.class);
+        intent.putExtra("from", "keshang");
+        startActivity(intent);
     }
 
     @OnClick({R.id.myMonth})

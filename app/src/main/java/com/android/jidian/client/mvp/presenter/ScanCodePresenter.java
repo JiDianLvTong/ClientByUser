@@ -101,4 +101,34 @@ public class ScanCodePresenter extends BasePresenter<ScanCodeContract.View> impl
                     }
                 });
     }
+
+    @Override
+    public void requestUserScanBind(String qrstr) {
+        if (!isViewAttached()) {
+            return;
+        }
+        if (mView != null) {
+            mView.showProgress();
+        }
+        //TODO RxLife
+        Disposable disposable = model.requestUserScanBind(qrstr)
+                .compose(RxScheduler.Flo_io_main())
+                .subscribe(data -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        if (data != null) {
+//                            if (data.isOk()) {
+                                mView.requestUserScanBindSuccess(data);
+//                            } else {
+//                                mView.requestQrCodeScanError(data.msg);
+//                            }
+                        }
+                    }
+                }, throwable -> {
+                    if (mView != null) {
+                        mView.hideProgress();
+                        mView.requestQrCodeScanError(throwable.toString());
+                    }
+                });
+    }
 }

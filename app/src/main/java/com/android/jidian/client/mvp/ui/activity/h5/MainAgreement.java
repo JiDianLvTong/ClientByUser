@@ -22,7 +22,7 @@ public class MainAgreement extends U6BaseActivity {
     @BindView(R.id.webView)
     public WebView webView;
 
-    private String url = "https://appx.mixiangx.com/web/pinpai/userAgreement3.html";
+    private String url = "https://appx.mixiangx.com/Service/userAgreement/companyid/3.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

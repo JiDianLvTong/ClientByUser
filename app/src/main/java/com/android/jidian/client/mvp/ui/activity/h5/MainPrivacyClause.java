@@ -25,7 +25,7 @@ public class MainPrivacyClause extends U6BaseActivity {
     @BindView(R.id.webView)
     public WebView webView;
 
-    private String url = "https://appx.mixiangx.com/web/pinpai/privacy3.html";
+    private String url = "https://appx.mixiangx.com/Service/privacy/companyid/3.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

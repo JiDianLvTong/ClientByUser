@@ -13,6 +13,8 @@ public interface ScanCodeContract {
         Flowable<QrCodeScanBean> requestEndBindBike(String uid);
 
         Flowable<BaseBean> requestCouponScan(String uid, String code);
+
+        Flowable<BaseBean> requestUserScanBind(String qrstr);
     }
 
     interface View extends BaseView {
@@ -23,6 +25,8 @@ public interface ScanCodeContract {
         void requestEndBindBikeSuccess(QrCodeScanBean qrCodeScanBean);
 
         void requestCouponScanSuccess(BaseBean bean);
+
+        void requestUserScanBindSuccess(BaseBean bean);
     }
 
     interface Presenter {
@@ -31,5 +35,7 @@ public interface ScanCodeContract {
         void requestEndBindBike(String uid);
 
         void requestCouponScan(String uid, String code);
+
+        void requestUserScanBind(String qrstr);
     }
 }

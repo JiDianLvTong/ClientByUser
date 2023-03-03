@@ -26,7 +26,7 @@ public class MainAbout extends U6BaseActivity {
     @BindView(R.id.webView)
     public WebView webView;
 
-    private String url = "https://appx.mixiangx.com/web/pinpai/about3.html";
+    private String url = "https://appx.mixiangx.com/Service/about/companyid/3.html";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

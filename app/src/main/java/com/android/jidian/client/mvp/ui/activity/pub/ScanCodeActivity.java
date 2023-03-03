@@ -67,6 +67,7 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
     public static final String SCAN_CODE_IS_INPUT_BOX = "SCAN_CODE_IS_INPUT_BOX";
     private String mType = null;
     public static final String TYPE = "SCAN_CODE_TYPE";
+    private String mFrom = "";
     /**
      * 是否允许相机权限
      */
@@ -86,17 +87,24 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
         mIsInputBox = getIntent().getStringExtra(SCAN_CODE_IS_INPUT_BOX);
         mType = getIntent().getStringExtra(TYPE);
 
-        if ("1".equals(mIsInputBox)) {
-            tvScanQrHint.setText("请将取景框对准设备号\n扫描后即可绑定车辆");
-        }
-        if ("1".equals(mIsInputBox) || "2".equals(mIsInputBox)) {
-            //首页扫一扫2、我的钱包-绑定模块1 这两个地方进扫描界面可带输入框，其他则不显示
-            findViewById(R.id.edt_scan_qr_code).setVisibility(View.VISIBLE);
-            findViewById(R.id.btn_scan_qr_sure).setVisibility(View.VISIBLE);
-        } else {
+        if (getIntent().hasExtra("from")) {//我的->扫码   过来的时候会传from  其他的页面过来都不传
+            mFrom = getIntent().getStringExtra("from");
             findViewById(R.id.edt_scan_qr_code).setVisibility(View.GONE);
             findViewById(R.id.btn_scan_qr_sure).setVisibility(View.GONE);
+        } else {
+            if ("1".equals(mIsInputBox)) {
+                tvScanQrHint.setText("请将取景框对准设备号\n扫描后即可绑定车辆");
+            }
+            if ("1".equals(mIsInputBox) || "2".equals(mIsInputBox)) {
+                //首页扫一扫2、我的钱包-绑定模块1 这两个地方进扫描界面可带输入框，其他则不显示
+                findViewById(R.id.edt_scan_qr_code).setVisibility(View.VISIBLE);
+                findViewById(R.id.btn_scan_qr_sure).setVisibility(View.VISIBLE);
+            } else {
+                findViewById(R.id.edt_scan_qr_code).setVisibility(View.GONE);
+                findViewById(R.id.btn_scan_qr_sure).setVisibility(View.GONE);
+            }
         }
+
 
         zXingview.setDelegate(this);
     }
@@ -128,7 +136,7 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                             if (str.contains("=")) {
                                 String s = str.split("=")[1];
                                 mPresenter.requestQrCodeScan(uid, s, "", mType, "1");
-                            }else {
+                            } else {
                                 mPresenter.requestQrCodeScan(uid, "", str, mType, "1");
                             }
                         }
@@ -187,12 +195,14 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                 break;
         }
     }
+
     private static final int HEADS_ALBUM = 8081;//正面相册选择
     private String img_1_path = "";
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == HEADS_ALBUM && resultCode == RESULT_OK && null != data){
+        if (requestCode == HEADS_ALBUM && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
             assert selectedImage != null;
@@ -228,7 +238,6 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
 //            dialogByLoading.show();
             zXingview.decodeQRCode(img_1_path);
         }
-
 
 
 //        if (resultCode == RESULT_OK) {
@@ -354,6 +363,12 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
     }
 
     @Override
+    public void requestUserScanBindSuccess(BaseBean bean) {
+        showMessage(bean.msg);
+        finish();
+    }
+
+    @Override
     public void showProgress() {
         progressDialog.show();
     }
@@ -375,36 +390,44 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
      */
     @Override
     public void onScanQRCodeSuccess(String result) {
-        if ("1".equals(mIsInputBox) || "2".equals(mIsInputBox)) {
-            //钱包1、首页2
-            vibrate();
-            zXingview.stopSpotAndHiddenRect(); // 停止识别，并且隐藏扫描框
-            if (null != result && !result.isEmpty()) {
+        if (!TextUtils.isEmpty(mFrom)) {
+            if ("keshang".equals(mFrom)) {
                 if (mPresenter != null) {
-                    mResult = result;
-                    if (result.contains("=")) {
-                        String s = result.split("=")[1];
-                        mPresenter.requestQrCodeScan(uid, s, "", mType, "1");
-                    }
-                } else {
-                    zXingview.startSpotAndShowRect();
+                    mPresenter.requestUserScanBind(result);
                 }
-            } else {
-                MyToast.showTheToast(this, getString(R.string.str_error_address));
-                zXingview.startSpotAndShowRect();
-            }
-        } else if ("3".equals(mIsInputBox)) {
-            //我的优惠券
-            if (mPresenter != null) {
-                mResult = result;
-                mPresenter.requestCouponScan(uid, result);
             }
         } else {
-            //商城
-            Intent intent = getIntent();
-            intent.putExtra("codedContent", result);
-            setResult(RESULT_OK, intent);
-            finish();
+            if ("1".equals(mIsInputBox) || "2".equals(mIsInputBox)) {
+                //钱包1、首页2
+                vibrate();
+                zXingview.stopSpotAndHiddenRect(); // 停止识别，并且隐藏扫描框
+                if (null != result && !result.isEmpty()) {
+                    if (mPresenter != null) {
+                        mResult = result;
+                        if (result.contains("=")) {
+                            String s = result.split("=")[1];
+                            mPresenter.requestQrCodeScan(uid, s, "", mType, "1");
+                        }
+                    } else {
+                        zXingview.startSpotAndShowRect();
+                    }
+                } else {
+                    MyToast.showTheToast(this, getString(R.string.str_error_address));
+                    zXingview.startSpotAndShowRect();
+                }
+            } else if ("3".equals(mIsInputBox)) {
+                //我的优惠券
+                if (mPresenter != null) {
+                    mResult = result;
+                    mPresenter.requestCouponScan(uid, result);
+                }
+            } else {
+                //商城
+                Intent intent = getIntent();
+                intent.putExtra("codedContent", result);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
         }
     }
 
