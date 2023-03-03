@@ -26,6 +26,7 @@ import com.android.jidian.extension.util.Public;
 import com.android.jidian.extension.view.activity.main.MainActivity;
 import com.android.jidian.extension.view.activity.main.profitFragment.ProfitFragment;
 import com.android.jidian.extension.view.commonPlug.dialog.DialogByEnter;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.scwang.smart.refresh.footer.ClassicsFooter;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -84,7 +85,8 @@ public class ExtensionFragment extends BaseFragment {
 
     private void setView(){
         mainActivity.setFragmentRefresh();
-        qrCodeView.setImageBitmap(Public.generateBitmap(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.qrcode), 400, 400 , 0xff000000 , 0xffffffff));
+//        qrCodeView.setImageBitmap(Public.generateBitmap(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.qrcode), 400, 400 , 0xff000000 , 0xffffffff));
+        Glide.with(requireActivity()).load(UserInfoSp.getInstance().getUserInfoData(UserInfoSp.UserInfoEnum.qrcode)).into(qrCodeView);
     }
 
 

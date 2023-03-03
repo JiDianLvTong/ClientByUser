@@ -1,11 +1,7 @@
 package com.android.jidian.extension.view.activity.main.profitFragment;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.jidian.extension.R;
 import com.android.jidian.extension.base.BaseFragment;
 import com.android.jidian.extension.bean.MainGetProfitInfoBean;
-import com.android.jidian.extension.bean.MainGetUserInfoBean;
 import com.android.jidian.extension.dao.sp.UserInfoSp;
 import com.android.jidian.extension.net.BaseHttp;
 import com.android.jidian.extension.net.BaseHttpParameterFormat;
@@ -36,13 +31,10 @@ import com.scwang.smart.refresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class ProfitFragment extends BaseFragment {
@@ -53,6 +45,8 @@ public class ProfitFragment extends BaseFragment {
     public SmartRefreshLayout refreshView;
     @BindView(R.id.recyclerView)
     public RecyclerView recyclerView;
+    @BindView(R.id.tvNoMoreData)
+    public TextView tvNoMoreData;
 
     @BindView(R.id.t_1)
     public TextView t_1;
@@ -87,6 +81,7 @@ public class ProfitFragment extends BaseFragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 currentPage = 1;
                 dataList.clear();
+                tvNoMoreData.setVisibility(View.GONE);
                 getData();
             }
         });
@@ -134,7 +129,12 @@ public class ProfitFragment extends BaseFragment {
                             }
 
                         }else{
-                            new DialogByEnter(getActivity(),message).showPopupWindow();
+                            if ("E2001".equals(errorMessage)) {
+                                tvNoMoreData.setVisibility(View.VISIBLE);
+                                tvNoMoreData.setText(message);
+                            }else {
+                                new DialogByEnter(getActivity(),message).showPopupWindow();
+                            }
                         }
                     }
                 });

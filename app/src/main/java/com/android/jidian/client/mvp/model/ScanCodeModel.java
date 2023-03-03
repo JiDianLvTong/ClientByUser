@@ -25,6 +25,6 @@ public class ScanCodeModel implements ScanCodeContract.Model {
 
     @Override
     public Flowable<BaseBean> requestUserScanBind(String qrstr) {
-        return RetrofitClient.getInstance().getApuService().requestUserScanBind(qrstr);
+        return RetrofitClient.getInstance().getApiService().requestUserScanBind(qrstr);
     }
 }

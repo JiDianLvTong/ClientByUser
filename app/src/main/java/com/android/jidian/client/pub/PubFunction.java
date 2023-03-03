@@ -51,7 +51,6 @@ public class PubFunction {
     private static final String HOST_APM = "apmx.mixiangx.com/";
     private static final String HOST_APE = "apex.mixiangx.com/";
     private static final String HOST_H5 = "h5x.mixiangx.com/";
-    private static final String HOST_APU = "apux.mixiangx.com/";
 
 
     public static String app;
@@ -59,7 +58,6 @@ public class PubFunction {
     public static String apm;
     public static String ape;
     public static String h5;
-    public static String apu;
 
     public static String getLevel() {
         String s = "";
@@ -83,7 +81,6 @@ public class PubFunction {
                 apm = SCHEME_HTTPS + HOST_PRE_FZ + HOST_APM;
                 ape = SCHEME_HTTPS + HOST_PRE_FZ + HOST_APE;
                 h5 = SCHEME_HTTPS + HOST_PRE_FZ + HOST_H5;
-                apu = SCHEME_HTTPS + HOST_PRE_FZ + HOST_APU;
                 break;
             case 3:
                 app = SCHEME_HTTP + HOST_PRE_TEST + HOST_APP;
@@ -91,7 +88,6 @@ public class PubFunction {
                 apm = SCHEME_HTTP + HOST_PRE_TEST + HOST_APM;
                 ape = SCHEME_HTTP + HOST_PRE_TEST + HOST_APE;
                 h5 = SCHEME_HTTPS + HOST_PRE_TEST + HOST_H5;
-                apu = SCHEME_HTTPS + HOST_PRE_TEST + HOST_APU;
                 break;
             default:
                 app = SCHEME_HTTPS + HOST_APP;
@@ -99,7 +95,6 @@ public class PubFunction {
                 apm = SCHEME_HTTPS + HOST_APM;
                 ape = SCHEME_HTTPS + HOST_APE;
                 h5 = SCHEME_HTTPS + HOST_H5;
-                apu = SCHEME_HTTPS + HOST_APU;
                 break;
         }
     }

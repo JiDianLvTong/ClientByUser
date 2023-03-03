@@ -88,12 +88,17 @@ public class OrderListActivity extends U6BaseActivityByMvp<OrderListPresenter> i
                 requestData(false);
             }
         });
-        requestData(true);
     }
 
     @OnClick(R.id.pageReturn)
     public void onClickPageReturn() {
         activity.finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        requestData(true);
     }
 
     private void requestData(boolean isRefresh) {

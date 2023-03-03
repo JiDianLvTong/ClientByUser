@@ -395,4 +395,9 @@ public interface APIService {
     @FormUrlEncoded
     @POST("User/uOrder.html")
     Flowable<UserUOrderBean> requestUserUOrder(@Field("uid") String uid,@Field("lastid") String lastid);
+
+    //客商扫码
+    @FormUrlEncoded
+    @POST("User/scanBind.html")
+    Flowable<BaseBean> requestUserScanBind(@Field("qrstr") String qrstr);
 }

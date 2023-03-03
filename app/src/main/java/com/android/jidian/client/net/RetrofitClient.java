@@ -87,14 +87,4 @@ public class RetrofitClient {
         return retrofit.create(APIService.class);
     }
 
-    public APUService getApuService() {
-        Retrofit retrofit = new Retrofit.Builder()
-                .client(genericClient())
-                .baseUrl(PubFunction.apu)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        return retrofit.create(APUService.class);
-    }
-
 }
