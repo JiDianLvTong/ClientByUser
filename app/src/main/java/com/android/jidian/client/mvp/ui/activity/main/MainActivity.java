@@ -42,6 +42,7 @@ import com.android.jidian.client.mvp.ui.activity.main.mainShopFragment.MainShopE
 import com.android.jidian.client.mvp.ui.activity.main.mainShopFragment.MainShopFragment;
 import com.android.jidian.client.mvp.ui.activity.main.mainUserFragment.MainUserEvent;
 import com.android.jidian.client.mvp.ui.activity.main.mainUserFragment.MainUserFragment;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoAuthentication;
 import com.android.jidian.client.mvp.ui.dialog.DialogByEnter;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.Util;
@@ -327,6 +328,11 @@ public class MainActivity extends U6BaseActivityByMvp<MainActivityPresenter> imp
                     }
                 }else {
                     changeMain(0);
+                }
+                if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
+                    if (!"1".equals(UserInfoHelper.getInstance().getAuth())) {
+                        startActivity(new Intent(MainActivity.this, PersonalInfoAuthentication.class));
+                    }
                 }
             }
         }

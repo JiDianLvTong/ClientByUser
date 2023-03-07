@@ -40,4 +40,13 @@ public class UserInfoHelper {
     public String getAccess() {
         return PreferenceManager.getString(context, "access", "");
     }
+
+    public String getAuth() {
+        return PreferenceManager.getString(context, "auth", "");
+    }
+
+    public void setAuth(String autb) {
+        PreferenceManager.putString(context, "auth", "");
+    }
+
 }

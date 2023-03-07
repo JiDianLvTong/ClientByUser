@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.jidian.client.MainAuthentication;
 import com.android.jidian.client.R;
 import com.android.jidian.client.base.BaseFragment;
 import com.android.jidian.client.base.broadcastManage.BroadcastManager;
@@ -29,6 +30,9 @@ import com.android.jidian.client.mvp.ui.activity.login.LoginActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByCoinActivity;
 import com.android.jidian.client.mvp.ui.activity.pub.ScanCodeActivity;
 import com.android.jidian.client.mvp.ui.activity.pay.PayByReNew;
+import com.android.jidian.client.mvp.ui.activity.sign.SignActivity;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoActivity;
+import com.android.jidian.client.mvp.ui.activity.userInfo.PersonalInfoAuthentication;
 import com.android.jidian.client.util.UserInfoHelper;
 import com.android.jidian.client.util.ViewUtil;
 import com.scwang.smart.refresh.header.MaterialHeader;
@@ -187,6 +191,11 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         }
     }
 
+    @OnClick({R.id.tv_main_tip})
+    public void OnCLickcccccc() {
+        startActivity(new Intent(requireActivity(), SignActivity.class));
+    }
+
     //设置坐标
     public void setFragmentRefresh() {
         if (!UserInfoHelper.getInstance().getUid().isEmpty()) {
@@ -232,6 +241,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 //            showProgress();
 //            getEquipmentInfo();
 //            llCustomPhone.setVisibility(View.VISIBLE);
+//            main_l2.setVisibility(View.VISIBLE);
         }
         //未登录状态
         else {
@@ -274,7 +284,6 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             MainActiyivyExpenseBean.DataBean dataBean = bean.getData();
             //车辆信息更新
 //        UserLoginBean userLoginBean = SpUser.getInstance().getUserLoginBean();
-//            main_l2.setVisibility(View.VISIBLE);
             llCustomPhone.setVisibility(View.VISIBLE);
             tv_level.setText("青铜会员");
             tv_main_tip.setText("享有7项会员权益，点击查看详情");
@@ -607,7 +616,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     @OnClick(R.id.main_l2_charge)
     public void onClickMain_l2_charge() {
-        getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
+//        getActivity().startActivity(new Intent(getActivity(), PayByCoinActivity.class));
     }
 
 

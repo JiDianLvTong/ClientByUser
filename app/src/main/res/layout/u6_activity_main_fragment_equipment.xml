@@ -159,6 +159,7 @@
                         android:paddingTop="10dp"
                         android:paddingRight="20dp"
                         android:paddingBottom="40dp"
+                        tools:visibility="visible"
                         android:visibility="gone">
 
                         <LinearLayout
