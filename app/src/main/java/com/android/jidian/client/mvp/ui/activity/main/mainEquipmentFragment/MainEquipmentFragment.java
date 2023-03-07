@@ -274,7 +274,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
             MainActiyivyExpenseBean.DataBean dataBean = bean.getData();
             //车辆信息更新
 //        UserLoginBean userLoginBean = SpUser.getInstance().getUserLoginBean();
-            main_l2.setVisibility(View.VISIBLE);
+//            main_l2.setVisibility(View.VISIBLE);
             llCustomPhone.setVisibility(View.VISIBLE);
             tv_level.setText("青铜会员");
             tv_main_tip.setText("享有7项会员权益，点击查看详情");
@@ -359,14 +359,15 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     tv_battery_1_text.setVisibility(View.VISIBLE);
                 }
                 String battery1IsBind = battery.getIs_bind();
-                if (battery1IsBind.equals("1")) {
+                if (battery1IsBind.equals("1")) {//已绑定
                     cl_battery_detail_1.setVisibility(View.VISIBLE);
                     li_battery_add_1.setVisibility(View.GONE);
                     iv_main_battery_1.setImageResource(R.drawable.main_battery);
                     tv_battery_num_1.setText(battery.getNumber());
-                } else if (battery1IsBind.equals("2")) {
+                } else if (battery1IsBind.equals("2")) {//没绑定
                     tv_battery_status_1.setText("扫码绑定");
                     li_battery_add_1.setVisibility(View.VISIBLE);
+                    iv_main_battery_1.setImageResource(R.drawable.main_battery_gray);
                     cl_battery_detail_1.setVisibility(View.GONE);
                 }
             } else {
@@ -393,13 +394,14 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     tv_battery_2_unit.setVisibility(View.VISIBLE);
                     tv_battery_2_text.setVisibility(View.VISIBLE);
                 }
-                if (battery2IsBind.equals("1")) {
+                if (battery2IsBind.equals("1")) {//已绑定
                     cl_battery_detail_2.setVisibility(View.VISIBLE);
                     li_battery_add_2.setVisibility(View.GONE);
                     iv_main_battery_2.setImageResource(R.drawable.main_battery);
                     tv_battery_num_2.setText(battery.getNumber());
-                } else if (battery2IsBind.equals("2")) {
+                } else if (battery2IsBind.equals("2")) {//没绑定
                     tv_battery_status_2.setText("扫码绑定");
+                    iv_main_battery_2.setImageResource(R.drawable.main_battery_gray);
                     li_battery_add_2.setVisibility(View.VISIBLE);
                     cl_battery_detail_2.setVisibility(View.GONE);
                 }

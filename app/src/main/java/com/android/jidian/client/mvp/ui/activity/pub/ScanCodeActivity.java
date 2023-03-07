@@ -148,7 +148,7 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                 PermissionX.init(ScanCodeActivity.this)
                         .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
                         .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                        .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+//                        .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
                         .request((allGranted, grantedList, deniedList) -> {
                             if (allGranted) {
                                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -445,7 +445,7 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
         PermissionX.init(ScanCodeActivity.this)
                 .permissions(Manifest.permission.CAMERA)
                 .onExplainRequestReason((scope, deniedList, beforeRequest) -> scope.showRequestReasonDialog(deniedList, "即将申请的权限是程序必须依赖的权限", "确认", "取消"))
-                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
+//                .onForwardToSettings((scope, deniedList) -> scope.showForwardToSettingsDialog(deniedList, "当前应用缺少必要权限，您需要去应用程序设置当中手动开启权限", "确认", "取消"))
                 .request((allGranted, grantedList, deniedList) -> {
                     if (allGranted) {
                         if (PubFunction.isConnect(activity, true)) {
@@ -454,7 +454,8 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                             zXingview.startSpotAndShowRect(); // 显示扫描框，并开始识别
                         }
                     } else {
-                        MyToast.showTheToast(this, "当前应用缺少必要权限 ");
+                        DialogByEnter dialog = new DialogByEnter(activity, "当前应用缺少必要权限,会影响部分功能使用！");
+                        dialog.showPopupWindow();
                     }
                 });
     }
