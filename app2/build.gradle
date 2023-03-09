@@ -64,7 +64,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation files('libs/JavaWebSocket_fat.jar')
-    implementation project(path: ':dsbridge')
+    implementation files('libs/dsbridge-release.aar')
+//    implementation project(path: ':dsbridge')
 
     //loading框 框架
     implementation 'com.wang.avi:library:2.1.3'
