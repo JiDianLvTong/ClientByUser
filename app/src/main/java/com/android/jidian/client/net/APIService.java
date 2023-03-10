@@ -140,7 +140,7 @@ public interface APIService {
      * @param uid       用户uid
      * @param code      二维码内容
      * @param entercode 新增手动输入的扫框
-     * @param type      2 = 车   4 = 电池
+     * @param type      4 = 车   2 = 电池
      * @param sync      是否同步关联（车架号/GPS），需要同步关联参数值必须等于1
      */
     @FormUrlEncoded

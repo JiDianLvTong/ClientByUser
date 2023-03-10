@@ -407,6 +407,8 @@ public class ScanCodeActivity extends U6BaseActivityByMvp<ScanCodePresenter> imp
                         if (result.contains("=")) {
                             String s = result.split("=")[1];
                             mPresenter.requestQrCodeScan(uid, s, "", mType, "1");
+                        }else {
+                            mPresenter.requestQrCodeScan(uid, mResult, "", mType, "1");
                         }
                     } else {
                         zXingview.startSpotAndShowRect();

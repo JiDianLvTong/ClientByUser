@@ -581,7 +581,8 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
                     EventBus.getDefault().post(new MainActivityEvent(MainActivityEvent.CHANGEMAIN, 2));
                 } else {
                     Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
-                    mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "4");
+                    mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+                    mIntent.putExtra(ScanCodeActivity.TYPE, "4");
                     startActivity(mIntent);
                 }
             }
@@ -597,6 +598,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         } else {
             Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
             mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            mIntent.putExtra(ScanCodeActivity.TYPE, "2");
             startActivity(mIntent);
         }
     }
@@ -610,6 +612,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
         } else {
             Intent mIntent = new Intent(getActivity(), ScanCodeActivity.class);
             mIntent.putExtra(ScanCodeActivity.SCAN_CODE_IS_INPUT_BOX, "2");
+            mIntent.putExtra(ScanCodeActivity.TYPE, "2");
             startActivity(mIntent);
         }
     }
