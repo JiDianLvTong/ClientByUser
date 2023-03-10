@@ -193,7 +193,7 @@ public class MainEquipmentFragment extends BaseFragment<MainEquipmentPresenter> 
 
     @OnClick({R.id.tv_main_tip})
     public void OnCLickcccccc() {
-        startActivity(new Intent(requireActivity(), SignActivity.class));
+//        startActivity(new Intent(requireActivity(), SignActivity.class));
     }
 
     //设置坐标
